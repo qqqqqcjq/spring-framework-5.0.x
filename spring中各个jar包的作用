@@ -1,0 +1,42 @@
+spring4中的jar包一共有20个
+
+Core部分包含4个模块
+spring-core：依赖注入IoC与DI的最基本实现
+spring-beans：Bean工厂与bean的装配
+spring-context：spring的context上下文即IoC容器
+spring-expression：spring表达式语言
+　
+AOP部分包含4个模块
+Spring AOP：Spring的面向切面编程，提供AOP（面向切面编程）的实现
+Spring Aspects：Spring提供的对AspectJ框架的整合
+spring-instrument：java agent相关。提供一些类级的工具支持
+spring-instrument-tomcat：针对tomcat的instrument实现(目前已经从spring framework中移除)
+
+Data Access/Integration部分包含5个模块
+Spring JDBC：对JDBC 的简单封装
+Spring orm：整合第三方的orm实现，如hibernate，ibatis，jdo以及spring 的jpa实现
+Spring oxm：Spring对于object/xml映射的支持，可以让JAVA与XML之间来回切换
+Spring tx：为JDBC、Hibernate、JDO、JPA等提供的一致的声明式和编程式事务管理。
+Spring JMS：为简化jms api的使用而做的简单封装
+
+Web部分包含3个模块
+Spring web：包含Web应用开发时，用到Spring框架时所需的核心类，包括自动载入WebApplicationContext特性的类、Struts与JSF集成类、文件上传的支持类、Filter类和大量工具辅助类。
+Spring webmvc：包含SpringMVC框架相关的所有类。包含国际化、标签、Theme、视图展现的FreeMarker、JasperReports、 Tiles、Velocity、XSLT相关类。当然，如果你的应用使用了独立的MVC框架，则无需这个JAR文件里的任何类。
+Spring websocket：提供 Socket通信， web端的推送功能
+Spring webflux：
+Spring WebFlux 是 Spring Framework 5.0中引入的新的响应式web框架。与Spring MVC不同，它不需要Servlet API，是完全异步且非阻塞的，并且通过Reactor项目实现了Reactive Streams规范。
+Spring WebFlux 用于创建基于事件循环执行模型的完全异步且非阻塞的应用程序。
+PS：所谓异步非阻塞是针对服务端而言的，是说服务端可以充分利用CPU资源去做更多事情，这与客户端无关，客户端该怎么请求还是怎么请求。
+Reactive Streams是一套用于构建高吞吐量、低延迟应用的规范。而Reactor项目是基于这套规范的实现。Spring WebFlux基于Reactor实现了完全异步非阻塞的一套web框架，是一套响应式堆栈。
+spring-webmvc + Servlet + Tomcat 命令式的、同步阻塞的
+spring-webflux + Reactor + Netty 响应式的、异步非阻塞的
+spring-webmvc-portlet：基于portlet协议的mvc实现(目前已经从spring framework中移除)
+
+Test部分一个模块
+spring-test：对JUNIT等测试框架的简单封装
+
+剩下的包是
+spring-messaging：用于构建基于消息的应用程序(这里所说的消息就是广义的消息，不是指AMQP)
+spring-context-support：spring额外支持包，比如邮件服务、视图解析等，Spring context的扩展支持，用于MVC方面
+spring jcl:spring对日志框架的简单封装
+spring framework bom : 里面没有java代码，不用关注

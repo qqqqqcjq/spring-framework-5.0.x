@@ -1,0 +1,49 @@
+apply plugin: 'idea'
+apply plugin: 'war'  //引入war插件, 它默认包含java插件
+apply plugin: 'com.bmuschko.tomcat' //tomcat: 插件
+
+sourceCompatibility = 1.8
+
+// tomcat: 以下配置会在第一次启动时下载插件二进制文件
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.5'
+    }
+}
+
+
+dependencies {
+    //Gradle compile:
+    //如果你的jar包/依赖代码 在编译的时候需要依赖，在运行的时候也需要，那么就用compile
+    //Gradle provided：
+    //如果你的jar包/依赖代码 仅在编译的时候需要，但是在运行时不需要依赖,就用providedCompile
+    //Gradle runtime：
+    //如果你的jar包/依赖代码 仅在运行的时候需要，但是在编译时不需要依赖,就用runtime
+    runtime 'javax.servlet:jstl:1.1.2' // Servlet容器必需，  （JavaServer Pages Standard Tag Library，JSP标准标签库，用于程序中解析JSP）
+    compile "javax.servlet:javax.servlet-api:4.0.1"
+    compile project(':spring-context')
+    compile project(':spring-webmvc')
+
+
+    // tomcat: 将Tomcat运行时库添加到配置tomcat中: (此处用Spring的build.gradle文件定义的版本)
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"  //tomcat-embed-jasper （内置tocat对Jsp支持的依赖，用于编译Jsp），编译时会把jsp文件转换为_jsp.class
+           
+}
+
+// tomcat: 一些协议设置
+tomcat {
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+}
+
+
+
+// UTF-8
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}

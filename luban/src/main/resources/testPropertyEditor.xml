@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean name="userManager" class="testPropertyEditor.UserManager">
+        <property name="dateValue" value="2020-03-15"/>
+    </bean>
+
+
+<!--    &lt;!&ndash;Spring内部有一个CustomDateEditor， 但是需要注册, Spring内部也注册了一些默认的属性编辑器，参见ResourceEditorRegistrar&ndash;&gt;-->
+<!--    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">-->
+<!--        <property name="propertyEditorRegistrars">-->
+<!--            <list>-->
+<!--                <bean class="testPropertyEditor.DatePropertyEditorRegistrar"></bean>-->
+<!--                &lt;!&ndash; org.springframework.beans.propertyeditors.CustomDateEditor没有默认的构造函数，所以直接像com.luban.ioc.DatePropertyEditor注册会报错，所以通过写一个DatePropertyEditorRegistrar类进行注册 &ndash;&gt;-->
+<!--            </list>-->
+<!--        </property>-->
+<!--    </bean>-->
+
+
+    <!-- 自定义属性编辑器 -->
+    <bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="java.util.Date" value="testPropertyEditor.DatePropertyEditor"></entry>
+                <!-- org.springframework.beans.propertyeditors.CustomDateEditor没有默认的构造函数，所以直接像com.luban.ioc.DatePropertyEditor注册会报错，所以通过写一个DatePropertyEditorRegistrar类进行注册 -->
+            </map>
+        </property>
+    </bean>
+
+
+
+
+</beans>
+
