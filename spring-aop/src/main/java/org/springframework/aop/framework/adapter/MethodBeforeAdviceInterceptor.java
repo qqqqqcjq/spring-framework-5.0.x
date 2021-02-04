@@ -35,8 +35,12 @@ import org.springframework.util.Assert;
  * @see ThrowsAdviceInterceptor
  */
 @SuppressWarnings("serial")
+//实现了MethodInterceptor接口
+//MethodBeforeAdviceInterceptor
 public class MethodBeforeAdviceInterceptor implements MethodInterceptor, BeforeAdvice, Serializable {
 
+    //这个对象的获取参考这个方法org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory#getAdvice
+    //这个MethodBeforeAdvice是AspectJMethodBeforeAdvice实例
 	private final MethodBeforeAdvice advice;
 
 
@@ -52,7 +56,10 @@ public class MethodBeforeAdviceInterceptor implements MethodInterceptor, BeforeA
 
 	@Override
 	public Object invoke(MethodInvocation mi) throws Throwable {
+        //这里就会执行  前置通知的逻辑 这里的advice是 AspectJMethodBeforeAdvice
 		this.advice.before(mi.getMethod(), mi.getArguments(), mi.getThis());
+        //这里传入的MethodInvocation是ReflectiveMethodInvocation对象，即前面说的  传入this
+        //相当于ReflectiveMethodInvocation.proceed() 递归调用。
 		return mi.proceed();
 	}
 

@@ -59,13 +59,18 @@ import org.springframework.lang.Nullable;
  * @see #setUserAttribute
  * @see #getUserAttribute
  */
+
 public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Cloneable {
 
+
+    //代理对象
 	protected final Object proxy;
 
 	@Nullable
+    //目标对象
 	protected final Object target;
 
+	//目标方法
 	protected final Method method;
 
 	protected Object[] arguments = new Object[0];
@@ -105,6 +110,12 @@ public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Clonea
 	 * as far as was possibly statically. Passing an array might be about 10% faster,
 	 * but would complicate the code. And it would work only for static pointcuts.
 	 */
+    // proxy:生成的动态代理对象
+    // target:目标对象
+    // method:目标方法
+    // args:目标方法参数
+    // targetClass:目标类对象
+    // chain: AOP拦截器执行链  是一个MethodInterceptor的集合 这个链条的获取过程参考我们上一篇文章的内容
 	protected ReflectiveMethodInvocation(
 			Object proxy, @Nullable Object target, Method method, @Nullable Object[] arguments,
 			@Nullable Class<?> targetClass, List<Object> interceptorsAndDynamicMethodMatchers) {
@@ -112,7 +123,9 @@ public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Clonea
 		this.proxy = proxy;
 		this.target = target;
 		this.targetClass = targetClass;
+		//spring 考虑到入参method可能是桥接方法(参考石墨文档)，使用BridgeMethodResolver解析出真正的目标方法
 		this.method = BridgeMethodResolver.findBridgedMethod(method);
+        //转换参数
 		this.arguments = AopProxyUtils.adaptArgumentsIfNecessary(method, arguments);
 		this.interceptorsAndDynamicMethodMatchers = interceptorsAndDynamicMethodMatchers;
 	}
@@ -160,31 +173,46 @@ public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Clonea
     //不断执行拦截链上的方法，直到拦截器链执行完成，是一个不断迭代执行的过程。拦截链执行完成后调用invokeJoinpoint()执行目标方法
 	public Object proceed() throws Throwable {
 		//	We start with an index of -1 and increment early.
-        //拦截链执行完成后使用反射执行目标方法
+        //  不管有没有@Around切面逻辑的话，都会走到这里使用反射执行目标方法
 		if (this.currentInterceptorIndex == this.interceptorsAndDynamicMethodMatchers.size() - 1) {
 			return invokeJoinpoint();
 		}
 
-		//执行拦截链上的方法，执行
-		Object interceptorOrInterceptionAdvice =
-				this.interceptorsAndDynamicMethodMatchers.get(++this.currentInterceptorIndex);
+		//获取拦截器执行链上当前下标对应的 MethodInterceptor
+		Object interceptorOrInterceptionAdvice = this.interceptorsAndDynamicMethodMatchers.get(++this.currentInterceptorIndex);
+
+        //如果当前的MethodInterceptor是InterceptorAndDynamicMethodMatcher类型，那么就去匹配这个MethodInterceptor是否适用于这个目标方法
 		if (interceptorOrInterceptionAdvice instanceof InterceptorAndDynamicMethodMatcher) {
-			// Evaluate dynamic method matcher here: static part will already have
-			// been evaluated and found to match.
-			InterceptorAndDynamicMethodMatcher dm =
-					(InterceptorAndDynamicMethodMatcher) interceptorOrInterceptionAdvice;
+
+			// Evaluate dynamic method matcher here: static part will already have been evaluated and found to match.
+			InterceptorAndDynamicMethodMatcher dm = (InterceptorAndDynamicMethodMatcher) interceptorOrInterceptionAdvice;
+
+            //去匹配当前MethodInterceptor是否适用于这个目标方法
 			if (dm.methodMatcher.matches(this.method, this.targetClass, this.arguments)) {
-				return dm.interceptor.invoke(this);
+
+                //如果匹配则直接调用 MethodInterceptor的invoke方法
+                //注意这里传入的参数是this 是 ReflectiveMethodInvocation的类型， 有的拦截器invoke(this)方法里面会调用(this.)proceed()继续拦截器链的迭代执行
+			    return dm.interceptor.invoke(this);
 			}
 			else {
 				// Dynamic matching failed.
 				// Skip this interceptor and invoke the next in the chain.
+                // Advice匹配失败，继续递归执行拦截链上的下一个拦截器
 				return proceed();
 			}
 		}
 		else {
-			// It's an interceptor, so we just invoke it: The pointcut will have
-			// been evaluated statically before this object was constructed.
+			// It's an interceptor, so we just invoke it: The pointcut will have been evaluated statically before this object was constructed.
+            /**
+             * 我们平常使用的，就是在AspectJ切面中定义好的，Spring根据我们的定义，帮我们生成下面这些Advice，然后在这里执行
+             * ExposeInvocationInterceptor
+             * AspectJAroundAdvice
+             * AspectJAfterReturningAdvice
+             * AspectJMethodBeforeAdvice
+             * AspectJAfterAdvice
+             * AspectJAfterThrowingAdvice
+             */
+            //((MethodInterceptor) interceptorOrInterceptionAdvice).invoke(this)传递的参数是this, 有的拦截器在invoke(this)方法里调用(this.)proceed()继续迭代执行拦截链
 			return ((MethodInterceptor) interceptorOrInterceptionAdvice).invoke(this);
 		}
 	}
@@ -197,6 +225,9 @@ public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Clonea
 	 */
 	@Nullable
 	protected Object invokeJoinpoint() throws Throwable {
+        //this.target 目标对象
+        //this.method 目标方法
+        //this.arguments 目标方法参数信息
 		return AopUtils.invokeJoinpointUsingReflection(this.target, this.method, this.arguments);
 	}
 

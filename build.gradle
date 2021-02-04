@@ -115,6 +115,8 @@ configure(allprojects) { project ->
 		options.encoding = "UTF-8"
 	}
 
+    
+    
 	compileTestJava {
 		sourceCompatibility = 1.8  // can be switched to 10 for testing
 		targetCompatibility = 1.8
@@ -152,6 +154,8 @@ configure(allprojects) { project ->
 
 	repositories {
 		maven { url "https://repo.spring.io/libs-release" }
+        maven { url "https://maven.aliyun.com/repository/spring"}
+        maven { url "https://maven.aliyun.com/repository/public" }
 	}
 
 	dependencies {

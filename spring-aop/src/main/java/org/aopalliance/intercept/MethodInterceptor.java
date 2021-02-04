@@ -32,7 +32,7 @@ package org.aopalliance.intercept;
  *                        i.getThis()+" with args "+i.getArguments());
  *     Object ret=i.proceed();
  *     System.out.println("method "+i.getMethod()+" returns "+ret);
- *     return ret;
+ *     return ret;org.springframework.cglib.proxy.MethodInterceptor
  *   }
  * }
  * </pre>

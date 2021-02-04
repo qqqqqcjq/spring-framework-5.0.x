@@ -628,6 +628,15 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 logger.debug("Eagerly caching bean '" + beanName +
                         "' to allow for resolving potential circular references");
             }
+            // getEarlyBeanReference实现如下：
+            // if (bp instanceof SmartInstantiationAwareBeanPostProcessor) {
+            //      SmartInstantiationAwareBeanPostProcessor ibp = (SmartInstantiationAwareBeanPostProcessor) bp;
+            //      exposedObject = ibp.getEarlyBeanReference(exposedObject, beanName);
+            // }
+            // SmartInstantiationAwareBeanPostProcessor#getEarlyBeanReference的实现有
+            // InstantiationAwareBeanPostProcessorAdapter.getEarlyBeanReference  直接返回传进来的bean
+            // @EnableAspectJAutoProxy会引入AbstractAutoProxyCreator这个SmartInstantiationAwareBeanPostProcessor
+            // AbstractAutoProxyCreator.getEarlyBeanReference#wrapIfNecessary  判断是否需要创建代理，需要代理的话返回bean的代理对象，不需要的代理的话直接返回传进来的bean
             addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean));
         }
 

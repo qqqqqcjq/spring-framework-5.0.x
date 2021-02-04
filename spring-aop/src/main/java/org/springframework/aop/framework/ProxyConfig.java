@@ -28,6 +28,7 @@ import org.springframework.util.Assert;
  * @author Juergen Hoeller
  * @see AdvisedSupport
  */
+//所有的代理创建器都会继承这个配置类，以确保所有代理创建器具有一致的属性
 public class ProxyConfig implements Serializable {
 
 	/** use serialVersionUID from Spring 1.2 for interoperability */
@@ -36,12 +37,15 @@ public class ProxyConfig implements Serializable {
 
 	private boolean proxyTargetClass = false;
 
+	//optimize ： 优化的意思
 	private boolean optimize = false;
 
+	// opaque ：不透明的；不传热的；迟钝的
 	boolean opaque = false;
 
 	boolean exposeProxy = false;
 
+	// 是否被冻结，冻结了就不可以改变了
 	private boolean frozen = false;
 
 

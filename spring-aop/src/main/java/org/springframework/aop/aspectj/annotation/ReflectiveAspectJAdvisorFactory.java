@@ -219,6 +219,14 @@ public class ReflectiveAspectJAdvisorFactory extends AbstractAspectJAdvisorFacto
 
 	@Override
 	@Nullable
+    // 这个方法根据AspectJ的声明创建Advice
+    /**
+     * AspectJAroundAdvice
+     * AspectJMethodBeforeAdvice
+     * AspectJAfterAdvice
+     * AspectJAfterReturningAdvice
+     * AspectJAfterThrowingAdvice
+     */
 	public Advice getAdvice(Method candidateAdviceMethod, AspectJExpressionPointcut expressionPointcut,
 			MetadataAwareAspectInstanceFactory aspectInstanceFactory, int declarationOrder, String aspectName) {
 

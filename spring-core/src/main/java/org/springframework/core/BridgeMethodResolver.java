@@ -45,6 +45,9 @@ import org.springframework.util.ReflectionUtils;
  * @author Phillip Webb
  * @since 2.0
  */
+//参考石墨文档 ：桥接方法
+//我们在通过反射进行方法调用时，如果获取到桥接方法对应的实际的方法呢？
+//可以查看spring中org.springframework.core.BridgeMethodResolver类的源码。实际上是通过判断方法名、参数的个数以及泛型类型参数来获取的。
 public abstract class BridgeMethodResolver {
 
 	/**

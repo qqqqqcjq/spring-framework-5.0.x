@@ -52,6 +52,7 @@ import org.springframework.util.ClassUtils;
  * @see #setProxyTargetClass
  */
 @SuppressWarnings("serial")
+// 用于scope bean的代理类的FactoryBean
 public class ScopedProxyFactoryBean extends ProxyConfig
 		implements FactoryBean<Object>, BeanFactoryAware, AopInfrastructureBean {
 
@@ -119,6 +120,7 @@ public class ScopedProxyFactoryBean extends ProxyConfig
 
 
 	@Override
+    //返回scope bean 的代理类的实例
 	public Object getObject() {
 		if (this.proxy == null) {
 			throw new FactoryBeanNotInitializedException();

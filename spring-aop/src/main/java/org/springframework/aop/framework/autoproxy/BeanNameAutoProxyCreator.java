@@ -44,6 +44,59 @@ import org.springframework.util.StringUtils;
  * @see AbstractAutoProxyCreator
  */
 @SuppressWarnings("serial")
+// 根据拦截器和设置的Bean的名称表达式做匹配来创建代理.下面是个例子：
+/**
+ * public class MyMethodInterceptor implements MethodInterceptor {
+ *     @Override
+ *     public Object invoke(MethodInvocation invocation) throws Throwable {
+ *         System.out.println(getClass()+"调用方法前");
+ *         Object ret=invocation.proceed();
+ *         System.out.println(getClass()+"调用方法后");
+ *         return ret;
+ *     }
+ * }
+ *
+ * public interface UserService {
+ *     void print();
+ * }
+ * public class UserServiceImpl implements UserService {
+ *     public void print(){
+ *         System.out.println(getClass()+"#print");
+ *     }
+ * }
+ *
+ * @Configuration
+ * public class AppConfig {
+ *     //要创建代理的目标Bean
+ *     @Bean
+ *     public UserService userService(){
+ *         return new UserServiceImpl();
+ *     }
+ *     //创建Advice或Advisor
+ *     @Bean
+ *     public Advice myMethodInterceptor(){
+ *         return new MyMethodInterceptor();
+ *     }
+ *     //使用BeanNameAutoProxyCreator来创建代理
+ *     @Bean
+ *     public BeanNameAutoProxyCreator beanNameAutoProxyCreator(){
+ *         BeanNameAutoProxyCreator beanNameAutoProxyCreator=new BeanNameAutoProxyCreator();
+ *         //设置要创建代理的那些Bean的名字
+ *         beanNameAutoProxyCreator.setBeanNames("userSer*");
+ *         //设置拦截链名字(这些拦截器是有先后顺序的)
+ *         beanNameAutoProxyCreator.setInterceptorNames("myMethodInterceptor");
+ *         return beanNameAutoProxyCreator;
+ *     }
+ * }
+ *
+ * public class Main {
+ *     public static void main(String[] args) {
+ *         ApplicationContext applicationContext=new AnnotationConfigApplicationContext(AppConfig.class);
+ *         UserService userService= applicationContext.getBean(UserService.class);
+ *         userService.print();
+ *     }
+ * }
+ */
 public class BeanNameAutoProxyCreator extends AbstractAutoProxyCreator {
 
 	@Nullable
@@ -76,6 +129,7 @@ public class BeanNameAutoProxyCreator extends AbstractAutoProxyCreator {
 	 */
 	@Override
 	@Nullable
+    //如果bean名称在配置的名称列表中，则标识为代理的bean
 	protected Object[] getAdvicesAndAdvisorsForBean(
 			Class<?> beanClass, String beanName, @Nullable TargetSource targetSource) {
 

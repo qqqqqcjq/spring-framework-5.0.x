@@ -24,6 +24,8 @@ package org.springframework.aop;
  * @since 2.0.1
  * @see org.springframework.aop.support.AopUtils#isAopProxy(Object)
  */
+
+//标记接口，Spring 生成的 所有AOP 代理都会实现这个标记接口
 public interface SpringProxy {
 
 }

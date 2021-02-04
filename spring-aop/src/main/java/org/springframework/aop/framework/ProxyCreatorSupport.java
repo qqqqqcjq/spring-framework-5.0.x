@@ -30,6 +30,22 @@ import org.springframework.util.Assert;
  * @see #createAopProxy()
  */
 @SuppressWarnings("serial")
+// Advised这个接口的实现类封装了Interceptor(属于advice)，其他advice,  Adivisors ,代理的接口，
+// 由AdvisedSupport实现，直接实现类也只有AdvisedSupport
+/**
+ * 是生成代理的一个重要的接口定义, 继承关系如下：
+ * ===============================begin=============================================
+ *                                                          <==  AspectJProxyFactory
+ * Advised  <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
+ *                                                          <==  ProxyFactory
+ * ===============================end  =============================================
+ *
+ * ProxyCreatorSupport中封装了AopProxyFactory
+ * AopProxyFactory中封装了AopProxy，提供createAopProxy(入参this==>ProxyCreatorSupport)方法，决定使用哪一种AopProxy
+ * AopProxy定义getProxy()方法创建代理，有CglibAopProxy(ObjenesisCglibAopProxy)和JdkDynamicAopProxy两种实现，提供
+ *
+ * JdkDynamicAopProxy实现了JDK的InvocationHandler接口，InvocationHandler#invoke()方法中会使用ReflectiveMethodInvocation完成拦截链和目标方法的执行
+ */
 public class ProxyCreatorSupport extends AdvisedSupport {
 
 	private AopProxyFactory aopProxyFactory;

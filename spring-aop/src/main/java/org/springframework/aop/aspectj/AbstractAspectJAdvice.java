@@ -641,6 +641,24 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 		try {
 			ReflectionUtils.makeAccessible(this.aspectJAdviceMethod);
 			// TODO AopUtils.invokeJoinpointUsingReflection
+            /**
+             * 拦截链上的实例可能继承2个接口：
+             * MethodInterceptor，定义的invoke(MethodInvocation mi)方法传入的MethodInvocation
+             *    是CglibAopProxy.CglibMethodInvocation(继承ReflectiveMethodInvocation)或者ReflectiveMethodInvocation实例。
+             *    通过调用ReflectiveMethodInvocation.proceed()方法实现递归。当然，如果没有实现这个接口，原本的ReflectiveMethodInvocation.proceed()方法内部也会调用proceed()实现递归调用
+             *
+             *  AbstractAspectJAdvice, 里面定义的invokeAdviceMethod() -> invokeAdviceMethodWithGivenArgs(argBinding(jp, jpMatch, returnValue, t)) 方法执行横切方法
+             */
+
+            //使用反射技术调用横切方法
+            /**
+             * aspectJAdviceMethod 就是我们定义的横切方法，比如lubanaop.anothersample1.AopAspect1.aroundMethod1方法
+             * this.aspectInstanceFactory.getAspectInstance()得到我们定义的AspectJ实例(反射需要传入方法对应的类的实例)，比如lubanaop.anothersample1.AopAspect1.aroundMethod1实例
+             * actualArgs 就是MethodInvocationProceedingJoinPoint实例，  AspectJAroundAdvice.invoke()方法会用到MethodInvocationProceedingJoinPoint参数，因为反射调用的横切方法执行完前一半，需要MethodInvocationProceedingJoinPoint里面
+             *     封装了ProxyMethodInvocation(实际传入的是CglibAopProxy.CglibMethodInvocation(继承ReflectiveMethodInvocation)或者ReflectiveMethodInvocation实例)，通过
+             *     MethodInvocationProceedingJoinPoint#proceed(java.lang.Object[])->this.methodInvocation.invocableClone(arguments)方法得到
+             *     一个克隆的ReflectiveMethodInvocation(这样老的ReflectiveMethodInvocation可以保留拦截链执行的下标currentInterceptorIndex)，然后.proceed()继承执行before横切方法
+             */
 			return this.aspectJAdviceMethod.invoke(this.aspectInstanceFactory.getAspectInstance(), actualArgs);
 		}
 		catch (IllegalArgumentException ex) {
@@ -664,7 +682,43 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	 * Get the current join point match at the join point we are being dispatched on.
 	 */
 	@Nullable
+    /**
+     * public interface JoinPointMatch {
+     *   如果pointcut expression匹配join point, 返回true, 否则返回false
+     * 	 boolean matches();
+     * 	 如果匹配join point的话，返回join point上绑定的参数，否则返回null
+     * 	 PointcutParameter[] getParameterBindings();
+     * }
+     */
 	protected JoinPointMatch getJoinPointMatch() {
+
+        // 这里从线程上下文中获取MethodInvocation 看到这里你也许会感到奇怪  跟着文章分析来看 我们没有在设置过上下文的值啊
+        // 这里是怎么获取到MethodInvocation 的对象的呢？
+        // 不知道你是否还记得 我们在获取Advisor的时候 调用过这样的一个方法org.springframework.aop.aspectj.AspectJProxyUtils#makeAdvisorChainAspectJCapableIfNecessary
+        // 在这个方法中会有这样的一段代码
+        // if (foundAspectJAdvice && //!advisors.contains(ExposeInvocationInterceptor.ADVISOR)) {
+        //      如果获取到了 Advisor  则向 Advisor集合中添加第一个元素 即 ExposeInvocationInterceptor.ADVISOR
+        //      也就是说 我们的 Advisor列表中的第一个元素为ExposeInvocationInterceptor.ADVISOR 它是一个DefaultPointcutAdvisor的实例
+        //      对于任何的目标方法都返回true  它的Advice是ExposeInvocationInterceptor
+        //      advisors.add(0, ExposeInvocationInterceptor.ADVISOR);
+        //      return true;
+        //  }
+        // 这样我们就不难理解了，在调用ReflectiveMethodInvocation#proceed的时候第一个调用的MethodInterceptor是ExposeInvocationInterceptor
+        // ExposeInvocationInterceptor的invoke方法的内容如下：
+        //   public Object invoke(MethodInvocation mi) throws Throwable {
+        //     先取出旧的MethodInvocation的值
+        //     MethodInvocation oldInvocation = invocation.get();
+        //     这里设置新的 MethodInvocation 就是这里了！！！
+        //     invocation.set(mi);
+        //     try {
+        //       递归调用
+        //       return mi.proceed();
+        //    }
+        //    finally {
+        //      invocation.set(oldInvocation);
+        //    }
+        // }
+
 		MethodInvocation mi = ExposeInvocationInterceptor.currentInvocation();
 		if (!(mi instanceof ProxyMethodInvocation)) {
 			throw new IllegalStateException("MethodInvocation is not a Spring ProxyMethodInvocation: " + mi);

@@ -47,6 +47,9 @@ import org.springframework.lang.Nullable;
  * @see Pointcut
  * @see ClassFilter
  */
+
+
+//切入点的一部分，用于检查目标方法是否符合通知的条件
 public interface MethodMatcher {
 
 	/**
@@ -55,11 +58,14 @@ public interface MethodMatcher {
 	 * method returns {@code false}, no runtime check (i.e. no
 	 * {@link #matches(java.lang.reflect.Method, Class, Object[])} call)
 	 * will be made.
-	 * @param method the candidate method
+	 * @param method the candidate method 候选方法
 	 * @param targetClass the target class (may be {@code null}, in which case
 	 * the candidate class must be taken to be the method's declaring class)
 	 * @return whether or not this method matches statically
 	 */
+    //isRuntime()为false, 对给定的方法进行动态匹配,参数如下：
+    //method ： 给定方法
+    //targetClass : 目标类
 	boolean matches(Method method, @Nullable Class<?> targetClass);
 
 	/**
@@ -89,6 +95,10 @@ public interface MethodMatcher {
 	 * @return whether there's a runtime match
 	 * @see MethodMatcher#matches(Method, Class)
 	 */
+	//isRuntime()为true, 对给定的方法进行动态匹配,参数如下：
+    //method ： 给定方法
+    //targetClass : 目标类
+    //args : 运行时参数
 	boolean matches(Method method, @Nullable Class<?> targetClass, Object... args);
 
 
@@ -98,3 +108,87 @@ public interface MethodMatcher {
 	MethodMatcher TRUE = TrueMethodMatcher.INSTANCE;
 
 }
+
+
+// <aop:config>
+// <aop:aspect ref="transaction">
+// <aop:before method="startTransaction" pointcut="execution(* *.save(..))"/>
+// <aop:after method="commitTransaction" pointcut="execution(* *.save(..))"/>
+// <aop:after-throwing method="rollbackTransaction" pointcut="execution(* *.save(..))"/>
+// <aop:after-returning method="commitTransaction" pointcut="execution(* *.save(..))"/>
+// </aop:aspect>
+// </aop:config>
+
+// @Aspect
+// @Component
+// public class AopAspect {
+//     /**
+//      * 定义一个切入点表达式,用来确定哪些类需要代理
+//      * execution(* lubanaop.anothersample1.*.*(..))代表lubanaop.anothersample1包下所有类的所有方法都会被代理
+//      */
+//     @Pointcut("execution(* lubanaop.anothersample1.*.*(..))")
+//     public void declareJoinPointerExpression() {}
+//
+//     /**
+//      * 前置方法,在目标方法执行前执行
+//      * @param joinPoint 封装了代理方法信息的对象,若用不到则可以忽略不写
+//      */
+//     @Before("declareJoinPointerExpression()")
+//     public void beforeMethod(JoinPoint joinPoint){
+//         System.out.println("目标方法名为:" + joinPoint.getSignature().getName());
+//         System.out.println("目标方法所属类的简单类名:" +        joinPoint.getSignature().getDeclaringType().getSimpleName());
+//         System.out.println("目标方法所属类的类名:" + joinPoint.getSignature().getDeclaringTypeName());
+//         System.out.println("目标方法声明类型:" + Modifier.toString(joinPoint.getSignature().getModifiers()));
+//         //获取传入目标方法的参数
+//         Object[] args = joinPoint.getArgs();
+//         for (int i = 0; i < args.length; i++) {
+//             System.out.println("第" + (i+1) + "个参数为:" + args[i]);
+//         }
+//         System.out.println("被代理的对象:" + joinPoint.getTarget());
+//         System.out.println("代理对象自己:" + joinPoint.getThis());
+//     }
+//
+//     /**
+//      * 环绕方法,可自定义目标方法执行的时机
+//      * @param pjd JoinPoint的子接口,添加了
+//      *            Object proceed() throws Throwable 执行目标方法
+//      *            Object proceed(Object[] var1) throws Throwable 传入的新的参数去执行目标方法
+//      *            两个方法
+//      * @return 此方法需要返回值,返回值视为目标方法的返回值
+//      */
+//     @Around("declareJoinPointerExpression()")
+//     public Object aroundMethod(ProceedingJoinPoint pjd){
+//         Object result = null;
+//
+//         try {
+//             //前置通知
+//             System.out.println("目标方法执行前...");
+//             //执行目标方法
+//             //result = pjd.proeed();
+//             //用新的参数值执行目标方法
+//             result = pjd.proceed(new Object[]{"newSpring","newAop"});
+//             //返回通知
+//             System.out.println("目标方法返回结果后...");
+//         } catch (Throwable e) {
+//             //异常通知
+//             System.out.println("执行目标方法异常后...");
+//             throw new RuntimeException(e);
+//         }
+//         //后置通知
+//         System.out.println("目标方法执行后...");
+//
+//         return result;
+//     }
+// }
+
+
+// 1、Pointcut : 代表切入点的匹配表达式(Pointcut就是连接点Joinpoint的集合, 匹配表达式匹配后就可以得到Joinpoint的集合)
+// 2、Advice : before、after等加上method表示每个通知
+// 3、Advisor : before、after等加上method加上Pointcut就可以作为一个Advisor切面
+// 4、<aop:aspect> : 代表一个切面Advisor集合
+// 5、ref=“transaction”  : 表示startTransaction/commitTransaction/rollbackTransaction/commitTransaction这几个通知方法在transaction这个类里面定义
+// 这样通过Pointcut的匹配表达式，可以将Advice横切到目标类的方法中
+//
+//
+// 注意区分 ： Advised这个接口定义了Interceptor(继承自Advice) 其他Advice,  Adivisors ,代理的接口，由AdvisedSupport实现，直接实现类也只有AdvisedSupport
+

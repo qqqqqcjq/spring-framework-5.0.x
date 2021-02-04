@@ -19,7 +19,6 @@ package org.springframework.aop;
 import org.springframework.lang.Nullable;
 
 /**
- * 顶层接口，定义了一个获取目标类Class对象方法
  * Minimal interface for exposing the target class behind a proxy.
  *
  * <p>Implemented by AOP proxy objects and proxy factories
@@ -30,6 +29,8 @@ import org.springframework.lang.Nullable;
  * @since 2.0.3
  * @see org.springframework.aop.support.AopUtils#getTargetClass(Object)
  */
+
+// 顶层接口，定义了一个获取目标类Class对象方法
 public interface TargetClassAware {
 
 	/**

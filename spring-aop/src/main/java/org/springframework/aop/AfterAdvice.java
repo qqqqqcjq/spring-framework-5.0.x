@@ -26,6 +26,7 @@ import org.aopalliance.aop.Advice;
  * @since 2.0.3
  * @see BeforeAdvice
  */
+//标志是After通知
 public interface AfterAdvice extends Advice {
 
 }

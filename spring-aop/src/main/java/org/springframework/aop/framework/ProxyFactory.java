@@ -33,6 +33,16 @@ import org.springframework.util.ClassUtils;
  * @since 14.03.2003
  */
 @SuppressWarnings("serial")
+// Advised这个接口的实现类封装了Interceptor(属于advice)，其他advice,  Adivisors ,代理的接口，
+// 由AdvisedSupport实现，直接实现类也只有AdvisedSupport
+/**
+ * 是生成代理的一个重要的接口定义, 继承关系如下：
+ * ===============================begin=============================================
+ *                                                          <==  AspectJProxyFactory
+ * Advised  <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
+ *                                                          <==  ProxyFactory
+ * ===============================end  =============================================
+ */
 public class ProxyFactory extends ProxyCreatorSupport {
 
 	/**

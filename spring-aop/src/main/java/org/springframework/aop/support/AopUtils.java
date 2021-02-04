@@ -212,12 +212,10 @@ public abstract class AopUtils {
 
 	/**
 	 * Can the given pointcut apply at all on the given class?
-	 * <p>This is an important test as it can be used to optimize
-	 * out a pointcut for a class.
+	 * <p>This is an important test as it can be used to optimize out a pointcut for a class.
 	 * @param pc the static or dynamic pointcut to check
 	 * @param targetClass the class to test
-	 * @param hasIntroductions whether or not the advisor chain
-	 * for this bean includes any introductions
+	 * @param hasIntroductions whether or not the advisor chain for this bean includes any introductions
 	 * @return whether the pointcut can apply on any method
 	 */
 	public static boolean canApply(Pointcut pc, Class<?> targetClass, boolean hasIntroductions) {
@@ -340,7 +338,9 @@ public abstract class AopUtils {
 
 		// Use reflection to invoke the method.
 		try {
+            //设置方法可见性
 			ReflectionUtils.makeAccessible(method);
+            //反射调用  最终是通过反射去调用目标方法
 			return method.invoke(target, args);
 		}
 		catch (InvocationTargetException ex) {

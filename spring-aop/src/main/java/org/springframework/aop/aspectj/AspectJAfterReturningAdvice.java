@@ -77,13 +77,13 @@ public class AspectJAfterReturningAdvice extends AbstractAspectJAdvice
 	 * @return whether to invoke the advice method for the given return value
 	 */
 	private boolean shouldInvokeOnReturnValueOf(Method method, @Nullable Object returnValue) {
-		Class<?> type = getDiscoveredReturningType();
-		Type genericType = getDiscoveredReturningGenericType();
-		// If we aren't dealing with a raw type, check if generic parameters are assignable.
-		return (matchesReturnValue(type, method, returnValue) &&
-				(genericType == null || genericType == type ||
-						TypeUtils.isAssignable(genericType, method.getGenericReturnType())));
-	}
+        Class<?> type = getDiscoveredReturningType();
+        Type genericType = getDiscoveredReturningGenericType();
+        // If we aren't dealing with a raw type, check if generic parameters are assignable.
+        return (matchesReturnValue(type, method, returnValue) &&
+                (genericType == null || genericType == type ||
+                        TypeUtils.isAssignable(genericType, method.getGenericReturnType())));
+    }
 
 	/**
 	 * Following AspectJ semantics, if a return value is null (or return type is void),
