@@ -24,6 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import org.springframework.aop.framework.autoproxy.AbstractAdvisorAutoProxyCreator;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.core.MethodClassKey;
 import org.springframework.lang.Nullable;
@@ -87,8 +88,55 @@ public abstract class AbstractFallbackTransactionAttributeSource implements Tran
 	 * @return a TransactionAttribute for this method, or {@code null} if the method
 	 * is not transactional
 	 */
-	@Override
-	@Nullable
+
+    //生成代理的流程中：
+    /**
+     * 公共部分
+     * ==>AbstractAutowireCapableBeanFactory#initializeBean
+     * ==>AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsAfterInitialization
+     * ==>AbstractAutoProxyCreator#postProcessAfterInitialization
+     * ==>AbstractAutoProxyCreator.wrapIfNecessary()
+     *
+     *     1. wrapIfNecessary()中获取Advisor流程， 调用这个方法创建attributeCache
+     *     ==>AbstractAdvisorAutoProxyCreator.getAdvicesAndAdvisorsForBean(bean.getClass(), beanName, null)：
+     *     ==>AbstractAdvisorAutoProxyCreator#findEligibleAdvisors
+     *     ==>AbstractAdvisorAutoProxyCreator#findAdvisorsThatCanApply
+     *     ==>AopUtils#findAdvisorsThatCanApply
+     *     ==>AopUtils#canApply(org.springframework.aop.Advisor, java.lang.Class<?>, boolean)
+     *     ==>AopUtils#canApply(org.springframework.aop.Pointcut, java.lang.Class<?>, boolean)
+     *
+     *     公共部分：
+     *     ==>TransactionAttributeSourcePointcut#matches
+     *     ==>AbstractFallbackTransactionAttributeSource#getTransactionAttribute ：
+     *     ==>走else分支为每一个@Transactional注解的方法创建一个TransactionAttribute(TransactionDefinition),
+     *     从这个流程可以看出，几乎spring管理的每一个bean的每一个方法都会走到这里，
+     *     方法没有@Transactional标注的话，就this.attributeCache.put(cacheKey, NULL_TRANSACTION_ATTRIBUTE)，
+     *     然后得到TransactionAttributeSourcePointcut#matches是true/false
+     *
+     *     2. wrapIfNecessary()中创建代理对象的流程， 调用这个方法从attributeCache获取method对应的TransactionAttribute
+     *     ==>Object proxy = createProxy(bean.getClass(), beanName, specificInterceptors, new SingletonTargetSource(bean))
+     *     ProxyFactory#getProxy(java.lang.ClassLoader)
+     *     CglibAopProxy#getProxy(java.lang.ClassLoader)
+     *     ObjenesisCglibAopProxy#createProxyClassAndInstance(Enhancer enhancer, Callback[] callbacks)
+     *     cglib.jar中创建代理对象的流程，会启动一个FutrueTask， get方法返回的就是代理对象，流程中也会调用这个方法判断是否方法是否匹配当前PointCut
+     *
+     *     公共部分：
+     *     ==>TransactionAttributeSourcePointcut#matches
+     *     ==>AbstractFallbackTransactionAttributeSource#getTransactionAttribute
+     *     ==>走if分支获取Method对应的TransactionAttribute，只是为了得到TransactionAttributeSourcePointcut#matches是true/false
+     */
+
+    //执行被代理的方法流程：
+    /**
+     * 执行代理类的方法
+     * ==>CglibAopProxy.DynamicAdvisedInterceptor#intercept
+     * ==>ReflectiveMethodInvocation#proceed
+     * ==>TransactionInterceptor#invoke
+     * ==>TransactionAspectSupport#invokeWithinTransaction
+     * 获取当前方法对应的TransactionAttribute(TransactionDefinition),使用这个TransactionAttribute创建TransactionInfo(里面封装了TransactionStatus)
+     */
+    @Override
+    @Nullable
 	public TransactionAttribute getTransactionAttribute(Method method, @Nullable Class<?> targetClass) {
 		if (method.getDeclaringClass() == Object.class) {
 			return null;

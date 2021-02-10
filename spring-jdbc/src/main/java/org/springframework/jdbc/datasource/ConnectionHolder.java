@@ -44,20 +44,30 @@ public class ConnectionHolder extends ResourceHolderSupport {
 	/**
 	 * Prefix for savepoint names.
 	 */
+	//定义保存点名字的前缀
 	public static final String SAVEPOINT_NAME_PREFIX = "SAVEPOINT_";
 
 
+    //-------------------------------------------------数据库连接  begin---------------------------------------------
+    // ConnectionHolder.currentConnection是通过ConnectionHolder.connectionHandle.getConnection()赋值的，
+    // 所以一般ConnectionHolder.currentConnection和ConnectionHolder.connectionHandle.getConnection()是相同的连接，
+    // 直到ConnectionHolder调用{@code release}，它将重置被占用的连接，根据需要获取一个新的连接。
 	@Nullable
+    //ConnectionHandle 定义了获取连接和释放连接的方法
 	private ConnectionHandle connectionHandle;
 
 	@Nullable
 	private Connection currentConnection;
+	//-------------------------------------------------数据库连接  end-----------------------------------------------
 
+    //是否激活事务
 	private boolean transactionActive = false;
 
 	@Nullable
+    //是否支持保存点
 	private Boolean savepointsSupported;
 
+	//保存点个数
 	private int savepointCounter = 0;
 
 
@@ -150,12 +160,13 @@ public class ConnectionHolder extends ResourceHolderSupport {
 
 	/**
 	 * Return the current Connection held by this ConnectionHolder.
-	 * <p>This will be the same Connection until {@code released}
-	 * gets called on the ConnectionHolder, which will reset the
-	 * held Connection, fetching a new Connection on demand.
+	 * <p>This will be the same Connection until {@code released} gets called on the ConnectionHolder, which will reset the held Connection, fetching a new Connection on demand.
 	 * @see ConnectionHandle#getConnection()
 	 * @see #released()
 	 */
+	// ConnectionHolder.currentConnection是通过ConnectionHolder.connectionHandle.getConnection()赋值的，
+	// 所以一般ConnectionHolder.currentConnection和ConnectionHolder.connectionHandle.getConnection()是相同的连接，
+    // 直到ConnectionHolder调用{@code release}，它将重置被占用的连接，根据需要获取一个新的连接。
 	public Connection getConnection() {
 		Assert.notNull(this.connectionHandle, "Active Connection is required");
 		if (this.currentConnection == null) {

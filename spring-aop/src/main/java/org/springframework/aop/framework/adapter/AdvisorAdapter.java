@@ -22,8 +22,7 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.springframework.aop.Advisor;
 
 /**
- * Interface allowing extension to the Spring AOP framework to allow
- * handling of new Advisors and Advice types.
+ * Interface allowing extension to the Spring AOP framework to allow handling of new Advisors and Advice types.
  *
  * <p>Implementing objects can create AOP Alliance Interceptors from
  * custom advice types, enabling these advice types to be used
@@ -33,6 +32,24 @@ import org.springframework.aop.Advisor;
  * do so only if you need to introduce more Advisor or Advice types to Spring.
  *
  * @author Rod Johnson
+ */
+/**
+ * AdvisorAdapter是顶层接口，允许对Spring AOP框架进行扩展，从而允许处理新的顾问和通知类型
+ * 目前只有下面3个Advice, 因为下面3个Advice只实现了Advice接口, 没有实现org.aopalliance.intercept.MethodInterceptor接口
+ * 所以，DefaultAdvisorChainFactory.getInterceptorsAndDynamicInterceptionAdvice方法获取拦截器链的时候，会使用AdvisorAdapter判断是不是下面这些Advice,
+ * 是的话AdvisorAdapter会使用这个Adviced调用AdvisorAdapter.getInterceptor()创建对应的MethodInterceptor
+ * AfterReturningAdvice ： AfterReturningAdviceAdapter ==>AfterReturningAdviceInterceptor
+ * MethodBeforeAdvice ： MethodBeforeAdviceAdapter ==>MethodBeforeAdviceInterceptor
+ * ThrowsAdvice ： ThrowsAdviceAdapter ==>ThrowsAdviceInterceptor
+ */
+
+/**
+ * 即实现了Advice 又实现了MethodInterceptor的可以直接加入拦截器链
+ * AspectJAroundAdvice
+ * AspectJMethodBeforeAdvice
+ * AspectJAfterAdvice
+ * AspectJAfterReturningAdvice
+ * AspectJAfterThrowingAdvice
  */
 public interface AdvisorAdapter {
 

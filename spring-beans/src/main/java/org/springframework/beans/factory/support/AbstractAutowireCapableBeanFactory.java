@@ -493,6 +493,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
         // which cannot be stored in the shared merged bean definition.
         // 确保此时的bean已经被解析了
         Class<?> resolvedClass = resolveBeanClass(mbd, beanName);
+
         if (resolvedClass != null && !mbd.hasBeanClass() && mbd.getBeanClassName() != null) {
             /**个人理解：
              * 使用mbdToUse来创建实例，mbdToUse是对mbd的一个拷贝，然后把mbd动态解析得到的class直接保存包mbdToUse的属性中，

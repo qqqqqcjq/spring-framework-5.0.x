@@ -62,9 +62,8 @@ public interface TransactionStatus extends SavepointManager, Flushable {
 	boolean hasSavepoint();
 
 	/**
-	 * Set the transaction rollback-only. This instructs the transaction manager
-	 * that the only possible outcome of the transaction may be a rollback, as
-	 * alternative to throwing an exception which would in turn trigger a rollback.
+	 * Set the transaction rollback-only. This instructs the transaction manager that the only possible outcome of the transaction may be a rollback,
+     * as alternative to throwing an exception which would in turn trigger a rollback.
 	 * <p>This is mainly intended for transactions managed by
 	 * {@link org.springframework.transaction.support.TransactionTemplate} or
 	 * {@link org.springframework.transaction.interceptor.TransactionInterceptor},

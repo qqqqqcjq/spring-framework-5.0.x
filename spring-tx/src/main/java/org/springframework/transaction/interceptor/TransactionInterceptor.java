@@ -88,6 +88,14 @@ public class TransactionInterceptor extends TransactionAspectSupport implements 
 
 	@Override
 	@Nullable
+    //事务拦截方法
+    /**
+     * 横切调用链如下：
+     * 执行代理类中方法
+     * ==>CglibAopProxy.DynamicAdvisedInterceptor.intercept()
+     * ==>(CglibMethodInvocation)ReflectiveMethodInvocation.proceed()
+     * ==> TransactionInterceptor.invoke()
+     */
 	public Object invoke(MethodInvocation invocation) throws Throwable {
 		// Work out the target class: may be {@code null}.
 		// The TransactionAttributeSource should be passed the target class

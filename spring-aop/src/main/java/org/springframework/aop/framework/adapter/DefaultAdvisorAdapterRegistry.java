@@ -76,17 +76,42 @@ public class DefaultAdvisorAdapterRegistry implements AdvisorAdapterRegistry, Se
 	}
 
 	@Override
+    //获取拦截器链的重要方法
 	public MethodInterceptor[] getInterceptors(Advisor advisor) throws UnknownAdviceTypeException {
 		List<MethodInterceptor> interceptors = new ArrayList<>(3);
-		Advice advice = advisor.getAdvice();
+
+        /**
+         * AdvisorAdapter是顶层接口，允许对Spring AOP框架进行扩展，从而允许处理新的顾问和通知类型
+         * 目前只有下面3个Advice, 因为下面3个Advice只实现了Advice接口, 没有实现org.aopalliance.intercept.MethodInterceptor接口
+         * 所以，DefaultAdvisorChainFactory.getInterceptorsAndDynamicInterceptionAdvice方法获取拦截器链的时候，会使用AdvisorAdapter判断是不是下面这些Advice,
+         * 是的话AdvisorAdapter会使用这个Adviced调用AdvisorAdapter.getInterceptor()创建对应的MethodInterceptor
+         * AfterReturningAdvice ： AfterReturningAdviceAdapter ==>AfterReturningAdviceInterceptor
+         * MethodBeforeAdvice ： MethodBeforeAdviceAdapter ==>MethodBeforeAdviceInterceptor
+         * ThrowsAdvice ： ThrowsAdviceAdapter ==>ThrowsAdviceInterceptor
+         */
+
+        /**
+         * 即实现了Advice 又实现了MethodInterceptor的可以直接加入拦截器链
+         * AspectJAroundAdvice
+         * AspectJMethodBeforeAdvice
+         * AspectJAfterAdvice
+         * AspectJAfterReturningAdvice
+         * AspectJAfterThrowingAdvice
+         */
+        Advice advice = advisor.getAdvice();
+
+		//即实现了Advice 又实现了MethodInterceptor的可以直接加入拦截器链
 		if (advice instanceof MethodInterceptor) {
 			interceptors.add((MethodInterceptor) advice);
 		}
+
+		//只实现了Advice,没有实现MethodInterceptor，则使用对应的AdvisorAdapter创建对应的MethodInterceptor
 		for (AdvisorAdapter adapter : this.adapters) {
 			if (adapter.supportsAdvice(advice)) {
 				interceptors.add(adapter.getInterceptor(advisor));
 			}
 		}
+
 		if (interceptors.isEmpty()) {
 			throw new UnknownAdviceTypeException(advisor.getAdvice());
 		}

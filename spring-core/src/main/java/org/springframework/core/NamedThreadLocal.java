@@ -26,6 +26,7 @@ import org.springframework.util.Assert;
  * @since 2.5.2
  * @see NamedInheritableThreadLocal
  */
+//继承自ThreadLocal，增加了一个name 属性，这样每一个ThreadLocal实例都有自己的名字了
 public class NamedThreadLocal<T> extends ThreadLocal<T> {
 
 	private final String name;

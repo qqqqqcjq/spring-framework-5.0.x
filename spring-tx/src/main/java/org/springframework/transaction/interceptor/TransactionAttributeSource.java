@@ -32,6 +32,8 @@ import org.springframework.lang.Nullable;
  * @see TransactionProxyFactoryBean#setTransactionAttributeSource
  * @see org.springframework.transaction.annotation.AnnotationTransactionAttributeSource
  */
+//{@link TransactionInterceptor}用于检索TransactionAttribute(TransactionDefinition)的策略接口
+//Spring的很多这种策略接口都是定义一个顶层接口，然后有很多具体实现类和一个使用组合模式组合这些实现类的 实现类CompositeXXXXXXX，  这里是CompositeTransactionAttributeSource
 public interface TransactionAttributeSource {
 
 	/**

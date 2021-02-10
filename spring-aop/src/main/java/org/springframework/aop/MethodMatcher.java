@@ -48,7 +48,7 @@ import org.springframework.lang.Nullable;
  * @see ClassFilter
  */
 
-
+//Advisor中可以获取PointCut,PointCut可以获取MethodMatcher，使用MethodMatcher判断方法是否满足当前PointCut
 //切入点的一部分，用于检查目标方法是否符合通知的条件
 public interface MethodMatcher {
 

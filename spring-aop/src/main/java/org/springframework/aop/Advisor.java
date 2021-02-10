@@ -116,7 +116,9 @@ import org.aopalliance.aop.Advice;
 //
 // 注意区分 ： Advised这个接口定义了Interceptor(继承自Advice) 其他Advice,  Adivisors ,代理的接口，由AdvisedSupport实现，直接实现类也只有AdvisedSupport
 
-
+//Advisor有两类实现：
+//PointcutAdvisor ：
+//IntroductionAdvisor ：
 public interface Advisor {
 
 	/**

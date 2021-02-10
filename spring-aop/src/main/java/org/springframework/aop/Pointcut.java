@@ -31,7 +31,6 @@ package org.springframework.aop;
  * @see org.springframework.aop.support.MethodMatchers
  */
 //切入点 ： 表示连接点(Joinpoint)的集合
-
 public interface Pointcut {
 
 	/**

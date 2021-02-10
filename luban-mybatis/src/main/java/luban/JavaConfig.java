@@ -35,8 +35,14 @@ public class JavaConfig {
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource){
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+
 //        org.apache.ibatis.session.Configuration configuration = new org.apache.ibatis.session.Configuration();
+//        // configuration.setLogImpl(StdOutImpl.class);//标准输出日志
+//        //configuration.setLogImpl(NoLoggingImpl.class);// 不输出日志（）
 //        configuration.setLogImpl(Log4jImpl.class);
+//        configuration.setMapUnderscoreToCamelCase(true);// 开启驼峰命名
+//        configuration.setCallSettersOnNulls(true);// 开启在属性为null也调用setter方法
+
 //        sqlSessionFactoryBean.setConfiguration(configuration);
         return sqlSessionFactoryBean;
     }

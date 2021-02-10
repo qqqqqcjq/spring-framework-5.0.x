@@ -1,31 +1,29 @@
-package com.demo.service.impl;
+package annotationBaseTranscation;
 
-import com.demo.UserEntity;
-import com.demo.dao.UserDao;
-import com.demo.service.IUserService;
-import com.demo.service.IUserService2;
+
+import dto.UserEntity;
 import org.springframework.aop.framework.AopContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-
+import  dao.*;
 
 @Service
-public class IUserServiceImpl implements IUserService {
+public class UserService1 {
 
     @Resource
     UserDao userDao;
 
     @Resource
-    IUserService2 userService2;
+    UserService2 userService2;
 
     /**
      * fun1()默认PROPAGATION_REQUIRED
      * funNest() PROPAGATION_NESTED 无异常
      */
-    @Override
+    
     @Transactional
     public void fun1() throws Exception {
 
@@ -39,7 +37,7 @@ public class IUserServiceImpl implements IUserService {
      * fun2()默认PROPAGATION_REQUIRED
      * funNestException() PROPAGATION_NESTED 异常
      */
-    @Override
+    
     @Transactional
     public void fun2() throws Exception {
         //嵌套事务的使用场景
@@ -56,7 +54,7 @@ public class IUserServiceImpl implements IUserService {
      * fun2_2()默认PROPAGATION_REQUIRED
      * funNestException() PROPAGATION_NESTED 异常
      */
-    @Override
+    
     @Transactional
     public void fun2_2() throws Exception {
         //嵌套事务的使用场景
@@ -79,7 +77,7 @@ public class IUserServiceImpl implements IUserService {
      * fun3()默认PROPAGATION_REQUIRED
      * 外部事务异常
      */
-    @Override
+    
     @Transactional
     public void fun3() throws Exception {
 
@@ -90,13 +88,12 @@ public class IUserServiceImpl implements IUserService {
         //此时在调用throwExcp处,触发一个unchecked异常
         throwExcp();
 
-
         //此时会发现包括调用的userService2.funNest()也被回滚了
         //也就是说,当调用的方法是NESTED事务,该方法抛出异常如果得到了处理(try-catch),那么该方法发生异常不会触发整个方法的回滚
         //而调用的方法出现unchecked异常,却能触发调用的nested事务的回滚.
     }
 
-    @Override
+    
     @Transactional
     public void fun4() throws Exception {
 
@@ -108,7 +105,7 @@ public class IUserServiceImpl implements IUserService {
         funNone();
     }
 
-    @Override
+    
     @Transactional
     public void fun4_2() throws Exception {
         //1.标志REQUIRES_NEW会新开启事务，外层事务不会影响内部事务的提交/回滚
@@ -118,7 +115,7 @@ public class IUserServiceImpl implements IUserService {
 
     }
 
-    @Override
+    
     @Transactional
     public void fun4_3() throws Exception {
         //而REQUIRES_NEW,当被调用后,就相当于暂停(挂起)当前事务,先开启一个新的事务去执行REQUIRES_NEW的方法,如果REQUIRES_NEW中的异常得到了处理
@@ -134,7 +131,7 @@ public class IUserServiceImpl implements IUserService {
         }
     }
 
-    @Override
+    
     @Transactional
     public void fun5() throws Exception {
 
@@ -147,21 +144,18 @@ public class IUserServiceImpl implements IUserService {
 
         //抛出unchecked异常,触发回滚
         throwExcp();
-
-
     }
 
-    @Override
+    
     @Transactional
     public void fun6() throws Exception {
 
         funNone();
-
         userService2.funRequireException();
 
     }
 
-    @Override
+    
     @Transactional
     public void fun6_2() throws Exception {
 
@@ -183,7 +177,7 @@ public class IUserServiceImpl implements IUserService {
     }
 
 
-    @Override
+    
     @Transactional
     public void fun7() throws Exception {
 
@@ -193,26 +187,25 @@ public class IUserServiceImpl implements IUserService {
             funNestException();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-
         }
 
         funRequire();
 
     }
 
-    @Override
+    
     @Transactional
     public void fun8() throws Exception {
-        ((IUserService) AopContext.currentProxy()).funRequire();
+        ((UserService1) AopContext.currentProxy()).funRequire();
 
         try {
-            ((IUserService) AopContext.currentProxy()).funNestException();
+            ((UserService1) AopContext.currentProxy()).funNestException();
         } catch (Exception e) {
             System.out.println(e.getMessage());
 
         }
 
-        ((IUserService) AopContext.currentProxy()).funRequire();
+        ((UserService1) AopContext.currentProxy()).funRequire();
     }
 
 
@@ -222,7 +215,7 @@ public class IUserServiceImpl implements IUserService {
 
     }
 
-    @Override
+    
     public void funNoneException() throws Exception {
         save(new UserEntity("IUserService_NoneException"));
         throwExcp();
@@ -244,7 +237,7 @@ public class IUserServiceImpl implements IUserService {
     }
 
     //启动默认事务的方法,抛出RuntimeException
-    @Override
+    
     @Transactional(propagation = Propagation.REQUIRED)
     public void funRequireException() throws Exception {
         save(new UserEntity("IUserService_RequireException"));
@@ -262,7 +255,7 @@ public class IUserServiceImpl implements IUserService {
 
 
     //启动嵌套事务的方法,但会抛出异常
-    @Override
+    
     @Transactional(propagation = Propagation.NESTED)
     public void funNestException() throws Exception {
         save(new UserEntity("IUserService_NestException"));
@@ -277,7 +270,7 @@ public class IUserServiceImpl implements IUserService {
     }
 
     //REQUIRES_NEW事务的方法,但会抛出异常
-    @Override
+    
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void funRequireNewException() throws Exception {
         save(new UserEntity("IUserService_RequireNewException"));

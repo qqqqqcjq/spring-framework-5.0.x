@@ -27,6 +27,7 @@ import org.springframework.lang.Nullable;
  * @author Rod Johnson
  * @author Juergen Hoeller
  */
+//获取拦截器链的顶层接口, 只有一个实现接口DefaultAdvisorChainFactory
 public interface AdvisorChainFactory {
 
 	/**
@@ -38,6 +39,11 @@ public interface AdvisorChainFactory {
 	 * target object, in which case the method's declaring class is the next best option)
 	 * @return List of MethodInterceptors (may also include InterceptorAndDynamicMethodMatchers)
 	 */
+	// 确定org.aopalliance.intercept.MethodInterceptor拦截器链
+    // Advised config ： Advised这个接口的实现类封装了Interceptor(属于advice)，其他advice,  Adivisors ,代理的接口，由AdvisedSupport实现，直接实现类也只有AdvisedSupport
+    // Method method ： 需要被代理的方法Method
+    // Class<?> targetClass : 目标类Class
+    // 只有DefaultAdvisorChainFactory这个实现类
 	List<Object> getInterceptorsAndDynamicInterceptionAdvice(Advised config, Method method, @Nullable Class<?> targetClass);
 
 }

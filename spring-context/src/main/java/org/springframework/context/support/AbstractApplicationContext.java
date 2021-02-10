@@ -805,6 +805,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * respecting explicit order if given.
 	 * <p>Must be called before singleton instantiation.
 	 */
+	//refresh() ==> invokeBeanFactoryPostProcessors() ==> 调用了2次invokeBeanDefinitionRegistryPostProcessors(),Spring Framework本身只有一个BeanDefinitionRegistryPostProcessors实现类ConfigurationClassPostProcessor
 	protected void invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory beanFactory) {
 		//getBeanFactoryPostProcessors（）这个方法是直接获取一个list，这个list是在AnnotationConfigApplicationContext被定义，
 		//需要(程序员或者spring内部)调用AnnotationConfigApplicationContext.addBeanFactoryPostProcesor()才可以放进这个list

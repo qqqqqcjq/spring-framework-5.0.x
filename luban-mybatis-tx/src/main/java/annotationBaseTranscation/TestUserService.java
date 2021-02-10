@@ -1,6 +1,5 @@
-package com.demo;
+package annotationBaseTranscation;
 
-import com.demo.service.IUserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -8,25 +7,23 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
 
-/**
- * tx test demo
- * @author lin
- *
- */
+
+
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+//@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+@ContextConfiguration(classes = JavaConfig.class)
 public class TestUserService {
     @Resource
-    IUserService userService;
-/**************************Nest事务   ****************************/
+    UserService1 userService1;
+    /**************************Nest事务   ****************************/
     /**
      *  无异常
      * @throws Exception
      */
     @Test
     public void testFun1() throws Exception {
-        userService.fun1();
+        userService1.fun1();
     }
     /**
      * 内部事务 有异常
@@ -35,7 +32,7 @@ public class TestUserService {
     @Test
     public void testFun2() throws Exception {
         try {
-            userService.fun2();
+            userService1.fun2();
         }catch(Exception e) {
             e.printStackTrace();
         }
@@ -46,7 +43,7 @@ public class TestUserService {
      */
     @Test
     public void testFun2_2() throws Exception {
-        userService.fun2_2();
+        userService1.fun2_2();
     }
     /**
      * 外部事务 异常
@@ -54,7 +51,7 @@ public class TestUserService {
      */
     @Test
     public void testFun3() throws Exception {
-        userService.fun3();
+        userService1.fun3();
     }
     
     /***********require_new ***************************************************/
@@ -64,7 +61,7 @@ public class TestUserService {
      */
     @Test
     public void testFun4() throws Exception {
-        userService.fun4();
+        userService1.fun4();
     }
     /**
      * 内部事务异常
@@ -72,7 +69,7 @@ public class TestUserService {
      */
     @Test
     public void testFun4_2() throws Exception {
-        userService.fun4_2();
+        userService1.fun4_2();
     }
     /**
      * 内部事务异常 try catch
@@ -80,7 +77,7 @@ public class TestUserService {
      */
     @Test
     public void testFun4_3() throws Exception {
-        userService.fun4_3();
+        userService1.fun4_3();
     }
     
     /**
@@ -89,7 +86,7 @@ public class TestUserService {
      */
     @Test
     public void testFun5() throws Exception {
-        userService.fun5();
+        userService1.fun5();
     }
     
 /*****************required*****************************/
@@ -99,7 +96,7 @@ public class TestUserService {
      */
     @Test
     public void testFun6() throws Exception {
-        userService.fun6();
+        userService1.fun6();
     }
     /**
      * 内部事务异常 try catch
@@ -107,6 +104,6 @@ public class TestUserService {
      */
     @Test
     public void testFun6_2() throws Exception {
-        userService.fun6_2();
+        userService1.fun6_2();
     }
 }

@@ -21,9 +21,8 @@ import java.lang.reflect.Method;
 import org.springframework.lang.Nullable;
 
 /**
- * A specialized type of {@link MethodMatcher} that takes into account introductions
- * when matching methods. If there are no introductions on the target class,
- * a method matcher may be able to optimize matching more effectively for example.
+ * A specialized type of {@link MethodMatcher} that takes into account introductions when matching methods.
+ * If there are no introductions on the target class,a method matcher may be able to optimize matching more effectively for example.
  *
  * @author Adrian Colyer
  * @since 2.0

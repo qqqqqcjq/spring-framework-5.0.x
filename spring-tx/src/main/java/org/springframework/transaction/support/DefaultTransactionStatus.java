@@ -69,16 +69,13 @@ public class DefaultTransactionStatus extends AbstractTransactionStatus {
 	 * Create a new {@code DefaultTransactionStatus} instance.
 	 * @param transaction underlying transaction object that can hold state
 	 * for the internal transaction implementation
-	 * @param newTransaction if the transaction is new, otherwise participating
-	 * in an existing transaction
-	 * @param newSynchronization if a new transaction synchronization has been
-	 * opened for the given transaction
+	 * @param newTransaction if the transaction is new, otherwise participating in an existing transaction
+	 * @param newSynchronization if a new transaction synchronization has been opened for the given transaction
 	 * @param readOnly whether the transaction is marked as read-only
 	 * @param debug should debug logging be enabled for the handling of this transaction?
 	 * Caching it in here can prevent repeated calls to ask the logging system whether
 	 * debug logging should be enabled.
-	 * @param suspendedResources a holder for resources that have been suspended
-	 * for this transaction, if any
+	 * @param suspendedResources a holder for resources that have been suspended for this transaction, if any
 	 */
 	public DefaultTransactionStatus(
 			@Nullable Object transaction, boolean newTransaction, boolean newSynchronization,

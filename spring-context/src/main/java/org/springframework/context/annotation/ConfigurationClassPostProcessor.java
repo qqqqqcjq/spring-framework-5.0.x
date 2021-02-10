@@ -453,13 +453,21 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 		Map<String, AbstractBeanDefinition> configBeanDefs = new LinkedHashMap<>();
 		for (String beanName : beanFactory.getBeanDefinitionNames()) {
 			BeanDefinition beanDef = beanFactory.getBeanDefinition(beanName);
+
 			//判断是否是一个全注解类
-			//扫描是全注解类？full和lite的关系
 			if (ConfigurationClassUtils.isFullConfigurationClass(beanDef)) {
+
+			    //不能增强@Configuration bean definiton,因为这个类不是AbstractBeanDefinition的子类
 				if (!(beanDef instanceof AbstractBeanDefinition)) {
 					throw new BeanDefinitionStoreException("Cannot enhance @Configuration bean definition '" +
 							beanName + "' since it is not stored in an AbstractBeanDefinition subclass");
 				}
+
+                // 不能增强@Configuration bean definiton,因为这个类里面定义了一个非static的@bean method, 并且这个@bean method返回BeanDefinitionRegistryPostProcessor类型，
+                // 考虑将这个@bean method改为static方法。
+                // 为什么要有这个警告呢？我们可以思考下，静态方法加载类的时候就会执行，目的就是尽可能提前引入BeanDefinitionRegistryPostProcessor到spring容器，太晚的话spring可能没有机会执行BeanDefinitionRegistryPostProcessor.postProcessBeanDefinitionRegistry
+                // 下面是BeanDefinitionRegistryPostProcessor.postProcessBeanDefinitionRegistry的触发点
+                // refresh() ==> invokeBeanFactoryPostProcessors() ==> 调用了2次invokeBeanDefinitionRegistryPostProcessors(),Spring Framework本身只有一个BeanDefinitionRegistryPostProcessors实现类ConfigurationClassPostProcessor
 				else if (logger.isWarnEnabled() && beanFactory.containsSingleton(beanName)) {
 					logger.warn("Cannot enhance @Configuration bean definition '" + beanName +
 							"' since its singleton instance has been created too early. The typical cause " +

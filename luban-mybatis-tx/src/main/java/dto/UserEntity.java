@@ -1,8 +1,8 @@
-package com.demo;
+package dto;
 
-/**
- * Created by zhw on 16/3/24.
- */
+import org.springframework.stereotype.Component;
+
+@Component
 public class UserEntity {
 
 
@@ -14,6 +14,15 @@ public class UserEntity {
 
     public UserEntity(String name) {
         this.name = name;
+    }
+
+    public UserEntity(int  id) {
+        this.id = id;
+    }
+
+    public UserEntity(int id, String name) {
+        this.name = name;
+        this.id = id;
     }
 
     public Integer getId() {

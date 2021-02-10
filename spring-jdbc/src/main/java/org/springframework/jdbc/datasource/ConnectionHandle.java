@@ -27,6 +27,7 @@ import java.sql.Connection;
  * @see SimpleConnectionHandle
  * @see ConnectionHolder
  */
+//定义了获取连接和释放连接的方法
 public interface ConnectionHandle {
 
 	/**

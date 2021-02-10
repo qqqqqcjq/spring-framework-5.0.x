@@ -266,8 +266,8 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 
 
 	/**
-	 * General delegate for around-advice-based subclasses, delegating to several other template
-	 * methods on this class. Able to handle {@link CallbackPreferringPlatformTransactionManager}
+	 * General delegate for around-advice-based subclasses, delegating to several other template methods on this class.
+     * Able to handle {@link CallbackPreferringPlatformTransactionManager}
 	 * as well as regular {@link PlatformTransactionManager} implementations.
 	 * @param method the Method being invoked
 	 * @param targetClass the target class that we're invoking the method on
@@ -276,6 +276,7 @@ public abstract class TransactionAspectSupport implements BeanFactoryAware, Init
 	 * @throws Throwable propagated from the target invocation
 	 */
 	@Nullable
+    //基于around-advice-based的通用委托方法，委托给这个类上的其他几个模板方法
 	protected Object invokeWithinTransaction(Method method, @Nullable Class<?> targetClass,
 			final InvocationCallback invocation) throws Throwable {
 

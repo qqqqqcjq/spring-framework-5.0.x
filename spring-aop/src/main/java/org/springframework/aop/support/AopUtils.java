@@ -220,10 +220,20 @@ public abstract class AopUtils {
 	 */
 	public static boolean canApply(Pointcut pc, Class<?> targetClass, boolean hasIntroductions) {
 		Assert.notNull(pc, "Pointcut must not be null");
+
+        //进行切点表达式的匹配最重要的就是 ClassFilter 和 MethodMatcher这两个方法的实现。
+
+
+        //先进行ClassFilter的matches方法校验，首先这个类要在所匹配的规则下，类级别的校验
 		if (!pc.getClassFilter().matches(targetClass)) {
 			return false;
 		}
 
+
+        //再进行 MethodMatcher 方法级别的校验
+        //MethodMatcher中有两个matches方法。一个参数是只有Method对象和targetclass，另一个参数有
+        //Method对象和targetClass对象还有一个Method的方法参数 他们两个的区别是：
+        //两个参数的matches是用于静态的方法匹配 三个参数的matches是在运行期动态的进行方法匹配的
 		MethodMatcher methodMatcher = pc.getMethodMatcher();
 		if (methodMatcher == MethodMatcher.TRUE) {
 			// No need to iterate the methods if we're matching any method anyway...
@@ -241,11 +251,18 @@ public abstract class AopUtils {
 		}
 		classes.addAll(ClassUtils.getAllInterfacesForClassAsSet(targetClass));
 
+        //只要有一个方法能匹配到就返回true
+        //这里就会有一个问题：因为在一个目标中可能会有多个方法存在，有的方法是满足这个切点的匹配规则的
+        //但是也可能有一些方法是不匹配切点规则的，这里检测的是只有一个Method满足切点规则就返回true了
+        //所以在运行时进行方法拦截的时候还会有一次运行时的方法切点规则匹配
 		for (Class<?> clazz : classes) {
 			Method[] methods = ReflectionUtils.getAllDeclaredMethods(clazz);
 			for (Method method : methods) {
 				if (introductionAwareMethodMatcher != null ?
 						introductionAwareMethodMatcher.matches(method, targetClass, hasIntroductions) :
+                        //eg1 :
+                        //BeanFactoryTransactionAttributeSourceAdvisor中实现TransactionAttributeSourcePointcut抽象类的匿名类对象，idea中可以看到类名为BeanFactoryTransactionAttributeSourceAdvisor$1
+                        //TransactionAttributeSourcePointcut#matches(method, targetClass)方法会判断targetClass的method是否匹配这个PointCut， 返回true/false, 而且还会为method创建一个对应的TransactionAttribute,映射缓存在attributeCache
 						methodMatcher.matches(method, targetClass)) {
 					return true;
 				}
@@ -278,11 +295,15 @@ public abstract class AopUtils {
 	 * @return whether the pointcut can apply on any method
 	 */
 	public static boolean canApply(Advisor advisor, Class<?> targetClass, boolean hasIntroductions) {
-		if (advisor instanceof IntroductionAdvisor) {
+        //如果Advisor是IntroductionAdvisor的话，则调用IntroductionAdvisor类型的实例进行类的过滤
+        //这里是直接调用的ClassFilter的matches方法
+	    if (advisor instanceof IntroductionAdvisor) {
 			return ((IntroductionAdvisor) advisor).getClassFilter().matches(targetClass);
 		}
+        //通常我们的Advisor都是PointcutAdvisor类型
 		else if (advisor instanceof PointcutAdvisor) {
 			PointcutAdvisor pca = (PointcutAdvisor) advisor;
+            //这里从Advisor中获取Pointcut的实现类 这里是AspectJExpressionPointcut
 			return canApply(pca.getPointcut(), targetClass, hasIntroductions);
 		}
 		else {
@@ -299,22 +320,34 @@ public abstract class AopUtils {
 	 * @return sublist of Advisors that can apply to an object of the given class
 	 * (may be the incoming List as-is)
 	 */
+	//从所有候选的Advisor中，匹配到目标类可以应用的Advisor
 	public static List<Advisor> findAdvisorsThatCanApply(List<Advisor> candidateAdvisors, Class<?> clazz) {
-		if (candidateAdvisors.isEmpty()) {
+		//如果传入的Advisor集合为空的话，直接返回这个空集合
+	    if (candidateAdvisors.isEmpty()) {
 			return candidateAdvisors;
 		}
+
+        //创建一个存储合适的Advisor的集合 eligibleAdvisors
 		List<Advisor> eligibleAdvisors = new ArrayList<>();
+
+        //循环所有的Advisor先处理引介增强类型的Advisor
 		for (Advisor candidate : candidateAdvisors) {
-			if (candidate instanceof IntroductionAdvisor && canApply(candidate, clazz)) {
+
+            //如果Advisor是IntroductionAdvisor,并且此Advisor适用于目标类 ，则添加到eligibleAdvisors
+            if (candidate instanceof IntroductionAdvisor && canApply(candidate, clazz)) {
 				eligibleAdvisors.add(candidate);
 			}
 		}
+        //判断eligibleAdvisors中是否有引介增强
 		boolean hasIntroductions = !eligibleAdvisors.isEmpty();
 		for (Advisor candidate : candidateAdvisors) {
+
+            //如果是IntroductionAdvisor类型的话 则直接跳过
 			if (candidate instanceof IntroductionAdvisor) {
 				// already processed
 				continue;
 			}
+            //判断此Advisor是否适用于目标类
 			if (canApply(candidate, clazz, hasIntroductions)) {
 				eligibleAdvisors.add(candidate);
 			}
