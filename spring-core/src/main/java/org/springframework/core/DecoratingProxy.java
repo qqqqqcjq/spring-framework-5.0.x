@@ -17,8 +17,7 @@
 package org.springframework.core;
 
 /**
- * Interface to be implemented by decorating proxies, in particular Spring AOP
- * proxies but potentially also custom proxies with decorator semantics.
+ * Interface to be implemented by decorating proxies, in particular Spring AOP proxies but potentially also custom proxies with decorator semantics.
  *
  * <p>Note that this interface should just be implemented if the decorated class
  * is not within the hierarchy of the proxy class to begin with. In particular,

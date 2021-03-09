@@ -23,6 +23,7 @@ package org.springframework.messaging;
  * @since 4.0
  */
 @FunctionalInterface
+//消息通道 MessageChannel 用于接收消息，调用 send 方法可以将消息发送至该消息通道中
 public interface MessageChannel {
 
 	/**

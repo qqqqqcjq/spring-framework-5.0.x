@@ -53,9 +53,18 @@ import org.springframework.util.ClassUtils;
 /**
  * 是生成代理的一个重要的接口定义, 继承关系如下：
  * ===============================begin=============================================
- *                                                          <==  AspectJProxyFactory
- * Advised  <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
- *                                                          <==  ProxyFactory
+ * AdvisedSupport继承了ProxyConfig类实现了Advised接口。如果你去翻看这两个类的代码的话，
+ * 会发现在Advised中定义了一些列的方法，而在ProxyConfig中是对这些接口方法的一个实现，
+ * 但是Advised和ProxyConfig却是互相独立的两个类。但是SpringAOP通过AdvisedSupport将他们适配到了一起。
+ * AdvisedSupport只有一个子类，这个子类就是ProxyCreatorSupport。从这两个类的名字我们可以看到他们的作用：
+ * 一个是为Advised提供支持的类，一个是为代理对象的创建提供支持的类。
+ *                                                                                            <==  AspectJProxyFactory
+ * TargetClassAware <== Advised & ProxyConfig <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
+ *                                                                                            <==  ProxyFactory
+ * //我们这个例子anothersample1使用AspectJProxyFactory.getProxy创建代理对象以及拦截器链Advisors
+ * //Spring 使用的 ProxyFactory 创建代理对象以及拦截器链Advisors
+ * //创建代理对象时，targetsource 和advisors 被封装在 ProxyFactory/AspectJProxyFactory(或其父类中)
+ * //所以，一个target需要new 一个  ProxyFactory/AspectJProxyFactory来创建代理
  * ===============================end  =============================================
  */
 public class AspectJProxyFactory extends ProxyCreatorSupport {
@@ -77,6 +86,8 @@ public class AspectJProxyFactory extends ProxyCreatorSupport {
 	 * <p>Will proxy all interfaces that the given target implements.
 	 * @param target the target object to be proxied
 	 */
+	//当我们调用AspectJProxyFactory的有参构造函数时，它做了这几件事，检测目标对象不能为null，设置目标对象的所有的接口，设置目标对象。
+    //获取类上的所有的接口是通过调用ClassUtils.getAllInterfaces来获取的。这个方法可以获取类上的所有接口，包括父类上的接口，但是它不能获取接口的接口。
 	public AspectJProxyFactory(Object target) {
 		Assert.notNull(target, "Target object must not be null");
 		setInterfaces(ClassUtils.getAllInterfaces(target));
@@ -99,6 +110,7 @@ public class AspectJProxyFactory extends ProxyCreatorSupport {
 	 * aspects added in this way.
 	 * @param aspectInstance the AspectJ aspect instance
 	 */
+    //添加切面,入参是切面实例对象
 	public void addAspect(Object aspectInstance) {
 		Class<?> aspectClass = aspectInstance.getClass();
 		String aspectName = aspectClass.getName();
@@ -115,10 +127,15 @@ public class AspectJProxyFactory extends ProxyCreatorSupport {
 	 * Add an aspect of the supplied type to the end of the advice chain.
 	 * @param aspectClass the AspectJ aspect class
 	 */
+	//添加切面,个入参是切面类对象
 	public void addAspect(Class<?> aspectClass) {
+        //全限定类名
 		String aspectName = aspectClass.getName();
+        //根据切面对象创建切面元数据类
 		AspectMetadata am = createAspectMetadata(aspectClass, aspectName);
+        //根据传入的切面类创建 切面实例 将切面实例封装为切面实例工厂
 		MetadataAwareAspectInstanceFactory instanceFactory = createAspectInstanceFactory(am, aspectClass, aspectName);
+        //从切面实例工厂中获取Advisor
 		addAdvisorsFromAspectInstanceFactory(instanceFactory);
 	}
 
@@ -129,11 +146,14 @@ public class AspectJProxyFactory extends ProxyCreatorSupport {
 	 * @see AspectJProxyUtils#makeAdvisorChainAspectJCapableIfNecessary(List)
 	 */
 	private void addAdvisorsFromAspectInstanceFactory(MetadataAwareAspectInstanceFactory instanceFactory) {
-		List<Advisor> advisors = this.aspectFactory.getAdvisors(instanceFactory);
+        //获取Advisor的过程我们在之前分析了
+	    List<Advisor> advisors = this.aspectFactory.getAdvisors(instanceFactory);
 		Class<?> targetClass = getTargetClass();
 		Assert.state(targetClass != null, "Unresolvable target class");
+        //这句代码的意思是为我们的目标类挑选合适的Advisor
 		advisors = AopUtils.findAdvisorsThatCanApply(advisors, targetClass);
 		AspectJProxyUtils.makeAdvisorChainAspectJCapableIfNecessary(advisors);
+        //为Advisor进行排序
 		AnnotationAwareOrderComparator.sort(advisors);
 		addAdvisors(advisors);
 	}
@@ -142,7 +162,12 @@ public class AspectJProxyFactory extends ProxyCreatorSupport {
 	 * Create an {@link AspectMetadata} instance for the supplied aspect type.
 	 */
 	private AspectMetadata createAspectMetadata(Class<?> aspectClass, String aspectName) {
-		AspectMetadata am = new AspectMetadata(aspectClass, aspectName);
+        //直接调用 AspectMetadata的构造函数  创建对象 入参为：切面类和切面类的全限定类名
+	    AspectMetadata am = new AspectMetadata(aspectClass, aspectName);
+        //如果切面类不是切面则抛出异常
+        //这里判断我们传入的切面类是不是切面很简单，即判断切面类上是否存在@Aspect注解。
+        //这里判断一个类是不是切面类是这样进行判断的：如果我们传入的切面类上没有@Aspect注解的话，则去查找它的父类上
+        //是否存在@Aspect注解。一直查到父类为Object。如果一直没有找到带有@Aspect注解的类，则会抛出异常。
 		if (!am.getAjType().isAspect()) {
 			throw new IllegalArgumentException("Class [" + aspectClass.getName() + "] is not a valid aspect type");
 		}
@@ -158,13 +183,19 @@ public class AspectJProxyFactory extends ProxyCreatorSupport {
 			AspectMetadata am, Class<?> aspectClass, String aspectName) {
 
 		MetadataAwareAspectInstanceFactory instanceFactory;
+		//PerClauseKind.SINGLETON 的情况，我们基本都用这个
 		if (am.getAjType().getPerClause().getKind() == PerClauseKind.SINGLETON) {
 			// Create a shared aspect instance.
+            //根据传入的切面类创建 切面对象 是一个单例 要求有无参构造函数
+            //这个获取 单例 切面对象的方式可以学习一下
 			Object instance = getSingletonAspectInstance(aspectClass);
+            //将上一步创建的切面对象 封装到SingletonMetadataAwareAspectInstanceFactory中
+            //从名字我们也可以看出来 这是一个单例的带有切面元数据的切面实例工厂
 			instanceFactory = new SingletonMetadataAwareAspectInstanceFactory(instance, aspectName);
 		}
 		else {
 			// Create a factory for independent aspect instances.
+            //这里创建一个 SimpleMetadataAwareAspectInstanceFactory 传入切面类和切面名字
 			instanceFactory = new SimpleMetadataAwareAspectInstanceFactory(aspectClass, aspectName);
 		}
 		return instanceFactory;

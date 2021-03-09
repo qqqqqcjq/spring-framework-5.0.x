@@ -24,6 +24,7 @@ package org.springframework.messaging;
  * @since 4.0
  */
 @FunctionalInterface
+//由MessageHandler 真正地消费/处理消息
 public interface MessageHandler {
 
 	/**

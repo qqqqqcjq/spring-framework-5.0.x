@@ -338,7 +338,29 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
 	 * @see #doBegin
 	 */
 	@Override
+    /**
+     * Spring AOP事务切面会获取数据库连接，并且把数据库连接放在一个ThreadLocal对象中TransactionSynchronizationManager#resources
+     * org.springframework.aop.framework.ReflectiveMethodInvocation#proceed
+     * ==>org.springframework.transaction.interceptor.TransactionInterceptor#invoke
+     * ==>org.springframework.transaction.interceptor.TransactionAspectSupport#invokeWithinTransaction
+     * ==>org.springframework.transaction.interceptor.TransactionAspectSupport#createTransactionIfNecessary
+     * ==>org.springframework.transaction.support.AbstractPlatformTransactionManager#getTransaction
+     * (getTransaction()这个方法中会根据TransactionDefinition判断是否创建新的数据库连接等操作，最终返回一个TransactionStatus对象，里面封装的DefaultTransactionStatus#transaction属性中封装了数据库连接)
+     * ==>org.springframework.jdbc.datasource.DataSourceTransactionManager#doBegin
+     * ==>org.springframework.transaction.support.TransactionSynchronizationManager#bindResource
+     *
+     * Mybaits使用BaseExecutor执行sql的时候，会从TransactionSynchronizationManager#resources这个ThreadLocal对象获取对应的数据库连接
+     * org.apache.ibatis.executor.BaseExecutor#getConnection
+     * ==>org.mybatis.spring.transaction.SpringManagedTransaction#getConnection
+     *    (SpringManagedTransaction implement org.apache.ibatis.transaction.Transaction)
+     * ==>org.mybatis.spring.transaction.SpringManagedTransaction#openConnection
+     * ==>org.springframework.jdbc.datasource.DataSourceUtils#getConnection
+     * ==>org.springframework.jdbc.datasource.DataSourceUtils#doGetConnection
+     * ==>org.springframework.transaction.support.TransactionSynchronizationManager#getResource
+     */
 	public final TransactionStatus getTransaction(@Nullable TransactionDefinition definition) throws TransactionException {
+
+	    //尝试获取当前sql操作需要用的数据库连接，数据库连接为null也没关系，doBegin()方法中会判断是否需要重新获取连接
 		Object transaction = doGetTransaction();
 
 		// Cache debug flag to avoid repeated checks.
@@ -375,6 +397,7 @@ public abstract class AbstractPlatformTransactionManager implements PlatformTran
 				boolean newSynchronization = (getTransactionSynchronization() != SYNCHRONIZATION_NEVER);
 				DefaultTransactionStatus status = newTransactionStatus(
 						definition, transaction, true, newSynchronization, debugEnabled, suspendedResources);
+				//doBegin方法中会把当前sql需要的数据库连接(封装在transaction中)设置为非自动提交con.setAutoCommit(false);
 				doBegin(transaction, definition);
 				prepareSynchronization(status, definition);
 				return status;

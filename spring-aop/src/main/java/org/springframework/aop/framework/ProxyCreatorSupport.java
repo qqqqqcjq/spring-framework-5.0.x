@@ -35,10 +35,20 @@ import org.springframework.util.Assert;
 /**
  * 是生成代理的一个重要的接口定义, 继承关系如下：
  * ===============================begin=============================================
- *                                                          <==  AspectJProxyFactory
- * Advised  <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
- *                                                          <==  ProxyFactory
+ * AdvisedSupport继承了ProxyConfig类实现了Advised接口。如果你去翻看这两个类的代码的话，
+ * 会发现在Advised中定义了一些列的方法，而在ProxyConfig中是对这些接口方法的一个实现，
+ * 但是Advised和ProxyConfig却是互相独立的两个类。但是SpringAOP通过AdvisedSupport将他们适配到了一
+ * AdvisedSupport只有一个子类，这个子类就是ProxyCreatorSupport。从这两个类的名字我们可以看到他们的作用：
+ * 一个是为Advised提供支持的类，一个是为代理对象的创建提供支持的类。
+ *                                                                                            <==  AspectJProxyFactory
+ * TargetClassAware <== Advised & ProxyConfig <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
+ *                                                                                            <==  ProxyFactory
+ * //我们这个例子anothersample1使用AspectJProxyFactory.getProxy创建代理对象以及拦截器链Advisors
+ * //Spring 使用的 ProxyFactory 创建代理对象以及拦截器链Advisors
+ * //创建代理对象时，targetsource 和advisors 被封装在 ProxyFactory/AspectJProxyFactory(或其父类中)
+ * //所以，一个target需要new 一个  ProxyFactory/AspectJProxyFactory来创建代理
  * ===============================end  =============================================
+ *
  *
  * ProxyCreatorSupport中封装了AopProxyFactory
  * AopProxyFactory中封装了AopProxy，提供createAopProxy(入参this==>ProxyCreatorSupport)方法，决定使用哪一种AopProxy
@@ -87,6 +97,7 @@ public class ProxyCreatorSupport extends AdvisedSupport {
 	/**
 	 * Return the AopProxyFactory that this ProxyConfig uses.
 	 */
+	//在SpringAOP中 AopProxyFactory只有一个实现类，这个实现类就是DefaultAopProxyFactory
 	public AopProxyFactory getAopProxyFactory() {
 		return this.aopProxyFactory;
 	}
@@ -116,8 +127,12 @@ public class ProxyCreatorSupport extends AdvisedSupport {
 	 */
 	protected final synchronized AopProxy createAopProxy() {
 		if (!this.active) {
+            //这里会监听调用AdvisedSupportListener实现类的activated方法
 			activate();
 		}
+        //获取AopProxyFactory，使用它的createAopProxy(AdvisedSupport config)方法创建AopProxy
+        //调用createAopProxy的时候传入了this对象,也就是实现了
+        //TargetClassAware <== Advised & ProxyConfig <==  AdvisedSupport  <==  ProxyCreatorSupport 的 AspectJProxyFactory/ProxyFactoryBean/ProxyFactory的实例
 		return getAopProxyFactory().createAopProxy(this);
 	}
 
@@ -141,6 +156,8 @@ public class ProxyCreatorSupport extends AdvisedSupport {
 		super.adviceChanged();
 		synchronized (this) {
 			if (this.active) {
+                //给Advice的监听器发送通知 通知Advice的变化
+                //在Spring中没有默认的实现
 				for (AdvisedSupportListener listener : this.listeners) {
 					listener.adviceChanged(this);
 				}

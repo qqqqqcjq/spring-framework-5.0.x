@@ -999,11 +999,20 @@ public class DispatcherServlet extends FrameworkServlet {
 					noHandlerFound(processedRequest, response);
 					return;
 				}
+                /**
+                 * 上面我们得到了mappedHandler，这个是HandlerExecutionChain类型，使用mappedHandler.getHandler()得到里面封装的handler
+                 * 但是handler有不同的实现类型，不同实现类型的使用不同的方法/方式处理请求，
+                 * 不能使用统一的方式去调用，所以spring使用了适配器模式，HandlerAdapter适配器里面定义了handle()方法处理请求，
+                 * 每一种handler类型对应一个HandlerAdapter子类，HandlerAdapter子类里面在handle()方法中使用对应的handler实现处理请求，
+                 * 这样我们就可以统一使用HandlerAdapter#handle()代码来处理请求, 当然得先遍历所有的HandlerAdapter实例，使用HandlerAdapter#supports(handler实现)找到对应的HandlerAdapter子类实例。
+                 *
+                 * Spring很多地方都是使用这种适配器模式。
+                 * 我们使用设计模式时，要注意设计模式是一种直到思想，而不是需要严格遵守的编码规范，没有规定必须有什么接口什么子类
+                 */
 
 				// Determine handler adapter for the current request.
                 // 上面我们已经得到了HandlerExecutionChain，里面封装了handler, 通过handler的类型我们找到匹配的HandlerAdapter
 				// HandlerExecutionChain 确定了3 种contrller类型， 每一种类型由对应的适配器去处理HandlerAdapter ， 适配器模式
-                //
 				HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
 
 				// Process last-modified header, if supported by the handler.

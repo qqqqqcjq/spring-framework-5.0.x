@@ -97,6 +97,14 @@ public abstract class DataSourceUtils {
 	 * @throws SQLException if thrown by JDBC methods
 	 * @see #doReleaseConnection
 	 */
+
+	//org.apache.ibatis.executor.BaseExecutor#getConnection
+    //==>org.mybatis.spring.transaction.SpringManagedTransaction#getConnection
+    //   (SpringManagedTransaction implement org.apache.ibatis.transaction.Transaction)
+    //==>org.mybatis.spring.transaction.SpringManagedTransaction#openConnection
+    //==>org.springframework.jdbc.datasource.DataSourceUtils#getConnection
+    //==>org.springframework.jdbc.datasource.DataSourceUtils#doGetConnection
+    //==>org.springframework.transaction.support.TransactionSynchronizationManager#getResource
 	public static Connection doGetConnection(DataSource dataSource) throws SQLException {
 		Assert.notNull(dataSource, "No DataSource specified");
 

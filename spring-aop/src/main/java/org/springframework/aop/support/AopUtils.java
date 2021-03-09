@@ -320,6 +320,8 @@ public abstract class AopUtils {
 	 * @return sublist of Advisors that can apply to an object of the given class
 	 * (may be the incoming List as-is)
 	 */
+	//在AspectJProxyFactory中是通过调用AopUtils中的findAdvisorsThatCanApply方法来为目标类挑选合适的Advisor的或者是进判断哪些Advisor可以作用于目标类。
+    //在这个方法中传入了两个参数，一个参数是Advisor的集合，一个参数是目标类Class。
 	//从所有候选的Advisor中，匹配到目标类可以应用的Advisor
 	public static List<Advisor> findAdvisorsThatCanApply(List<Advisor> candidateAdvisors, Class<?> clazz) {
 		//如果传入的Advisor集合为空的话，直接返回这个空集合

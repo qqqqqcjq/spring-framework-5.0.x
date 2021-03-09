@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xmlns:aop="http://www.springframework.org/schema/aop"
+>
+    <context:component-scan base-package="com.luban.springioc">
+    </context:component-scan>
+
+    <!--web 环境中 ioc 容器测试scoped-proxy  =============begin ==================-->
+    <!-- 将一个HTTP Session bean 暴露为一个代理bean -->
+    <bean id="userPreferences" class="com.jiaqing.springmvc.UserPreferences" >
+        <!-- 通知Spring容器去代理这个bean -->
+
+    </bean>
+    <!-- 将上述bean 的代理注入到一个单例bean -->
+    <bean id="userService" class="com.jiaqing.springmvc.SimpleUserService" >
+        <!-- 引用被代理的 userPreferences bean -->
+        <property name="userPreferences" ref="userPreferences"/>
+    </bean>
+    <!--web 环境中 ioc 容器测试scoped-proxy  =============end ==================-->
+</beans>

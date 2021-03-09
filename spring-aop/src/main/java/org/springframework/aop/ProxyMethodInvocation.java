@@ -33,8 +33,10 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.aop.framework.ReflectiveMethodInvocation
  * @see org.springframework.aop.support.DelegatingIntroductionInterceptor
  */
-// 方法调用链(实现类里面封装了目标方法和拦截方法(通知Advise的实现类集合,Interceptor extends Advice))，有2个实现类：
-// ReflectiveMethodInvocation(目标方法ReflectiveMethodInvocation.method和拦截方法(通知Advise的实现类集合,Interceptor extends Advice)ReflectiveMethodInvocation.interceptorsAndDynamicMethodMatchers) ： 用于JdkDynamicAopProxy创建动态代理
+// 代表程序中的一个方法调用, 被子类实现，完成横切方法(也叫拦截器链，也叫通知方法)的执行和目标类的目标方法的执行，具体查看
+// ReflectiveMethodInvocation#proceed()
+// 有2个实现类：
+// ReflectiveMethodInvocation(目标方法ReflectiveMethodInvocation.method和拦截方法(通知Advise的实现类集合,Interceptor extends Advice)ReflectiveMethodInvocation.interceptorsAndDynamicMethodMatchers)
 // CglibMethodInvocation(继承自ReflectiveMethodInvocation) ： 用于CglibAopProxy创建动态代理(CglibAopProxy中的子类对CglibMethodInvocation进行了封装)
 public interface ProxyMethodInvocation extends MethodInvocation {
 

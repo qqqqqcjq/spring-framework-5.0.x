@@ -32,6 +32,7 @@ import org.springframework.lang.Nullable;
  * @see AspectMetadata
  * @see org.aspectj.lang.reflect.AjType
  */
+//MetadataAwareAspectInstanceFactory有很多子类，在不同的场景下创建不同用途的实例
 public interface MetadataAwareAspectInstanceFactory extends AspectInstanceFactory {
 
 	/**

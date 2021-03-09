@@ -105,6 +105,9 @@ public interface Advice {
 // 1、Pointcut : 代表切入点的匹配表达式(Pointcut就是连接点Joinpoint的集合, 匹配表达式匹配后就可以得到Joinpoint的集合)
 // 2、Advice : before、after等加上method表示每个通知
 // 3、Advisor : before、after等加上method加上Pointcut就可以作为一个Advisor切面
+// 一个通知(横切方法)对应一个Advice;
+// 一个Advice会被包装成一个Advisor后添加到AdvisedSupport.advisors列表中，也就是说Advice和Advisor是一一对应的关系;
+// 这样，SpringAOP 就将切面类中的一个个通知方法(横切方法)都封装成了一个个的Advisor，这样就统一了拦截方法的调用过程
 // 4、<aop:aspect> : 代表一个切面Advisor集合
 // 5、ref=“transaction”  : 表示startTransaction/commitTransaction/rollbackTransaction/commitTransaction这几个通知方法在transaction这个类里面定义
 // 这样通过Pointcut的匹配表达式，可以将Advice横切到目标类的方法中

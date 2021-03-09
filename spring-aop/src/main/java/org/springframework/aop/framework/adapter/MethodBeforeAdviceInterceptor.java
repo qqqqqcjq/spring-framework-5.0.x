@@ -36,7 +36,6 @@ import org.springframework.util.Assert;
  */
 @SuppressWarnings("serial")
 //实现了MethodInterceptor接口
-//MethodBeforeAdviceInterceptor
 public class MethodBeforeAdviceInterceptor implements MethodInterceptor, BeforeAdvice, Serializable {
 
     //这个对象的获取参考这个方法org.springframework.aop.aspectj.annotation.ReflectiveAspectJAdvisorFactory#getAdvice

@@ -39,35 +39,48 @@ import org.springframework.aop.TargetSource;
 /**
  * 是生成代理的一个重要的接口定义, 继承关系如下：
  * ===============================begin=============================================
- *                                                          <==  AspectJProxyFactory
- * Advised  <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
- *                                                          <==  ProxyFactory
+ * AdvisedSupport继承了ProxyConfig类实现了Advised接口。如果你去翻看这两个类的代码的话，
+ * 会发现在Advised中定义了一些列的方法，而在ProxyConfig中是对这些接口方法的一个实现，
+ * 但是Advised和ProxyConfig却是互相独立的两个类。但是SpringAOP通过AdvisedSupport将他们适配到了一起。
+ * AdvisedSupport只有一个子类，这个子类就是ProxyCreatorSupport。从这两个类的名字我们可以看到他们的作用：
+ * 一个是为Advised提供支持的类，一个是为代理对象的创建提供支持的类。
+ *                                                                                            <==  AspectJProxyFactory
+ * TargetClassAware <== Advised & ProxyConfig <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
+ *                                                                                            <==  ProxyFactory
+ * //我们这个例子anothersample1使用AspectJProxyFactory.getProxy创建代理对象以及拦截器链Advisors
+ * //Spring 使用的 ProxyFactory 创建代理对象以及拦截器链Advisors
+ * //创建代理对象时，targetsource 和advisors 被封装在 ProxyFactory/AspectJProxyFactory(或其父类中)
+ * //所以，一个target需要new 一个  ProxyFactory/AspectJProxyFactory来创建代理
  * ===============================end  =============================================
  */
-
+//关联了Advisor和TargetSource的类。也是AOP中一个很关键的类。AOP进行方法拦截的时候，就是从它里面获取的拦截调用链。
 public interface Advised extends TargetClassAware {
 
 	/**
 	 * Return whether the Advised configuration is frozen,
-	 * in which case no advice changes can be made.
+	 * in which case no advice changes can be made.(不能对Advised configuration进行修改,查看用的地方就知道了)
 	 */
+	//返回Advised configuration 是否冻结，冻结的话就不能对Advised configuration进行修改
 	boolean isFrozen();
 
 	/**
 	 * Are we proxying the full target class instead of specified interfaces?
 	 */
+	//我们是否代理了完整的目标类而不是指定的接口，可以区分是JDK动态代理还是Cglib动态代理
 	boolean isProxyTargetClass();
 
 	/**
 	 * Return the interfaces proxied by the AOP proxy.
 	 * <p>Will not include the target class, which may also be proxied.
 	 */
+	//只有一个实现，返回JDK动态代理的代理接口
 	Class<?>[] getProxiedInterfaces();
 
 	/**
 	 * Determine whether the given interface is proxied.
 	 * @param intf the interface to check
 	 */
+	//指定的接口是否需要被代理，只有一个实现，根据intf是否是AdvisedSupport.interfaces的实现来确定
 	boolean isInterfaceProxied(Class<?> intf);
 
 	/**
@@ -75,6 +88,7 @@ public interface Advised extends TargetClassAware {
 	 * <p>Only works if the configuration isn't {@linkplain #isFrozen frozen}.
 	 * @param targetSource new TargetSource to use
 	 */
+	//设置targetSource,Advised.isFrozen()返回false的情况下才可以使用
 	void setTargetSource(TargetSource targetSource);
 
 	/**
@@ -231,6 +245,7 @@ public interface Advised extends TargetClassAware {
 	 * this returns the equivalent for the AOP proxy.
 	 * @return a string description of the proxy configuration
 	 */
+	//返回一个代理配置的字符串描述
 	String toProxyConfigString();
 
 }
@@ -311,6 +326,9 @@ public interface Advised extends TargetClassAware {
 // 1、Pointcut : 代表切入点的匹配表达式(Pointcut就是连接点Joinpoint的集合, 匹配表达式匹配后就可以得到Joinpoint的集合)
 // 2、Advice : before、after等加上method表示每个通知
 // 3、Advisor : before、after等加上method加上Pointcut就可以作为一个Advisor切面
+// 一个通知(横切方法)对应一个Advice;
+// 一个Advice会被包装成一个Advisor后添加到AdvisedSupport.advisors列表中，也就是说Advice和Advisor是一一对应的关系;
+// 这样，SpringAOP 就将切面类中的一个个通知方法(横切方法)都封装成了一个个的Advisor，这样就统一了拦截方法的调用过程
 // 4、<aop:aspect> : 代表一个切面Advisor集合
 // 5、ref=“transaction”  : 表示startTransaction/commitTransaction/rollbackTransaction/commitTransaction这几个通知方法在transaction这个类里面定义
 // 这样通过Pointcut的匹配表达式，可以将Advice横切到目标类的方法中

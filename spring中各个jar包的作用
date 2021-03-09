@@ -36,7 +36,7 @@ Test部分一个模块
 spring-test：对JUNIT等测试框架的简单封装
 
 剩下的包是
-spring-messaging：用于构建基于消息的应用程序(这里所说的消息就是广义的消息，不是指AMQP)
+spring-messaging：用于构建基于消息的应用程序(这里所说的消息就是广义的消息，不是单纯的指AMQP，当然，AMQP可以遵循spring-messaging接口标准，将自己的AMQP组件加入到spring生态)
 spring-context-support：spring额外支持包，比如邮件服务、视图解析等，Spring context的扩展支持，用于MVC方面
 spring jcl:spring对日志框架的简单封装
 spring framework bom : 里面没有java代码，不用关注

@@ -80,7 +80,10 @@ class ConditionEvaluator {
 	 * @return if the item should be skipped
 	 */
 
-	public boolean shouldSkip(@Nullable AnnotatedTypeMetadata metadata, @Nullable ConfigurationPhase phase) {
+    //1 . 扫描的时候获取@Condition注解信息，调用ConditionEvaluator.shouldSkip(AnnotatedTypeMetadata metadata)，实例化该类的@Condition注解引入的Condition实现类， 执行每一个matches看看是否满足所有条件，满足的话可以扫描注册
+    //2 . 将bean class作为配置类进行配置类的处理时，调用ConditionEvaluator.shouldSkip(,)，实例化该类的@Condition注解引入的Condition实现类， 执行每一个matches看看是否满足所有条件，满足的话可以扫描注册
+    //3 . 扫描注册@Bean metnod，调用ConditionEvaluator.shouldSkip(,)，实例化该@Bean method引入的@Condition注解引入的Condition实现类， 执行每一个matches看看是否满足所有条件，满足的话可以扫描注册
+    public boolean shouldSkip(@Nullable AnnotatedTypeMetadata metadata, @Nullable ConfigurationPhase phase) {
 		if (metadata == null || !metadata.isAnnotated(Conditional.class.getName())) {
 			return false;
 		}

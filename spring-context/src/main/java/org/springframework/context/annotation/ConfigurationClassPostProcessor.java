@@ -350,7 +350,7 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 			if (!this.localBeanNameGeneratorSet) {//是否有自定义的
 				BeanNameGenerator generator = (BeanNameGenerator) sbr.getSingleton(CONFIGURATION_BEAN_NAME_GENERATOR);
 				//SingletonBeanRegistry中有id为 org.springframework.context.annotation.internalConfigurationBeanNameGenerator
-				//如果有则利用他的，否则则是spring默认的
+				//如果有则使用它，否则使用spring默认的
 				if (generator != null) {
 					this.componentScanBeanNameGenerator = generator;
 					this.importBeanNameGenerator = generator;

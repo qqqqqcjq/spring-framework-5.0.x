@@ -29,9 +29,9 @@ rootProject.name = "spring"
 rootProject.children.each {project ->
     project.buildFileName = "${project.name}.gradle"
 }
-include 'luban'
-include 'luban-springmvcboot'
-include 'luban-mvc'
-include 'luban-mybatis'
-include 'luban-mybatis-tx'
+include 'chengjiaqing'
+include 'chengjiaqing-springmvcboot'
+include 'chengjiaqing-mvc'
+include 'chengjiaqing-mybatis'
+include 'chengjiaqing-mybatis-tx'
 

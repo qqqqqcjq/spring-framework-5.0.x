@@ -33,6 +33,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.Pointcut;
 import org.springframework.aop.TargetSource;
+import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
 import org.springframework.aop.framework.AopInfrastructureBean;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.framework.ProxyProcessorSupport;
@@ -260,18 +261,29 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 	}
 
 	@Override
+    //这个方法可以让我们在Bean被Spring容器实例化之前提前创建Bean，如果这个方法返回的值不是null，那就中断其他类对这个接口的实现，直接返回这个创建的Bean。
+
     //如果用户提供了targetSource的话，就是用这个Before方法创建一个代理对象；
     //并且查找bean Facotry中的Class得到所有切面Advisor(被@Aspect注解的bean), 然后根据切面中的信息(切点+连接点+通知)，
     //判断当前bean是否应该被代理，把当前bean对应的class和是否应该被代理的映射保存在AbstractAutoProxyCreator#advisedBeans中
 	public Object postProcessBeforeInstantiation(Class<?> beanClass, String beanName) throws BeansException {
-		Object cacheKey = getCacheKey(beanClass, beanName);
+        //得到一个缓存的key 实现是：如果是beanClass是FactoryBean类型，则在beanName前面加&
+	    Object cacheKey = getCacheKey(beanClass, beanName);
 
-		//将bean与这个bean是否应该被代理之间的映射放进advisedBeans里面
+	    //如果目标Bean的集合中包这个beanName的话， 则跳过，
+		//否则将bean与这个bean是否应该被代理之间的映射放进advisedBeans里面
 		if (!StringUtils.hasLength(beanName) || !this.targetSourcedBeans.contains(beanName)) {
 			if (this.advisedBeans.containsKey(cacheKey)) {
 				return null;
 			}
-			if (isInfrastructureClass(beanClass) || shouldSkip(beanClass, beanName)) {
+            //AnnotationAwareAspectJAutoProxyCreator重写了isInfrastructureClass()方法，在原来的基础上添加 ： 类上面有@Aspect注解的也不能被代理
+            //isInfrastructureClass 判断是不是负责AOP基础建设的Bean，如果是AOP基础建设的Bean不能在这里被创建代理对象，
+            //那么什么样的Bean是AOP的基础建设Bean呢？Advice、Pointcut、Advisor、AopInfrastructureBean类型的Bean，以及类上面有@Aspect注解的()
+            //所以如果我们不想一个类被代理的话，可以实现AopInfrastructureBean接口，AopInfrastructureBean接口的功能就是这个，
+
+            //shouldSkip ：判断一个bean是否应该跳过，不创建代理，需要查找所有的Advisor 并且或进行缓存
+            //如果Advisor是AbstractAspectJAdvice类型并且aspectName和beanName相等则跳过
+            if (isInfrastructureClass(beanClass) || shouldSkip(beanClass, beanName)) {
 				this.advisedBeans.put(cacheKey, Boolean.FALSE);
 				return null;
 			}
@@ -285,7 +297,27 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 			if (StringUtils.hasLength(beanName)) {
 				this.targetSourcedBeans.add(beanName);
 			}
+
+            /**
+             * getAdvicesAndAdvisorsForBean()用于获取Advisors,不同的子类有不同的实现：
+             * 1. 继承AbstractAdvisorAutoProxyCreator的类,比如AnnotationAwareAspectJAutoProxyCreator
+             *    AbstractAutowireCapableBeanFactory#doCreateBean
+             *    ==>AbstractAutowireCapableBeanFactory#initializeBean
+             *    ==>AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsAfterInitialization
+             *    ==>AbstractAutoProxyCreator#postProcessAfterInitialization
+             *    ==>AbstractAutoProxyCreator#getAdvicesAndAdvisorsForBean
+             *    ==>AbstractAdvisorAutoProxyCreator#getAdvicesAndAdvisorsForBean
+             *    ==>AbstractAdvisorAutoProxyCreator#findEligibleAdvisors
+             *    ==>AnnotationAwareAspectJAutoProxyCreator#findCandidateAdvisors
+             *    ==>BeanFactoryAspectJAdvisorsBuilder#buildAspectJAdvisors  走到这个方法里面获取Advisors，
+             *    之前的流程其实调用过buildAspectJAdvisors(AspectJAwareAdvisorAutoProxyCreator#shouldSkip->buildAspectJAdvisors)，
+             *    这里直接走buildAspectJAdvisors的缓存if分支，从缓存中直接获取
+             * 2. BeanNameAutoProxyCreator#getAdvicesAndAdvisorsForBean()
+             *    为每个beanName配置对应的Advisors, 然后这个方法根据beanName获取，具体看BeanNameAutoProxyCreator这个类的注释demo
+             */
 			Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(beanClass, beanName, targetSource);
+
+			//!!!!!!!!!!  使用这行代码调用createProxy(), 里面使用ProxyFactory创建代理     !!!!!!!!!!
 			Object proxy = createProxy(beanClass, beanName, specificInterceptors, targetSource);
 			this.proxyTypes.put(cacheKey, proxy.getClass());
 			return proxy;
@@ -320,8 +352,11 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
     //用户没有提供targetSource的话，走这个流程用这个After方法创建代理。使用配置的拦截器创建代理
 	public Object postProcessAfterInitialization(@Nullable Object bean, String beanName) throws BeansException {
 		if (bean != null) {
+            //获取缓存的key
 			Object cacheKey = getCacheKey(bean.getClass(), beanName);
+            //如果不是提前引用的Bean
 			if (!this.earlyProxyReferences.contains(cacheKey)) {
+                //创建代理
 				return wrapIfNecessary(bean, beanName, cacheKey);
 			}
 		}
@@ -381,15 +416,30 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 
 		// Create proxy if we have advice.
 
-		// 查找当前bean 匹配到的切面信息，保存在specificInterceptors中， 然后去创建代理对象
-        // 创建代理对象时，每次都会使用specificInterceptors去创建新的ProxyFactory，ProxyFactory创建新的JdkDynamicAopProxy或者ObjenesisCglibAopProxy extends CglibAopProxy去创建代理对象
+        /**
+         * getAdvicesAndAdvisorsForBean()用于获取Advisors,不同的子类有不同的实现：
+         * 1. 继承AbstractAdvisorAutoProxyCreator的类,比如AnnotationAwareAspectJAutoProxyCreator
+         *    AbstractAutowireCapableBeanFactory#doCreateBean
+         *    ==>AbstractAutowireCapableBeanFactory#initializeBean
+         *    ==>AbstractAutowireCapableBeanFactory#applyBeanPostProcessorsAfterInitialization
+         *    ==>AbstractAutoProxyCreator#postProcessAfterInitialization
+         *    ==>AbstractAutoProxyCreator#getAdvicesAndAdvisorsForBean
+         *    ==>AbstractAdvisorAutoProxyCreator#getAdvicesAndAdvisorsForBean
+         *    ==>AbstractAdvisorAutoProxyCreator#findEligibleAdvisors
+         *    ==>AnnotationAwareAspectJAutoProxyCreator#findCandidateAdvisors
+         *    ==>BeanFactoryAspectJAdvisorsBuilder#buildAspectJAdvisors  走到这个方法里面获取Advisors，
+         *    之前的流程其实调用过buildAspectJAdvisors(AspectJAwareAdvisorAutoProxyCreator#shouldSkip->buildAspectJAdvisors)，
+         *    这里直接走buildAspectJAdvisors的缓存if分支，从缓存中直接获取
+         * 2. BeanNameAutoProxyCreator#getAdvicesAndAdvisorsForBean()
+         *    为每个beanName配置对应的Advisors, 然后这个方法根据beanName获取，具体看BeanNameAutoProxyCreator这个类的注释demo
+         */
 		Object[] specificInterceptors = getAdvicesAndAdvisorsForBean(bean.getClass(), beanName, null);
 		if (specificInterceptors != DO_NOT_PROXY) {
 
             // 将cacheKey添加到已经被增强列表，防止多次增强
 			this.advisedBeans.put(cacheKey, Boolean.TRUE);
 
-			//创建代理对象
+            //!!!!!!!!!!  使用这行代码调用createProxy(), 里面使用ProxyFactory创建代理     !!!!!!!!!!
 			Object proxy = createProxy(
 					bean.getClass(), beanName, specificInterceptors, new SingletonTargetSource(bean));
 
@@ -492,11 +542,29 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 			AutoProxyUtils.exposeTargetClass((ConfigurableListableBeanFactory) this.beanFactory, beanName, beanClass);
 		}
 
+        /**
+         * 是生成代理的一个重要的接口定义, 继承关系如下：
+         * ===============================begin=============================================
+         * AdvisedSupport继承了ProxyConfig类实现了Advised接口。如果你去翻看这两个类的代码的话，
+         * 会发现在Advised中定义了一些列的方法，而在ProxyConfig中是对这些接口方法的一个实现，
+         * 但是Advised和ProxyConfig却是互相独立的两个类。但是SpringAOP通过AdvisedSupport将他们适配到了一
+         * AdvisedSupport只有一个子类，这个子类就是ProxyCreatorSupport。从这两个类的名字我们可以看到他们的作用：
+         * 一个是为Advised提供支持的类，一个是为代理对象的创建提供支持的类。
+         *                                                                                            <==  AspectJProxyFactory
+         * TargetClassAware <== Advised & ProxyConfig <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
+         *                                                                                            <==  ProxyFactory
+         * //我们这个例子anothersample1使用AspectJProxyFactory.getProxy创建代理对象以及拦截器链Advisors
+         * //Spring 使用的 ProxyFactory 创建代理对象以及拦截器链Advisors
+         * //创建代理对象时，targetsource 和advisors 被封装在 ProxyFactory/AspectJProxyFactory(或其父类中)
+         * //所以，一个target需要new 一个  ProxyFactory/AspectJProxyFactory来创建代理
+         * ===============================end  =============================================
+         */
 		ProxyFactory proxyFactory = new ProxyFactory();
 		proxyFactory.copyFrom(this);
 
+		//使用jdk创建代理的话要给ProxyFactory配置AdvisedSupport.interfaces
+        //使用cglib创建代理的话要给ProxyFactory配置ProxyConfig.proxyTargetClass
 		if (!proxyFactory.isProxyTargetClass()) {
-
 			//使用cglib生成动态代理对象的话设置为true
 			if (shouldProxyTargetClass(beanClass, beanName)) {
 				proxyFactory.setProxyTargetClass(true);
@@ -506,6 +574,8 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 			}
 		}
 
+
+		//给ProxyFactory配置Advisors
 		Advisor[] advisors = buildAdvisors(beanName, specificInterceptors);
 		proxyFactory.addAdvisors(advisors);
 		proxyFactory.setTargetSource(targetSource);
@@ -516,6 +586,7 @@ public abstract class AbstractAutoProxyCreator extends ProxyProcessorSupport
 			proxyFactory.setPreFiltered(true);
 		}
 
+		//到这里，ProxyFactory已经创建和配置完成，我们开始创建代理对象
 		return proxyFactory.getProxy(getProxyClassLoader());
 	}
 

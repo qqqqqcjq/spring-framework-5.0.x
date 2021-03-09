@@ -113,9 +113,9 @@ public class ReflectiveMethodInvocation implements ProxyMethodInvocation, Clonea
     // proxy:生成的动态代理对象
     // target:目标对象
     // method:目标方法
-    // args:目标方法参数
+    // arguments:目标方法参数
     // targetClass:目标类对象
-    // chain: AOP拦截器执行链  是一个MethodInterceptor的集合 这个链条的获取过程参考我们上一篇文章的内容
+    // interceptorsAndDynamicMethodMatchers: AOP拦截器执行链  是一个MethodInterceptor的集合
 	protected ReflectiveMethodInvocation(
 			Object proxy, @Nullable Object target, Method method, @Nullable Object[] arguments,
 			@Nullable Class<?> targetClass, List<Object> interceptorsAndDynamicMethodMatchers) {

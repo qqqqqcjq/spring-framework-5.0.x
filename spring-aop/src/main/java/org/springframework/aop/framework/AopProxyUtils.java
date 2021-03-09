@@ -115,23 +115,34 @@ public abstract class AopProxyUtils {
 	 * @see Advised
 	 * @see DecoratingProxy
 	 */
+    //这个方法主要是获取目标类上的接口，并且判断是否需要添加SpringProxy/Advised/DecoratingProxy 接口
 	static Class<?>[] completeProxiedInterfaces(AdvisedSupport advised, boolean decoratingProxy) {
-		Class<?>[] specifiedInterfaces = advised.getProxiedInterfaces();
-		if (specifiedInterfaces.length == 0) {
+		//使用AdvisedSupport类型对象advised获取目标类的接口
+	    Class<?>[] specifiedInterfaces = advised.getProxiedInterfaces();
+        //如果目标类没有实现接口
+	    if (specifiedInterfaces.length == 0) {
 			// No user-specified interfaces: check whether target class is an interface.
+            //获取目标类
 			Class<?> targetClass = advised.getTargetClass();
 			if (targetClass != null) {
+                //如果目标类是接口 则把目标类添加到 AdvisedSupport的接口集合中
 				if (targetClass.isInterface()) {
 					advised.setInterfaces(targetClass);
 				}
+                //如果是Proxy类型
 				else if (Proxy.isProxyClass(targetClass)) {
 					advised.setInterfaces(targetClass.getInterfaces());
 				}
+                //重新获取接口
 				specifiedInterfaces = advised.getProxiedInterfaces();
 			}
 		}
+        //接口中有没有 SpringProxy类型的接口, 是否需要添加 SpringProxy接口
 		boolean addSpringProxy = !advised.isInterfaceProxied(SpringProxy.class);
+        //isOpaque(): 生成的代理是否避免转化为Advised类型,默认为false
+        //是否需要添加 Advised接口
 		boolean addAdvised = !advised.isOpaque() && !advised.isInterfaceProxied(Advised.class);
+        //是否需要添加 DecoratingProxy接口
 		boolean addDecoratingProxy = (decoratingProxy && !advised.isInterfaceProxied(DecoratingProxy.class));
 		int nonUserIfcCount = 0;
 		if (addSpringProxy) {
@@ -144,17 +155,21 @@ public abstract class AopProxyUtils {
 			nonUserIfcCount++;
 		}
 		Class<?>[] proxiedInterfaces = new Class<?>[specifiedInterfaces.length + nonUserIfcCount];
+        //扩展接口数组
 		System.arraycopy(specifiedInterfaces, 0, proxiedInterfaces, 0, specifiedInterfaces.length);
 		int index = specifiedInterfaces.length;
 		if (addSpringProxy) {
+            //为目标对象接口中添加 SpringProxy接口
 			proxiedInterfaces[index] = SpringProxy.class;
 			index++;
 		}
 		if (addAdvised) {
+            //为目标对象接口中添加 Advised接口
 			proxiedInterfaces[index] = Advised.class;
 			index++;
 		}
 		if (addDecoratingProxy) {
+            //为目标对象接口中添加 DecoratingProxy接口
 			proxiedInterfaces[index] = DecoratingProxy.class;
 		}
 		return proxiedInterfaces;

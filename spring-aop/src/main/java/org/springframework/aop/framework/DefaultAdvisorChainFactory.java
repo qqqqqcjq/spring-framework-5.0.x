@@ -50,6 +50,14 @@ public class DefaultAdvisorChainFactory implements AdvisorChainFactory, Serializ
 	@Override
     //获取拦截器链
     //在这个方法中传入了三个实例，一个是Advised的实例 一个是目标方法 一个是目标类可能为null
+    /**
+     * 在上面这个方法中主要干了这几件事：
+     * 1、循环目标方法的所有Advisor
+     * 2、判断Advisor的类型
+     * 如果是PointcutAdvisor的类型，则判断此Advisor是否适用于此目标方法
+     * 如果是IntroductionAdvisor引介增强类型，则判断此Advisor是否适用于此目标类
+     * 如果以上都不是，则直接转换为Interceptor类型，添加到拦截器链
+     */
 	public List<Object> getInterceptorsAndDynamicInterceptionAdvice(
 			Advised config, Method method, @Nullable Class<?> targetClass) {
 
@@ -120,7 +128,9 @@ public class DefaultAdvisorChainFactory implements AdvisorChainFactory, Serializ
             //以上两种都不是
 			else {
                 //从Advisor获取拦截器链的重要方法
+                //将Advisor转换为Interceptor类型。这里用到了一个很重要的一个类：DefaultAdvisorAdapterRegistry。从类名我们可以看出这是一个Advisor的适配器注册类。
 				Interceptor[] interceptors = registry.getInterceptors(advisor);
+
 				interceptorList.addAll(Arrays.asList(interceptors));
 			}
 		}

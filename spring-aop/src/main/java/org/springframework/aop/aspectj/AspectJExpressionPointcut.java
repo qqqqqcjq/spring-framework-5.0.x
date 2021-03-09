@@ -82,11 +82,21 @@ import org.springframework.util.StringUtils;
  * @since 2.0
  */
 @SuppressWarnings("serial")
+//Pointcut表示连接点(Joinpoint)的集合
+//ClassFilter和MethodMatcher是SpringAOP中定义的进行Advisor匹配的接口。
+//ClassFilter用来匹配此Advisor是否使用于目标类。
+//MethodMatcher用来匹配此Advisor是否可以作用于目标类中的目标方法。
+//BeanFactoryAware也是SpringIOC中一个常见的接口，用来设置BeanFactory实例
+//那么AspectJExpressionPointcut这个类就拥有了一下功能：从BeanFactory中获取Bean、拥有切点表达式、可以用来判断此切点表达式方法是否适用于目标类、此切点表达式方法是否适用于目标类中的方法。
 public class AspectJExpressionPointcut extends AbstractExpressionPointcut
 		implements ClassFilter, IntroductionAwareMethodMatcher, BeanFactoryAware {
 
 	private static final Set<PointcutPrimitive> SUPPORTED_PRIMITIVES = new HashSet<>();
 
+
+	//之前学习AOP使用时，就说过，Spring AOP支持下面这些方法来配置切点(连接点的集合)
+    //aspectj.weaver AOP除了下面这些，还支持更多的配置方法，不过Spring只是用了aspectj.weaver AOP的部分语法(比如下面的配置规则)，
+    //注意Spring只是用了aspectj.weaver AOP的部分语法(配置规则)，创建代理是spring 自己的类中直接调用cglib(enhancer)生成代理的
 	static {
 		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.EXECUTION);
 		SUPPORTED_PRIMITIVES.add(PointcutPrimitive.ARGS);
@@ -190,11 +200,14 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut
 	 * lazily building the underlying AspectJ pointcut expression.
 	 */
 	private PointcutExpression obtainPointcutExpression() {
+        //如果没有expression的值的话 直接抛出异常
 		if (getExpression() == null) {
 			throw new IllegalStateException("Must set property 'expression' before attempting to match");
 		}
 		if (this.pointcutExpression == null) {
+            //选择类加载器
 			this.pointcutClassLoader = determinePointcutClassLoader();
+            //构建PointcutExpression的实例
 			this.pointcutExpression = buildPointcutExpression(this.pointcutClassLoader);
 		}
 		return this.pointcutExpression;
@@ -217,13 +230,18 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut
 	/**
 	 * Build the underlying AspectJ pointcut expression.
 	 */
+    //下面的这一段逻辑就是使用aspectj 这个jar中， 应用了aspectj.weaver AOP的部分语法(比如下面的配置规则)
+    //只需要知道是干什么的就行，不必深究
 	private PointcutExpression buildPointcutExpression(@Nullable ClassLoader classLoader) {
+        //初始化一个PointcutParser的实例 PointcutParser   aspectj中提供的类
 		PointcutParser parser = initializePointcutParser(classLoader);
 		PointcutParameter[] pointcutParameters = new PointcutParameter[this.pointcutParameterNames.length];
 		for (int i = 0; i < pointcutParameters.length; i++) {
 			pointcutParameters[i] = parser.createPointcutParameter(
 					this.pointcutParameterNames[i], this.pointcutParameterTypes[i]);
 		}
+        //解析切点表达式 我们的切点表示有可能会这样写：在切面中定义一个专门的切面表达式方法
+        //在不同的通知类型中引入这个切点表达式的方法名
 		return parser.parsePointcutExpression(replaceBooleanOperators(resolveExpression()),
 				this.pointcutDeclarationScope, pointcutParameters);
 	}
@@ -252,6 +270,7 @@ public class AspectJExpressionPointcut extends AbstractExpressionPointcut
 	 * We also allow {@code and} between two pointcut sub-expressions.
 	 * <p>This method converts back to {@code &&} for the AspectJ pointcut parser.
 	 */
+    //这个方法，将表达式中的 and 替换为 && or 替换为 ||   not 替换为 !
 	private String replaceBooleanOperators(String pcExpr) {
 		String result = StringUtils.replace(pcExpr, " and ", " && ");
 		result = StringUtils.replace(result, " or ", " || ");

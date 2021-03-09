@@ -63,9 +63,18 @@ import org.springframework.util.CollectionUtils;
 /**
  * 是生成代理的一个重要的接口定义, 继承关系如下：
  * ===============================begin=============================================
- *                                                          <==  AspectJProxyFactory
- * Advised  <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
- *                                                          <==  ProxyFactory
+ * AdvisedSupport继承了ProxyConfig类实现了Advised接口。如果你去翻看这两个类的代码的话，
+ * 会发现在Advised中定义了一些列的方法，而在ProxyConfig中是对这些接口方法的一个实现，
+ * 但是Advised和ProxyConfig却是互相独立的两个类。但是SpringAOP通过AdvisedSupport将他们适配到了一
+ * AdvisedSupport只有一个子类，这个子类就是ProxyCreatorSupport。从这两个类的名字我们可以看到他们的作用：
+ * 一个是为Advised提供支持的类，一个是为代理对象的创建提供支持的类。
+ *                                                                                            <==  AspectJProxyFactory
+ * TargetClassAware <== Advised & ProxyConfig <==  AdvisedSupport  <==  ProxyCreatorSupport   <==  ProxyFactoryBean
+ *                                                                                            <==  ProxyFactory
+ * //我们这个例子anothersample1使用AspectJProxyFactory.getProxy创建代理对象以及拦截器链Advisors
+ * //Spring 使用的 ProxyFactory 创建代理对象以及拦截器链Advisors
+ * //创建代理对象时，targetsource 和advisors 被封装在 ProxyFactory/AspectJProxyFactory(或其父类中)
+ * //所以，一个target需要new 一个  ProxyFactory/AspectJProxyFactory来创建代理
  * ===============================end  =============================================
  */
 public class AdvisedSupport extends ProxyConfig implements Advised {
@@ -82,27 +91,35 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 
 
 	/** Package-protected to allow direct access for efficiency */
+	//TargetSource(target的来源,其内部持有target, 或者持有生成target的方法)
 	TargetSource targetSource = EMPTY_TARGET_SOURCE;
 
 	/** Whether the Advisors are already filtered for the specific target class */
 	private boolean preFiltered = false;
 
 	/** The AdvisorChainFactory to use */
+	//使用advisorChainFactory获取拦截器链，Spring中只有DefaultAdvisorChainFactory这一个默认实现
 	AdvisorChainFactory advisorChainFactory = new DefaultAdvisorChainFactory();
 
 	/** Cache with Method as key and advisor chain List as value */
+	//缓存method 和 Advisor链的对应关系
 	private transient Map<MethodCacheKey, List<Object>> methodCache;
 
 	/**
-	 * Interfaces to be implemented by the proxy. Held in List to keep the order
-	 * of registration, to create JDK proxy with specified order of interfaces.
+	 * Interfaces to be implemented by the proxy.
+	 * Held in List to keep the order of registration,
+     * to create JDK proxy with specified order of interfaces.
 	 */
+	//代理类需要实现的接口列表，保存在这里list中(list可以维护注册的顺序)
+    //用来创建JDK动态代理
 	private List<Class<?>> interfaces = new ArrayList<>();
 
 	/**
 	 * List of Advisors. If an Advice is added, it will be wrapped
 	 * in an Advisor before being added to this List.
 	 */
+	//Advisor列表，一个Advice会被包装成一个Advisor后添加到AdvisedSupport.advisors列表中
+    //也就是说Advice和Advisor是一一对应的关系
 	private List<Advisor> advisors = new ArrayList<>();
 
 	/**
@@ -202,8 +219,10 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	/**
 	 * Set the interfaces to be proxied.
 	 */
+    //AdvisedSupport中添加接口信息
 	public void setInterfaces(Class<?>... interfaces) {
 		Assert.notNull(interfaces, "Interfaces must not be null");
+        //先清空原来的接口信息 是一个List
 		this.interfaces.clear();
 		for (Class<?> ifc : interfaces) {
 			addInterface(ifc);
@@ -214,8 +233,10 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	 * Add a new proxied interface.
 	 * @param intf the additional interface to proxy
 	 */
+
 	public void addInterface(Class<?> intf) {
 		Assert.notNull(intf, "Interface must not be null");
+        //如果不是接口 抛出异常
 		if (!intf.isInterface()) {
 			throw new IllegalArgumentException("[" + intf.getName() + "] is not an interface");
 		}
@@ -434,6 +455,9 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	}
 
 	@Override
+    //Advisor列表，一个Advice会被包装成一个Advisor后添加到AdvisedSupport.advisors列表中
+    //也就是说Advice和Advisor是一一对应的关系
+    //这个方法返回传入的Advice对应的Advisor在AdvisedSupport.advisors列表中的下标
 	public int indexOf(Advice advice) {
 		Assert.notNull(advice, "Advice must not be null");
 		for (int i = 0; i < this.advisors.size(); i++) {
@@ -450,6 +474,7 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	 * @param advice the advice to check inclusion of
 	 * @return whether this advice instance is included
 	 */
+	//返回传入的Advice对应的Advisor实在包含在AdvisedSupport.advisors列表中
 	public boolean adviceIncluded(@Nullable Advice advice) {
 		if (advice != null) {
 			for (Advisor advisor : this.advisors) {
@@ -486,10 +511,15 @@ public class AdvisedSupport extends ProxyConfig implements Advised {
 	 * @param targetClass the target class
 	 * @return a List of MethodInterceptors (may also include InterceptorAndDynamicMethodMatchers)
 	 */
+	//获取AOP拦截执行链
 	public List<Object> getInterceptorsAndDynamicInterceptionAdvice(Method method, @Nullable Class<?> targetClass) {
-		MethodCacheKey cacheKey = new MethodCacheKey(method);
+        //创建一个method的缓存对象 在MethodCacheKey中实现了equals和hashcode方法同时还实现了compareTo方法
+	    MethodCacheKey cacheKey = new MethodCacheKey(method);
+        //先从缓存中获取 如果缓存中获取不到 则再调用方法获取，获取之后放入到缓存中
 		List<Object> cached = this.methodCache.get(cacheKey);
 		if (cached == null) {
+            //调用的是advisorChainFactory的getInterceptorsAndDynamicInterceptionAdvice方法
+            //所有的Advisors已经封装在this(AdvisedSupport)中了，这个方法只是去从里面挑选出匹配当前method的Advisors
 			cached = this.advisorChainFactory.getInterceptorsAndDynamicInterceptionAdvice(
 					this, method, targetClass);
 			this.methodCache.put(cacheKey, cached);

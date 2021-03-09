@@ -100,11 +100,18 @@ public class AnnotationAwareAspectJAutoProxyCreator extends AspectJAwareAdvisorA
     // #AbstractAutowireCapableBeanFactory.invokeAwareMethods
     // #AbstractAdvisorAutoProxyCreator.setBeanFactory
     // #AbstractAdvisorAutoProxyCreator.initBeanFactory
+    // 初始化/实例化AnnotationAwareAspectJAutoProxyCreator的属性，也是要使用的组件
 	protected void initBeanFactory(ConfigurableListableBeanFactory beanFactory) {
-		super.initBeanFactory(beanFactory);
-		if (this.aspectJAdvisorFactory == null) {
+
+        //调用父类的initBeanFactory
+        super.initBeanFactory(beanFactory);
+
+         if (this.aspectJAdvisorFactory == null) {
+            //创建ReflectiveAspectJAdvisorFactory 相当重要的一个类
 			this.aspectJAdvisorFactory = new ReflectiveAspectJAdvisorFactory(beanFactory);
 		}
+        //创建BeanFactoryAspectJAdvisorsBuilderAdapter 相当重要的一个类，用于从BeanFactory中获取Advisor类型的Bean
+        //为目标类型创建对应的Advisor的类
 		this.aspectJAdvisorsBuilder =
 				new BeanFactoryAspectJAdvisorsBuilderAdapter(beanFactory, this.aspectJAdvisorFactory);
 	}
@@ -113,9 +120,12 @@ public class AnnotationAwareAspectJAutoProxyCreator extends AspectJAwareAdvisorA
     //找到所有切面Advisor(通过判断Class是否有@Aspect注解)
 	protected List<Advisor> findCandidateAdvisors() {
 		// Add all the Spring advisors found according to superclass rules.
+        // 同样是先调用父类的findCandidateAdvisors
 		List<Advisor> advisors = super.findCandidateAdvisors();
 		// Build Advisors for all AspectJ aspects in the bean factory.
 		if (this.aspectJAdvisorsBuilder != null) {
+            //构建所有切面Bean中的Advisor
+            //很重要的一个方法，下面分析
 			advisors.addAll(this.aspectJAdvisorsBuilder.buildAspectJAdvisors());
 		}
 		return advisors;

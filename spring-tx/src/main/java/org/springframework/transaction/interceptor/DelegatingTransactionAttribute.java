@@ -24,8 +24,7 @@ import org.springframework.transaction.support.DelegatingTransactionDefinition;
 /**
  * {@link TransactionAttribute} implementation that delegates all calls to a given target
  * {@link TransactionAttribute} instance. Abstract because it is meant to be subclassed,
- * with subclasses overriding specific methods that are not supposed to simply delegate
- * to the target instance.
+ * with subclasses overriding specific methods that are not supposed to simply delegate to the target instance.
  *
  * @author Juergen Hoeller
  * @since 1.2

@@ -23,6 +23,8 @@ package org.springframework.messaging;
  * @author Mark Fisher
  * @since 4.0
  */
+//消息通道里的消息通过这个接口被处理
+//由消息通道的子接口可订阅的消息通道 SubscribableChannel 实现，被 MessageHandler 消息处理器所订阅:
 public interface SubscribableChannel extends MessageChannel {
 
 	/**

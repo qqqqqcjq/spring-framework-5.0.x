@@ -22,6 +22,7 @@ import java.io.Serializable;
 import java.lang.reflect.Method;
 
 import org.aopalliance.aop.Advice;
+import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.PerClauseKind;
 
 import org.springframework.aop.Pointcut;
@@ -48,26 +49,35 @@ class InstantiationModelAwarePointcutAdvisorImpl
 	private static final Advice EMPTY_ADVICE = new Advice() {};
 
 
+    //切点表达式类 AspectJExpressionPointcut
 	private final AspectJExpressionPointcut declaredPointcut;
 
+    //切面类
 	private final Class<?> declaringClass;
 
+    //横切方法名称，这里指的是@Before、@After这些通知类型所在的方法名
 	private final String methodName;
 
+	//横切方法的参数的类型
 	private final Class<?>[] parameterTypes;
 
+	//横切方法
 	private transient Method aspectJAdviceMethod;
 
+    //ReflectiveAspectJAdvisorFactory实例
 	private final AspectJAdvisorFactory aspectJAdvisorFactory;
 
+	//封装了切面类实例
 	private final MetadataAwareAspectInstanceFactory aspectInstanceFactory;
 
+	//横切方法对应的顺序
 	private final int declarationOrder;
 
 	private final String aspectName;
 
 	private final Pointcut pointcut;
 
+    //根据切面类元数据判断是否要延迟实例化 一般为否
 	private final boolean lazy;
 
 	@Nullable
@@ -110,7 +120,11 @@ class InstantiationModelAwarePointcutAdvisorImpl
 			// A singleton aspect.
 			this.pointcut = this.declaredPointcut;
 			this.lazy = false;
+			//!!!!!!!!!!!!!====创建这个横切方法对应的Advice实例 begin ===!!!!!!!!!!!!!!!!!!
+            //这里获取Advice实例 这里就拥有了Advice的实例
+            //不得不说InstantiationModelAwarePointcutAdvisorImpl这个类真的是太强大了
 			this.instantiatedAdvice = instantiateAdvice(this.declaredPointcut);
+            //!!!!!!!!!!!!!====创建这个横切方法对应的Advice实例 end ===!!!!!!!!!!!!!!!!!!
 		}
 	}
 

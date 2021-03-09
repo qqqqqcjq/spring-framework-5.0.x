@@ -52,6 +52,19 @@ import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
  * @author Juergen Hoeller
  * @since 2.0
  */
+
+
+//我们在使用Spring中不同的功能的时候可能会引入不同的命名空间比如xmlns:context，xmlns:aop，xmlns:tx等等。
+//在Spring中定义了一个这样的抽象类专门用来解析不同的命名空间。这个类是NamespaceHandler。
+//AopNamespaceHandler就继承自这个类
+
+//Spring套路
+//xml配置的方式 ：每个框架对应的NamespaceHandler就是你分析Spring中的对应框架的关键入口。
+//注解方式 ： 一般会使用一个@EnableXXX 引入需要的组件，注解通过ImportBeanDefinitionRegistrar技术引入需要的组件。
+
+//注册bean是Sprng的主流程
+//Xml方式是使用XmlBeanDefinitionReader->DefaultBeanDefinitionDocumentReader ，不需要继承NamespaceHandler。(NamespaceHandler一般解析的是一个特定命名空间下的标签，一个特定的命名空间往往是一个专门引入的功能，比如aop命名空间)
+//注解方式是使用AnnotatedBeanDefinitionReader
 public class AopNamespaceHandler extends NamespaceHandlerSupport {
 
 	/**
@@ -63,7 +76,15 @@ public class AopNamespaceHandler extends NamespaceHandlerSupport {
 	public void init() {
 		// In 2.0 XSD as well as in 2.1 XSD.
 		registerBeanDefinitionParser("config", new ConfigBeanDefinitionParser());
+
+        //我们看到了这样的一段代码  aspectj-autoproxy这个再加上aop 是不是就是 aop:aspectj-autoproxy呢
+        //这段代码的意思是使用AspectJAutoProxyBeanDefinitionParser来解析<aop:aspectj-autoproxy>标签
+        //AspectJAutoProxyBeanDefinitionParser这个类就是SpringAOP和Spring框架结合的关键
+        //遇到这个标签时，就会使用来解析，他会给Spring 注册AnnotationAwareAspectJAutoProxyCreator这个bean，这个就是Spring的一个扩展点，
+        //父类有SmartInstantiationAwareBeanPostProcessor，Spring ioc流程中就会触发创建代理的流程。
+        //当然，除了使用<aop:aspectj-autoproxy>标签,我们也可以使用@EnableAspectJAutoProxy注解，这个注解通过ImportBeanDefinitionRegistrar技术引入AnnotationAwareAspectJAutoProxyCreator这个bean
 		registerBeanDefinitionParser("aspectj-autoproxy", new AspectJAutoProxyBeanDefinitionParser());
+
 		registerBeanDefinitionDecorator("scoped-proxy", new ScopedProxyBeanDefinitionDecorator());
 
 		// Only in 2.0 XSD: moved to context namespace as of 2.1

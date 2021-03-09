@@ -77,13 +77,39 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	 * Spring AOP invocation.
 	 */
 	public static JoinPoint currentJoinPoint() {
+        //获取当前的MethodInvocation 即ReflectiveMethodInvocation的实例
 		MethodInvocation mi = ExposeInvocationInterceptor.currentInvocation();
 		if (!(mi instanceof ProxyMethodInvocation)) {
 			throw new IllegalStateException("MethodInvocation is not a Spring ProxyMethodInvocation: " + mi);
 		}
 		ProxyMethodInvocation pmi = (ProxyMethodInvocation) mi;
+
+        //JOIN_POINT_KEY 的值 为 JoinPoint.class.getName()
+        //从ReflectiveMethodInvocation中获取JoinPoint的值
+        //这里在第一次获取的时候 获取到的 JoinPoint是null
+        //然后把下面创建的MethodInvocationProceedingJoinPoint放入到ReflectiveMethodInvocation的userAttributes中
+        //这样在第二次获取的是 就会获取到这个 MethodInvocationProceedingJoinPoint
 		JoinPoint jp = (JoinPoint) pmi.getUserAttribute(JOIN_POINT_KEY);
 		if (jp == null) {
+
+            /**
+             * Spring中的连接点有2个顶层定义
+             * 第一套
+             * org.aspectj.lang.JoinPoint
+             * 里面的方法的实现只有org.springframework.aop.framework.ReflectiveMethodInvocation
+             * org.aopalliance.intercept.MethodInterceptor(继承自org.aopalliance.aop.Advice)中的定义的拦截方法Object invoke(MethodInvocation invocation)需要传的参数就是这套的类型
+             * 第二套
+             * org.aopalliance.intercept.Joinpoint
+             * ProceedingJoinPoint接口是JoinPoint的子接口,该对象只用在@Around的切面方法中, 添加了两个方法定义
+             * Object proceed() throws Throwable //执行目标方法
+             * Object proceed(Object[] var1) throws Throwable //传入的新的参数去执行目标方法
+             * 里面的方法实现有：
+             * org.aspectj.runtime.reflect.JoinPointImpl
+             * MethodInvocationProceedingJoinPoint
+             * debug Spring的AOP，可以确定使用的是MethodInvocationProceedingJoinPoint
+             *
+             * 从下面一行代码可以看出MethodInvocationProceedingJoinPoint对象里面封装了ReflectiveMethodInvocation对象
+             */
 			jp = new MethodInvocationProceedingJoinPoint(pmi);
 			pmi.setUserAttribute(JOIN_POINT_KEY, jp);
 		}
@@ -91,16 +117,22 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	}
 
 
+    //切面类
 	private final Class<?> declaringClass;
 
+    //通知方法的名字
 	private final String methodName;
 
+    //通知方法参数
 	private final Class<?>[] parameterTypes;
 
+    //通知方法(也叫横切方法)
 	protected transient Method aspectJAdviceMethod;
 
+    //切点类
 	private final AspectJExpressionPointcut pointcut;
 
+    //切面实例的工厂类， 里面提供了获取切面实例的方法，子接口为MetadataAwareAspectInstanceFactory
 	private final AspectInstanceFactory aspectInstanceFactory;
 
 	/**
@@ -165,13 +197,19 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	 */
 	public AbstractAspectJAdvice(
 			Method aspectJAdviceMethod, AspectJExpressionPointcut pointcut, AspectInstanceFactory aspectInstanceFactory) {
-
+        //通知方法(也叫横切方法)不能为空
 		Assert.notNull(aspectJAdviceMethod, "Advice method must not be null");
+        //切面类
 		this.declaringClass = aspectJAdviceMethod.getDeclaringClass();
+        //通知方法的名字
 		this.methodName = aspectJAdviceMethod.getName();
+        //通知方法参数
 		this.parameterTypes = aspectJAdviceMethod.getParameterTypes();
+        //通知方法(也叫横切方法)
 		this.aspectJAdviceMethod = aspectJAdviceMethod;
+        //切点类
 		this.pointcut = pointcut;
+        //切面实例的工厂类， 里面提供了获取切面实例的方法，子接口为MetadataAwareAspectInstanceFactory
 		this.aspectInstanceFactory = aspectInstanceFactory;
 	}
 
@@ -379,19 +417,26 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	 */
 	public final synchronized void calculateArgumentBindings() {
 		// The simple case... nothing to bind.
+        //如果已经进行过参数绑定了  或者通知方法(横切方法)中没有参数
 		if (this.argumentsIntrospected || this.parameterTypes.length == 0) {
 			return;
 		}
 
 		int numUnboundArgs = this.parameterTypes.length;
+        //横切方法参数类型
 		Class<?>[] parameterTypes = this.aspectJAdviceMethod.getParameterTypes();
-		if (maybeBindJoinPoint(parameterTypes[0]) || maybeBindProceedingJoinPoint(parameterTypes[0]) ||
+        //如果第一个参数是JoinPoint或者ProceedingJoinPoint或者第一个参数是JoinPoint.StaticPart类型
+		if (maybeBindJoinPoint(parameterTypes[0]) ||
+                //这个方法中还有一个校验 即只有在环绕通知中第一个参数类型才能是ProceedingJoinPoint
+                maybeBindProceedingJoinPoint(parameterTypes[0]) ||
 				maybeBindJoinPointStaticPart(parameterTypes[0])) {
 			numUnboundArgs--;
 		}
 
 		if (numUnboundArgs > 0) {
 			// need to bind arguments by name as returned from the pointcut match
+            // 进行参数绑定 绑定过程略复杂
+            // 常见的场景是我们使用 后置返回通知和后置异常通知的时候 需要指定 returning和throwing的值
 			bindArgumentsByName(numUnboundArgs);
 		}
 
@@ -550,14 +595,19 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	}
 
 	/**
-	 * Take the arguments at the method execution join point and output a set of arguments
-	 * to the advice method
+	 * Take the arguments at the method execution join point and output a set of arguments to the advice method
 	 * @param jp the current JoinPoint
 	 * @param jpMatch the join point match that matched this execution join point
 	 * @param returnValue the return value from the method execution (may be null)
 	 * @param ex the exception thrown by the method execution (may be null)
 	 * @return the empty array if there are no arguments
 	 */
+	//给通知方法(也叫横切方法)绑定参数
+    //  @param org.aspectj.lang.JoinPoint
+    //  @param org.aspectj.weaver.tools.JoinPointMatch
+    //  @param 目标类的目标方法的返回值，可能为null
+    //  @param 目标类的目标方法抛出的异常，可能为null
+    //  @return the empty array if there are no arguments
 	protected Object[] argBinding(JoinPoint jp, @Nullable JoinPointMatch jpMatch,
 			@Nullable Object returnValue, @Nullable Throwable ex) {
 
@@ -567,6 +617,7 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 		Object[] adviceInvocationArgs = new Object[this.parameterTypes.length];
 		int numBound = 0;
 
+        //这个默认值是 -1，重新赋值是在calculateArgumentBindings中进行的
 		if (this.joinPointArgumentIndex != -1) {
 			adviceInvocationArgs[this.joinPointArgumentIndex] = jp;
 			numBound++;
@@ -576,6 +627,8 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 			numBound++;
 		}
 
+        //这里主要是取通知方法中的参数类型，是除了 JoinPoint和ProceedingJoinPoint参数之外的参数
+        //如异常通知参数 返回通知参数
 		if (!CollectionUtils.isEmpty(this.argumentBindings)) {
 			// binding from pointcut match
 			if (jpMatch != null) {
@@ -588,12 +641,14 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 				}
 			}
 			// binding from returning clause
+            // 绑定returnValue
 			if (this.returningName != null) {
 				Integer index = this.argumentBindings.get(this.returningName);
 				adviceInvocationArgs[index] = returnValue;
 				numBound++;
 			}
 			// binding from thrown exception
+            // 绑定ex
 			if (this.throwingName != null) {
 				Integer index = this.argumentBindings.get(this.throwingName);
 				adviceInvocationArgs[index] = ex;
@@ -619,6 +674,8 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	 * @return the invocation result
 	 * @throws Throwable in case of invocation failure
 	 */
+    //returnValue 当执行后置返回通知的时候 传值 其他为null
+    //Throwable  当执行后置异常通知的时候 传值，其他为null
 	protected Object invokeAdviceMethod(
 			@Nullable JoinPointMatch jpMatch, @Nullable Object returnValue, @Nullable Throwable ex)
 			throws Throwable {
@@ -627,6 +684,7 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
 	}
 
 	// As above, but in this case we are given the join point.
+    //重载的方法 这个 JoinPoint 是ProceedingJoinPoint
 	protected Object invokeAdviceMethod(JoinPoint jp, @Nullable JoinPointMatch jpMatch,
 			@Nullable Object returnValue, @Nullable Throwable t) throws Throwable {
 
@@ -650,11 +708,14 @@ public abstract class AbstractAspectJAdvice implements Advice, AspectJPrecedence
              *  AbstractAspectJAdvice, 里面定义的invokeAdviceMethod() -> invokeAdviceMethodWithGivenArgs(argBinding(jp, jpMatch, returnValue, t)) 方法执行横切方法
              */
 
-            //使用反射技术调用横切方法
+            //使用反射技术调用横切方法(也叫通知方法)
             /**
-             * aspectJAdviceMethod 就是我们定义的横切方法，比如lubanaop.anothersample1.AopAspect1.aroundMethod1方法
-             * this.aspectInstanceFactory.getAspectInstance()得到我们定义的AspectJ实例(反射需要传入方法对应的类的实例)，比如lubanaop.anothersample1.AopAspect1.aroundMethod1实例
-             * actualArgs 就是MethodInvocationProceedingJoinPoint实例，  AspectJAroundAdvice.invoke()方法会用到MethodInvocationProceedingJoinPoint参数，因为反射调用的横切方法执行完前一半，需要MethodInvocationProceedingJoinPoint里面
+             * aspectJAdviceMethod ：就是我们定义的横切方法，比如lubanaop.anothersample1.AopAspect1.aroundMethod1方法
+             * this.aspectInstanceFactory.getAspectInstance() ： 得到我们定义的AspectJ实例(反射需要传入方法对应的类的实例)，比如lubanaop.anothersample1.AopAspect1.aroundMethod1实例。
+             *                                               可见，我们执行通知方法(也叫横切方法)时使用的实例就是@Aspect注解的类的实例。
+             *                                               应用：切面实例#通知方法(横切方法) ==> 所有配置的目标方法, 所以切面实例#通知方法(横切方法) 是一个统一入口，所以可以做一些扩展，比如，平安人寿的Ark架构在一个切面里面定义了一个类变量，在通知方法里面使用这个类变量保存目标方法的调用次数。
+             *
+             * actualArgs ： 就是MethodInvocationProceedingJoinPoint实例，  AspectJAroundAdvice.invoke()方法会用到MethodInvocationProceedingJoinPoint参数，因为反射调用的横切方法执行完前一半，需要MethodInvocationProceedingJoinPoint里面
              *     封装了ProxyMethodInvocation(实际传入的是CglibAopProxy.CglibMethodInvocation(继承ReflectiveMethodInvocation)或者ReflectiveMethodInvocation实例)，通过
              *     MethodInvocationProceedingJoinPoint#proceed(java.lang.Object[])->this.methodInvocation.invocableClone(arguments)方法得到
              *     一个克隆的ReflectiveMethodInvocation(这样老的ReflectiveMethodInvocation可以保留拦截链执行的下标currentInterceptorIndex)，然后.proceed()继承执行before横切方法

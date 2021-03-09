@@ -20,6 +20,7 @@ import java.util.List;
 
 import org.springframework.aop.Advisor;
 import org.springframework.aop.TargetSource;
+import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
@@ -55,14 +56,18 @@ public abstract class AbstractAdvisorAutoProxyCreator extends AbstractAutoProxyC
 
 	@Override
 	public void setBeanFactory(BeanFactory beanFactory) {
+        //调用父类的setBeanFactory 这里只是一个简单的赋值
 		super.setBeanFactory(beanFactory);
+        //如果BeanFactory不是ConfigurableListableBeanFactory类型的 抛出异常
 		if (!(beanFactory instanceof ConfigurableListableBeanFactory)) {
 			throw new IllegalArgumentException(
 					"AdvisorAutoProxyCreator requires a ConfigurableListableBeanFactory: " + beanFactory);
 		}
+        //初始化BeanFactory
 		initBeanFactory((ConfigurableListableBeanFactory) beanFactory);
 	}
 
+	//AnnotationAwareAspectJAutoProxyCreator重写了initBeanFactory()
 	protected void initBeanFactory(ConfigurableListableBeanFactory beanFactory) {
 		this.advisorRetrievalHelper = new BeanFactoryAdvisorRetrievalHelperAdapter(beanFactory);
 	}
@@ -94,12 +99,14 @@ public abstract class AbstractAdvisorAutoProxyCreator extends AbstractAutoProxyC
 	 */
     //根据beanClass和beanName寻找合适的Advisor
 	protected List<Advisor> findEligibleAdvisors(Class<?> beanClass, String beanName) {
-		//先找到所有的Advisor作为获选这
+		//先找到所有的Advisor作为候选者
 	    List<Advisor> candidateAdvisors = findCandidateAdvisors();
 	    //使用 AopUtils.findAdvisorsThatCanApply(candidateAdvisors, beanClass)匹配到所有合适的Advisor
 		List<Advisor> eligibleAdvisors = findAdvisorsThatCanApply(candidateAdvisors, beanClass, beanName);
+        //这个方法做的事是向 上一步获取到的Advisor中 插入ExposeInvocationInterceptor.ADVISOR 插在第一个位置
 		extendAdvisors(eligibleAdvisors);
 		if (!eligibleAdvisors.isEmpty()) {
+            //排序，如果你对一个目标对象使用多个 相同类型的通知的话，请把这些通知放到不同的Aspect中，并实现Order接口或者使用Ordered注解标注顺序
 			eligibleAdvisors = sortAdvisors(eligibleAdvisors);
 		}
 		return eligibleAdvisors;
@@ -110,8 +117,10 @@ public abstract class AbstractAdvisorAutoProxyCreator extends AbstractAutoProxyC
 	 * @return the List of candidate Advisors
 	 */
 	//得到所有的切面Advisor
+    //AnnotationAwareAspectJAutoProxyCreator有重写findCandidateAdvisors方法
 	protected List<Advisor> findCandidateAdvisors() {
 		Assert.state(this.advisorRetrievalHelper != null, "No BeanFactoryAdvisorRetrievalHelper available");
+        //这个advisorRetrievalHelper 就是我们在 initBeanFactory中创建的BeanFactoryAdvisorRetrievalHelper
 		return this.advisorRetrievalHelper.findAdvisorBeans();
 	}
 

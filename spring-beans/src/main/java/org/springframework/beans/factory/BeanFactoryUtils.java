@@ -190,8 +190,8 @@ public abstract class BeanFactoryUtils {
 	/**
 	 * Get all bean names for the given type, including those defined in ancestor
 	 * factories. Will return unique names in case of overridden bean definitions.
-	 * <p>Does consider objects created by FactoryBeans if the "allowEagerInit"
-	 * flag is set, which means that FactoryBeans will get initialized. If the
+	 * <p>Does consider objects created by FactoryBeans if the "allowEagerInit" flag is set,
+     * which means that FactoryBeans will get initialized. If the
 	 * object created by the FactoryBean doesn't match, the raw FactoryBean itself
 	 * will be matched against the type. If "allowEagerInit" is not set,
 	 * only raw FactoryBeans will be checked (which doesn't require initialization

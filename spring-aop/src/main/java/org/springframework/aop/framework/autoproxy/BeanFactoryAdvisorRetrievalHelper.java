@@ -65,23 +65,36 @@ public class BeanFactoryAdvisorRetrievalHelper {
 	 * @return the list of {@link org.springframework.aop.Advisor} beans
 	 * @see #isEligibleBean
 	 */
+    //这个方法的内容是从Spring容器中获取Advisor类型的Bean
 	public List<Advisor> findAdvisorBeans() {
 		// Determine list of advisor bean names, if not cached already.
+        //先看看之前是不是缓存过
 		String[] advisorNames = this.cachedAdvisorBeanNames;
 		if (advisorNames == null) {
 			// Do not initialize FactoryBeans here: We need to leave all regular beans
 			// uninitialized to let the auto-proxy creator apply to them!
-			advisorNames = BeanFactoryUtils.beanNamesForTypeIncludingAncestors(
-					this.beanFactory, Advisor.class, true, false);
-			this.cachedAdvisorBeanNames = advisorNames;
-		}
+            // BeanFactoryUtils.beanNamesForTypeIncludingAncestors()方法的allowEagerInit参数传的是false
+            // 不会初始化FactoryBean 为什么会这样说呢？因为提前导致FactoryBean类型的Bean被创建的话是会有问题的
+
+            // 从BeanFactory中获取所有的Advisor类型的Bean
+            advisorNames = BeanFactoryUtils.beanNamesForTypeIncludingAncestors(
+                    this.beanFactory, Advisor.class, true, false);
+            //这里进行赋值缓存
+            this.cachedAdvisorBeanNames = advisorNames;
+        }
+
+        //如果没有Advisor类型的Bean的话 直接返回
+        //如果你有特殊需求的话，可以实现Advisor接口，并向Spring容器中注入对应的Bean
 		if (advisorNames.length == 0) {
 			return new ArrayList<>();
 		}
 
+        //这里是默认创建了一个 Advisor类型的集合
 		List<Advisor> advisors = new ArrayList<>();
 		for (String name : advisorNames) {
+            //这里默认返回的是true
 			if (isEligibleBean(name)) {
+                //如果是正在创建中的Bean 则跳过
 				if (this.beanFactory.isCurrentlyInCreation(name)) {
 					if (logger.isDebugEnabled()) {
 						logger.debug("Skipping currently created advisor '" + name + "'");
@@ -89,6 +102,7 @@ public class BeanFactoryAdvisorRetrievalHelper {
 				}
 				else {
 					try {
+                        //从BeanFactory中获取对应的Advisor类型的Bean，这里如果这个Advisor类型的Bean还没创建，会导致Bean创建
 						advisors.add(this.beanFactory.getBean(name, Advisor.class));
 					}
 					catch (BeanCreationException ex) {

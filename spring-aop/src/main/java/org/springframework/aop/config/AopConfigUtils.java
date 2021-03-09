@@ -57,7 +57,21 @@ public abstract class AopConfigUtils {
 	 */
 	private static final List<Class<?>> APC_PRIORITY_LIST = new ArrayList<>(3);
 
-	static {
+
+
+    /**
+     * 在AopConfigUtils初始化的时候就会向APC_PRIORITY_LIST中添加这三个Class类。
+     * registerOrEscalateApcAsRequired()方法用到的优先级就是他们在APC_PRIORITY_LIST中的位置。
+     * 由此可见AspectJAwareAdvisorAutoProxyCreator会覆盖InfrastructureAdvisorAutoProxyCreatorBeanDefinition中的class，
+     * 而AnnotationAwareAspectJAutoProxyCreator又会覆盖AspectJAwareAdvisorAutoProxyCreator的BeanDefinition中的class(当然也会覆盖InfrastructureAdvisorAutoProxyCreator的BeanDefinition)。
+     * 而我们在上面传入的Class是AnnotationAwareAspectJAutoProxyCreator，即是优先级最大的Class。
+     *
+     *
+     * 我们发现他们三个是同一个类的子类：AbstractAdvisorAutoProxyCreator，这个类的作用是创建代理对象并为每个代理对象找到合适的Advisor(这一部分的东西可以参考前面的博文)，那么它的子类也具有相同的功能。
+     * AnnotationAwareAspectJAutoProxyCreator主要是为AspectJ注解服务的，
+     * InfrastructureAdvisorAutoProxyCreator是一个基础建设性的类，即识别不使用AspectJ注解的AOP配置(比如事务的实现)。
+     */
+    static {
 		// Set up the escalation list...
 		APC_PRIORITY_LIST.add(InfrastructureAdvisorAutoProxyCreator.class);
 		APC_PRIORITY_LIST.add(AspectJAwareAdvisorAutoProxyCreator.class);
@@ -121,11 +135,16 @@ public abstract class AopConfigUtils {
 
 		Assert.notNull(registry, "BeanDefinitionRegistry must not be null");
 
-		if (registry.containsBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME)) {
-			BeanDefinition apcDefinition = registry.getBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME);
+        //这里先判断是不是已经注入过name为org.springframework.aop.config.internalAutoProxyCreator的BeanDefinition了
+        if (registry.containsBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME)) {
+            //如果已经注入过了 判断之前注入的BeanDefinition的Class和传入的Class是不是一致
+            BeanDefinition apcDefinition = registry.getBeanDefinition(AUTO_PROXY_CREATOR_BEAN_NAME);
 			if (!cls.getName().equals(apcDefinition.getBeanClassName())) {
+                //如果不一致的话 则取他们的优先级
+                //优先级在org.springframework.aop.config.AopConfigUtils.APC_PRIORITY_LIST中定义着
 				int currentPriority = findPriorityForClass(apcDefinition.getBeanClassName());
 				int requiredPriority = findPriorityForClass(cls);
+                //优先级高的生效
 				if (currentPriority < requiredPriority) {
 					apcDefinition.setBeanClassName(cls.getName());
 				}
@@ -133,6 +152,8 @@ public abstract class AopConfigUtils {
 			return null;
 		}
 
+        //如果之前没有向BeanDefinitionRegistry中注入过此beanname的BeanDefinition
+        //那就创建一个新的BeanDefinition添加到BeanDefinitionRegistry中
 		RootBeanDefinition beanDefinition = new RootBeanDefinition(cls);
 		beanDefinition.setSource(source);
 		beanDefinition.getPropertyValues().add("order", Ordered.HIGHEST_PRECEDENCE);

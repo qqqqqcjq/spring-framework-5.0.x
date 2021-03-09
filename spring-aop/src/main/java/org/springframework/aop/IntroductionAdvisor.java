@@ -29,6 +29,14 @@ package org.springframework.aop;
  * @since 04.04.2003
  * @see IntroductionInterceptor
  */
+/**
+ * 1) org.springframework.aop.support.DefaultIntroductionAdvisor：这是一个最基本的引介切面，它接受任意的Advice和IntroductionInfo对象定义一个引介切面，
+ *    只是它增强的目标类是所有类。
+ *
+ * 2) org.springframework.aop.aspectj.DeclareParentsAdvisor：它通过指定能够匹配目标类的AspectJ类型匹配模式表达式和需添加的接口及其实现类来定义一个引介切面，
+ *    它的内部使用DelegatePerTargetObjectIntroductionInterceptor或DelegatingIntroductionInterceptor增强对象。在Spring中，DeclareParentsAdvisor
+ *    是org.aspectj.lang.annotation.DeclareParents注解默认表示的引介切面。
+ */
 public interface IntroductionAdvisor extends Advisor, IntroductionInfo {
 
 	/**

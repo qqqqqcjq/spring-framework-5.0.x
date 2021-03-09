@@ -27,6 +27,9 @@ package org.springframework.aop;
  * @see MethodMatcher
  */
 @FunctionalInterface
+//ClassFilter提供了用来此Advisor是否使用于目标类的功能
+//AspectJExpressionPointcut实现了这个接口(以及其他3个接口)
+//InstantiationModelAwarePointcutAdvisorImpl将AspectJExpressionPointcut和对应的Advisor等封装在一起
 public interface ClassFilter {
 
 	/**

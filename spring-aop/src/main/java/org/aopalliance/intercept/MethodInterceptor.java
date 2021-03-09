@@ -42,6 +42,8 @@ package org.aopalliance.intercept;
 @FunctionalInterface
 //方法拦截器，在到达目标的路上拦截调用。它们嵌套在目标的“顶部”。
 //从继承关系可以看出就是一个Advice
+
+//不同的通知其实相当于不同的MethodInterceptor类型。像前置通知会交给：MethodBeforeAdviceInterceptor来进行处理，后置通知是由AspectJAfterAdvice来处理的，环绕通知是由AspectJAroundAdvice来处理的。
 public interface MethodInterceptor extends Interceptor {
 	
 	/**

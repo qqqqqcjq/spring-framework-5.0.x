@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean name="beanForXml" class="com.jiaqing.ioc.BeanForXml">
+    <property name="dao" ref="indexdao"/>
+</bean>
+<!--  indexdao 使用 @Repository("indexdao")注册到spring容器中-->
+<!--    <bean name="indexdao" class="com.luban.ioc.IndexDao">-->
+<!--    </bean>-->
+
+
+
+
+</beans>
+

@@ -166,12 +166,24 @@ public abstract class AbstractAspectJAdvisorFactory implements AspectJAdvisorFac
 	 * Class modelling an AspectJ annotation, exposing its type enumeration and
 	 * pointcut String.
 	 */
+	//AspectJAnnotationType是AbstractAspectJAdvisorFactory中的内部类。从这个类中可以获取切点表达式和通知类型。
 	protected static class AspectJAnnotation<A extends Annotation> {
 
+	    //看用法就知道，用来获取切点表达式
+        /**
+         * eg:
+         * @Before("execution(* lubanaop.anothersample2.*.*(..))")
+         * @Before("declareJoinPointerExpression()") + @Pointcut("execution(* lubanaop.anothersample1.*.*(..))")
+         *
+         * for (String attributeName : EXPRESSION_ATTRIBUTES) {
+         * 	   Object val = AnnotationUtils.getValue(annotation, attributeName);
+         */
 		private static final String[] EXPRESSION_ATTRIBUTES = new String[] {"pointcut", "value"};
 
 		private static Map<Class<?>, AspectJAnnotationType> annotationTypeMap = new HashMap<>(8);
 
+        //初始化通知类型，@Pointcut并不是通知类型，Spring还是写在了一起，不过用的时候会额外处理可可以参考
+        //ReflectiveAspectJAdvisorFactory.getAdvice()方法
 		static {
 			annotationTypeMap.put(Pointcut.class, AspectJAnnotationType.AtPointcut);
 			annotationTypeMap.put(Around.class, AspectJAnnotationType.AtAround);
@@ -181,18 +193,23 @@ public abstract class AbstractAspectJAdvisorFactory implements AspectJAdvisorFac
 			annotationTypeMap.put(AfterThrowing.class, AspectJAnnotationType.AtAfterThrowing);
 		}
 
+        //注解信息
 		private final A annotation;
 
+        //根据注解类型获取通知类型
 		private final AspectJAnnotationType annotationType;
 
+		//切点表达式
 		private final String pointcutExpression;
 
+		//这些注解的argNames属性值
 		private final String argumentNames;
 
 		public AspectJAnnotation(A annotation) {
 			this.annotation = annotation;
 			this.annotationType = determineAnnotationType(annotation);
 			try {
+                //从通知类型注解上面获取切点表达式
 				this.pointcutExpression = resolveExpression(annotation);
 				Object argNames = AnnotationUtils.getValue(annotation, "argNames");
 				this.argumentNames = (argNames instanceof String ? (String) argNames : "");
@@ -202,6 +219,7 @@ public abstract class AbstractAspectJAdvisorFactory implements AspectJAdvisorFac
 			}
 		}
 
+		//获取是AtPointcut, AtAround, AtBefore, AtAfter, AtAfterReturning, AtAfterThrowing中的哪一个注解类型
 		private AspectJAnnotationType determineAnnotationType(A annotation) {
 			AspectJAnnotationType type = annotationTypeMap.get(annotation.annotationType());
 			if (type != null) {
@@ -210,6 +228,7 @@ public abstract class AbstractAspectJAdvisorFactory implements AspectJAdvisorFac
 			throw new IllegalStateException("Unknown annotation type: " + annotation);
 		}
 
+		//获取切点表达式
 		private String resolveExpression(A annotation) {
 			for (String attributeName : EXPRESSION_ATTRIBUTES) {
 				Object val = AnnotationUtils.getValue(annotation, attributeName);

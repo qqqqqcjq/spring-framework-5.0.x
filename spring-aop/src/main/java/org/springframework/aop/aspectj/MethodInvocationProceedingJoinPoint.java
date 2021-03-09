@@ -49,6 +49,32 @@ import org.springframework.util.Assert;
  * @author Ramnivas Laddad
  * @since 2.0
  */
+
+/**
+ * Spring中的连接点有2个顶层定义
+ * 第一套
+ * org.aspectj.lang.JoinPoint
+ * 里面的方法的实现只有org.springframework.aop.framework.ReflectiveMethodInvocation
+ * org.aopalliance.intercept.MethodInterceptor(继承自org.aopalliance.aop.Advice)中的定义的拦截方法Object invoke(MethodInvocation invocation)需要传的参数就是这套的类型
+ * 第二套
+ * org.aopalliance.intercept.Joinpoint
+ * ProceedingJoinPoint接口是JoinPoint的子接口,该对象只用在@Around的切面方法中, 添加了两个方法定义
+ * Object proceed() throws Throwable //执行目标方法
+ * Object proceed(Object[] var1) throws Throwable //传入的新的参数去执行目标方法
+ * 里面的方法实现有：
+ * org.aspectj.runtime.reflect.JoinPointImpl
+ * MethodInvocationProceedingJoinPoint
+ * debug Spring的AOP，可以确定使用的是MethodInvocationProceedingJoinPoint
+ *
+ * 从下面一行代码可以看出MethodInvocationProceedingJoinPoint对象里面封装了ReflectiveMethodInvocation对象
+ * if (jp == null) {
+ *     jp=new MethodInvocationProceedingJoinPoint(pmi);
+ *         pmi.setUserAttribute(JOIN_POINT_KEY,jp);
+ *     }
+ *     return jp;
+ * }
+ *
+ */
 public class MethodInvocationProceedingJoinPoint implements ProceedingJoinPoint, JoinPoint.StaticPart {
 
 	private static final ParameterNameDiscoverer parameterNameDiscoverer = new DefaultParameterNameDiscoverer();
@@ -72,6 +98,7 @@ public class MethodInvocationProceedingJoinPoint implements ProceedingJoinPoint,
 	 * Spring ProxyMethodInvocation object.
 	 * @param methodInvocation the Spring ProxyMethodInvocation object
 	 */
+	//MethodInvocationProceedingJoinPoint对象里面封装了ReflectiveMethodInvocation对象
 	public MethodInvocationProceedingJoinPoint(ProxyMethodInvocation methodInvocation) {
 		Assert.notNull(methodInvocation, "MethodInvocation must not be null");
 		this.methodInvocation = methodInvocation;

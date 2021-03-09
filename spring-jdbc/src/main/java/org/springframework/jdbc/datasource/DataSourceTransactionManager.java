@@ -292,6 +292,7 @@ public class DataSourceTransactionManager extends AbstractPlatformTransactionMan
 			}
 
 			// Bind the connection holder to the thread.
+            // 把当前数据库连接绑定绑定到线程中，这样mybatis等orm框架才可以获取到当前sql对应的数据库连接
 			if (txObject.isNewConnectionHolder()) {
 				TransactionSynchronizationManager.bindResource(obtainDataSource(), txObject.getConnectionHolder());
 			}
