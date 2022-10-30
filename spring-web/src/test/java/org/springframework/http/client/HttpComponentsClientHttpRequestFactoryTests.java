@@ -64,7 +64,7 @@ public class HttpComponentsClientHttpRequestFactoryTests extends AbstractHttpReq
 		Object config = request.getHttpContext().getAttribute(HttpClientContext.REQUEST_CONFIG);
 		assertNotNull("Request config should be set", config);
 		assertTrue("Wrong request config type" + config.getClass().getName(),
-				RequestConfig.class.isInstance(config));
+                config instanceof RequestConfig);
 		RequestConfig requestConfig = (RequestConfig) config;
 		assertEquals("Wrong custom connection timeout", 1234, requestConfig.getConnectTimeout());
 		assertEquals("Wrong custom connection request timeout", 4321, requestConfig.getConnectionRequestTimeout());

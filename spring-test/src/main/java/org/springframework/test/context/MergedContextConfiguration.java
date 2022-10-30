@@ -73,9 +73,9 @@ public class MergedContextConfiguration implements Serializable {
 	private static final Class<?>[] EMPTY_CLASS_ARRAY = new Class<?>[0];
 
 	private static final Set<Class<? extends ApplicationContextInitializer<?>>> EMPTY_INITIALIZER_CLASSES =
-			Collections.<Class<? extends ApplicationContextInitializer<?>>> emptySet();
+			Collections.emptySet();
 
-	private static final Set<ContextCustomizer> EMPTY_CONTEXT_CUSTOMIZERS = Collections.<ContextCustomizer> emptySet();
+	private static final Set<ContextCustomizer> EMPTY_CONTEXT_CUSTOMIZERS = Collections.emptySet();
 
 
 	private final Class<?> testClass;
@@ -452,12 +452,9 @@ public class MergedContextConfiguration implements Serializable {
 			return false;
 		}
 
-		if (!nullSafeClassName(this.contextLoader).equals(nullSafeClassName(otherConfig.contextLoader))) {
-			return false;
-		}
+        return nullSafeClassName(this.contextLoader).equals(nullSafeClassName(otherConfig.contextLoader));
 
-		return true;
-	}
+    }
 
 	/**
 	 * Generate a unique hash code for all properties of this

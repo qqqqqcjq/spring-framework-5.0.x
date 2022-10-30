@@ -647,9 +647,7 @@ public class CodeFlow implements Opcodes {
 		}
 		if (descriptor.startsWith("Ljava/lang/")) {
 			String name = descriptor.substring("Ljava/lang/".length());
-			if (name.equals("Double") || name.equals("Float") || name.equals("Integer") || name.equals("Long")) {
-				return true;
-			}
+            return name.equals("Double") || name.equals("Float") || name.equals("Integer") || name.equals("Long");
 		}
 		return false;
 	}

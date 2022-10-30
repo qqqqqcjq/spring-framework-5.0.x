@@ -237,7 +237,7 @@ public class RequestMappingInfoHandlerMappingTests {
 
 		TestRequestMappingInfoHandlerMapping mapping = new TestRequestMappingInfoHandlerMapping();
 		mapping.registerHandler(new TestController());
-		mapping.setInterceptors(new Object[] { mappedInterceptor });
+		mapping.setInterceptors(mappedInterceptor);
 		mapping.setApplicationContext(new StaticWebApplicationContext());
 
 		HandlerExecutionChain chain = mapping.getHandler(new MockHttpServletRequest("GET", path));

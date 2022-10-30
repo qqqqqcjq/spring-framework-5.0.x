@@ -60,13 +60,13 @@ public class MetaAnnotationSqlScriptsTests extends AbstractTransactionalJUnit4Sp
 	@Sql({ "drop-schema.sql", "schema.sql", "data.sql" })
 	@Retention(RUNTIME)
 	@Target(METHOD)
-	static @interface MetaSql {
+    @interface MetaSql {
 	}
 
 	@SqlGroup({ @Sql("drop-schema.sql"), @Sql("schema.sql"), @Sql("data.sql") })
 	@Retention(RUNTIME)
 	@Target(METHOD)
-	static @interface MetaSqlGroup {
+    @interface MetaSqlGroup {
 	}
 
 }

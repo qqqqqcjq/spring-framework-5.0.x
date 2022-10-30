@@ -25,7 +25,7 @@ package org.springframework.cache.aspectj;
 class AnyThrow {
 
 	static void throwUnchecked(Throwable e) {
-		AnyThrow.<RuntimeException>throwAny(e);
+		AnyThrow.throwAny(e);
 	}
 
 	@SuppressWarnings("unchecked")

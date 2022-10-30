@@ -7,5 +7,5 @@ package testProxyFactoryBean;
  */
 
 public interface ServInter {
-    public void say();
+    void say();
 } 

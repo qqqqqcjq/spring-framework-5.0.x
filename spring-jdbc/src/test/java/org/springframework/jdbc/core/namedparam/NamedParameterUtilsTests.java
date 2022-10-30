@@ -119,7 +119,7 @@ public class NamedParameterUtilsTests {
 	@Test(expected = InvalidDataAccessApiUsageException.class)
 	public void buildValueArrayWithMissingParameterValue() throws Exception {
 		String sql = "select count(0) from foo where id = :id";
-		NamedParameterUtils.buildValueArray(sql, Collections.<String, Object>emptyMap());
+		NamedParameterUtils.buildValueArray(sql, Collections.emptyMap());
 	}
 
 	@Test

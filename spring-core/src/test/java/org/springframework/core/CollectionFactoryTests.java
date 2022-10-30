@@ -297,7 +297,7 @@ public class CollectionFactoryTests {
 	}
 
 
-	static enum Color {
-		RED, BLUE;
-	}
+	enum Color {
+		RED, BLUE
+    }
 }

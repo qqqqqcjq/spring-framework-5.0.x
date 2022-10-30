@@ -442,10 +442,11 @@ public class MessagingMessageListenerAdapterTests {
 		}
 	}
 
-	interface Summary {};
-	interface Full extends Summary {};
+	interface Summary {}
 
-	private static class SampleResponse {
+    interface Full extends Summary {}
+
+    private static class SampleResponse {
 
 		private int counter = 42;
 

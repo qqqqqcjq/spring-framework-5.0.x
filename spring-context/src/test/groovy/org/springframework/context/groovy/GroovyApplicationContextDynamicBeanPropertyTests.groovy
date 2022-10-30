@@ -31,8 +31,8 @@ class GroovyApplicationContextDynamicBeanPropertyTests {
 
 	@Test
 	void testAccessDynamicBeanProperties() {
-		def ctx = new GenericGroovyApplicationContext();
-		ctx.reader.loadBeanDefinitions("org/springframework/context/groovy/applicationContext.groovy");
+		def ctx = new GenericGroovyApplicationContext()
+		ctx.reader.loadBeanDefinitions("org/springframework/context/groovy/applicationContext.groovy")
 		ctx.refresh()
 
 		def framework = ctx.framework
@@ -42,8 +42,8 @@ class GroovyApplicationContextDynamicBeanPropertyTests {
 
 	@Test
 	void testAccessingNonExistentBeanViaDynamicProperty() {
-		def ctx = new GenericGroovyApplicationContext();
-		ctx.reader.loadBeanDefinitions("org/springframework/context/groovy/applicationContext.groovy");
+		def ctx = new GenericGroovyApplicationContext()
+		ctx.reader.loadBeanDefinitions("org/springframework/context/groovy/applicationContext.groovy")
 		ctx.refresh()
 
 		def err = shouldFail NoSuchBeanDefinitionException, { ctx.someNonExistentBean }

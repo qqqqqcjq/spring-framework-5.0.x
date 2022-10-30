@@ -162,6 +162,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	protected final Log logger = LogFactory.getLog(getClass());
 
 	/** Unique id for this context, if any */
+	//创建context实例的时候，生成一个唯一的id
 	private String id = ObjectUtils.identityToString(this);
 
 	/** Display name */
@@ -535,7 +536,8 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 			prepareRefresh();
 
             // Tell the subclass to refresh the internal bean factory.
-            // 返回一个factory 为什么需要返回一个工厂,因为要对工厂进行初始化。查看代码我们可以知道这里返回的beanFactory是DefaultListableBeanFactory类型
+            //DefaultListableBeanFactory 继承了 ConfigurableListableBeanFactory这个接口
+            // 返回一个factory (DefaultListableBeanFactory), 为什么需要返回一个工厂,因为要对工厂进行初始化。查看代码我们可以知道这里返回的beanFactory是DefaultListableBeanFactory类型
             // 以XmlWebApplicationContext为例：
             // xml方式配置的，会从这个入口加载xml文件，注册xml中配置的bean到bdmap,
             // 也会调用AnnotationConfigUtils.registerAnnotationConfigProcessors(BeanDefinitionRegistry, Object)注册相关的BeanPostProcessor注册到bdmap

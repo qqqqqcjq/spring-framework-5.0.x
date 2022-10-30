@@ -389,6 +389,9 @@ public abstract class ObjectUtils {
 	 * @see #nullSafeHashCode(long[])
 	 * @see #nullSafeHashCode(short[])
 	 */
+	//返回给定对象的哈希码;通常是{@code Object#hashCode()}}的值。
+    //如果对象是数组，会基于数组中的每一个元素计算返回一个特定的哈希值
+    //如果对象是{@code null}，这个方法返回0。
 	public static int nullSafeHashCode(@Nullable Object obj) {
 		if (obj == null) {
 			return 0;
@@ -719,7 +722,7 @@ public abstract class ObjectUtils {
 			else {
 				sb.append(ARRAY_ELEMENT_SEPARATOR);
 			}
-			sb.append(String.valueOf(array[i]));
+			sb.append(array[i]);
 		}
 		sb.append(ARRAY_END);
 		return sb.toString();

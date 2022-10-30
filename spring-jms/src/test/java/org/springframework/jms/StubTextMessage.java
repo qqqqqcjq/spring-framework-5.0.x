@@ -87,7 +87,7 @@ public class StubTextMessage implements TextMessage {
 
 	public boolean getBooleanProperty(String name) throws JMSException {
 		Object value = this.properties.get(name);
-		return (value instanceof Boolean) ? ((Boolean) value).booleanValue() : false;
+		return (value instanceof Boolean) && ((Boolean) value).booleanValue();
 	}
 
 	public byte getByteProperty(String name) throws JMSException {

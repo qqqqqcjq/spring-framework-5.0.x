@@ -120,7 +120,9 @@ import javax.swing.*;
  * @see DefaultListableBeanFactory
  * @see BeanDefinitionRegistry
  */
-//继承了AbstractBeanFactory的能力，并且实现了AutowireCapableBeanFactory，所以也拥有自动注入的能力
+//继承了AbstractBeanFactory的能力，并且实现了AutowireCapableBeanFactory，所以也拥有自动装配的能力
+//AbstractAutowireCapableBeanFactory的子类DefaultListableBeanFactory是所有容器都会使用的beanFactory
+//xml方式和@Autowired都是自动装配，都用DefaultListableBeanFactory(extends AbstractAutowireCapableBeanFactory)这个beanFactory
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory
         implements AutowireCapableBeanFactory {
 
@@ -1622,7 +1624,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
                 if (Object.class != pd.getPropertyType()) {
                     MethodParameter methodParam = BeanUtils.getWriteMethodParameter(pd);
                     // Do not allow eager init for type matching in case of a prioritized post-processor.
-                    boolean eager = !PriorityOrdered.class.isInstance(bw.getWrappedInstance());
+                    boolean eager = !(bw.getWrappedInstance() instanceof PriorityOrdered);
                     DependencyDescriptor desc = new AutowireByTypeDependencyDescriptor(methodParam, eager);
                     Object autowiredArgument = resolveDependency(desc, beanName, autowiredBeanNames, converter);
                     if (autowiredArgument != null) {

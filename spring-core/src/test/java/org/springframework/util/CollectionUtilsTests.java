@@ -16,17 +16,7 @@
 
 package org.springframework.util;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-import java.util.Set;
+import java.util.*;
 
 import org.junit.Test;
 
@@ -101,7 +91,7 @@ public class CollectionUtilsTests {
 	public void testContains() {
 		assertFalse(CollectionUtils.contains((Iterator<String>) null, "myElement"));
 		assertFalse(CollectionUtils.contains((Enumeration<String>) null, "myElement"));
-		assertFalse(CollectionUtils.contains(new LinkedList<String>().iterator(), "myElement"));
+		assertFalse(CollectionUtils.contains(Collections.<String>emptyIterator(), "myElement"));
 		assertFalse(CollectionUtils.contains(new Hashtable<String, Object>().keys(), "myElement"));
 
 		List<String> list = new LinkedList<>();

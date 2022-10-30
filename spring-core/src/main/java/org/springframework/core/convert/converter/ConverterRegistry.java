@@ -24,6 +24,7 @@ package org.springframework.core.convert.converter;
  * @since 3.0
  */
 //用于向类型转换系统注册转换器
+//整个转换体系围绕着 Converter   GenericConverter ConverterFactory， 这3个转换器参考石墨文档
 public interface ConverterRegistry {
 
 	/**

@@ -281,11 +281,8 @@ public final class RequestMappingInfo implements RequestCondition<RequestMapping
 			return result;
 		}
 		result = this.customConditionHolder.compareTo(other.customConditionHolder, request);
-		if (result != 0) {
-			return result;
-		}
-		return 0;
-	}
+        return result;
+    }
 
 	@Override
 	public boolean equals(Object other) {

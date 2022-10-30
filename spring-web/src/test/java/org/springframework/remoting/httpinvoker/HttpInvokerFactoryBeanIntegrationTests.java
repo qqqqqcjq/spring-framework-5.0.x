@@ -77,10 +77,10 @@ public class HttpInvokerFactoryBeanIntegrationTests {
 
 	public interface MyService {
 
-		public void handle();
+		void handle();
 
 		@Async
-		public void handleAsync();
+        void handleAsync();
 	}
 
 

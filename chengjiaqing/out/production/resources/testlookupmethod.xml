@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="injectObject" class="maintest.lookupmethod.AsyncCommand" scope="prototype">
+    </bean>
+    <bean id="commandManager" class="maintest.lookupmethod.CommandManager">
+        <lookup-method name="createCommand" bean="injectObject"/>
+        <!--直接将id为injectObject的bean作为createCommand方法的返回值返回-->
+        <!--injectObject 必须要是Command类型或者其子类类型-->
+    </bean>
+
+</beans>

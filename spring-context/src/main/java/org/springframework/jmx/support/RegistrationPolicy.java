@@ -42,6 +42,6 @@ public enum RegistrationPolicy {
 	 * Registration should replace the affected MBean when attempting to register an MBean
 	 * under a name that already exists.
 	 */
-	REPLACE_EXISTING;
+	REPLACE_EXISTING
 
 }

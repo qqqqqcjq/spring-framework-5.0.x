@@ -93,7 +93,7 @@ public class SourceHttpMessageConverterTests {
 
 	@Test
 	public void readDOMSource() throws Exception {
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "xml"));
 		DOMSource result = (DOMSource) converter.read(DOMSource.class, inputMessage);
 		Document document = (Document) result.getNode();
@@ -102,7 +102,7 @@ public class SourceHttpMessageConverterTests {
 
 	@Test
 	public void readDOMSourceExternal() throws Exception {
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(bodyExternal.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(bodyExternal.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "xml"));
 		converter.setSupportDtd(true);
 		DOMSource result = (DOMSource) converter.read(DOMSource.class, inputMessage);
@@ -130,7 +130,7 @@ public class SourceHttpMessageConverterTests {
 				" <!ENTITY lol9 \"&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;\">\n" +
 				"]>\n" +
 				"<root>&lol9;</root>";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes(StandardCharsets.UTF_8));
 
 		this.thrown.expect(HttpMessageNotReadableException.class);
 		this.thrown.expectMessage("DOCTYPE");
@@ -140,7 +140,7 @@ public class SourceHttpMessageConverterTests {
 
 	@Test
 	public void readSAXSource() throws Exception {
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "xml"));
 		SAXSource result = (SAXSource) converter.read(SAXSource.class, inputMessage);
 		InputSource inputSource = result.getInputSource();
@@ -150,7 +150,7 @@ public class SourceHttpMessageConverterTests {
 
 	@Test
 	public void readSAXSourceExternal() throws Exception {
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(bodyExternal.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(bodyExternal.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "xml"));
 		converter.setSupportDtd(true);
 		SAXSource result = (SAXSource) converter.read(SAXSource.class, inputMessage);
@@ -186,7 +186,7 @@ public class SourceHttpMessageConverterTests {
 				"]>\n" +
 				"<root>&lol9;</root>";
 
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes(StandardCharsets.UTF_8));
 		SAXSource result = (SAXSource) this.converter.read(SAXSource.class, inputMessage);
 
 		this.thrown.expect(SAXException.class);
@@ -199,7 +199,7 @@ public class SourceHttpMessageConverterTests {
 
 	@Test
 	public void readStAXSource() throws Exception {
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "xml"));
 		StAXSource result = (StAXSource) converter.read(StAXSource.class, inputMessage);
 		XMLStreamReader streamReader = result.getXMLStreamReader();
@@ -214,7 +214,7 @@ public class SourceHttpMessageConverterTests {
 
 	@Test
 	public void readStAXSourceExternal() throws Exception {
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(bodyExternal.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(bodyExternal.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "xml"));
 		converter.setSupportDtd(true);
 		StAXSource result = (StAXSource) converter.read(StAXSource.class, inputMessage);
@@ -253,7 +253,7 @@ public class SourceHttpMessageConverterTests {
 				" <!ENTITY lol9 \"&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;\">\n" +
 				"]>\n" +
 				"<root>&lol9;</root>";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes(StandardCharsets.UTF_8));
 		StAXSource result = (StAXSource) this.converter.read(StAXSource.class, inputMessage);
 
 		XMLStreamReader streamReader = result.getXMLStreamReader();
@@ -269,7 +269,7 @@ public class SourceHttpMessageConverterTests {
 
 	@Test
 	public void readStreamSource() throws Exception {
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "xml"));
 		StreamSource result = (StreamSource) converter.read(StreamSource.class, inputMessage);
 		String s = FileCopyUtils.copyToString(new InputStreamReader(result.getInputStream()));
@@ -278,7 +278,7 @@ public class SourceHttpMessageConverterTests {
 
 	@Test
 	public void readSource() throws Exception {
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(BODY.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "xml"));
 		converter.read(Source.class, inputMessage);
 	}

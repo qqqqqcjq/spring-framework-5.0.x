@@ -7,5 +7,5 @@ package maintest.importselector.aop.or.enable;
  
 public interface IndexDao {
 
-  public String query();
+  String query();
 }

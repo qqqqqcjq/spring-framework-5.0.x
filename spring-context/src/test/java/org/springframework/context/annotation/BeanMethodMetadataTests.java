@@ -62,7 +62,7 @@ public class BeanMethodMetadataTests {
 
 
 	@Retention(RetentionPolicy.RUNTIME)
-	public static @interface MyAnnotation {
+	public @interface MyAnnotation {
 
 		String value();
 	}

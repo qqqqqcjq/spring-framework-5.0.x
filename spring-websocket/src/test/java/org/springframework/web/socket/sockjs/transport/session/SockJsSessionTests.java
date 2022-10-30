@@ -52,7 +52,7 @@ public class SockJsSessionTests extends AbstractSockJsSessionTests<TestSockJsSes
 
 	@Override
 	protected TestSockJsSession initSockJsSession() {
-		return new TestSockJsSession("1", this.sockJsConfig, this.webSocketHandler, Collections.<String, Object>emptyMap());
+		return new TestSockJsSession("1", this.sockJsConfig, this.webSocketHandler, Collections.emptyMap());
 	}
 
 
@@ -109,7 +109,7 @@ public class SockJsSessionTests extends AbstractSockJsSessionTests<TestSockJsSes
 	public void delegateMessagesWithErrorAndConnectionClosing() throws Exception {
 		WebSocketHandler wsHandler = new ExceptionWebSocketHandlerDecorator(this.webSocketHandler);
 		TestSockJsSession sockJsSession = new TestSockJsSession(
-				"1", this.sockJsConfig, wsHandler, Collections.<String, Object>emptyMap());
+				"1", this.sockJsConfig, wsHandler, Collections.emptyMap());
 
 		String msg1 = "message 1";
 		String msg2 = "message 2";

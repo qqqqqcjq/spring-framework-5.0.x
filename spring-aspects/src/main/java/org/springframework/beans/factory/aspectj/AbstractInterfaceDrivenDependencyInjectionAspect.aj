@@ -102,7 +102,7 @@ public abstract aspect AbstractInterfaceDrivenDependencyInjectionAspect extends 
 	/**
 	 * A marker interface to which the {@code readResolve()} is introduced.
 	 */
-	static interface ConfigurableDeserializationSupport extends Serializable {
+    interface ConfigurableDeserializationSupport extends Serializable {
 	}
 
 	/**

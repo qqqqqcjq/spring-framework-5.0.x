@@ -82,7 +82,7 @@ interface BaseInterface<T> {
 
 interface DerivedInterface<T> extends BaseInterface<T> {
 
-	public void genericDerivedInterfaceMethod(T t);
+	void genericDerivedInterfaceMethod(T t);
 }
 
 

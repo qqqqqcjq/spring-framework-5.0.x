@@ -24,6 +24,9 @@ import org.springframework.util.ClassUtils;
 /**
  * A common delegate for detecting Kotlin's presence and for identifying Kotlin types.
  *
+ * 用于检测Kotlin是否存在和识别Kotlin类型的通用委托。
+ * Kotlin是一种编程语言, 可以编译成Java字节码
+ *
  * @author Juergen Hoeller
  * @author Sebastien Deleuze
  * @since 5.0

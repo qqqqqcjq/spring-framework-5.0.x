@@ -22,6 +22,8 @@ import org.junit.Test;
 import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.web.servlet.StubMvcResult;
 
+import java.nio.charset.StandardCharsets;
+
 /**
  * @author Rossen Stoyanchev
  */
@@ -49,7 +51,7 @@ public class ContentResultMatchersTests {
 
 	@Test
 	public void string() throws Exception {
-		new ContentResultMatchers().string(new String(CONTENT.getBytes("UTF-8"))).match(getStubMvcResult());
+		new ContentResultMatchers().string(new String(CONTENT.getBytes(StandardCharsets.UTF_8))).match(getStubMvcResult());
 	}
 
 	@Test(expected = AssertionError.class)
@@ -59,7 +61,7 @@ public class ContentResultMatchersTests {
 
 	@Test
 	public void stringMatcher() throws Exception {
-		String content = new String(CONTENT.getBytes("UTF-8"));
+		String content = new String(CONTENT.getBytes(StandardCharsets.UTF_8));
 		new ContentResultMatchers().string(Matchers.equalTo(content)).match(getStubMvcResult());
 	}
 
@@ -70,7 +72,7 @@ public class ContentResultMatchersTests {
 
 	@Test
 	public void bytes() throws Exception {
-		new ContentResultMatchers().bytes(CONTENT.getBytes("UTF-8")).match(getStubMvcResult());
+		new ContentResultMatchers().bytes(CONTENT.getBytes(StandardCharsets.UTF_8)).match(getStubMvcResult());
 	}
 
 	@Test(expected = AssertionError.class)
@@ -105,7 +107,7 @@ public class ContentResultMatchersTests {
 	private StubMvcResult getStubMvcResult() throws Exception {
 		MockHttpServletResponse response = new MockHttpServletResponse();
 		response.addHeader("Content-Type", "application/json; charset=UTF-8");
-		response.getWriter().print(new String(CONTENT.getBytes("UTF-8")));
+		response.getWriter().print(new String(CONTENT.getBytes(StandardCharsets.UTF_8)));
 		return new StubMvcResult(null, null, null, null, null, null, response);
 	}
 

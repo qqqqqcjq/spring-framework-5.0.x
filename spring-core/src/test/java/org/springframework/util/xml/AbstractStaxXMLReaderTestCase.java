@@ -18,6 +18,7 @@ package org.springframework.util.xml;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.transform.Transformer;
@@ -123,7 +124,7 @@ public abstract class AbstractStaxXMLReaderTestCase {
 		Transformer transformer = TransformerFactory.newInstance().newTransformer();
 
 		AbstractStaxXMLReader staxXmlReader = createStaxXmlReader(
-				new ByteArrayInputStream(xml.getBytes("UTF-8")));
+				new ByteArrayInputStream(xml.getBytes(StandardCharsets.UTF_8)));
 
 		SAXSource source = new SAXSource(staxXmlReader, new InputSource());
 		DOMResult result = new DOMResult();
@@ -227,8 +228,8 @@ public abstract class AbstractStaxXMLReaderTestCase {
 				if (arguments[i] instanceof Attributes) {
 					arguments[i] = new PartialAttributes((Attributes) arguments[i]);
 				}
-			};
-			return arguments;
+			}
+            return arguments;
 		}
 	}
 

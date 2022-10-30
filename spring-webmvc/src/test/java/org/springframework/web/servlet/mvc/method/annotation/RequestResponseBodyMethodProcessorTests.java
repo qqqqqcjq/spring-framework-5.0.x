@@ -21,6 +21,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -122,7 +123,7 @@ public class RequestResponseBodyMethodProcessorTests {
 	@Test
 	public void resolveArgumentParameterizedType() throws Exception {
 		String content = "[{\"name\" : \"Jad\"}, {\"name\" : \"Robert\"}]";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -142,7 +143,7 @@ public class RequestResponseBodyMethodProcessorTests {
 	public void resolveArgumentRawTypeFromParameterizedType() throws Exception {
 		String content = "fruit=apple&vegetable=kale";
 		this.servletRequest.setMethod("GET");
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE);
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -161,7 +162,7 @@ public class RequestResponseBodyMethodProcessorTests {
 	@Test
 	public void resolveArgumentClassJson() throws Exception {
 		String content = "{\"name\" : \"Jad\"}";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType("application/json");
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -178,7 +179,7 @@ public class RequestResponseBodyMethodProcessorTests {
 	@Test
 	public void resolveArgumentClassString() throws Exception {
 		String content = "foobarbaz";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType("application/json");
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -221,7 +222,7 @@ public class RequestResponseBodyMethodProcessorTests {
 		MethodParameter methodParam = handlerMethod.getMethodParameters()[0];
 
 		String content = "{\"name\" : \"Jad\"}";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -241,7 +242,7 @@ public class RequestResponseBodyMethodProcessorTests {
 		MethodParameter methodParam = handlerMethod.getMethodParameters()[0];
 
 		String content = "[{\"name\" : \"Jad\"}, {\"name\" : \"Robert\"}]";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -264,7 +265,7 @@ public class RequestResponseBodyMethodProcessorTests {
 		MethodParameter methodParam = handlerMethod.getMethodParameters()[0];
 
 		String content = "{\"name\" : \"Jad\"}";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -508,7 +509,7 @@ public class RequestResponseBodyMethodProcessorTests {
 	@Test  // SPR-12501
 	public void resolveArgumentWithJacksonJsonView() throws Exception {
 		String content = "{\"withView1\" : \"with\", \"withView2\" : \"with\", \"withoutView\" : \"without\"}";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
 		Method method = JacksonController.class.getMethod("handleRequestBody", JacksonViewBean.class);
@@ -534,7 +535,7 @@ public class RequestResponseBodyMethodProcessorTests {
 	@Test  // SPR-12501
 	public void resolveHttpEntityArgumentWithJacksonJsonView() throws Exception {
 		String content = "{\"withView1\" : \"with\", \"withView2\" : \"with\", \"withoutView\" : \"without\"}";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
 		Method method = JacksonController.class.getMethod("handleHttpEntity", HttpEntity.class);
@@ -564,7 +565,7 @@ public class RequestResponseBodyMethodProcessorTests {
 				"<withView1>with</withView1>" +
 				"<withView2>with</withView2>" +
 				"<withoutView>without</withoutView></root>";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_XML_VALUE);
 
 		Method method = JacksonController.class.getMethod("handleRequestBody", JacksonViewBean.class);
@@ -593,7 +594,7 @@ public class RequestResponseBodyMethodProcessorTests {
 				"<withView1>with</withView1>" +
 				"<withView2>with</withView2>" +
 				"<withoutView>without</withoutView></root>";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_XML_VALUE);
 
 		Method method = JacksonController.class.getMethod("handleHttpEntity", HttpEntity.class);
@@ -691,7 +692,7 @@ public class RequestResponseBodyMethodProcessorTests {
 
 	@Test  // SPR-14520
 	public void resolveArgumentTypeVariableWithGenericInterface() throws Exception {
-		this.servletRequest.setContent("\"foo\"".getBytes("UTF-8"));
+		this.servletRequest.setContent("\"foo\"".getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
 
 		Method method = MyControllerImplementingInterface.class.getMethod("handle", Object.class);

@@ -41,9 +41,7 @@ public class ScheduledExecutorFactoryBeanTests {
 		try {
 			ScheduledExecutorFactoryBean factory = new ScheduledExecutorFactoryBean();
 			factory.setPoolSize(-1);
-			factory.setScheduledExecutorTasks(new ScheduledExecutorTask[]{
-				new NoOpScheduledExecutorTask()
-			});
+			factory.setScheduledExecutorTasks(new NoOpScheduledExecutorTask());
 			factory.afterPropertiesSet();
 			fail("Pool size less than zero");
 		}
@@ -62,9 +60,7 @@ public class ScheduledExecutorFactoryBeanTests {
 				return executor;
 			}
 		};
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[]{
-			new NoOpScheduledExecutorTask()
-		});
+		factory.setScheduledExecutorTasks(new NoOpScheduledExecutorTask());
 		factory.afterPropertiesSet();
 		factory.destroy();
 
@@ -82,9 +78,7 @@ public class ScheduledExecutorFactoryBeanTests {
 				return executor;
 			}
 		};
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[]{
-			new NoOpScheduledExecutorTask()
-		});
+		factory.setScheduledExecutorTasks(new NoOpScheduledExecutorTask());
 		factory.setWaitForTasksToCompleteOnShutdown(true);
 		factory.afterPropertiesSet();
 		factory.destroy();
@@ -99,9 +93,7 @@ public class ScheduledExecutorFactoryBeanTests {
 		Runnable runnable = mock(Runnable.class);
 
 		ScheduledExecutorFactoryBean factory = new ScheduledExecutorFactoryBean();
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[]{
-			new ScheduledExecutorTask(runnable)
-		});
+		factory.setScheduledExecutorTasks(new ScheduledExecutorTask(runnable));
 		factory.afterPropertiesSet();
 		pauseToLetTaskStart(1);
 		factory.destroy();
@@ -120,7 +112,7 @@ public class ScheduledExecutorFactoryBeanTests {
 		task.setFixedRate(true);
 
 		ScheduledExecutorFactoryBean factory = new ScheduledExecutorFactoryBean();
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[]{task});
+		factory.setScheduledExecutorTasks(task);
 		factory.afterPropertiesSet();
 		pauseToLetTaskStart(2);
 		factory.destroy();
@@ -140,7 +132,7 @@ public class ScheduledExecutorFactoryBeanTests {
 		task.setFixedRate(true);
 
 		ScheduledExecutorFactoryBean factory = new ScheduledExecutorFactoryBean();
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[]{task});
+		factory.setScheduledExecutorTasks(task);
 		factory.setContinueScheduledExecutionAfterException(true);
 		factory.afterPropertiesSet();
 		pauseToLetTaskStart(2);
@@ -159,7 +151,7 @@ public class ScheduledExecutorFactoryBeanTests {
 		task.setDelay(3000); // nice long wait...
 
 		ScheduledExecutorFactoryBean factory = new ScheduledExecutorFactoryBean();
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[] {task});
+		factory.setScheduledExecutorTasks(task);
 		factory.afterPropertiesSet();
 		pauseToLetTaskStart(1);
 		// invoke destroy before tasks have even been scheduled...
@@ -180,7 +172,7 @@ public class ScheduledExecutorFactoryBeanTests {
 		task.setDelay(3000); // nice long wait...
 
 		ScheduledExecutorFactoryBean factory = new ScheduledExecutorFactoryBean();
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[] {task});
+		factory.setScheduledExecutorTasks(task);
 		factory.setContinueScheduledExecutionAfterException(true);
 		factory.afterPropertiesSet();
 		pauseToLetTaskStart(1);
@@ -201,9 +193,7 @@ public class ScheduledExecutorFactoryBeanTests {
 				return super.createExecutor(poolSize, threadFactory, rejectedExecutionHandler);
 			}
 		};
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[]{
-			new NoOpScheduledExecutorTask()
-		});
+		factory.setScheduledExecutorTasks(new NoOpScheduledExecutorTask());
 		factory.setThreadFactory(null); // the null must not propagate
 		factory.afterPropertiesSet();
 		factory.destroy();
@@ -219,9 +209,7 @@ public class ScheduledExecutorFactoryBeanTests {
 				return super.createExecutor(poolSize, threadFactory, rejectedExecutionHandler);
 			}
 		};
-		factory.setScheduledExecutorTasks(new ScheduledExecutorTask[]{
-			new NoOpScheduledExecutorTask()
-		});
+		factory.setScheduledExecutorTasks(new NoOpScheduledExecutorTask());
 		factory.setRejectedExecutionHandler(null); // the null must not propagate
 		factory.afterPropertiesSet();
 		factory.destroy();

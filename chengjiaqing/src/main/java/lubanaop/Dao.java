@@ -8,7 +8,7 @@ package lubanaop;
   public interface Dao {
 
 
-  public  void query();
-  public  void query(String ss);
+  void query();
+  void query(String ss);
 
 }

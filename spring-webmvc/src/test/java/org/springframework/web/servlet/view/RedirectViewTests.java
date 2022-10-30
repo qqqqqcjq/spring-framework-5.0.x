@@ -210,7 +210,7 @@ public class RedirectViewTests {
 		assertFalse(rv.isRemoteHost("/path"));
 		assertFalse(rv.isRemoteHost("http://url.somewhereelse.com"));
 
-		rv.setHosts(new String[] {"url.somewhere.com"});
+		rv.setHosts("url.somewhere.com");
 
 		assertFalse(rv.isRemoteHost("http://url.somewhere.com"));
 		assertFalse(rv.isRemoteHost("/path"));

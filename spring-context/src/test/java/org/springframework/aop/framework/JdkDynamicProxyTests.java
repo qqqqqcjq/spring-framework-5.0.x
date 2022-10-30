@@ -198,9 +198,8 @@ public class JdkDynamicProxyTests extends AbstractAopProxyTests implements Seria
 			if (this == o) return true;
 			if (o == null || getClass() != o.getClass()) return false;
 			Person person = (Person) o;
-			if (!name.equals(person.name)) return false;
-			return true;
-		}
+            return name.equals(person.name);
+        }
 
 		@Override
 		public int hashCode() {
@@ -231,13 +230,13 @@ public class JdkDynamicProxyTests extends AbstractAopProxyTests implements Seria
 
 	public enum MyEnum implements MyInterface {
 
-		A, B;
-	}
+		A, B
+    }
 
 
 	public enum MyOtherEnum implements MyInterface {
 
-		C, D;
-	}
+		C, D
+    }
 
 }

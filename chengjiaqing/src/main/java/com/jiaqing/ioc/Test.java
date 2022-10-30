@@ -1,6 +1,9 @@
 package com.jiaqing.ioc;
 
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import testFactoryMethod.Car;
 
 /**
  * @date 2019/12/20 12:26
@@ -12,9 +15,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 	public static void main(String[] args) {
 		//testjavaConfigClass();
-		testRegisterOneBean();
+		//testRegisterOneBean();
         //testApplicationListener();
         //testLzay();
+
+        testxml();
 	}
 
     public static void testLzay(){
@@ -44,4 +49,11 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 		IndexDao indexDao = (IndexDao) annotationConfigApplicationContext.getBean("indexDao");
 		indexDao.query();
 	}
+
+    public static void testxml(){
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("some_service.xml");
+        BeanForXml beanForXml = (BeanForXml) ctx.getBean("beanForXml");
+        System.out.println(beanForXml);
+
+    }
 }

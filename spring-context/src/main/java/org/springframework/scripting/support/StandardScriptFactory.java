@@ -215,9 +215,7 @@ public class StandardScriptFactory implements ScriptFactory, BeanClassLoaderAwar
 				String extension = StringUtils.getFilenameExtension(filename);
 				if (extension != null) {
 					ScriptEngine engine = scriptEngineManager.getEngineByExtension(extension);
-					if (engine != null) {
-						return engine;
-					}
+                    return engine;
 				}
 			}
 		}

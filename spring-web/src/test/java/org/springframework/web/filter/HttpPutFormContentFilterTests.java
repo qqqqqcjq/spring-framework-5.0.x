@@ -16,6 +16,7 @@
 
 package org.springframework.web.filter;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -60,7 +61,7 @@ public class HttpPutFormContentFilterTests {
 
 	@Test
 	public void wrapPutAndPatchOnly() throws Exception {
-		request.setContent("foo=bar".getBytes("ISO-8859-1"));
+		request.setContent("foo=bar".getBytes(StandardCharsets.ISO_8859_1));
 		for (HttpMethod method : HttpMethod.values()) {
 			request.setMethod(method.name());
 			filterChain = new MockFilterChain();
@@ -76,7 +77,7 @@ public class HttpPutFormContentFilterTests {
 
 	@Test
 	public void wrapFormEncodedOnly() throws Exception {
-		request.setContent("".getBytes("ISO-8859-1"));
+		request.setContent("".getBytes(StandardCharsets.ISO_8859_1));
 		String[] contentTypes = new String[] {"text/plain", "multipart/form-data"};
 		for (String contentType : contentTypes) {
 			request.setContentType(contentType);
@@ -88,7 +89,7 @@ public class HttpPutFormContentFilterTests {
 
 	@Test
 	public void invalidMediaType() throws Exception {
-		request.setContent("".getBytes("ISO-8859-1"));
+		request.setContent("".getBytes(StandardCharsets.ISO_8859_1));
 		request.setContentType("foo");
 		filterChain = new MockFilterChain();
 		filter.doFilter(request, response, filterChain);
@@ -97,7 +98,7 @@ public class HttpPutFormContentFilterTests {
 
 	@Test
 	public void getParameter() throws Exception {
-		request.setContent("name=value".getBytes("ISO-8859-1"));
+		request.setContent("name=value".getBytes(StandardCharsets.ISO_8859_1));
 		filter.doFilter(request, response, filterChain);
 
 		assertEquals("value", filterChain.getRequest().getParameter("name"));
@@ -106,7 +107,7 @@ public class HttpPutFormContentFilterTests {
 	@Test
 	public void getParameterFromQueryString() throws Exception {
 		request.addParameter("name", "value1");
-		request.setContent("name=value2".getBytes("ISO-8859-1"));
+		request.setContent("name=value2".getBytes(StandardCharsets.ISO_8859_1));
 		filter.doFilter(request, response, filterChain);
 
 		assertNotSame("Request not wrapped", request, filterChain.getRequest());
@@ -116,7 +117,7 @@ public class HttpPutFormContentFilterTests {
 
 	@Test
 	public void getParameterNullValue() throws Exception {
-		request.setContent("name=value".getBytes("ISO-8859-1"));
+		request.setContent("name=value".getBytes(StandardCharsets.ISO_8859_1));
 		filter.doFilter(request, response, filterChain);
 
 		assertNotSame("Request not wrapped", request, filterChain.getRequest());
@@ -127,7 +128,7 @@ public class HttpPutFormContentFilterTests {
 	public void getParameterNames() throws Exception {
 		request.addParameter("name1", "value1");
 		request.addParameter("name2", "value2");
-		request.setContent("name1=value1&name3=value3&name4=value4".getBytes("ISO-8859-1"));
+		request.setContent("name1=value1&name3=value3&name4=value4".getBytes(StandardCharsets.ISO_8859_1));
 
 		filter.doFilter(request, response, filterChain);
 		List<String> names = Collections.list(filterChain.getRequest().getParameterNames());
@@ -141,7 +142,7 @@ public class HttpPutFormContentFilterTests {
 		request.setQueryString("name=value1&name=value2");
 		request.addParameter("name", "value1");
 		request.addParameter("name", "value2");
-		request.setContent("name=value3&name=value4".getBytes("ISO-8859-1"));
+		request.setContent("name=value3&name=value4".getBytes(StandardCharsets.ISO_8859_1));
 
 		filter.doFilter(request, response, filterChain);
 		String[] values = filterChain.getRequest().getParameterValues("name");
@@ -155,7 +156,7 @@ public class HttpPutFormContentFilterTests {
 		request.setQueryString("name=value1&name=value2");
 		request.addParameter("name", "value1");
 		request.addParameter("name", "value2");
-		request.setContent("anotherName=anotherValue".getBytes("ISO-8859-1"));
+		request.setContent("anotherName=anotherValue".getBytes(StandardCharsets.ISO_8859_1));
 
 		filter.doFilter(request, response, filterChain);
 		String[] values = filterChain.getRequest().getParameterValues("name");
@@ -168,7 +169,7 @@ public class HttpPutFormContentFilterTests {
 	public void getParameterValuesFromFormContent() throws Exception {
 		request.addParameter("name", "value1");
 		request.addParameter("name", "value2");
-		request.setContent("anotherName=anotherValue".getBytes("ISO-8859-1"));
+		request.setContent("anotherName=anotherValue".getBytes(StandardCharsets.ISO_8859_1));
 
 		filter.doFilter(request, response, filterChain);
 		String[] values = filterChain.getRequest().getParameterValues("anotherName");
@@ -181,7 +182,7 @@ public class HttpPutFormContentFilterTests {
 	public void getParameterValuesInvalidName() throws Exception {
 		request.addParameter("name", "value1");
 		request.addParameter("name", "value2");
-		request.setContent("anotherName=anotherValue".getBytes("ISO-8859-1"));
+		request.setContent("anotherName=anotherValue".getBytes(StandardCharsets.ISO_8859_1));
 
 		filter.doFilter(request, response, filterChain);
 		String[] values = filterChain.getRequest().getParameterValues("noSuchParameter");
@@ -195,7 +196,7 @@ public class HttpPutFormContentFilterTests {
 		request.setQueryString("name=value1&name=value2");
 		request.addParameter("name", "value1");
 		request.addParameter("name", "value2");
-		request.setContent("name=value3&name4=value4".getBytes("ISO-8859-1"));
+		request.setContent("name=value3&name4=value4".getBytes(StandardCharsets.ISO_8859_1));
 
 		filter.doFilter(request, response, filterChain);
 		Map<String, String[]> parameters = filterChain.getRequest().getParameterMap();

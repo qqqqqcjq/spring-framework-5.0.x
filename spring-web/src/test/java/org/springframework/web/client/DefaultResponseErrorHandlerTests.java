@@ -65,7 +65,7 @@ public class DefaultResponseErrorHandlerTests {
 		given(response.getRawStatusCode()).willReturn(HttpStatus.NOT_FOUND.value());
 		given(response.getStatusText()).willReturn("Not Found");
 		given(response.getHeaders()).willReturn(headers);
-		given(response.getBody()).willReturn(new ByteArrayInputStream("Hello World".getBytes("UTF-8")));
+		given(response.getBody()).willReturn(new ByteArrayInputStream("Hello World".getBytes(StandardCharsets.UTF_8)));
 
 		try {
 			handler.handleError(response);

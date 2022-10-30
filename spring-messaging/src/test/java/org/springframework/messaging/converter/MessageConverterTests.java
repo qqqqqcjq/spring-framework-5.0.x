@@ -80,7 +80,7 @@ public class MessageConverterTests {
 	public void supportsMimeTypeNoneConfigured() {
 		Message<String> message = MessageBuilder.withPayload(
 				"ABC").setHeader(MessageHeaders.CONTENT_TYPE, MimeTypeUtils.APPLICATION_JSON).build();
-		this.converter = new TestMessageConverter(Collections.<MimeType>emptyList());
+		this.converter = new TestMessageConverter(Collections.emptyList());
 
 		assertEquals("success-from", this.converter.fromMessage(message, String.class));
 	}
@@ -101,7 +101,7 @@ public class MessageConverterTests {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void setStrictContentTypeMatchWithNoSupportedMimeTypes() {
-		this.converter = new TestMessageConverter(Collections.<MimeType>emptyList());
+		this.converter = new TestMessageConverter(Collections.emptyList());
 		this.converter.setStrictContentTypeMatch(true);
 	}
 

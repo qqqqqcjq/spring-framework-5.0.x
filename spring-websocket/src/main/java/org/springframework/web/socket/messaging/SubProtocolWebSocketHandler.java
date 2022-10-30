@@ -440,9 +440,7 @@ public class SubProtocolWebSocketHandler
 		}
 		if (this.defaultProtocolHandler != null) {
 			String sessionId = this.defaultProtocolHandler.resolveSessionId(message);
-			if (sessionId != null) {
-				return sessionId;
-			}
+            return sessionId;
 		}
 		return null;
 	}

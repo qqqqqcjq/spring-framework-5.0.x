@@ -77,9 +77,7 @@ public class Metadata {
 						return false;
 					}
 				}
-				if (this.stereotypes.size() != itemMetadata.getStereotypes().size()) {
-					return false;
-				}
+                return this.stereotypes.size() == itemMetadata.getStereotypes().size();
 			}
 			return true;
 		}

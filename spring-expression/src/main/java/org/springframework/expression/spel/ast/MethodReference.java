@@ -294,12 +294,9 @@ public class MethodReference extends SpelNodeImpl {
 			return false;
 		}
 		Class<?> clazz = executor.getMethod().getDeclaringClass();
-		if (!Modifier.isPublic(clazz.getModifiers()) && executor.getPublicDeclaringClass() == null) {
-			return false;
-		}
+        return Modifier.isPublic(clazz.getModifiers()) || executor.getPublicDeclaringClass() != null;
 
-		return true;
-	}
+    }
 
 	@Override
 	public void generateCode(MethodVisitor mv, CodeFlow cf) {

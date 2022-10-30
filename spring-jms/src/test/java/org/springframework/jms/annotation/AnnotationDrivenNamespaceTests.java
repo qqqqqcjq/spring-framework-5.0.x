@@ -88,7 +88,7 @@ public class AnnotationDrivenNamespaceTests extends AbstractJmsAnnotationDrivenT
 				"annotation-driven-custom-handler-method-factory.xml", getClass());
 
 		thrown.expect(ListenerExecutionFailedException.class);
-		thrown.expectCause(Is.<MethodArgumentNotValidException>isA(MethodArgumentNotValidException.class));
+		thrown.expectCause(Is.isA(MethodArgumentNotValidException.class));
 		testJmsHandlerMethodFactoryConfiguration(context);
 	}
 

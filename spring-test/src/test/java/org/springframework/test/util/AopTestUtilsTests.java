@@ -139,7 +139,7 @@ public class AopTestUtilsTests {
 	}
 
 
-	static interface Foo {
+	interface Foo {
 	}
 
 	static class FooImpl implements Foo {

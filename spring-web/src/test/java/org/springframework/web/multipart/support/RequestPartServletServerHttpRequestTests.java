@@ -44,7 +44,7 @@ public class RequestPartServletServerHttpRequestTests {
 
 	@Test
 	public void getMethod() throws Exception {
-		this.mockRequest.addFile(new MockMultipartFile("part", "", "", "content".getBytes("UTF-8")));
+		this.mockRequest.addFile(new MockMultipartFile("part", "", "", "content".getBytes(StandardCharsets.UTF_8)));
 		ServerHttpRequest request = new RequestPartServletServerHttpRequest(this.mockRequest, "part");
 		this.mockRequest.setMethod("POST");
 
@@ -53,7 +53,7 @@ public class RequestPartServletServerHttpRequestTests {
 
 	@Test
 	public void getURI() throws Exception {
-		this.mockRequest.addFile(new MockMultipartFile("part", "", "application/json", "content".getBytes("UTF-8")));
+		this.mockRequest.addFile(new MockMultipartFile("part", "", "application/json", "content".getBytes(StandardCharsets.UTF_8)));
 		ServerHttpRequest request = new RequestPartServletServerHttpRequest(this.mockRequest, "part");
 
 		URI uri = new URI("http://example.com/path?query");
@@ -66,7 +66,7 @@ public class RequestPartServletServerHttpRequestTests {
 
 	@Test
 	public void getContentType() throws Exception {
-		MultipartFile part = new MockMultipartFile("part", "", "application/json", "content".getBytes("UTF-8"));
+		MultipartFile part = new MockMultipartFile("part", "", "application/json", "content".getBytes(StandardCharsets.UTF_8));
 		this.mockRequest.addFile(part);
 		ServerHttpRequest request = new RequestPartServletServerHttpRequest(this.mockRequest, "part");
 
@@ -77,7 +77,7 @@ public class RequestPartServletServerHttpRequestTests {
 
 	@Test
 	public void getBody() throws Exception {
-		byte[] bytes = "content".getBytes("UTF-8");
+		byte[] bytes = "content".getBytes(StandardCharsets.UTF_8);
 		MultipartFile part = new MockMultipartFile("part", "", "application/json", bytes);
 		this.mockRequest.addFile(part);
 		ServerHttpRequest request = new RequestPartServletServerHttpRequest(this.mockRequest, "part");
@@ -88,7 +88,7 @@ public class RequestPartServletServerHttpRequestTests {
 
 	@Test  // SPR-13317
 	public void getBodyWithWrappedRequest() throws Exception {
-		byte[] bytes = "content".getBytes("UTF-8");
+		byte[] bytes = "content".getBytes(StandardCharsets.UTF_8);
 		MultipartFile part = new MockMultipartFile("part", "", "application/json", bytes);
 		this.mockRequest.addFile(part);
 		HttpServletRequest wrapped = new HttpServletRequestWrapper(this.mockRequest);

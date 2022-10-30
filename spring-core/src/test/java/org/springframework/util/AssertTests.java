@@ -388,7 +388,7 @@ public class AssertTests {
 
 	@Test
 	public void noNullElementsWithNullArrayAndMessageSupplier() {
-		Assert.noNullElements((Object[]) null, () -> "enigma");
+		Assert.noNullElements(null, () -> "enigma");
 	}
 
 	@Test

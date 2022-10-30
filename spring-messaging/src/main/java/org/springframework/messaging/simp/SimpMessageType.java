@@ -41,6 +41,6 @@ public enum SimpMessageType {
 
 	DISCONNECT_ACK,
 
-	OTHER;
+	OTHER
 
 }

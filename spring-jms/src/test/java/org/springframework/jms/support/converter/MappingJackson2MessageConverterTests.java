@@ -293,12 +293,9 @@ public class MappingJackson2MessageConverterTests {
 
 			MyBean bean = (MyBean) o;
 
-			if (foo != null ? !foo.equals(bean.foo) : bean.foo != null) {
-				return false;
-			}
+            return foo != null ? foo.equals(bean.foo) : bean.foo == null;
 
-			return true;
-		}
+        }
 
 		@Override
 		public int hashCode() {
@@ -306,10 +303,11 @@ public class MappingJackson2MessageConverterTests {
 		}
 	}
 
-	private interface Summary {};
-	private interface Full extends Summary {};
+	private interface Summary {}
 
-	private static class MyAnotherBean {
+    private interface Full extends Summary {}
+
+    private static class MyAnotherBean {
 
 		@JsonView(Summary.class)
 		private String name;

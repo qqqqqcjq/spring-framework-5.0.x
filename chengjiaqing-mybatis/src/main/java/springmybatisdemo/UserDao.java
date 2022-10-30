@@ -15,9 +15,9 @@ import java.util.Map;
 //这里有没有Mapper注解都可以， @MapperScan中指定扫描路径就可以了
 public interface UserDao {
     @Select("select * from user")
-    public List<Map> queryUser();
+    List<Map> queryUser();
 
     @Update("update user set name=#{name}")
-    public int update(String name);
+    int update(String name);
 
 }

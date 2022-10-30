@@ -179,7 +179,7 @@ public class StompHeaderAccessorTests {
 		Message<byte[]> message = MessageBuilder.createMessage(new byte[0], headerAccessor.getMessageHeaders());
 		byte[] bytes = new StompEncoder().encode(message);
 
-		assertEquals("CONNECT\nlogin:joe\npasscode:joe123\n\n\0", new String(bytes, "UTF-8"));
+		assertEquals("CONNECT\nlogin:joe\npasscode:joe123\n\n\0", new String(bytes, StandardCharsets.UTF_8));
 	}
 
 	@Test

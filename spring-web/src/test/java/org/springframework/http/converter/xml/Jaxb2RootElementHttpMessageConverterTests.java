@@ -100,7 +100,7 @@ public class Jaxb2RootElementHttpMessageConverterTests {
 
 	@Test
 	public void readXmlRootElement() throws Exception {
-		byte[] body = "<rootElement><type s=\"Hello World\"/></rootElement>".getBytes("UTF-8");
+		byte[] body = "<rootElement><type s=\"Hello World\"/></rootElement>".getBytes(StandardCharsets.UTF_8);
 		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body);
 		RootElement result = (RootElement) converter.read(RootElement.class, inputMessage);
 		assertEquals("Invalid result", "Hello World", result.type.s);
@@ -108,7 +108,7 @@ public class Jaxb2RootElementHttpMessageConverterTests {
 
 	@Test
 	public void readXmlRootElementSubclass() throws Exception {
-		byte[] body = "<rootElement><type s=\"Hello World\"/></rootElement>".getBytes("UTF-8");
+		byte[] body = "<rootElement><type s=\"Hello World\"/></rootElement>".getBytes(StandardCharsets.UTF_8);
 		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body);
 		RootElementSubclass result = (RootElementSubclass) converter.read(RootElementSubclass.class, inputMessage);
 		assertEquals("Invalid result", "Hello World", result.getType().s);
@@ -116,7 +116,7 @@ public class Jaxb2RootElementHttpMessageConverterTests {
 
 	@Test
 	public void readXmlType() throws Exception {
-		byte[] body = "<foo s=\"Hello World\"/>".getBytes("UTF-8");
+		byte[] body = "<foo s=\"Hello World\"/>".getBytes(StandardCharsets.UTF_8);
 		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body);
 		Type result = (Type) converter.read(Type.class, inputMessage);
 		assertEquals("Invalid result", "Hello World", result.s);
@@ -129,7 +129,7 @@ public class Jaxb2RootElementHttpMessageConverterTests {
 				"  <!ELEMENT external ANY >\n" +
 				"  <!ENTITY ext SYSTEM \"" + external.getURI() + "\" >]>" +
 				"  <rootElement><external>&ext;</external></rootElement>";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes(StandardCharsets.UTF_8));
 		converter.setSupportDtd(true);
 		RootElement rootElement = (RootElement) converter.read(RootElement.class, inputMessage);
 
@@ -143,7 +143,7 @@ public class Jaxb2RootElementHttpMessageConverterTests {
 				"  <!ELEMENT external ANY >\n" +
 				"  <!ENTITY ext SYSTEM \"" + external.getURI() + "\" >]>" +
 				"  <rootElement><external>&ext;</external></rootElement>";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes(StandardCharsets.UTF_8));
 		this.converter.setProcessExternalEntities(true);
 		RootElement rootElement = (RootElement) converter.read(RootElement.class, inputMessage);
 
@@ -169,7 +169,7 @@ public class Jaxb2RootElementHttpMessageConverterTests {
 				" <!ENTITY lol9 \"&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;&lol8;\">\n" +
 				"]>\n" +
 				"<rootElement><external>&lol9;</external></rootElement>";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(content.getBytes(StandardCharsets.UTF_8));
 		this.thrown.expect(HttpMessageNotReadableException.class);
 		this.thrown.expectMessage("DOCTYPE");
 		this.converter.read(RootElement.class, inputMessage);
@@ -211,7 +211,7 @@ public class Jaxb2RootElementHttpMessageConverterTests {
 
 	@Test
 	public void customizeUnmarshaller() throws Exception {
-		byte[] body = "<myRootElement><element>a|||b</element></myRootElement>".getBytes("UTF-8");
+		byte[] body = "<myRootElement><element>a|||b</element></myRootElement>".getBytes(StandardCharsets.UTF_8);
 		MyJaxb2RootElementHttpMessageConverter myConverter = new MyJaxb2RootElementHttpMessageConverter();
 		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body);
 		MyRootElement result = (MyRootElement) myConverter.read(MyRootElement.class, inputMessage);

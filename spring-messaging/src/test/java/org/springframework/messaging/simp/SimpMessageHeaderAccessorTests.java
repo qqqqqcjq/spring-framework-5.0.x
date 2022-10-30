@@ -42,7 +42,7 @@ public class SimpMessageHeaderAccessorTests {
 		accessor.setSubscriptionId("subscription");
 		accessor.setSessionId("session");
 		accessor.setUser(new TestPrincipal("user"));
-		accessor.setSessionAttributes(Collections.<String, Object>singletonMap("key", "value"));
+		accessor.setSessionAttributes(Collections.singletonMap("key", "value"));
 
 		assertEquals("MESSAGE destination=/destination subscriptionId=subscription " +
 				"session=session user=user attributes[1] payload=p", accessor.getShortLogMessage("p"));
@@ -55,7 +55,7 @@ public class SimpMessageHeaderAccessorTests {
 		accessor.setSubscriptionId("subscription");
 		accessor.setSessionId("session");
 		accessor.setUser(new TestPrincipal("user"));
-		accessor.setSessionAttributes(Collections.<String, Object>singletonMap("key", "value"));
+		accessor.setSessionAttributes(Collections.singletonMap("key", "value"));
 		accessor.setNativeHeader("nativeKey", "nativeValue");
 
 		assertEquals("MESSAGE destination=/destination subscriptionId=subscription " +

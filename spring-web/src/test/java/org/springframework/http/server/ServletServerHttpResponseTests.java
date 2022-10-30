@@ -93,7 +93,7 @@ public class ServletServerHttpResponseTests {
 
 	@Test
 	public void getBody() throws Exception {
-		byte[] content = "Hello World".getBytes("UTF-8");
+		byte[] content = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FileCopyUtils.copy(content, response.getBody());
 
 		assertArrayEquals("Invalid content written", content, mockResponse.getContentAsByteArray());

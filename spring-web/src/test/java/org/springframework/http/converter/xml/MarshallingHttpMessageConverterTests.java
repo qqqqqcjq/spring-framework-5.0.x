@@ -32,6 +32,8 @@ import org.springframework.oxm.MarshallingFailureException;
 import org.springframework.oxm.Unmarshaller;
 import org.springframework.oxm.UnmarshallingFailureException;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
 
@@ -75,7 +77,7 @@ public class MarshallingHttpMessageConverterTests {
 	@Test
 	public void read() throws Exception {
 		String body = "<root>Hello World</root>";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 
 		Unmarshaller unmarshaller = mock(Unmarshaller.class);
 		given(unmarshaller.unmarshal(isA(StreamSource.class))).willReturn(body);

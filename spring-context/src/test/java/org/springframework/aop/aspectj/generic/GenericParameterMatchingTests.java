@@ -73,11 +73,11 @@ public class GenericParameterMatchingTests {
 	}
 
 
-	static interface GenericInterface<T> {
+	interface GenericInterface<T> {
 
-		public void save(T bean);
+		void save(T bean);
 
-		public void saveAll(Collection<T> beans);
+		void saveAll(Collection<T> beans);
 	}
 
 

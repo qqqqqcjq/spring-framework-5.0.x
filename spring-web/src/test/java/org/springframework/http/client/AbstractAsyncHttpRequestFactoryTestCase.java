@@ -22,6 +22,7 @@ import static org.junit.Assert.fail;
 
 import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Locale;
 import java.util.concurrent.Future;
@@ -119,7 +120,7 @@ public abstract class AbstractAsyncHttpRequestFactoryTestCase extends AbstractMo
 		request.getHeaders().add(headerName, headerValue1);
 		String headerValue2 = "value2";
 		request.getHeaders().add(headerName, headerValue2);
-		final byte[] body = "Hello World".getBytes("UTF-8");
+		final byte[] body = "Hello World".getBytes(StandardCharsets.UTF_8);
 		request.getHeaders().setContentLength(body.length);
 
 		if (request instanceof StreamingHttpOutputMessage) {
@@ -148,7 +149,7 @@ public abstract class AbstractAsyncHttpRequestFactoryTestCase extends AbstractMo
 	@Test
 	public void multipleWrites() throws Exception {
 		AsyncClientHttpRequest request = this.factory.createAsyncRequest(new URI(baseUrl + "/echo"), HttpMethod.POST);
-		final byte[] body = "Hello World".getBytes("UTF-8");
+		final byte[] body = "Hello World".getBytes(StandardCharsets.UTF_8);
 
 		if (request instanceof StreamingHttpOutputMessage) {
 			StreamingHttpOutputMessage streamingRequest = (StreamingHttpOutputMessage) request;
@@ -176,7 +177,7 @@ public abstract class AbstractAsyncHttpRequestFactoryTestCase extends AbstractMo
 	public void headersAfterExecute() throws Exception {
 		AsyncClientHttpRequest request = this.factory.createAsyncRequest(new URI(baseUrl + "/echo"), HttpMethod.POST);
 		request.getHeaders().add("MyHeader", "value");
-		byte[] body = "Hello World".getBytes("UTF-8");
+		byte[] body = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FileCopyUtils.copy(body, request.getBody());
 
 		Future<ClientHttpResponse> futureResponse = request.executeAsync();

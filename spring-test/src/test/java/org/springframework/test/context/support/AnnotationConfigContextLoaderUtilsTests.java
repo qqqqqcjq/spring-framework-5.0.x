@@ -76,7 +76,7 @@ public class AnnotationConfigContextLoaderUtilsTests {
 	@Configuration
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
-	private static @interface MetaConfig {
+	private @interface MetaConfig {
 	}
 
 	private static class MetaAnnotatedConfigTestCase {

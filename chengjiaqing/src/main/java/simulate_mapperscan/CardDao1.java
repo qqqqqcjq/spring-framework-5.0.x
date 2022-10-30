@@ -9,5 +9,5 @@ package simulate_mapperscan;
 public interface CardDao1 {
 
     @Select("select * from user where userid = #{id}#")
-    public String query(String id);
+    String query(String id);
 }

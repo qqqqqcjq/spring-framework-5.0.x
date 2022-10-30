@@ -243,12 +243,12 @@ public class ProfileValueUtilsTests {
 
 	@IfProfileValue(name = NAME, value = VALUE)
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface MetaEnabled {
+	private @interface MetaEnabled {
 	}
 
 	@IfProfileValue(name = NAME, value = VALUE + "X")
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface MetaDisabled {
+	private @interface MetaDisabled {
 	}
 
 	@MetaEnabled
@@ -302,13 +302,13 @@ public class ProfileValueUtilsTests {
 	@ProfileValueSourceConfiguration(HardCodedProfileValueSource.class)
 	@IfProfileValue(name = NAME, value = "42")
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface MetaEnabledWithCustomProfileValueSource {
+	private @interface MetaEnabledWithCustomProfileValueSource {
 	}
 
 	@ProfileValueSourceConfiguration(HardCodedProfileValueSource.class)
 	@IfProfileValue(name = NAME, value = "13")
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface MetaDisabledWithCustomProfileValueSource {
+	private @interface MetaDisabledWithCustomProfileValueSource {
 	}
 
 	@MetaEnabledWithCustomProfileValueSource

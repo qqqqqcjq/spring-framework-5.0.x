@@ -77,14 +77,14 @@ public class ReflectionTestUtilsTests {
 	public void setFieldWithNullTargetClass() throws Exception {
 		exception.expect(IllegalArgumentException.class);
 		exception.expectMessage(startsWith("Either targetObject or targetClass"));
-		setField((Class<?>) null, "id", Long.valueOf(99));
+		setField(null, "id", Long.valueOf(99));
 	}
 
 	@Test
 	public void getFieldWithNullTargetClass() throws Exception {
 		exception.expect(IllegalArgumentException.class);
 		exception.expectMessage(startsWith("Either targetObject or targetClass"));
-		getField((Class<?>) null, "id");
+		getField(null, "id");
 	}
 
 	@Test

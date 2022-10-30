@@ -181,7 +181,7 @@ public class AnnotationBeanNameGeneratorTests {
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
 	@Controller
-	public static @interface TestRestController {
+	public @interface TestRestController {
 
 		String value() default "";
 	}

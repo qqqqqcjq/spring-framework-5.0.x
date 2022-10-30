@@ -68,8 +68,8 @@ public class JavaMailSenderTests {
 		simpleMessage.setFrom("me@mail.org");
 		simpleMessage.setReplyTo("reply@mail.org");
 		simpleMessage.setTo("you@mail.org");
-		simpleMessage.setCc(new String[] {"he@mail.org", "she@mail.org"});
-		simpleMessage.setBcc(new String[] {"us@mail.org", "them@mail.org"});
+		simpleMessage.setCc("he@mail.org", "she@mail.org");
+		simpleMessage.setBcc("us@mail.org", "them@mail.org");
 		Date sentDate = new GregorianCalendar(2004, 1, 1).getTime();
 		simpleMessage.setSentDate(sentDate);
 		simpleMessage.setSubject("my subject");

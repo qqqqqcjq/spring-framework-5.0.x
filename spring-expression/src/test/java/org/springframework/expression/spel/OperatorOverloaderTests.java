@@ -57,7 +57,7 @@ public class OperatorOverloaderTests extends AbstractExpressionTests {
 		@Override
 		public Object operate(Operation operation, Object leftOperand, Object rightOperand) throws EvaluationException {
 			if (operation==Operation.ADD) {
-				return ((String)leftOperand)+((Boolean)rightOperand).toString();
+				return leftOperand +((Boolean)rightOperand).toString();
 			}
 			else {
 				return leftOperand;
@@ -66,12 +66,9 @@ public class OperatorOverloaderTests extends AbstractExpressionTests {
 
 		@Override
 		public boolean overridesOperation(Operation operation, Object leftOperand, Object rightOperand) throws EvaluationException {
-			if (leftOperand instanceof String && rightOperand instanceof Boolean) {
-				return true;
-			}
-			return false;
+            return leftOperand instanceof String && rightOperand instanceof Boolean;
 
-		}
+        }
 	}
 
 }

@@ -37,7 +37,7 @@ public class NullPrimitiveTests {
 	@Rule
 	public ExpectedException thrown = ExpectedException.none();
 
-	static interface Foo {
+	interface Foo {
 		int getValue();
 	}
 

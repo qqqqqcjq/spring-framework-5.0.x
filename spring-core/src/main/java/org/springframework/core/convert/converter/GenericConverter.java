@@ -100,6 +100,7 @@ public interface GenericConverter {
 		}
 
 		@Override
+        //判断两个ConvertiblePair对象是否相等
 		public boolean equals(@Nullable Object other) {
 			if (this == other) {
 				return true;

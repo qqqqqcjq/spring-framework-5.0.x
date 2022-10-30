@@ -115,9 +115,7 @@ class PathResourceLookupFunction implements Function<ServerRequest, Mono<Resourc
 		}
 		if (path.contains("")) {
 			path = StringUtils.cleanPath(path);
-			if (path.contains("../")) {
-				return true;
-			}
+            return path.contains("../");
 		}
 		return false;
 	}
@@ -150,11 +148,8 @@ class PathResourceLookupFunction implements Function<ServerRequest, Mono<Resourc
 		if (!resourcePath.startsWith(locationPath)) {
 			return false;
 		}
-		if (resourcePath.contains("%") && StringUtils.uriDecode(resourcePath, StandardCharsets.UTF_8).contains("../")) {
-			return false;
-		}
-		return true;
-	}
+        return !resourcePath.contains("%") || !StringUtils.uriDecode(resourcePath, StandardCharsets.UTF_8).contains("../");
+    }
 
 
 	@Override

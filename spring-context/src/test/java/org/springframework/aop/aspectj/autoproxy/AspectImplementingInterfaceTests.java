@@ -49,7 +49,7 @@ public class AspectImplementingInterfaceTests {
 
 
 interface AnInterface {
-	public void interfaceMethod();
+	void interfaceMethod();
 }
 
 

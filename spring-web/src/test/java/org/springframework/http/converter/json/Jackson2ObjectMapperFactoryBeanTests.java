@@ -18,6 +18,7 @@ package org.springframework.http.converter.json;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -210,7 +211,7 @@ public class Jackson2ObjectMapperFactoryBeanTests {
 
 		Long timestamp = 1322903730000L;
 		DateTime dateTime = new DateTime(timestamp, DateTimeZone.UTC);
-		assertEquals(timestamp.toString(), new String(objectMapper.writeValueAsBytes(dateTime), "UTF-8"));
+		assertEquals(timestamp.toString(), new String(objectMapper.writeValueAsBytes(dateTime), StandardCharsets.UTF_8));
 	}
 
 	@Test // SPR-12634
@@ -221,8 +222,8 @@ public class Jackson2ObjectMapperFactoryBeanTests {
 		ObjectMapper objectMapper = this.factory.getObject();
 
 		DateTime dateTime = new DateTime(1322903730000L, DateTimeZone.UTC);
-		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), "UTF-8"));
-		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), "UTF-8"), containsString("customid"));
+		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), StandardCharsets.UTF_8));
+		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), StandardCharsets.UTF_8), containsString("customid"));
 	}
 
 	@Test // SPR-12634
@@ -235,8 +236,8 @@ public class Jackson2ObjectMapperFactoryBeanTests {
 		ObjectMapper objectMapper = this.factory.getObject();
 
 		DateTime dateTime = new DateTime(1322903730000L, DateTimeZone.UTC);
-		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), "UTF-8"));
-		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), "UTF-8"), containsString("customid"));
+		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), StandardCharsets.UTF_8));
+		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), StandardCharsets.UTF_8), containsString("customid"));
 	}
 
 	@Test

@@ -26,6 +26,8 @@ import org.springframework.mock.web.test.MockHttpServletResponse;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.util.StreamUtils;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.Assert.*;
 
 /**
@@ -62,7 +64,7 @@ public class ShallowEtagHeaderFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("GET", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] responseBody = "Hello World".getBytes("UTF-8");
+		final byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
 			((HttpServletResponse) filterResponse).setStatus(HttpServletResponse.SC_OK);
@@ -82,7 +84,7 @@ public class ShallowEtagHeaderFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("GET", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] responseBody = "Hello World".getBytes("UTF-8");
+		final byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
 			((HttpServletResponse) filterResponse).setStatus(HttpServletResponse.SC_OK);
@@ -105,7 +107,7 @@ public class ShallowEtagHeaderFilterTests {
 
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
-			byte[] responseBody = "Hello World".getBytes("UTF-8");
+			byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 			FileCopyUtils.copy(responseBody, filterResponse.getOutputStream());
 			filterResponse.setContentLength(responseBody.length);
 		};
@@ -126,7 +128,7 @@ public class ShallowEtagHeaderFilterTests {
 
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
-			byte[] responseBody = "Hello World".getBytes("UTF-8");
+			byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 			FileCopyUtils.copy(responseBody, filterResponse.getOutputStream());
 			filterResponse.setContentLength(responseBody.length);
 		};
@@ -164,7 +166,7 @@ public class ShallowEtagHeaderFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("GET", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] responseBody = "Hello World".getBytes("UTF-8");
+		final byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
 			((HttpServletResponse) filterResponse).setStatus(HttpServletResponse.SC_OK);
@@ -184,7 +186,7 @@ public class ShallowEtagHeaderFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("GET", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] responseBody = "Hello World".getBytes("UTF-8");
+		final byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
 			response.setContentLength(100);
@@ -204,7 +206,7 @@ public class ShallowEtagHeaderFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("GET", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] responseBody = "Hello World".getBytes("UTF-8");
+		final byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
 			response.setContentLength(100);
@@ -225,7 +227,7 @@ public class ShallowEtagHeaderFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("GET", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] responseBody = "Hello World".getBytes("UTF-8");
+		final byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
 			response.setContentLength(100);
@@ -247,7 +249,7 @@ public class ShallowEtagHeaderFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("GET", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] responseBody = "Hello World".getBytes("UTF-8");
+		final byte[] responseBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FilterChain filterChain = (filterRequest, filterResponse) -> {
 			assertEquals("Invalid request passed", request, filterRequest);
 			((HttpServletResponse) filterResponse).setStatus(HttpServletResponse.SC_OK);

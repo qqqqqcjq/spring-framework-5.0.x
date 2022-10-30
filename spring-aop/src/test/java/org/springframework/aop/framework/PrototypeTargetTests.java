@@ -64,8 +64,8 @@ public class PrototypeTargetTests {
 		assertEquals(10, interceptor.invocationCount);
 	}
 
-	public static interface TestBean {
-		public void doSomething();
+	public interface TestBean {
+		void doSomething();
 	}
 
 

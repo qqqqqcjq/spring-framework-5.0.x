@@ -72,9 +72,9 @@ public class RequestContextFilterTests {
 					throw new IllegalStateException("Too many invocations");
 				}
 			}
-		};
+		}
 
-		DummyFilterChain fc = new DummyFilterChain();
+        DummyFilterChain fc = new DummyFilterChain();
 		MockFilterConfig mfc = new MockFilterConfig(new MockServletContext(), "foo");
 
 		RequestContextFilter rbf = new RequestContextFilter();

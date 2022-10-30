@@ -33,6 +33,8 @@ import org.springframework.lang.Nullable;
 
 // 用于类型转换的服务接口,这是进入转换系统的入口点。
 // 调用{@link #convert(Object, Class)}来执行类型转换
+
+//整个转换体系围绕着 Converter   GenericConverter ConverterFactory， 这3个转换器参考石墨文档
 public interface ConversionService {
 
 	/**
@@ -49,6 +51,7 @@ public interface ConversionService {
 	 * @return {@code true} if a conversion can be performed, {@code false} if not
 	 * @throws IllegalArgumentException if {@code targetType} is {@code null}
 	 */
+	//只在子类GenericConversionService有一个实现，判断当前类是否可以转换成目标类
 	boolean canConvert(@Nullable Class<?> sourceType, Class<?> targetType);
 
 	/**
@@ -69,6 +72,7 @@ public interface ConversionService {
 	 * {@code false} if not
 	 * @throws IllegalArgumentException if {@code targetType} is {@code null}
 	 */
+    //只在子类GenericConversionService有一个实现，判断当前类是否可以转换成目标类
 	boolean canConvert(@Nullable TypeDescriptor sourceType, TypeDescriptor targetType);
 
 	/**
@@ -80,6 +84,9 @@ public interface ConversionService {
 	 * @throws IllegalArgumentException if targetType is {@code null}
 	 */
 	@Nullable
+    //只在子类GenericConversionService有一个实现，将当前类转换为目标类， 使用GenericConverter完成类型转换
+    //ConverterAdapter是Convert和GenericConverter的适配器
+    //ConverterFactory里面是Convert的工厂
 	<T> T convert(@Nullable Object source, Class<T> targetType);
 
 	/**
@@ -96,6 +103,9 @@ public interface ConversionService {
 	 * or {@code sourceType} is {@code null} but source is not {@code null}
 	 */
 	@Nullable
+    //只在子类GenericConversionService有一个实现，将当前类转换为目标类， 使用GenericConverter完成类型转换
+    //ConverterAdapter是Convert和GenericConverter的适配器
+    //ConverterFactory里面是Convert的工厂
 	Object convert(@Nullable Object source, @Nullable TypeDescriptor sourceType, TypeDescriptor targetType);
 
 }

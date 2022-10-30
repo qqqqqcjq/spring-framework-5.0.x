@@ -144,7 +144,7 @@ public class RepeatedSpringRunnerTests {
 
 	@Repeat(5)
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface RepeatedFiveTimes {
+	private @interface RepeatedFiveTimes {
 	}
 
 	public static final class RepeatedFiveTimesViaMetaAnnotationRepeatedTestCase extends AbstractRepeatedTestCase {

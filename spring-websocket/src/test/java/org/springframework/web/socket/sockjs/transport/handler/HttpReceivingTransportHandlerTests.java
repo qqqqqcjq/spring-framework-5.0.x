@@ -27,6 +27,8 @@ import org.springframework.web.socket.sockjs.transport.session.AbstractSockJsSes
 import org.springframework.web.socket.sockjs.transport.session.StubSockJsServiceConfig;
 import org.springframework.web.socket.sockjs.transport.session.TestHttpSockJsSession;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.Assert.*;
 import static org.mockito.BDDMockito.*;
 
@@ -40,7 +42,7 @@ public class HttpReceivingTransportHandlerTests extends AbstractHttpRequestTests
 
 	@Test
 	public void readMessagesXhr() throws Exception {
-		this.servletRequest.setContent("[\"x\"]".getBytes("UTF-8"));
+		this.servletRequest.setContent("[\"x\"]".getBytes(StandardCharsets.UTF_8));
 		handleRequest(new XhrReceivingTransportHandler());
 
 		assertEquals(204, this.servletResponse.getStatus());
@@ -48,7 +50,7 @@ public class HttpReceivingTransportHandlerTests extends AbstractHttpRequestTests
 
 	@Test
 	public void readMessagesJsonp() throws Exception {
-		this.servletRequest.setContent("[\"x\"]".getBytes("UTF-8"));
+		this.servletRequest.setContent("[\"x\"]".getBytes(StandardCharsets.UTF_8));
 		handleRequest(new JsonpReceivingTransportHandler());
 
 		assertEquals(200, this.servletResponse.getStatus());
@@ -57,7 +59,7 @@ public class HttpReceivingTransportHandlerTests extends AbstractHttpRequestTests
 
 	@Test
 	public void readMessagesJsonpFormEncoded() throws Exception {
-		this.servletRequest.setContent("d=[\"x\"]".getBytes("UTF-8"));
+		this.servletRequest.setContent("d=[\"x\"]".getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE);
 		handleRequest(new JsonpReceivingTransportHandler());
 
@@ -67,7 +69,7 @@ public class HttpReceivingTransportHandlerTests extends AbstractHttpRequestTests
 
 	@Test  // SPR-10621
 	public void readMessagesJsonpFormEncodedWithEncoding() throws Exception {
-		this.servletRequest.setContent("d=[\"x\"]".getBytes("UTF-8"));
+		this.servletRequest.setContent("d=[\"x\"]".getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType("application/x-www-form-urlencoded;charset=UTF-8");
 		handleRequest(new JsonpReceivingTransportHandler());
 
@@ -77,10 +79,10 @@ public class HttpReceivingTransportHandlerTests extends AbstractHttpRequestTests
 
 	@Test
 	public void readMessagesBadContent() throws Exception {
-		this.servletRequest.setContent("".getBytes("UTF-8"));
+		this.servletRequest.setContent("".getBytes(StandardCharsets.UTF_8));
 		handleRequestAndExpectFailure();
 
-		this.servletRequest.setContent("[\"x]".getBytes("UTF-8"));
+		this.servletRequest.setContent("[\"x]".getBytes(StandardCharsets.UTF_8));
 		handleRequestAndExpectFailure();
 	}
 
@@ -93,7 +95,7 @@ public class HttpReceivingTransportHandlerTests extends AbstractHttpRequestTests
 	@Test
 	public void delegateMessageException() throws Exception {
 		StubSockJsServiceConfig sockJsConfig = new StubSockJsServiceConfig();
-		this.servletRequest.setContent("[\"x\"]".getBytes("UTF-8"));
+		this.servletRequest.setContent("[\"x\"]".getBytes(StandardCharsets.UTF_8));
 
 		WebSocketHandler wsHandler = mock(WebSocketHandler.class);
 		TestHttpSockJsSession session = new TestHttpSockJsSession("1", sockJsConfig, wsHandler, null);

@@ -58,7 +58,7 @@ public class WebSocketServerSockJsSessionTests extends AbstractSockJsSessionTest
 	@Override
 	protected TestWebSocketServerSockJsSession initSockJsSession() {
 		return new TestWebSocketServerSockJsSession(this.sockJsConfig, this.webSocketHandler,
-				Collections.<String, Object>emptyMap());
+				Collections.emptyMap());
 	}
 
 	@Test

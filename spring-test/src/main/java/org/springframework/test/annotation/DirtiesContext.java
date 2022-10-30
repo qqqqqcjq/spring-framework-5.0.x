@@ -129,8 +129,8 @@ public @interface DirtiesContext {
 		 * The associated {@code ApplicationContext} will be marked as
 		 * <em>dirty</em> after the corresponding test method.
 		 */
-		AFTER_METHOD;
-	}
+		AFTER_METHOD
+    }
 
 
 	/**
@@ -166,8 +166,8 @@ public @interface DirtiesContext {
 		 * The associated {@code ApplicationContext} will be marked as
 		 * <em>dirty</em> after the test class.
 		 */
-		AFTER_CLASS;
-	}
+		AFTER_CLASS
+    }
 
 
 	/**
@@ -200,7 +200,7 @@ public @interface DirtiesContext {
 		 * at the lowest level in the context hierarchy that is visible from the
 		 * current test.
 		 */
-		CURRENT_LEVEL;
-	}
+		CURRENT_LEVEL
+    }
 
 }

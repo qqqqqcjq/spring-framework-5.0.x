@@ -19,6 +19,8 @@ package org.springframework.util;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.nio.charset.StandardCharsets;
+
 import static org.junit.Assert.*;
 
 /**
@@ -37,7 +39,7 @@ public class ResizableByteArrayOutputStreamTests {
 	@Before
 	public void setUp() throws Exception {
 		this.baos = new ResizableByteArrayOutputStream(INITIAL_CAPACITY);
-		this.helloBytes = "Hello World".getBytes("UTF-8");
+		this.helloBytes = "Hello World".getBytes(StandardCharsets.UTF_8);
 	}
 
 

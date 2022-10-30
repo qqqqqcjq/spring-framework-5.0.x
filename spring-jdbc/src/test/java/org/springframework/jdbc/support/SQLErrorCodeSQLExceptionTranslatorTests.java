@@ -46,14 +46,14 @@ public class SQLErrorCodeSQLExceptionTranslatorTests {
 
 	private static SQLErrorCodes ERROR_CODES = new SQLErrorCodes();
 	static {
-		ERROR_CODES.setBadSqlGrammarCodes(new String[] { "1", "2" });
-		ERROR_CODES.setInvalidResultSetAccessCodes(new String[] { "3", "4" });
-		ERROR_CODES.setDuplicateKeyCodes(new String[] {"10"});
-		ERROR_CODES.setDataAccessResourceFailureCodes(new String[] { "5" });
-		ERROR_CODES.setDataIntegrityViolationCodes(new String[] { "6" });
-		ERROR_CODES.setCannotAcquireLockCodes(new String[] { "7" });
-		ERROR_CODES.setDeadlockLoserCodes(new String[] { "8" });
-		ERROR_CODES.setCannotSerializeTransactionCodes(new String[] { "9" });
+		ERROR_CODES.setBadSqlGrammarCodes("1", "2");
+		ERROR_CODES.setInvalidResultSetAccessCodes("3", "4");
+		ERROR_CODES.setDuplicateKeyCodes("10");
+		ERROR_CODES.setDataAccessResourceFailureCodes("5");
+		ERROR_CODES.setDataIntegrityViolationCodes("6");
+		ERROR_CODES.setCannotAcquireLockCodes("7");
+		ERROR_CODES.setDeadlockLoserCodes("8");
+		ERROR_CODES.setCannotSerializeTransactionCodes("9");
 	}
 
 	@Rule
@@ -157,11 +157,11 @@ public class SQLErrorCodeSQLExceptionTranslatorTests {
 		final SQLErrorCodes customErrorCodes = new SQLErrorCodes();
 		final CustomSQLErrorCodesTranslation customTranslation = new CustomSQLErrorCodesTranslation();
 
-		customErrorCodes.setBadSqlGrammarCodes(new String[] {"1", "2"});
-		customErrorCodes.setDataIntegrityViolationCodes(new String[] {"3", "4"});
-		customTranslation.setErrorCodes(new String[] {"1"});
+		customErrorCodes.setBadSqlGrammarCodes("1", "2");
+		customErrorCodes.setDataIntegrityViolationCodes("3", "4");
+		customTranslation.setErrorCodes("1");
 		customTranslation.setExceptionClass(CustomErrorCodeException.class);
-		customErrorCodes.setCustomTranslations(new CustomSQLErrorCodesTranslation[] {customTranslation});
+		customErrorCodes.setCustomTranslations(customTranslation);
 
 		SQLErrorCodeSQLExceptionTranslator sext = new SQLErrorCodeSQLExceptionTranslator();
 		sext.setSqlErrorCodes(customErrorCodes);

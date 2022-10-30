@@ -115,14 +115,14 @@ public class ReflectionUtilsTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void copySrcToDestinationOfIncorrectClass() {
 		TestObject src = new TestObject();
-		String dest = new String();
+		String dest = "";
 		ReflectionUtils.shallowCopyFieldState(src, dest);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void rejectsNullSrc() {
 		TestObject src = null;
-		String dest = new String();
+		String dest = "";
 		ReflectionUtils.shallowCopyFieldState(src, dest);
 	}
 

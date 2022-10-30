@@ -330,9 +330,8 @@ public class ContextLoaderTests {
 		assertTrue("Doesn't have spouse", ((TestBean) context.getBean("rod")).getSpouse() == null);
 		assertTrue("myinit not evaluated", "Roderick".equals(((TestBean) context.getBean("rod")).getName()));
 
-		context = new ClassPathXmlApplicationContext(new String[] {
-			"/org/springframework/web/context/WEB-INF/applicationContext.xml",
-			"/org/springframework/web/context/WEB-INF/context-addition.xml" });
+		context = new ClassPathXmlApplicationContext("/org/springframework/web/context/WEB-INF/applicationContext.xml",
+                "/org/springframework/web/context/WEB-INF/context-addition.xml");
 		assertTrue("Has father", context.containsBean("father"));
 		assertTrue("Has rod", context.containsBean("rod"));
 		assertTrue("Has kerry", context.containsBean("kerry"));
@@ -341,9 +340,8 @@ public class ContextLoaderTests {
 	@Test
 	public void testSingletonDestructionOnStartupFailure() throws IOException {
 		try {
-			new ClassPathXmlApplicationContext(new String[] {
-				"/org/springframework/web/context/WEB-INF/applicationContext.xml",
-				"/org/springframework/web/context/WEB-INF/fail.xml" }) {
+			new ClassPathXmlApplicationContext("/org/springframework/web/context/WEB-INF/applicationContext.xml",
+                    "/org/springframework/web/context/WEB-INF/fail.xml") {
 
 				@Override
 				public void refresh() throws BeansException {
@@ -404,7 +402,7 @@ public class ContextLoaderTests {
 	}
 
 
-	private static interface UnknownApplicationContext extends ConfigurableApplicationContext {
+	private interface UnknownApplicationContext extends ConfigurableApplicationContext {
 
 		void unheardOf();
 	}

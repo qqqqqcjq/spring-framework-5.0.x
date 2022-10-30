@@ -812,7 +812,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/something");
 		String requestBody = "Hello World";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
 		request.addHeader("Accept", "text/*, */*");
 		MockHttpServletResponse response = new MockHttpServletResponse();
@@ -827,7 +827,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PATCH", "/something");
 		String requestBody = "Hello world!";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
 		request.addHeader("Accept", "text/*, */*");
 		MockHttpServletResponse response = new MockHttpServletResponse();
@@ -847,7 +847,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/something");
 		String requestBody = "Hello World";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
 		request.addHeader("Accept", "application/pdf, application/msword");
 		MockHttpServletResponse response = new MockHttpServletResponse();
@@ -861,7 +861,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/something");
 		String requestBody = "Hello World";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
 		request.addHeader("Accept", "*/*");
 		MockHttpServletResponse response = new MockHttpServletResponse();
@@ -879,7 +879,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/something");
 		String requestBody = "Hello World";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "application/pdf");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 		getServlet().service(request, response);
@@ -893,7 +893,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/something");
 		String requestBody = "Hello World";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 		getServlet().service(request, response);
@@ -911,7 +911,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/something");
 		String requestBody = "Hello World";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "application/pdf");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 		getServlet().service(request, response);
@@ -924,7 +924,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("POST", "/foo");
 		String requestBody = "Hello World";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
 		request.addHeader("Accept", "text/*, */*");
 		request.addHeader("MyRequestHeader", "MyValue");
@@ -974,7 +974,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 		}, RequestResponseBodyController.class);
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/something");
-		request.setContent("Hello World".getBytes("UTF-8"));
+		request.setContent("Hello World".getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
 		request.addHeader("Accept", "application/json, text/javascript, */*");
 		MockHttpServletResponse response = new MockHttpServletResponse();
@@ -1013,7 +1013,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("PUT", "/something");
 		String requestBody = "<b/>";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 		request.addHeader("Content-Type", "application/xml; charset=utf-8");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 		getServlet().service(request, response);
@@ -1244,7 +1244,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 
 		MockHttpServletRequest request = new MockHttpServletRequest("GET", "/map");
 		request.addParameter("key1", "value1");
-		request.addParameter("key2", new String[] {"value21", "value22"});
+		request.addParameter("key2", "value21", "value22");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
 		getServlet().service(request, response);
@@ -2709,7 +2709,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 				@RequestParam(required = false) boolean flag,
 				@RequestHeader(value = "header", required = false) String header,
 				HttpServletResponse response) throws IOException {
-			response.getWriter().write(String.valueOf(id) + "-" + flag + "-" + String.valueOf(header));
+			response.getWriter().write(id + "-" + flag + "-" + header);
 		}
 	}
 
@@ -2721,7 +2721,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 				@RequestParam(value = "otherId", defaultValue = "") String id2,
 				@RequestHeader(defaultValue = "bar") String header,
 				HttpServletResponse response) throws IOException {
-			response.getWriter().write(String.valueOf(id) + "-" + String.valueOf(id2) + "-" + String.valueOf(header));
+			response.getWriter().write(id + "-" + id2 + "-" + header);
 		}
 	}
 
@@ -2733,7 +2733,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 				@RequestHeader(defaultValue = "#{systemProperties.myHeader}") String header,
 				@Value("#{request.contextPath}") String contextPath,
 				HttpServletResponse response) throws IOException {
-			response.getWriter().write(String.valueOf(id) + "-" + String.valueOf(header) + "-" + contextPath);
+			response.getWriter().write(id + "-" + header + "-" + contextPath);
 		}
 	}
 
@@ -3324,7 +3324,7 @@ public class ServletAnnotationControllerHandlerMethodTests extends AbstractServl
 			assertNotNull(requestEntity);
 			assertEquals("MyValue", requestEntity.getHeaders().getFirst("MyRequestHeader"));
 
-			String body = new String(requestEntity.getBody(), "UTF-8");
+			String body = new String(requestEntity.getBody(), StandardCharsets.UTF_8);
 			assertEquals("Hello World", body);
 
 			URI location = new URI("/foo");

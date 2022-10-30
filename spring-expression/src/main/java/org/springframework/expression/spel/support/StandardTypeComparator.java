@@ -44,11 +44,8 @@ public class StandardTypeComparator implements TypeComparator {
 		if (left instanceof Number && right instanceof Number) {
 			return true;
 		}
-		if (left instanceof Comparable) {
-			return true;
-		}
-		return false;
-	}
+        return left instanceof Comparable;
+    }
 
 	@Override
 	@SuppressWarnings("unchecked")

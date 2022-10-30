@@ -189,7 +189,7 @@ public class RouterFunctionsTests {
 	public void toHttpHandlerHandlerReturnResponseStatusExceptionInResponseWriteTo() throws Exception {
 		HandlerFunction<ServerResponse> handlerFunction =
 				// Mono.<ServerResponse> is required for compilation in Eclipse
-				request -> Mono.<ServerResponse> just(new ServerResponse() {
+				request -> Mono.just(new ServerResponse() {
 					@Override
 					public HttpStatus statusCode() {
 						return HttpStatus.OK;
@@ -227,7 +227,7 @@ public class RouterFunctionsTests {
 	public void toHttpHandlerHandlerThrowResponseStatusExceptionInResponseWriteTo() throws Exception {
 		HandlerFunction<ServerResponse> handlerFunction =
 				// Mono.<ServerResponse> is required for compilation in Eclipse
-				request -> Mono.<ServerResponse> just(new ServerResponse() {
+				request -> Mono.just(new ServerResponse() {
 					@Override
 					public HttpStatus statusCode() {
 						return HttpStatus.OK;

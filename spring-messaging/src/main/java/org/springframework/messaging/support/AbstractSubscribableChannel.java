@@ -35,7 +35,7 @@ public abstract class AbstractSubscribableChannel extends AbstractMessageChannel
 
 
 	public Set<MessageHandler> getSubscribers() {
-		return Collections.<MessageHandler>unmodifiableSet(this.handlers);
+		return Collections.unmodifiableSet(this.handlers);
 	}
 
 	public boolean hasSubscription(MessageHandler handler) {

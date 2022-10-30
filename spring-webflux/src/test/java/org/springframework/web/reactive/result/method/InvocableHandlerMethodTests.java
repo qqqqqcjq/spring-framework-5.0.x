@@ -18,6 +18,7 @@ package org.springframework.web.reactive.result.method;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.Arrays;
@@ -303,13 +304,8 @@ public class InvocableHandlerMethodTests {
 		}
 
 		private Flux<DataBuffer> getBody(String body) {
-			try {
-				return Flux.just(new DefaultDataBufferFactory().wrap(body.getBytes("UTF-8")));
-			}
-			catch (UnsupportedEncodingException ex) {
-				throw new IllegalStateException(ex);
-			}
-		}
+            return Flux.just(new DefaultDataBufferFactory().wrap(body.getBytes(StandardCharsets.UTF_8)));
+        }
 	}
 
 }

@@ -18,5 +18,5 @@ import java.util.Map;
 public interface UserMapper {
 
     @Select("select host, user, password from user")
-    public List<Map> queryUser();
+    List<Map> queryUser();
 }

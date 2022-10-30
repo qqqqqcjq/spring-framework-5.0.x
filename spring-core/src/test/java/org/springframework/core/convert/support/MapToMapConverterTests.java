@@ -222,7 +222,7 @@ public class MapToMapConverterTests {
 	public void noDefaultConstructorCopyNotRequired() throws Exception {
 		// SPR-9284
 		NoDefaultConstructorMap<String, Integer> map = new NoDefaultConstructorMap<>(
-				Collections.<String, Integer>singletonMap("1", 1));
+				Collections.singletonMap("1", 1));
 		TypeDescriptor sourceType = TypeDescriptor.map(NoDefaultConstructorMap.class,
 				TypeDescriptor.valueOf(String.class), TypeDescriptor.valueOf(Integer.class));
 		TypeDescriptor targetType = TypeDescriptor.map(NoDefaultConstructorMap.class,

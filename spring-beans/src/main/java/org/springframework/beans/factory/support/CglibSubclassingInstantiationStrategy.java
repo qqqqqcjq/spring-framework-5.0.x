@@ -51,7 +51,7 @@ import org.springframework.util.StringUtils;
  * @author Sam Brannen
  * @since 1.1
  */
-//BeanFactory默认使用的bean实例化策略对象
+//BeanFactory默认使用的bean实例化策略对象就是CglibSubclassingInstantiationStrategy
 public class CglibSubclassingInstantiationStrategy extends SimpleInstantiationStrategy {
 
 	/**

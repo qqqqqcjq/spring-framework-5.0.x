@@ -86,7 +86,7 @@ public class MappingJackson2HttpMessageConverterTests {
 				"\"string\":\"Foo\"," +
 				"\"bool\":true," +
 				"\"fraction\":42.0}";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "json"));
 		MyBean result = (MyBean) converter.read(MyBean.class, inputMessage);
 		assertEquals("Foo", result.getString());
@@ -107,7 +107,7 @@ public class MappingJackson2HttpMessageConverterTests {
 				"\"string\":\"Foo\"," +
 				"\"bool\":true," +
 				"\"fraction\":42.0}";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "json"));
 		HashMap<String, Object> result = (HashMap<String, Object>) converter.read(HashMap.class, inputMessage);
 		assertEquals("Foo", result.get("string"));
@@ -178,7 +178,7 @@ public class MappingJackson2HttpMessageConverterTests {
 	@Test(expected = HttpMessageNotReadableException.class)
 	public void readInvalidJson() throws IOException {
 		String body = "FooBar";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "json"));
 		converter.read(MyBean.class, inputMessage);
 	}
@@ -186,7 +186,7 @@ public class MappingJackson2HttpMessageConverterTests {
 	@Test
 	public void readValidJsonWithUnknownProperty() throws IOException {
 		String body = "{\"string\":\"string\",\"unknownProperty\":\"value\"}";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "json"));
 		converter.read(MyBean.class, inputMessage);
 		// Assert no HttpMessageNotReadableException is thrown
@@ -213,7 +213,7 @@ public class MappingJackson2HttpMessageConverterTests {
 				"\"string\":\"Foo\"," +
 				"\"bool\":true," +
 				"\"fraction\":42.0}]";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "json"));
 
 		List<MyBean> results = (List<MyBean>) converter.read(List.class, inputMessage);
@@ -243,7 +243,7 @@ public class MappingJackson2HttpMessageConverterTests {
 				"\"string\":\"Foo\"," +
 				"\"bool\":true," +
 				"\"fraction\":42.0}]";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "json"));
 
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
@@ -275,7 +275,7 @@ public class MappingJackson2HttpMessageConverterTests {
 				"\"string\":\"Foo\"," +
 				"\"bool\":true," +
 				"\"fraction\":42.0}]";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "json"));
 
 		MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
@@ -468,7 +468,7 @@ public class MappingJackson2HttpMessageConverterTests {
 	@Test
 	public void readWithNoDefaultConstructor() throws Exception {
 		String body = "{\"property1\":\"foo\",\"property2\":\"bar\"}";
-		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes("UTF-8"));
+		MockHttpInputMessage inputMessage = new MockHttpInputMessage(body.getBytes(StandardCharsets.UTF_8));
 		inputMessage.getHeaders().setContentType(new MediaType("application", "json"));
 		try {
 			converter.read(BeanWithNoDefaultConstructor.class, inputMessage);

@@ -84,9 +84,9 @@ public class AutoProxyLazyInitTests {
 	}
 
 
-	public static interface MyBean {
+	public interface MyBean {
 
-		public String doIt();
+		String doIt();
 	}
 
 

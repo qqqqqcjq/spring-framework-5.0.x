@@ -135,8 +135,8 @@ public class GenericTypeResolverTests {
 				x = entry.getValue();
 			}
 		}
-		assertThat(t, equalTo((Type) Integer.class));
-		assertThat(x, equalTo((Type) Long.class));
+		assertThat(t, equalTo(Integer.class));
+		assertThat(x, equalTo(Long.class));
 	}
 
 	@Test  // SPR-11030
@@ -156,14 +156,14 @@ public class GenericTypeResolverTests {
 		MethodParameter methodParameter = MethodParameter.forExecutable(
 				WithArrayBase.class.getDeclaredMethod("array", Object[].class), 0);
 		Class<?> resolved = GenericTypeResolver.resolveParameterType(methodParameter, WithArray.class);
-		assertThat(resolved, equalTo((Class<?>) Object[].class));
+		assertThat(resolved, equalTo(Object[].class));
 	}
 
 	@Test  // SPR-11044
 	public void getGenericsOnArrayFromReturnCannotBeResolved() throws Exception {
 		Class<?> resolved = GenericTypeResolver.resolveReturnType(
 				WithArrayBase.class.getDeclaredMethod("array", Object[].class), WithArray.class);
-		assertThat(resolved, equalTo((Class<?>) Object[].class));
+		assertThat(resolved, equalTo(Object[].class));
 	}
 
 	@Test  // SPR-11763

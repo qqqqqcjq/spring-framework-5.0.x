@@ -18,6 +18,7 @@ package org.springframework.mock.web;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -111,7 +112,7 @@ public class MockHttpServletRequestTests {
 	@Test
 	public void setContentAndGetContentAsStringWithExplicitCharacterEncoding() throws IOException {
 		String palindrome = "ablE was I ere I saw Elba";
-		byte[] bytes = palindrome.getBytes("UTF-16");
+		byte[] bytes = palindrome.getBytes(StandardCharsets.UTF_16);
 		request.setCharacterEncoding("UTF-16");
 		request.setContent(bytes);
 		assertEquals(bytes.length, request.getContentLength());

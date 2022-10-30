@@ -193,7 +193,7 @@ public class SimpleMessageListenerContainerTests {
 		messageConsumer.sendMessage(message);
 
 		if (!failure.isEmpty()) {
-			fail(failure.iterator().next().toString());
+			fail(failure.iterator().next());
 		}
 
 		verify(connection).setExceptionListener(this.container);

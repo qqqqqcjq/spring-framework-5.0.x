@@ -145,9 +145,9 @@ task schemaZip(type: Zip) {
 			"XSDs for deployment at https://springframework.org/schema."
 	duplicatesStrategy 'exclude'
 	moduleProjects.each { subproject ->
-		def Properties schemas = new Properties();
+        Properties schemas = new Properties()
 
-		subproject.sourceSets.main.resources.find {
+        subproject.sourceSets.main.resources.find {
 			(it.path.endsWith("META-INF/spring.schemas") || it.path.endsWith("META-INF\\spring.schemas"))
 		}?.withInputStream { schemas.load(it) }
 
@@ -173,7 +173,7 @@ task distZip(type: Zip, dependsOn: [docsZip, schemaZip]) {
 	description = "Builds -${classifier} archive, containing all jars and docs, " +
 			"suitable for community download page."
 
-	ext.baseDir = "${baseName}-${project.version}";
+	ext.baseDir = "${baseName}-${project.version}"
 
 	from("src/docs/dist") {
 		include "readme.txt"

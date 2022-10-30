@@ -1790,7 +1790,7 @@ public class SpelCompilationCoverageTests extends AbstractExpressionTests {
 		Expression expression = parser.parseExpression("data['my-key'] != 'my-value'");
 
 		Map<String, String> data = new HashMap<>();
-		data.put("my-key", new String("my-value"));
+		data.put("my-key", "my-value");
 		StandardEvaluationContext context = new StandardEvaluationContext(new MyContext(data));
 		assertFalse(expression.getValue(context, Boolean.class));
 		assertCanCompile(expression);
@@ -1798,7 +1798,7 @@ public class SpelCompilationCoverageTests extends AbstractExpressionTests {
 		assertFalse(expression.getValue(context, Boolean.class));
 
 		List<String> ls = new ArrayList<String>();
-		ls.add(new String("foo"));
+		ls.add("foo");
 		context = new StandardEvaluationContext(ls);
 		expression = parse("get(0) != 'foo'");
 		assertFalse(expression.getValue(context, Boolean.class));
@@ -1846,7 +1846,7 @@ public class SpelCompilationCoverageTests extends AbstractExpressionTests {
 
 
 		List<String> ls = new ArrayList<String>();
-		ls.add(new String("foo"));
+		ls.add("foo");
 		StandardEvaluationContext context = new StandardEvaluationContext(ls);
 		expression = parse("get(0) == 'foo'");
 		assertTrue(expression.getValue(context, Boolean.class));
@@ -5859,7 +5859,7 @@ public class SpelCompilationCoverageTests extends AbstractExpressionTests {
 		public Obj3(int... params) {
 			StringBuilder b = new StringBuilder();
 			for (int param: params) {
-				b.append(Integer.toString(param));
+				b.append(param);
 			}
 			output = b.toString();
 		}
@@ -5868,10 +5868,10 @@ public class SpelCompilationCoverageTests extends AbstractExpressionTests {
 			StringBuilder b = new StringBuilder();
 			b.append(s);
 			b.append(":");
-			b.append(Float.toString(f));
+			b.append(f);
 			b.append(":");
 			for (int param: ints) {
-				b.append(Integer.toString(param));
+				b.append(param);
 			}
 			output = b.toString();
 		}
@@ -5885,7 +5885,7 @@ public class SpelCompilationCoverageTests extends AbstractExpressionTests {
 		public Obj4(int[] params) {
 			StringBuilder b = new StringBuilder();
 			for (int param: params) {
-				b.append(Integer.toString(param));
+				b.append(param);
 			}
 			output = b.toString();
 		}

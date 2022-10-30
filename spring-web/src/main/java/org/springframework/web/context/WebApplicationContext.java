@@ -42,7 +42,8 @@ import org.springframework.lang.Nullable;
  * @since January 19, 2001
  * @see ServletContextAware#setServletContext
  */
-//直接继承自ApplicationContext,增加了web应用程序相关的属性和方法定义，比如定义了web程序特有的bean的作用域，以及获取ServletContext的方法定义getServletContext()
+//直接继承自ApplicationContext,增加了web应用程序相关的属性和方法定义，
+//比如定义了web程序特有的bean的作用域，以及获取ServletContext的方法定义getServletContext()
 public interface WebApplicationContext extends ApplicationContext {
 
 	/**
@@ -100,6 +101,7 @@ public interface WebApplicationContext extends ApplicationContext {
 
 	/**
 	 * Return the standard Servlet API ServletContext for this application.
+     * 返回此应用程序的标准Servlet API ServletContext
 	 */
 	@Nullable
 	ServletContext getServletContext();

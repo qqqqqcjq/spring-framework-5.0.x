@@ -282,7 +282,7 @@ public class StandaloneMockMvcBuilder extends AbstractMockMvcBuilder<StandaloneM
 	 * View instance only -- e.g. rendering generated content (JSON, XML, Atom).
 	 */
 	public StandaloneMockMvcBuilder setSingleView(View view) {
-		this.viewResolvers = Collections.<ViewResolver>singletonList(new StaticViewResolver(view));
+		this.viewResolvers = Collections.singletonList(new StaticViewResolver(view));
 		return this;
 	}
 

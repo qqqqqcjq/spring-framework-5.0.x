@@ -125,7 +125,7 @@ final class ByteBufferConverter implements ConditionalGenericConverter {
 		// Extra cast necessary for compiling on JDK 9 plus running on JDK 8, since
 		// otherwise the overridden ByteBuffer-returning rewind method would be chosen
 		// which isn't available on JDK 8.
-		return ((Buffer) byteBuffer).rewind();
+		return byteBuffer.rewind();
 	}
 
 }

@@ -374,7 +374,7 @@ public class HttpHeadersTests {
 
 	@Test  // SPR-11917
 	public void getAllowEmptySet() {
-		headers.setAllow(Collections.<HttpMethod> emptySet());
+		headers.setAllow(Collections.emptySet());
 		assertThat(headers.getAllow(), Matchers.emptyCollectionOf(HttpMethod.class));
 	}
 

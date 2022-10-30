@@ -39,7 +39,7 @@ public class SimpleMessageConverterTests {
 
 	@Test
 	public void toMessageWithPayloadAndHeaders() {
-		MessageHeaders headers = new MessageHeaders(Collections.<String, Object>singletonMap("foo", "bar"));
+		MessageHeaders headers = new MessageHeaders(Collections.singletonMap("foo", "bar"));
 		Message<?> message = this.converter.toMessage("payload", headers);
 
 		assertEquals("payload", message.getPayload());

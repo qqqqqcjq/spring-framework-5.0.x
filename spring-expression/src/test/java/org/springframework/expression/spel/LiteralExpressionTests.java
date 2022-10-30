@@ -98,7 +98,7 @@ public class LiteralExpressionTests {
 		if (!(value instanceof String)) {
 			fail("Result was not a string, it was of type " + value.getClass() + "  (value=" + value + ")");
 		}
-		if (!((String) value).equals(expectedString)) {
+		if (!value.equals(expectedString)) {
 			fail("Did not get expected result.  Should have been '" + expectedString + "' but was '" + value + "'");
 		}
 	}

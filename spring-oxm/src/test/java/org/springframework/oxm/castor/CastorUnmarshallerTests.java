@@ -19,6 +19,7 @@ package org.springframework.oxm.castor;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicReference;
 import javax.xml.transform.sax.SAXSource;
 import javax.xml.transform.stream.StreamSource;
@@ -89,7 +90,7 @@ public class CastorUnmarshallerTests extends AbstractUnmarshallerTests<CastorMar
 		CastorMarshaller unmarshaller = new CastorMarshaller();
 		unmarshaller.setTargetClasses(Flights.class);
 		unmarshaller.afterPropertiesSet();
-		StreamSource source = new StreamSource(new ByteArrayInputStream(INPUT_STRING.getBytes("UTF-8")));
+		StreamSource source = new StreamSource(new ByteArrayInputStream(INPUT_STRING.getBytes(StandardCharsets.UTF_8)));
 		Object flights = unmarshaller.unmarshal(source);
 		testFlights(flights);
 	}

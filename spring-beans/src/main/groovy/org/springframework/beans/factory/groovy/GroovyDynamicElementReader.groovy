@@ -40,24 +40,24 @@ class GroovyDynamicElementReader extends GroovyObjectSupport {
 
 	private final GroovyBeanDefinitionWrapper beanDefinition
 
-	protected final boolean decorating;
+	protected final boolean decorating
 
 	private boolean callAfterInvocation = true
 
 
-	public GroovyDynamicElementReader(String namespace, Map<String, String> namespaceMap,
-			BeanDefinitionParserDelegate delegate, GroovyBeanDefinitionWrapper beanDefinition, boolean decorating) {
-		super();
-		this.rootNamespace = namespace
+    GroovyDynamicElementReader(String namespace, Map<String, String> namespaceMap,
+                               BeanDefinitionParserDelegate delegate, GroovyBeanDefinitionWrapper beanDefinition, boolean decorating) {
+		super()
+        this.rootNamespace = namespace
 		this.xmlNamespaces = namespaceMap
 		this.delegate = delegate
-		this.beanDefinition = beanDefinition;
-		this.decorating = decorating;
-	}
+		this.beanDefinition = beanDefinition
+        this.decorating = decorating
+    }
 
 
 	@Override
-	public Object invokeMethod(String name, Object args) {
+    Object invokeMethod(String name, Object args) {
 		if (name.equals("doCall")) {
 			def callable = args[0]
 			callable.resolveStrategy = Closure.DELEGATE_FIRST
@@ -72,8 +72,8 @@ class GroovyDynamicElementReader extends GroovyObjectSupport {
 		}
 
 		else {
-			StreamingMarkupBuilder builder = new StreamingMarkupBuilder();
-			def myNamespace = this.rootNamespace
+			StreamingMarkupBuilder builder = new StreamingMarkupBuilder()
+            def myNamespace = this.rootNamespace
 			def myNamespaces = this.xmlNamespaces
 
 			def callable = {
@@ -96,8 +96,8 @@ class GroovyDynamicElementReader extends GroovyObjectSupport {
 			Element element = this.delegate.readerContext.readDocumentFromString(sw.toString()).documentElement
 			this.delegate.initDefaults(element)
 			if (this.decorating) {
-				BeanDefinitionHolder holder = this.beanDefinition.beanDefinitionHolder;
-				holder = this.delegate.decorateIfRequired(element, holder, null)
+				BeanDefinitionHolder holder = this.beanDefinition.beanDefinitionHolder
+                holder = this.delegate.decorateIfRequired(element, holder, null)
 				this.beanDefinition.setBeanDefinitionHolder(holder)
 			}
 			else {

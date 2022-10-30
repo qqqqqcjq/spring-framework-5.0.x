@@ -517,18 +517,13 @@ public abstract class ClassUtils {
 		}
 		if (lhsType.isPrimitive()) {
 			Class<?> resolvedPrimitive = primitiveWrapperTypeMap.get(rhsType);
-			if (lhsType == resolvedPrimitive) {
-				return true;
-			}
+            return lhsType == resolvedPrimitive;
 		}
 		else {
 			Class<?> resolvedWrapper = primitiveTypeToWrapperMap.get(rhsType);
-			if (resolvedWrapper != null && lhsType.isAssignableFrom(resolvedWrapper)) {
-				return true;
-			}
+            return resolvedWrapper != null && lhsType.isAssignableFrom(resolvedWrapper);
 		}
-		return false;
-	}
+    }
 
 	/**
 	 * Determine if the given type is assignable from the given value,

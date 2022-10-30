@@ -80,7 +80,7 @@ public class DefaultContentTypeResolverTests {
 
 	@Test
 	public void resolveNoContentTypeHeader() {
-		MessageHeaders headers = new MessageHeaders(Collections.<String, Object>emptyMap());
+		MessageHeaders headers = new MessageHeaders(Collections.emptyMap());
 
 		assertNull(this.resolver.resolve(headers));
 	}
@@ -88,7 +88,7 @@ public class DefaultContentTypeResolverTests {
 	@Test
 	public void resolveDefaultMimeType() {
 		this.resolver.setDefaultMimeType(MimeTypeUtils.APPLICATION_JSON);
-		MessageHeaders headers = new MessageHeaders(Collections.<String, Object>emptyMap());
+		MessageHeaders headers = new MessageHeaders(Collections.emptyMap());
 
 		assertEquals(MimeTypeUtils.APPLICATION_JSON, this.resolver.resolve(headers));
 	}

@@ -55,6 +55,8 @@ import org.springframework.util.ReflectionUtils;
  * @author Juergen Hoeller
  * @since 4.0
  */
+//里面都是静态方法，所以也没有实现类
+//内部实用程序类，可用于获取{@link java.lang.reflect.Type}的{@link Serializable}变体。
 abstract class SerializableTypeWrapper {
 
 	private static final Class<?>[] SUPPORTED_SERIALIZABLE_TYPES = {
@@ -175,6 +177,7 @@ abstract class SerializableTypeWrapper {
 	 * A {@link Serializable} interface providing access to a {@link Type}.
 	 */
 	@SuppressWarnings("serial")
+    //xxxProvider， xxx的供应者，通过xxxProvider可以获取xxx以及该xxx的相关信息
 	interface TypeProvider extends Serializable {
 
 		/**
@@ -188,6 +191,7 @@ abstract class SerializableTypeWrapper {
 		 * <p>The default implementations returns {@code null}.
 		 */
 		@Nullable
+        //比如Type是一个Field的Type类型，那个这个getSource就可以返回这个Field
 		default Object getSource() {
 			return null;
 		}

@@ -129,7 +129,7 @@ public class ConnectorServerFactoryBeanTests extends AbstractMBeanServerTests {
 		}
 	}
 
-	private void checkServerConnection(MBeanServer hostedServer) throws IOException, MalformedURLException {
+	private void checkServerConnection(MBeanServer hostedServer) throws IOException {
 		// Try to connect using client.
 		JMXServiceURL serviceURL = new JMXServiceURL(ConnectorServerFactoryBean.DEFAULT_SERVICE_URL);
 		JMXConnector connector = JMXConnectorFactory.connect(serviceURL);

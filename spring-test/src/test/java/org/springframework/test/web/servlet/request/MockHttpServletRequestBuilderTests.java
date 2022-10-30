@@ -340,7 +340,7 @@ public class MockHttpServletRequestBuilderTests {
 
 	@Test
 	public void body() throws IOException {
-		byte[] body = "Hello World".getBytes("UTF-8");
+		byte[] body = "Hello World".getBytes(StandardCharsets.UTF_8);
 		this.builder.content(body);
 
 		MockHttpServletRequest request = this.builder.buildRequest(this.servletContext);

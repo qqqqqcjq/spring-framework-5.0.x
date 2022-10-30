@@ -19,7 +19,6 @@ package org.springframework.beans;
 import org.springframework.lang.Nullable;
 
 /**
- * 包含一个或者多个PropertyValue对象
  * Holder containing one or more {@link PropertyValue} objects,
  * typically comprising one update for a specific target bean.
  *
@@ -28,6 +27,7 @@ import org.springframework.lang.Nullable;
  * @since 13 May 2001
  * @see PropertyValue
  */
+//包含一个或者多个PropertyValue对象
 public interface PropertyValues {
 
 	/**

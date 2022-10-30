@@ -16,6 +16,7 @@
 
 package org.springframework.web.servlet.resource;
 
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -101,7 +102,7 @@ public class AppCacheManifestTransformerTests {
 		Resource resource = new ClassPathResource("test/test.appcache", getClass());
 		Resource result = this.transformer.transform(this.request, resource, this.chain);
 		byte[] bytes = FileCopyUtils.copyToByteArray(result.getInputStream());
-		String content = new String(bytes, "UTF-8");
+		String content = new String(bytes, StandardCharsets.UTF_8);
 
 		assertThat("should rewrite resource links", content,
 				Matchers.containsString("/static/foo-e36d2e05253c6c7085a91522ce43a0b4.css"));

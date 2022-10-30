@@ -263,7 +263,7 @@ public class StompDecoder {
 		int index = inString.indexOf('\\');
 
 		while (index >= 0) {
-			sb.append(inString.substring(pos, index));
+			sb.append(inString, pos, index);
 			if (index + 1 >= inString.length()) {
 				throw new StompConversionException("Illegal escape sequence at index " + index + ": " + inString);
 			}
@@ -352,7 +352,7 @@ public class StompDecoder {
 				}
 			}
 			// Explicit cast for compatibility with covariant return type on JDK 9's ByteBuffer
-			((Buffer) byteBuffer).position(byteBuffer.position() - 1);
+			byteBuffer.position(byteBuffer.position() - 1);
 		}
 		return false;
 	}

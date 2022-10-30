@@ -346,7 +346,7 @@ public class AnnotationMetadataTests {
 			AnnotationAttributes specialAttrs = (AnnotationAttributes) metadata.getAnnotationAttributes(
 				SpecialAttr.class.getName(), true);
 			assertThat(specialAttrs.size(), is(6));
-			assertThat(specialAttrs.get("clazz"), is((Object) String.class.getName()));
+			assertThat(specialAttrs.get("clazz"), is(String.class.getName()));
 			assertThat(specialAttrs.getString("clazz"), is(String.class.getName()));
 
 			AnnotationAttributes nestedAnno = specialAttrs.getAnnotation("nestedAnno");
@@ -384,7 +384,7 @@ public class AnnotationMetadataTests {
 
 	// -------------------------------------------------------------------------
 
-	public static enum SomeEnum {
+	public enum SomeEnum {
 		LABEL1, LABEL2, DEFAULT
 	}
 

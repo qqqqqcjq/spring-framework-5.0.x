@@ -71,7 +71,7 @@ public class ConcurrentWebSocketSessionDecoratorTests {
 		final ConcurrentWebSocketSessionDecorator concurrentSession =
 				new ConcurrentWebSocketSessionDecorator(blockingSession, 10 * 1000, 1024);
 
-		Executors.newSingleThreadExecutor().submit((Runnable) () -> {
+		Executors.newSingleThreadExecutor().submit(() -> {
 			TextMessage message = new TextMessage("slow message");
 			try {
 				concurrentSession.sendMessage(message);
@@ -111,7 +111,7 @@ public class ConcurrentWebSocketSessionDecoratorTests {
 		final ConcurrentWebSocketSessionDecorator concurrentSession =
 				new ConcurrentWebSocketSessionDecorator(blockingSession, sendTimeLimit, bufferSizeLimit);
 
-		Executors.newSingleThreadExecutor().submit((Runnable) () -> {
+		Executors.newSingleThreadExecutor().submit(() -> {
 			TextMessage message = new TextMessage("slow message");
 			try {
 				concurrentSession.sendMessage(message);
@@ -153,7 +153,7 @@ public class ConcurrentWebSocketSessionDecoratorTests {
 		final ConcurrentWebSocketSessionDecorator concurrentSession =
 				new ConcurrentWebSocketSessionDecorator(blockingSession, sendTimeLimit, bufferSizeLimit);
 
-		Executors.newSingleThreadExecutor().submit((Runnable) () -> {
+		Executors.newSingleThreadExecutor().submit(() -> {
 			TextMessage message = new TextMessage("slow message");
 			try {
 				concurrentSession.sendMessage(message);
@@ -216,7 +216,7 @@ public class ConcurrentWebSocketSessionDecoratorTests {
 		final ConcurrentWebSocketSessionDecorator concurrentSession =
 				new ConcurrentWebSocketSessionDecorator(blockingSession, sendTimeLimit, bufferSizeLimit);
 
-		Executors.newSingleThreadExecutor().submit((Runnable) () -> {
+		Executors.newSingleThreadExecutor().submit(() -> {
 			TextMessage message = new TextMessage("slow message");
 			try {
 				concurrentSession.sendMessage(message);

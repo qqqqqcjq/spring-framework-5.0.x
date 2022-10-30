@@ -167,7 +167,10 @@ public abstract class BeanUtils {
 		try {
 			// 设置构造方法为可访问
 			ReflectionUtils.makeAccessible(ctor);
-			//反射创建对象
+			//反射创建对象,
+            // java语言生成的字节码使用ctor.newInstance(args)实例化，
+            // Kotlin语言生成的字节码使用KotlinDelegate.instantiateClass(ctor, args)实例化
+            // java和Kotlin虽然都是字节码，但是语言规范还是有区别的，就像两个人是有相同的遗传基因，但是他们行为却不同
 			return (KotlinDetector.isKotlinType(ctor.getDeclaringClass()) ?
 					KotlinDelegate.instantiateClass(ctor, args) : ctor.newInstance(args));
 		}
@@ -200,9 +203,7 @@ public abstract class BeanUtils {
 		Assert.notNull(clazz, "Class must not be null");
 		if (KotlinDetector.isKotlinType(clazz)) {
 			Constructor<T> kotlinPrimaryConstructor = KotlinDelegate.findPrimaryConstructor(clazz);
-			if (kotlinPrimaryConstructor != null) {
-				return kotlinPrimaryConstructor;
-			}
+            return kotlinPrimaryConstructor;
 		}
 		return null;
 	}

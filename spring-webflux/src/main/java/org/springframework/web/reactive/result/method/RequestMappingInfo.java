@@ -204,7 +204,7 @@ public final class RequestMappingInfo implements RequestCondition<RequestMapping
 			return this.name;
 		}
 		else {
-			return (other.name != null ? other.name : null);
+			return (other.name);
 		}
 	}
 
@@ -275,11 +275,8 @@ public final class RequestMappingInfo implements RequestCondition<RequestMapping
 			return result;
 		}
 		result = this.customConditionHolder.compareTo(other.customConditionHolder, exchange);
-		if (result != 0) {
-			return result;
-		}
-		return 0;
-	}
+        return result;
+    }
 
 	@Override
 	public boolean equals(Object other) {

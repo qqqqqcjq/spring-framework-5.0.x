@@ -109,8 +109,8 @@ public class ThisAndTargetSelectionOnlyPointcutsAtAspectJTests {
 		assertEquals(1, counter.atAnnotationMethodAnnotationCounter);
 	}
 
-	public static interface TestInterface {
-		public void doIt();
+	public interface TestInterface {
+		void doIt();
 	}
 
 	public static class TestImpl implements TestInterface {
@@ -120,7 +120,7 @@ public class ThisAndTargetSelectionOnlyPointcutsAtAspectJTests {
 	}
 
 	@Retention(RetentionPolicy.RUNTIME)
-	public static @interface TestAnnotation {
+	public @interface TestAnnotation {
 
 	}
 

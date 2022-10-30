@@ -120,12 +120,12 @@ public class ViewResolverTests {
 		View view = vr.resolveViewName("example1", Locale.getDefault());
 		assertEquals("Correct view class", JstlView.class, view.getClass());
 		assertEquals("Correct URL", "example1", ((InternalResourceView) view).getUrl());
-		assertEquals("Correct textContentType", "myContentType", ((InternalResourceView) view).getContentType());
+		assertEquals("Correct textContentType", "myContentType", view.getContentType());
 
 		view = vr.resolveViewName("example2", Locale.getDefault());
 		assertEquals("Correct view class", JstlView.class, view.getClass());
 		assertEquals("Correct URL", "example2", ((InternalResourceView) view).getUrl());
-		assertEquals("Correct textContentType", "myContentType", ((InternalResourceView) view).getContentType());
+		assertEquals("Correct textContentType", "myContentType", view.getContentType());
 
 		HttpServletRequest request = new MockHttpServletRequest(wac.getServletContext());
 		HttpServletResponse response = new MockHttpServletResponse();
@@ -273,7 +273,7 @@ public class ViewResolverTests {
 		Map map = new HashMap();
 		map.put("key2", new Integer(2));
 		vr.setAttributesMap(map);
-		vr.setExposedContextBeanNames(new String[] {"myBean2"});
+		vr.setExposedContextBeanNames("myBean2");
 		vr.setApplicationContext(wac);
 
 		MockHttpServletRequest request = new MockHttpServletRequest(sc) {

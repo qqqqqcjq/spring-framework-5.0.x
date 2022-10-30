@@ -93,11 +93,8 @@ public class Spr11202Tests {
 
 		@Override
 		public boolean matches(ConditionContext context, AnnotatedTypeMetadata metadata) {
-			if (context.getBeanFactory().getBeanNamesForAnnotation(Bar.class).length > 0) {
-				return false;
-			}
-			return true;
-		}
+            return context.getBeanFactory().getBeanNamesForAnnotation(Bar.class).length <= 0;
+        }
 	}
 
 

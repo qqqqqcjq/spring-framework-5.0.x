@@ -395,7 +395,7 @@ public class DefaultConversionServiceTests {
 		conversionService.convert(new String[]{"1", "2", "3"}, AbstractList.class);
 	}
 
-	public static enum FooEnum {
+	public enum FooEnum {
 		BAR, BAZ
 	}
 

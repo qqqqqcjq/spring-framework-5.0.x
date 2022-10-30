@@ -266,7 +266,7 @@ public class HandlerMethodMappingTests {
 
 		@Override
 		protected Set<String> getMappingPathPatterns(String key) {
-			return (this.pathMatcher.isPattern(key) ? Collections.<String>emptySet() : Collections.singleton(key));
+			return (this.pathMatcher.isPattern(key) ? Collections.emptySet() : Collections.singleton(key));
 		}
 
 		@Override

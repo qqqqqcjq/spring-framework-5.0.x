@@ -71,10 +71,10 @@ public abstract class AbstractRowMapperTests {
 	}
 
 
-	protected enum MockType {ONE, TWO, THREE};
+	protected enum MockType {ONE, TWO, THREE}
 
 
-	protected static class Mock {
+    protected static class Mock {
 
 		private Connection connection;
 

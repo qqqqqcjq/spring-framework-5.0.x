@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
@@ -246,7 +247,7 @@ public class CommonsMultipartResolverTests {
 		binder.bind(request);
 		assertEquals(new String(file1a.getBytes()), mtb2.getField1()[0]);
 		assertEquals(new String(file1b.getBytes()), mtb2.getField1()[1]);
-		assertEquals(new String(file2.getBytes(), "UTF-16"), mtb2.getField2());
+		assertEquals(new String(file2.getBytes(), StandardCharsets.UTF_16), mtb2.getField2());
 
 		resolver.cleanupMultipart(request);
 		assertTrue(((MockFileItem) file1a.getFileItem()).deleted);

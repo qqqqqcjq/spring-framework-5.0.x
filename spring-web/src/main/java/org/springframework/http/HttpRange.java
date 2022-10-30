@@ -158,7 +158,7 @@ public abstract class HttpRange {
 		if (dashIdx > 0) {
 			long firstPos = Long.parseLong(range.substring(0, dashIdx));
 			if (dashIdx < range.length() - 1) {
-				Long lastPos = Long.parseLong(range.substring(dashIdx + 1, range.length()));
+				Long lastPos = Long.parseLong(range.substring(dashIdx + 1));
 				return new ByteRange(firstPos, lastPos);
 			}
 			else {

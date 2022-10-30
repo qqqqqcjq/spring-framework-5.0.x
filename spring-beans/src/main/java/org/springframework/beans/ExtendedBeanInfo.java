@@ -209,7 +209,7 @@ class ExtendedBeanInfo implements BeanInfo {
 	}
 
 	private String propertyNameFor(Method method) {
-		return Introspector.decapitalize(method.getName().substring(3, method.getName().length()));
+		return Introspector.decapitalize(method.getName().substring(3));
 	}
 
 

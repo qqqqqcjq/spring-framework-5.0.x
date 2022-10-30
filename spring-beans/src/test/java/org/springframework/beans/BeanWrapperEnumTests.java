@@ -184,8 +184,8 @@ public class BeanWrapperEnumTests {
 
 	enum NonPublicEnum {
 
-		VALUE_1, VALUE_2;
-	}
+		VALUE_1, VALUE_2
+    }
 
 
 	static class NonPublicEnumHolder {

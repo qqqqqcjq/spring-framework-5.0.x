@@ -13,4 +13,6 @@ public class BeanMethodPVS {
 
     @Autowired
     IndexDao indexDao;
+
+
 }

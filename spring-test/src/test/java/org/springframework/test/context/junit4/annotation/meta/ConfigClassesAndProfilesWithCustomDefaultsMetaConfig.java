@@ -43,7 +43,7 @@ public @interface ConfigClassesAndProfilesWithCustomDefaultsMetaConfig {
 
 	@Configuration
 	@Profile("dev")
-	static class DevConfig {
+    class DevConfig {
 
 		@Bean
 		public String foo() {
@@ -53,7 +53,7 @@ public @interface ConfigClassesAndProfilesWithCustomDefaultsMetaConfig {
 
 	@Configuration
 	@Profile("prod")
-	static class ProductionConfig {
+    class ProductionConfig {
 
 		@Bean
 		public String foo() {

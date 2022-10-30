@@ -156,7 +156,7 @@ public class RequestPartIntegrationTests {
 	@Test  // SPR-13319
 	public void standardMultipartResolverWithEncodedFileName() throws Exception {
 		byte[] boundary = MimeTypeUtils.generateMultipartBoundary();
-		String boundaryText = new String(boundary, "US-ASCII");
+		String boundaryText = new String(boundary, StandardCharsets.US_ASCII);
 		Map<String, String> params = Collections.singletonMap("boundary", boundaryText);
 
 		String content =

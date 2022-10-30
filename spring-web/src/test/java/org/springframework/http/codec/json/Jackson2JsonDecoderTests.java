@@ -293,7 +293,7 @@ public class Jackson2JsonDecoderTests extends AbstractDataBufferAllocatingTestCa
 
 		@Override
 		public TestObject deserialize(JsonParser p,
-				DeserializationContext ctxt) throws IOException, JsonProcessingException {
+				DeserializationContext ctxt) throws IOException {
 			JsonNode node = p.readValueAsTree();
 			TestObject result = new TestObject();
 			result.setTest(node.get("test").asInt());

@@ -11,8 +11,6 @@
 
        xmlns:aop="http://www.springframework.org/schema/aop"
 >
-    <context:component-scan base-package="com.luban.springioc">
-    </context:component-scan>
 
     <!--web 环境中 ioc 容器测试scoped-proxy  =============begin ==================-->
     <!-- 将一个HTTP Session bean 暴露为一个代理bean -->

@@ -52,7 +52,7 @@ public class WebAsyncManagerTests {
 		this.asyncManager.setTaskExecutor(new SyncTaskExecutor());
 		this.asyncWebRequest = mock(AsyncWebRequest.class);
 		this.asyncManager.setAsyncWebRequest(this.asyncWebRequest);
-		verify(this.asyncWebRequest).addCompletionHandler((Runnable) notNull());
+		verify(this.asyncWebRequest).addCompletionHandler(notNull());
 		reset(this.asyncWebRequest);
 	}
 

@@ -1164,11 +1164,11 @@ public abstract class AbstractPropertyAccessorTests {
 
 		Object[] array = new Object[] {"1", "2"};
 		accessor.setPropertyValue("object", array);
-		assertThat(target.getObject(), equalTo((Object) array));
+		assertThat(target.getObject(), equalTo(array));
 
 		array = new Object[] {"1"};
 		accessor.setPropertyValue("object", array);
-		assertThat(target.getObject(), equalTo((Object) array));
+		assertThat(target.getObject(), equalTo(array));
 	}
 
 

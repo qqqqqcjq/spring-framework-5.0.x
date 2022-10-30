@@ -19,13 +19,15 @@ package org.springframework.beans;
 import org.springframework.lang.Nullable;
 
 /**
- * 顶层接口， 定义了一个getSource()方法，返回此元数据元素的配置源
+ *
  * Interface to be implemented by bean metadata elements
  * that carry a configuration source object.
  *
  * @author Juergen Hoeller
  * @since 2.0
  */
+
+//顶层接口， 定义了一个getSource()方法，返回此元数据元素的配置源
 public interface BeanMetadataElement {
 
 	/**

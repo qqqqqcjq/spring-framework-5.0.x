@@ -17,6 +17,7 @@
 package org.springframework.http.client;
 
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Locale;
 
@@ -87,7 +88,7 @@ public abstract class AbstractHttpRequestFactoryTestCase extends AbstractMockWeb
 		request.getHeaders().add(headerName, headerValue1);
 		String headerValue2 = "value2";
 		request.getHeaders().add(headerName, headerValue2);
-		final byte[] body = "Hello World".getBytes("UTF-8");
+		final byte[] body = "Hello World".getBytes(StandardCharsets.UTF_8);
 		request.getHeaders().setContentLength(body.length);
 
 		if (request instanceof StreamingHttpOutputMessage) {
@@ -116,7 +117,7 @@ public abstract class AbstractHttpRequestFactoryTestCase extends AbstractMockWeb
 	public void multipleWrites() throws Exception {
 		ClientHttpRequest request = factory.createRequest(new URI(baseUrl + "/echo"), HttpMethod.POST);
 
-		final byte[] body = "Hello World".getBytes("UTF-8");
+		final byte[] body = "Hello World".getBytes(StandardCharsets.UTF_8);
 		if (request instanceof StreamingHttpOutputMessage) {
 			StreamingHttpOutputMessage streamingRequest = (StreamingHttpOutputMessage) request;
 			streamingRequest.setBody(outputStream -> {
@@ -138,7 +139,7 @@ public abstract class AbstractHttpRequestFactoryTestCase extends AbstractMockWeb
 		ClientHttpRequest request = factory.createRequest(new URI(baseUrl + "/echo"), HttpMethod.POST);
 
 		request.getHeaders().add("MyHeader", "value");
-		byte[] body = "Hello World".getBytes("UTF-8");
+		byte[] body = "Hello World".getBytes(StandardCharsets.UTF_8);
 		FileCopyUtils.copy(body, request.getBody());
 
 		ClientHttpResponse response = request.execute();

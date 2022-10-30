@@ -123,7 +123,7 @@ public class ResourceBundleViewResolverTests {
 		rb.setBasename(PROPS_FILE);
 		rb.setCache(getCache());
 		rb.setDefaultParentView("testParent");
-		rb.setLocalesToInitialize(new Locale[] {Locale.ENGLISH, Locale.FRENCH});
+		rb.setLocalesToInitialize(Locale.ENGLISH, Locale.FRENCH);
 		rb.setApplicationContext(wac);
 
 		View v = rb.resolveViewName("debugView", Locale.FRENCH);

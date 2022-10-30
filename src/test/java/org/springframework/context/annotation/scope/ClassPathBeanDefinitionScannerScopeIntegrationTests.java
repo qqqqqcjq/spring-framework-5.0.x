@@ -295,7 +295,7 @@ public class ClassPathBeanDefinitionScannerScopeIntegrationTests {
 	}
 
 
- 	static interface IScopedTestBean {
+ 	interface IScopedTestBean {
 
  		String getName();
 
@@ -320,7 +320,7 @@ public class ClassPathBeanDefinitionScannerScopeIntegrationTests {
 	}
 
 
-	static interface AnotherScopeTestInterface {
+	interface AnotherScopeTestInterface {
 	}
 
 

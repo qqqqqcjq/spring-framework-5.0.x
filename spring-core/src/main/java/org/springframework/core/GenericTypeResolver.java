@@ -31,9 +31,11 @@ import org.springframework.util.ConcurrentReferenceHashMap;
 
 /**
  * Helper class for resolving generic types against type variables.
+ * 用于根据类型变量解析泛型类型的辅助类。
  *
  * <p>Mainly intended for usage within the framework, resolving method
  * parameter types even when they are declared generically.
+ * 主要用于在框架内使用，即使方法参数类型是泛型声明的，也能解析它们。
  *
  * @author Juergen Hoeller
  * @author Rob Harrop
@@ -275,7 +277,7 @@ public abstract class GenericTypeResolver {
 
 
 	@SuppressWarnings({"serial", "rawtypes"})
-	private static class TypeVariableMapVariableResolver implements ResolvableType.VariableResolver {
+	private static class    TypeVariableMapVariableResolver implements ResolvableType.VariableResolver {
 
 		private final Map<TypeVariable, Type> typeVariableMap;
 

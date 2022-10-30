@@ -842,7 +842,7 @@ public class BridgeMethodResolverTests {
 
 	public interface SimpleGenericRepository<T> {
 
-		public Class<T> getPersistentClass();
+		Class<T> getPersistentClass();
 
 		List<T> findByQuery();
 

@@ -41,7 +41,7 @@ package org.springframework.context;
 // 提供一个回调方法initialize(C applicationContext)，这个方法可以对ioc容器进行初始化
 // 在上下文（ConfigurableApplicationContext）刷新（refresh）之前调用。
 // spring framework本身的流程并没有使用到这个接口，因为spring framework本身的ioc流程是完善的，不需要去定制化什么。
-// 这个接口需要使用者去完成调用，Spring boot中使用这个接口对容器进行spring boot定制的初始化
+// 这个接口需要使用者去完成调用，Spring boot/Spring Web中使用这个接口对容器进行spring boot定制的初始化
 public interface ApplicationContextInitializer<C extends ConfigurableApplicationContext> {
 
 	/**

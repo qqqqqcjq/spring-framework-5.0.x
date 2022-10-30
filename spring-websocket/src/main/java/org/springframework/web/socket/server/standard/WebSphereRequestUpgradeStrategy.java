@@ -77,7 +77,7 @@ public class WebSphereRequestUpgradeStrategy extends AbstractStandardUpgradeStra
 
 		StringBuffer requestUrl = request.getRequestURL();
 		String path = request.getRequestURI();  // shouldn't matter
-		Map<String, String> pathParams = Collections.<String, String> emptyMap();
+		Map<String, String> pathParams = Collections.emptyMap();
 
 		ServerEndpointRegistration endpointConfig = new ServerEndpointRegistration(path, endpoint);
 		endpointConfig.setSubprotocols(Collections.singletonList(selectedProtocol));

@@ -397,7 +397,7 @@ public class ContentNegotiatingViewResolverTests {
 		UrlBasedViewResolver urlViewResolver = new InternalResourceViewResolver();
 		urlViewResolver.setApplicationContext(webAppContext);
 		ViewResolver xmlViewResolver = mock(ViewResolver.class);
-		viewResolver.setViewResolvers(Arrays.<ViewResolver>asList(xmlViewResolver, urlViewResolver));
+		viewResolver.setViewResolvers(Arrays.asList(xmlViewResolver, urlViewResolver));
 
 		View xmlView = mock(View.class, "application_xml");
 		View jsonView = mock(View.class, "application_json");

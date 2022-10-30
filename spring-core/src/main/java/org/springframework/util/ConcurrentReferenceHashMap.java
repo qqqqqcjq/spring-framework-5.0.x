@@ -59,6 +59,8 @@ import org.springframework.lang.Nullable;
  * @param <K> the key type
  * @param <V> the value type
  */
+
+//key和value使用SoftrReference<T>或者WeakReference<T>类型的concurentHashMap
 public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implements ConcurrentMap<K, V> {
 
 	private static final int DEFAULT_INITIAL_CAPACITY = 16;
@@ -376,6 +378,9 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
 	 * items are added or removed from the Map. This method can be used to force a purge,
 	 * and is useful when the Map is read frequently but updated less often.
 	 */
+	//删除任何已被垃圾回收且不再被引用的条目。
+    //在正常情况下，当从Map中添加或删除项时，将自动清除垃圾。
+    //此方法可用于强制清除，在频繁读取Map但更新频率较低的情况下非常有用。
 	public void purgeUnreferencedEntries() {
 		for (Segment segment : this.segments) {
 			segment.restructureIfNecessary(false);
@@ -456,6 +461,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
 	/**
 	 * A single segment used to divide the map to allow better concurrent performance.
 	 */
+	//一个单独的段用于划分映射，以实现更好的并发性能。
 	@SuppressWarnings("serial")
 	protected final class Segment extends ReentrantLock {
 
@@ -570,6 +576,7 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
 		 * references that have been garbage collected.
 		 * @param allowResize if resizing is permitted
 		 */
+		//必要时重构底层数据结构。此方法可以增加引用表的大小，并清除已被垃圾回收的任何引用。
 		protected final void restructureIfNecessary(boolean allowResize) {
 			boolean needsResize = (this.count > 0 && this.count >= this.resizeThreshold);
 			Reference<K, V> ref = this.referenceManager.pollForPurge();
@@ -1011,6 +1018,8 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
 	/**
 	 * Internal {@link Reference} implementation for {@link SoftReference}s.
 	 */
+	//SoftReference继承子JDK的java.lang.ref.Reference接口
+    //spring还定义了一个自己的org.springframework.util.ConcurrentReferenceHashMap.Reference接口
 	private static final class SoftEntryReference<K, V> extends SoftReference<Entry<K, V>> implements Reference<K, V> {
 
 		private final int hash;
@@ -1048,6 +1057,8 @@ public class ConcurrentReferenceHashMap<K, V> extends AbstractMap<K, V> implemen
 	/**
 	 * Internal {@link Reference} implementation for {@link WeakReference}s.
 	 */
+    //WeakReference继承子JDK的java.lang.ref.Reference接口
+    //spring还定义了一个自己的org.springframework.util.ConcurrentReferenceHashMap.Reference接口
 	private static final class WeakEntryReference<K, V> extends WeakReference<Entry<K, V>> implements Reference<K, V> {
 
 		private final int hash;

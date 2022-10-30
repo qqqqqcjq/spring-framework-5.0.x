@@ -47,7 +47,7 @@ public class SimpleMappingExceptionResolverTests {
 	@Before
 	public void setUp() throws Exception {
 		exceptionResolver = new SimpleMappingExceptionResolver();
-		handler1 = new String();
+		handler1 = "";
 		handler2 = new Object();
 		request = new MockHttpServletRequest();
 		response = new MockHttpServletResponse();

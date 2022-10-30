@@ -7,5 +7,5 @@ package com.jiaqing.springmvc.testScope;
  */
 
 public interface ISessionBean {
-    public void printId();
+    void printId();
 } 

@@ -97,7 +97,7 @@ public class DefaultHandshakeHandlerTests extends AbstractHttpRequestTests {
 		headers.setSecWebSocketExtensions(Arrays.asList(extension1, extension2));
 
 		WebSocketHandler handler = new TextWebSocketHandler();
-		Map<String, Object> attributes = Collections.<String, Object>emptyMap();
+		Map<String, Object> attributes = Collections.emptyMap();
 		this.handshakeHandler.doHandshake(this.request, this.response, handler, attributes);
 
 		verify(this.upgradeStrategy).upgrade(this.request, this.response, null,
@@ -118,7 +118,7 @@ public class DefaultHandshakeHandlerTests extends AbstractHttpRequestTests {
 		headers.setSecWebSocketProtocol("v11.stomp");
 
 		WebSocketHandler handler = new SubProtocolCapableHandler("v12.stomp", "v11.stomp");
-		Map<String, Object> attributes = Collections.<String, Object>emptyMap();
+		Map<String, Object> attributes = Collections.emptyMap();
 		this.handshakeHandler.doHandshake(this.request, this.response, handler, attributes);
 
 		verify(this.upgradeStrategy).upgrade(this.request, this.response, "v11.stomp",
@@ -139,7 +139,7 @@ public class DefaultHandshakeHandlerTests extends AbstractHttpRequestTests {
 		headers.setSecWebSocketProtocol("v10.stomp");
 
 		WebSocketHandler handler = new SubProtocolCapableHandler("v12.stomp", "v11.stomp");
-		Map<String, Object> attributes = Collections.<String, Object>emptyMap();
+		Map<String, Object> attributes = Collections.emptyMap();
 		this.handshakeHandler.doHandshake(this.request, this.response, handler, attributes);
 
 		verify(this.upgradeStrategy).upgrade(this.request, this.response, null,

@@ -300,7 +300,7 @@ public class SqlQueryTests  {
 			}
 
 			public Customer findCustomer(int id, String name) {
-				return findObject(new Object[] { id, name });
+				return findObject(id, name);
 			}
 		}
 

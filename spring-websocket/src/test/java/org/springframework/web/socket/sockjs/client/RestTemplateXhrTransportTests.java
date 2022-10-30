@@ -122,7 +122,7 @@ public class RestTemplateXhrTransportTests {
 	public void connectFailure() throws Exception {
 		final HttpServerErrorException expected = new HttpServerErrorException(HttpStatus.INTERNAL_SERVER_ERROR);
 		RestOperations restTemplate = mock(RestOperations.class);
-		given(restTemplate.execute((URI) any(), eq(HttpMethod.POST), any(), any())).willThrow(expected);
+		given(restTemplate.execute(any(), eq(HttpMethod.POST), any(), any())).willThrow(expected);
 
 		final CountDownLatch latch = new CountDownLatch(1);
 		connect(restTemplate).addCallback(

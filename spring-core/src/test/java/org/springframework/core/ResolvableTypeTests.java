@@ -102,7 +102,7 @@ public class ResolvableTypeTests {
 	@Test
 	public void forClass() throws Exception {
 		ResolvableType type = ResolvableType.forClass(ExtendsList.class);
-		assertThat(type.getType(), equalTo((Type) ExtendsList.class));
+		assertThat(type.getType(), equalTo(ExtendsList.class));
 		assertThat(type.getRawClass(), equalTo(ExtendsList.class));
 		assertTrue(type.isAssignableFrom(ExtendsList.class));
 		assertFalse(type.isAssignableFrom(ArrayList.class));
@@ -111,7 +111,7 @@ public class ResolvableTypeTests {
 	@Test
 	public void forClassWithNull() throws Exception {
 		ResolvableType type = ResolvableType.forClass(null);
-		assertThat(type.getType(), equalTo((Type) Object.class));
+		assertThat(type.getType(), equalTo(Object.class));
 		assertThat(type.getRawClass(), equalTo(Object.class));
 		assertTrue(type.isAssignableFrom(Object.class));
 		assertTrue(type.isAssignableFrom(String.class));
@@ -120,7 +120,7 @@ public class ResolvableTypeTests {
 	@Test
 	public void forRawClass() throws Exception {
 		ResolvableType type = ResolvableType.forRawClass(ExtendsList.class);
-		assertThat(type.getType(), equalTo((Type) ExtendsList.class));
+		assertThat(type.getType(), equalTo(ExtendsList.class));
 		assertThat(type.getRawClass(), equalTo(ExtendsList.class));
 		assertTrue(type.isAssignableFrom(ExtendsList.class));
 		assertFalse(type.isAssignableFrom(ArrayList.class));
@@ -129,7 +129,7 @@ public class ResolvableTypeTests {
 	@Test
 	public void forRawClassWithNull() throws Exception {
 		ResolvableType type = ResolvableType.forRawClass(null);
-		assertThat(type.getType(), equalTo((Type) Object.class));
+		assertThat(type.getType(), equalTo(Object.class));
 		assertThat(type.getRawClass(), equalTo(Object.class));
 		assertTrue(type.isAssignableFrom(Object.class));
 		assertTrue(type.isAssignableFrom(String.class));
@@ -332,7 +332,7 @@ public class ResolvableTypeTests {
 		ResolvableType type = ResolvableType.forField(field);
 		assertThat(type.isArray(), equalTo(true));
 		assertThat(type.getComponentType().getType(),
-				equalTo((Type) ((Class) field.getGenericType()).getComponentType()));
+				equalTo(((Class) field.getGenericType()).getComponentType()));
 	}
 
 	@Test
@@ -480,21 +480,21 @@ public class ResolvableTypeTests {
 	@Test
 	public void getGeneric() throws Exception {
 		ResolvableType type = ResolvableType.forField(Fields.class.getField("stringList"));
-		assertThat(type.getGeneric().getType(), equalTo((Type) String.class));
+		assertThat(type.getGeneric().getType(), equalTo(String.class));
 	}
 
 	@Test
 	public void getGenericByIndex() throws Exception {
 		ResolvableType type = ResolvableType.forField(Fields.class.getField("stringIntegerMultiValueMap"));
-		assertThat(type.getGeneric(0).getType(), equalTo((Type) String.class));
-		assertThat(type.getGeneric(1).getType(), equalTo((Type) Integer.class));
+		assertThat(type.getGeneric(0).getType(), equalTo(String.class));
+		assertThat(type.getGeneric(1).getType(), equalTo(Integer.class));
 	}
 
 	@Test
 	public void getGenericOfGeneric() throws Exception {
 		ResolvableType type = ResolvableType.forField(Fields.class.getField("stringListList"));
 		assertThat(type.getGeneric().getType().toString(), equalTo("java.util.List<java.lang.String>"));
-		assertThat(type.getGeneric().getGeneric().getType(), equalTo((Type) String.class));
+		assertThat(type.getGeneric().getGeneric().getType(), equalTo(String.class));
 	}
 
 	@Test
@@ -507,7 +507,7 @@ public class ResolvableTypeTests {
 	@Test
 	public void getGenericOfGenericByIndexes() throws Exception {
 		ResolvableType type = ResolvableType.forField(Fields.class.getField("stringListList"));
-		assertThat(type.getGeneric(0, 0).getType(), equalTo((Type) String.class));
+		assertThat(type.getGeneric(0, 0).getType(), equalTo(String.class));
 	}
 
 	@Test
@@ -935,12 +935,12 @@ public class ResolvableTypeTests {
 		Field field = Fields.class.getField("charSequenceList");
 		Method method = Methods.class.getMethod("charSequenceParameter", List.class);
 		MethodParameter methodParameter = MethodParameter.forExecutable(method, 0);
-		assertThat(ResolvableType.forField(basicField).getSource(), equalTo((Object) basicField));
-		assertThat(ResolvableType.forField(field).getSource(), equalTo((Object) field));
-		assertThat(ResolvableType.forMethodParameter(methodParameter).getSource(), equalTo((Object) methodParameter));
-		assertThat(ResolvableType.forMethodParameter(method, 0).getSource(), equalTo((Object) methodParameter));
-		assertThat(ResolvableType.forClass(classType).getSource(), equalTo((Object) classType));
-		assertThat(ResolvableType.forClass(classType).getSuperType().getSource(), equalTo((Object) classType.getGenericSuperclass()));
+		assertThat(ResolvableType.forField(basicField).getSource(), equalTo(basicField));
+		assertThat(ResolvableType.forField(field).getSource(), equalTo(field));
+		assertThat(ResolvableType.forMethodParameter(methodParameter).getSource(), equalTo(methodParameter));
+		assertThat(ResolvableType.forMethodParameter(method, 0).getSource(), equalTo(methodParameter));
+		assertThat(ResolvableType.forClass(classType).getSource(), equalTo(classType));
+		assertThat(ResolvableType.forClass(classType).getSuperType().getSource(), equalTo(classType.getGenericSuperclass()));
 	}
 
 	@Test

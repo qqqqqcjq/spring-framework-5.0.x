@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean id="carFactory" class="testFactoryMethod.CarInstanceFactory">
+        <property name="map">
+            <map>
+                <entry key="4">
+                    <bean class="testFactoryMethod.Car">
+                        <property name="id" value="4"></property>
+                        <property name="name" value="Honda"></property>
+                        <property name="price" value="300000"></property>
+                    </bean>
+                </entry>
+
+                <entry key="6">
+                    <bean class="testFactoryMethod.Car">
+                        <property name="id" value="6"></property>
+                        <property name="name" value="ford"></property>
+                        <property name="price" value="500000"></property>
+                    </bean>
+                </entry>
+            </map>
+        </property>
+    </bean>
+    <bean id="car4" factory-bean="carFactory" factory-method="getCar">
+        <constructor-arg value="4"></constructor-arg>
+    </bean>
+
+    <bean id="car6" factory-bean="carFactory" factory-method="getCar">
+        <constructor-arg value="6"></constructor-arg>
+    </bean>
+
+
+</beans>

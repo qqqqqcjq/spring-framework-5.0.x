@@ -335,7 +335,7 @@ public class ClassPathBeanDefinitionScannerJsr330ScopeIntegrationTests {
 	}
 
 
- 	public static interface IScopedTestBean {
+ 	public interface IScopedTestBean {
 
  		String getName();
 
@@ -366,7 +366,7 @@ public class ClassPathBeanDefinitionScannerJsr330ScopeIntegrationTests {
 	}
 
 
-	public static interface AnotherScopeTestInterface {
+	public interface AnotherScopeTestInterface {
 	}
 
 
@@ -385,14 +385,14 @@ public class ClassPathBeanDefinitionScannerJsr330ScopeIntegrationTests {
 	@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
 	@javax.inject.Scope
-	public static @interface RequestScoped {
+	public @interface RequestScoped {
 	}
 
 
 	@Target({ElementType.FIELD, ElementType.PARAMETER, ElementType.TYPE})
 	@Retention(RetentionPolicy.RUNTIME)
 	@javax.inject.Scope
-	public static @interface SessionScoped {
+	public @interface SessionScoped {
 	}
 
 }

@@ -36,6 +36,8 @@ package org.springframework.beans;
 //PropertyEditorRegistrar里面的方法注册PropertyEditorRegistry
 //PropertyEditorRegistry里面的方法注册PropertyEditor
 //PropertyEditor属性编辑器的主要功能就是将外部的设置值转换为JVM内部的对应类型，所以属性编辑器其实就是一个类型转换器。
+
+//Registrar:登记员     Registry:登记处
 public interface PropertyEditorRegistrar {
 
 	/**

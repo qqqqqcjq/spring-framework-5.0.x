@@ -63,7 +63,7 @@ public abstract class AbstractMessageConverter implements SmartMessageConverter 
 	 */
 	protected AbstractMessageConverter(MimeType supportedMimeType) {
 		Assert.notNull(supportedMimeType, "supportedMimeType is required");
-		this.supportedMimeTypes = Collections.<MimeType>singletonList(supportedMimeType);
+		this.supportedMimeTypes = Collections.singletonList(supportedMimeType);
 	}
 
 	/**

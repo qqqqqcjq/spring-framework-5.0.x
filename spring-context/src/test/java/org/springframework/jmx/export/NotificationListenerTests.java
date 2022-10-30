@@ -115,7 +115,7 @@ public class NotificationListenerTests extends AbstractMBeanServerTests {
 		MBeanExporter exporter = new MBeanExporter();
 		exporter.setServer(server);
 		exporter.setBeans(beans);
-		exporter.setNotificationListeners(new NotificationListenerBean[] { listenerBean });
+		exporter.setNotificationListeners(listenerBean);
 		start(exporter);
 
 		// update the attribute
@@ -143,7 +143,7 @@ public class NotificationListenerTests extends AbstractMBeanServerTests {
 		MBeanExporter exporter = new MBeanExporter();
 		exporter.setServer(server);
 		exporter.setBeans(beans);
-		exporter.setNotificationListeners(new NotificationListenerBean[] { listenerBean });
+		exporter.setNotificationListeners(listenerBean);
 		start(exporter);
 
 		// update the attribute
@@ -182,7 +182,7 @@ public class NotificationListenerTests extends AbstractMBeanServerTests {
 		MBeanExporter exporter = new MBeanExporter();
 		exporter.setServer(server);
 		exporter.setBeans(beans);
-		exporter.setNotificationListeners(new NotificationListenerBean[] { listenerBean });
+		exporter.setNotificationListeners(listenerBean);
 		start(exporter);
 
 		// update the attributes

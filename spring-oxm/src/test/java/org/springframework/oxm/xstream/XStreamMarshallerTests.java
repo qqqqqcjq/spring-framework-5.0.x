@@ -21,6 +21,7 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -145,7 +146,7 @@ public class XStreamMarshallerTests {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		StreamResult result = new StreamResult(os);
 		marshaller.marshal(flight, result);
-		String s = new String(os.toByteArray(), "UTF-8");
+		String s = new String(os.toByteArray(), StandardCharsets.UTF_8);
 		assertThat("Marshaller writes invalid StreamResult", s, isSimilarTo(EXPECTED_STRING));
 	}
 

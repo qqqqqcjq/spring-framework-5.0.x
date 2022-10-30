@@ -373,7 +373,7 @@ public class ContextLoaderUtilsContextHierarchyTests extends AbstractContextConf
 	@ContextConfiguration("foo.xml")
 	@ContextHierarchy(@ContextConfiguration("bar.xml"))
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface ContextConfigurationAndContextHierarchyOnSingleMeta {
+	private @interface ContextConfigurationAndContextHierarchyOnSingleMeta {
 	}
 
 	@ContextConfigurationAndContextHierarchyOnSingleMeta
@@ -550,17 +550,17 @@ public class ContextLoaderUtilsContextHierarchyTests extends AbstractContextConf
 
 	@ContextHierarchy(@ContextConfiguration("A.xml"))
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface ContextHierarchyA {
+	private @interface ContextHierarchyA {
 	}
 
 	@ContextHierarchy(@ContextConfiguration({ "B-one.xml", "B-two.xml" }))
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface ContextHierarchyB {
+	private @interface ContextHierarchyB {
 	}
 
 	@ContextHierarchy(@ContextConfiguration("C.xml"))
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface ContextHierarchyC {
+	private @interface ContextHierarchyC {
 	}
 
 	@ContextHierarchyA
@@ -585,7 +585,7 @@ public class ContextLoaderUtilsContextHierarchyTests extends AbstractContextConf
 
 	@ContextConfiguration
 	@Retention(RetentionPolicy.RUNTIME)
-	private static @interface ContextConfigWithOverrides {
+	private @interface ContextConfigWithOverrides {
 
 		String[] locations() default "A.xml";
 	}

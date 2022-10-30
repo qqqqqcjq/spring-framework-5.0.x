@@ -141,7 +141,7 @@ public class EnableJmsTests extends AbstractJmsAnnotationDrivenTests {
 				EnableJmsHandlerMethodFactoryConfig.class, ValidationBean.class);
 
 		thrown.expect(ListenerExecutionFailedException.class);
-		thrown.expectCause(Is.<MethodArgumentNotValidException>isA(MethodArgumentNotValidException.class));
+		thrown.expectCause(Is.isA(MethodArgumentNotValidException.class));
 		testJmsHandlerMethodFactoryConfiguration(context);
 	}
 

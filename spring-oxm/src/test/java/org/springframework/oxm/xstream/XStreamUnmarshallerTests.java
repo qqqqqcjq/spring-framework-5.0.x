@@ -18,6 +18,7 @@ package org.springframework.oxm.xstream;
 
 import java.io.ByteArrayInputStream;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
@@ -81,7 +82,7 @@ public class XStreamUnmarshallerTests {
 
 	@Test
 	public void unmarshalStreamSourceInputStream() throws Exception {
-		StreamSource source = new StreamSource(new ByteArrayInputStream(INPUT_STRING.getBytes("UTF-8")));
+		StreamSource source = new StreamSource(new ByteArrayInputStream(INPUT_STRING.getBytes(StandardCharsets.UTF_8)));
 		Object flights = unmarshaller.unmarshal(source);
 		testFlight(flights);
 	}

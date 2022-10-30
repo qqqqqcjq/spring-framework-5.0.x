@@ -48,6 +48,7 @@ public interface AutowireCandidateResolver {
 	 * @see org.springframework.beans.factory.config.BeanDefinition#isAutowireCandidate()
 	 */
     //判断给定的bean定义是否允许被依赖注入（bean定义的默认值都是true）
+    //AutowireCandidateResolver的继承类会重写这个方法，用来处理泛型、@Qualifier
 	default boolean isAutowireCandidate(BeanDefinitionHolder bdHolder, DependencyDescriptor descriptor) {
 		return bdHolder.getBeanDefinition().isAutowireCandidate();
 	}

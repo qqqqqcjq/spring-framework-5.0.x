@@ -144,12 +144,12 @@ public class ControllerAdviceBeanTests {
 	static class MarkerClass {}
 
 	@Retention(RetentionPolicy.RUNTIME)
-	static @interface ControllerAnnotation {}
+    @interface ControllerAnnotation {}
 
 	@ControllerAnnotation
 	public static class AnnotatedController {}
 
-	static interface ControllerInterface {}
+	interface ControllerInterface {}
 
 	static class ImplementationController implements ControllerInterface {}
 

@@ -788,7 +788,7 @@ public class RestTemplateTests {
 	@SuppressWarnings("rawtypes")
 	public void exchangeParameterizedType() throws Exception {
 		GenericHttpMessageConverter converter = mock(GenericHttpMessageConverter.class);
-		template.setMessageConverters(Collections.<HttpMessageConverter<?>>singletonList(converter));
+		template.setMessageConverters(Collections.singletonList(converter));
 
 		ParameterizedTypeReference<List<Integer>> intList = new ParameterizedTypeReference<List<Integer>>() {};
 		given(converter.canRead(intList.getType(), null, null)).willReturn(true);

@@ -175,9 +175,7 @@ public class ReloadableResourceBundleMessageSource extends AbstractResourceBased
 		if (getCacheMillis() < 0) {
 			PropertiesHolder propHolder = getMergedProperties(locale);
 			String result = propHolder.getProperty(code);
-			if (result != null) {
-				return result;
-			}
+            return result;
 		}
 		else {
 			for (String basename : getBasenameSet()) {
@@ -204,9 +202,7 @@ public class ReloadableResourceBundleMessageSource extends AbstractResourceBased
 		if (getCacheMillis() < 0) {
 			PropertiesHolder propHolder = getMergedProperties(locale);
 			MessageFormat result = propHolder.getMessageFormat(code, locale);
-			if (result != null) {
-				return result;
-			}
+            return result;
 		}
 		else {
 			for (String basename : getBasenameSet()) {

@@ -307,17 +307,17 @@ public class DirtiesContextTestExecutionListenerTests {
 
 	@DirtiesContext
 	@Retention(RetentionPolicy.RUNTIME)
-	static @interface MetaDirtyAfterMethod {
+    @interface MetaDirtyAfterMethod {
 	}
 
 	@DirtiesContext(classMode = AFTER_EACH_TEST_METHOD)
 	@Retention(RetentionPolicy.RUNTIME)
-	static @interface MetaDirtyAfterEachTestMethod {
+    @interface MetaDirtyAfterEachTestMethod {
 	}
 
 	@DirtiesContext(classMode = AFTER_CLASS)
 	@Retention(RetentionPolicy.RUNTIME)
-	static @interface MetaDirtyAfterClass {
+    @interface MetaDirtyAfterClass {
 	}
 
 	@DirtiesContext(classMode = BEFORE_EACH_TEST_METHOD)
@@ -338,7 +338,7 @@ public class DirtiesContextTestExecutionListenerTests {
 
 	@DirtiesContext
 	@Retention(RetentionPolicy.RUNTIME)
-	static @interface MetaDirtyWithOverrides {
+    @interface MetaDirtyWithOverrides {
 
 		ClassMode classMode() default AFTER_EACH_TEST_METHOD;
 

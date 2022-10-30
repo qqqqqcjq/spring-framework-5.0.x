@@ -263,7 +263,7 @@ public class SimpAnnotationMethodMessageHandlerTests {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void listenableFutureSuccess() {
-		Message emptyMessage = (Message) MessageBuilder.withPayload(new byte[0]).build();
+		Message emptyMessage = MessageBuilder.withPayload(new byte[0]).build();
 		given(this.channel.send(any(Message.class))).willReturn(true);
 		given(this.converter.toMessage(any(), any(MessageHeaders.class))).willReturn(emptyMessage);
 
@@ -283,7 +283,7 @@ public class SimpAnnotationMethodMessageHandlerTests {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void listenableFutureFailure() {
-		Message emptyMessage = (Message) MessageBuilder.withPayload(new byte[0]).build();
+		Message emptyMessage = MessageBuilder.withPayload(new byte[0]).build();
 		given(this.channel.send(any(Message.class))).willReturn(true);
 		given(this.converter.toMessage(any(), any(MessageHeaders.class))).willReturn(emptyMessage);
 
@@ -301,7 +301,7 @@ public class SimpAnnotationMethodMessageHandlerTests {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void completableFutureSuccess() {
-		Message emptyMessage = (Message) MessageBuilder.withPayload(new byte[0]).build();
+		Message emptyMessage = MessageBuilder.withPayload(new byte[0]).build();
 		given(this.channel.send(any(Message.class))).willReturn(true);
 		given(this.converter.toMessage(any(), any(MessageHeaders.class))).willReturn(emptyMessage);
 
@@ -321,7 +321,7 @@ public class SimpAnnotationMethodMessageHandlerTests {
 	@Test
 	@SuppressWarnings("unchecked")
 	public void completableFutureFailure() {
-		Message emptyMessage = (Message) MessageBuilder.withPayload(new byte[0]).build();
+		Message emptyMessage = MessageBuilder.withPayload(new byte[0]).build();
 		given(this.channel.send(any(Message.class))).willReturn(true);
 		given(this.converter.toMessage(any(), any(MessageHeaders.class))).willReturn(emptyMessage);
 

@@ -173,6 +173,7 @@ public class InjectionMetadata {
 		/**
 		 * Either this or {@link #getResourceToInject} needs to be overridden.
 		 */
+		//属性或者set方法注入  (构造方法注入不是这里，实例创建后才会走到这里，构造方法的注入肯定是在创建实例的时候)
 		protected void inject(Object target, @Nullable String requestingBeanName, @Nullable PropertyValues pvs)
 				throws Throwable {
 

@@ -110,11 +110,11 @@ public class BootstrapUtilsTests {
 
 	@BootstrapWith(FooBootstrapper.class)
 	@Retention(RetentionPolicy.RUNTIME)
-	static @interface BootWithFoo {}
+    @interface BootWithFoo {}
 
 	@BootstrapWith(BarBootstrapper.class)
 	@Retention(RetentionPolicy.RUNTIME)
-	static @interface BootWithBar {}
+    @interface BootWithBar {}
 
 	static class NonAnnotatedClass {}
 

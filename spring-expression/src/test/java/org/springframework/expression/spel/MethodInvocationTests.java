@@ -223,7 +223,7 @@ public class MethodInvocationTests extends AbstractExpressionTests {
 
 		// check not called for other types
 		filter.filterCalled = false;
-		context.setRootObject(new String("abc"));
+		context.setRootObject("abc");
 		expr = (SpelExpression) parser.parseExpression("charAt(0)");
 		result = expr.getValue(context, String.class);
 		assertEquals("a", result);

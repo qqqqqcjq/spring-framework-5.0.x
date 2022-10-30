@@ -78,9 +78,9 @@ public class TargetPointcutSelectionTests {
 	}
 
 
-	public static interface TestInterface {
+	public interface TestInterface {
 
-		public void interfaceMethod();
+		void interfaceMethod();
 	}
 
 

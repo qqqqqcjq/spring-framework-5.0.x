@@ -425,14 +425,14 @@ public class CglibProxyTests extends AbstractAopProxyTests implements Serializab
 
 	public enum MyEnum implements MyInterface {
 
-		A, B;
-	}
+		A, B
+    }
 
 
 	public enum MyOtherEnum implements MyInterface {
 
-		C, D;
-	}
+		C, D
+    }
 
 
 	public static class ExceptionThrower {

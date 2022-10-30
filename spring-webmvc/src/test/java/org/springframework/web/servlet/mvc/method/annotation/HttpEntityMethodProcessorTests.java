@@ -18,6 +18,7 @@ package org.springframework.web.servlet.mvc.method.annotation;
 
 import java.io.Serializable;
 import java.lang.reflect.Method;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +94,7 @@ public class HttpEntityMethodProcessorTests {
 	@Test
 	public void resolveArgument() throws Exception {
 		String content = "{\"name\" : \"Jad\"}";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType("application/json");
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -127,7 +128,7 @@ public class HttpEntityMethodProcessorTests {
 	@Test
 	public void resolveGenericArgument() throws Exception {
 		String content = "[{\"name\" : \"Jad\"}, {\"name\" : \"Robert\"}]";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType("application/json");
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();
@@ -150,7 +151,7 @@ public class HttpEntityMethodProcessorTests {
 		MethodParameter methodParam = handlerMethod.getMethodParameters()[0];
 
 		String content = "{\"name\" : \"Jad\"}";
-		this.servletRequest.setContent(content.getBytes("UTF-8"));
+		this.servletRequest.setContent(content.getBytes(StandardCharsets.UTF_8));
 		this.servletRequest.setContentType(MediaType.APPLICATION_JSON_VALUE);
 
 		List<HttpMessageConverter<?>> converters = new ArrayList<>();

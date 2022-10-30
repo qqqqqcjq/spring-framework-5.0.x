@@ -1003,51 +1003,51 @@ class TestScope implements Scope {
 
 	int instanceCount
 
-	public Object remove(String name) {
+    Object remove(String name) {
 		 // do nothing
 	}
 
-	public void registerDestructionCallback(String name, Runnable callback) {
+    void registerDestructionCallback(String name, Runnable callback) {
 	}
 
-	public String getConversationId() {
+    String getConversationId() {
 		return "mock"
 	}
 
-	public Object get(String name, ObjectFactory<?> objectFactory) {
+    Object get(String name, ObjectFactory<?> objectFactory) {
 		instanceCount++
 		objectFactory.getObject()
 	}
 
-	public Object resolveContextualObject(String s) {
-		return null;  // noop
+    Object resolveContextualObject(String s) {
+		return null  // noop
 	}
 }
 
 class BirthdayCardSender {
 	List peopleSentCards = []
 
-	public void onBirthday(AdvisedPerson person) {
+    void onBirthday(AdvisedPerson person) {
  		peopleSentCards << person
 	}
 }
 
 @Component(value = "person")
-public class AdvisedPerson {
-	int age;
-	String name;
+class AdvisedPerson {
+	int age
+    String name
 
-	public void birthday() {
-		++age;
-	}
+    void birthday() {
+		++age
+    }
 }
 
 class SomeClass {
-	public SomeClass(List<SomeOtherClass> soc) {}
+	SomeClass(List<SomeOtherClass> soc) {}
 }
 
 class SomeOtherClass {
-	public SomeOtherClass(File f) {}
+	SomeOtherClass(File f) {}
 }
 
 // a factory bean that takes arguments

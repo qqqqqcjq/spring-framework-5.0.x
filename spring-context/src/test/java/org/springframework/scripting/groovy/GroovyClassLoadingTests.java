@@ -43,14 +43,14 @@ public class GroovyClassLoadingTests {
 
 		context.registerBeanDefinition("testBean", new RootBeanDefinition(class1));
 		Object testBean1 = context.getBean("testBean");
-		Method method1 = class1.getDeclaredMethod("myMethod", new Class<?>[0]);
+		Method method1 = class1.getDeclaredMethod("myMethod");
 		Object result1 = ReflectionUtils.invokeMethod(method1, testBean1);
 		assertEquals("foo", result1);
 
 		context.removeBeanDefinition("testBean");
 		context.registerBeanDefinition("testBean", new RootBeanDefinition(class2));
 		Object testBean2 = context.getBean("testBean");
-		Method method2 = class2.getDeclaredMethod("myMethod", new Class<?>[0]);
+		Method method2 = class2.getDeclaredMethod("myMethod");
 		Object result2 = ReflectionUtils.invokeMethod(method2, testBean2);
 		assertEquals("bar", result2);
 	}

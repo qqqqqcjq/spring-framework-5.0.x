@@ -74,7 +74,7 @@ public class ServletRequestUtilsTests {
 	@Test
 	public void testIntParameters() throws ServletRequestBindingException {
 		MockHttpServletRequest request = new MockHttpServletRequest();
-		request.addParameter("param", new String[] {"1", "2", "3"});
+		request.addParameter("param", "1", "2", "3");
 
 		request.addParameter("param2", "1");
 		request.addParameter("param2", "2");
@@ -138,7 +138,7 @@ public class ServletRequestUtilsTests {
 	@Test
 	public void testLongParameters() throws ServletRequestBindingException {
 		MockHttpServletRequest request = new MockHttpServletRequest();
-		request.setParameter("param", new String[] {"1", "2", "3"});
+		request.setParameter("param", "1", "2", "3");
 
 		request.setParameter("param2", "0");
 		request.setParameter("param2", "1");
@@ -160,7 +160,7 @@ public class ServletRequestUtilsTests {
 			// expected
 		}
 
-		request.setParameter("param2", new String[] {"1", "2"});
+		request.setParameter("param2", "1", "2");
 		values = ServletRequestUtils.getRequiredLongParameters(request, "param2");
 		assertEquals(2, values.length);
 		assertEquals(1, values[0]);
@@ -218,7 +218,7 @@ public class ServletRequestUtilsTests {
 	@Test
 	public void testFloatParameters() throws ServletRequestBindingException {
 		MockHttpServletRequest request = new MockHttpServletRequest();
-		request.addParameter("param", new String[] {"1.5", "2.5", "3"});
+		request.addParameter("param", "1.5", "2.5", "3");
 
 		request.addParameter("param2", "1.5");
 		request.addParameter("param2", "2");
@@ -282,7 +282,7 @@ public class ServletRequestUtilsTests {
 	@Test
 	public void testDoubleParameters() throws ServletRequestBindingException {
 		MockHttpServletRequest request = new MockHttpServletRequest();
-		request.addParameter("param", new String[] {"1.5", "2.5", "3"});
+		request.addParameter("param", "1.5", "2.5", "3");
 
 		request.addParameter("param2", "1.5");
 		request.addParameter("param2", "2");
@@ -341,7 +341,7 @@ public class ServletRequestUtilsTests {
 	@Test
 	public void testBooleanParameters() throws ServletRequestBindingException {
 		MockHttpServletRequest request = new MockHttpServletRequest();
-		request.addParameter("param", new String[] {"true", "yes", "off", "1", "bogus"});
+		request.addParameter("param", "true", "yes", "off", "1", "bogus");
 
 		request.addParameter("param2", "false");
 		request.addParameter("param2", "true");

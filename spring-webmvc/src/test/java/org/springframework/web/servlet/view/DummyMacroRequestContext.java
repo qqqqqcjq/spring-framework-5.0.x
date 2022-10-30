@@ -76,7 +76,7 @@ public class DummyMacroRequestContext {
 	 * @see org.springframework.web.servlet.support.RequestContext#getMessage(String, List)
 	 */
 	public String getMessage(String code, List args) {
-		return ((String) this.messageMap.get(code)) + args.toString();
+		return this.messageMap.get(code) + args.toString();
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class DummyMacroRequestContext {
 	 * @see org.springframework.web.servlet.support.RequestContext#getThemeMessage(String, List)
 	 */
 	public String getThemeMessage(String code, List args) {
-		return ((String) this.themeMessageMap.get(code)) + args.toString();
+		return this.themeMessageMap.get(code) + args.toString();
 	}
 
 	/**

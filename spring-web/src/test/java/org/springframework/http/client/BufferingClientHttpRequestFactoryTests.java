@@ -17,6 +17,7 @@
 package org.springframework.http.client;
 
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 import org.junit.Test;
@@ -43,7 +44,7 @@ public class BufferingClientHttpRequestFactoryTests extends AbstractHttpRequestF
 		request.getHeaders().add(headerName, headerValue1);
 		String headerValue2 = "value2";
 		request.getHeaders().add(headerName, headerValue2);
-		byte[] body = "Hello World".getBytes("UTF-8");
+		byte[] body = "Hello World".getBytes(StandardCharsets.UTF_8);
 		request.getHeaders().setContentLength(body.length);
 		FileCopyUtils.copy(body, request.getBody());
 		ClientHttpResponse response = request.execute();

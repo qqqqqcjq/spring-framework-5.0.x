@@ -42,6 +42,7 @@ public class mvcController {
     public String hello(String name, String password, @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")Date date, HttpServletResponse response, HttpServletRequest request) throws IOException {
         System.out.println(name + " " + password);
         response.addCookie(new Cookie("TOKEN","12345678910"));
+
         request.getInputStream();
         return "/hello";
     }

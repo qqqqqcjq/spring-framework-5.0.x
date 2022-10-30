@@ -79,7 +79,7 @@ public class RdbmsOperationTests {
 		operation.setSql("select * from mytable");
 		operation.setTypes(new int[] { Types.INTEGER });
 		exception.expect(InvalidDataAccessApiUsageException.class);
-		operation.validateParameters((Object[]) null);
+		operation.validateParameters(null);
 	}
 
 	@Test
@@ -87,7 +87,7 @@ public class RdbmsOperationTests {
 		operation.setSql("select * from mytable");
 		operation.setTypes(new int[] { Types.INTEGER });
 		exception.expect(InvalidDataAccessApiUsageException.class);
-		operation.validateNamedParameters((Map<String, String>) null);
+		operation.validateNamedParameters(null);
 	}
 
 	@Test
@@ -159,9 +159,8 @@ public class RdbmsOperationTests {
 		DataSource ds = new DriverManagerDataSource();
 		operation.setDataSource(ds);
 		operation.setSql("select * from mytable where one = ? and two = ?");
-		operation.setParameters(new SqlParameter[] {
-				new SqlParameter("one", Types.NUMERIC),
-				new SqlParameter("two", Types.NUMERIC)});
+		operation.setParameters(new SqlParameter("one", Types.NUMERIC),
+                new SqlParameter("two", Types.NUMERIC));
 		operation.afterPropertiesSet();
 		operation.validateParameters(new Object[] { 1, "2" });
 		assertEquals(2, operation.getDeclaredParameters().size());

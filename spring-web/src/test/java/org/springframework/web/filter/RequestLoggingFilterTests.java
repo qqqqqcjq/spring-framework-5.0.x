@@ -17,6 +17,7 @@
 package org.springframework.web.filter;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
@@ -107,7 +108,7 @@ public class RequestLoggingFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("POST", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] requestBody = "Hello World".getBytes("UTF-8");
+		final byte[] requestBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		request.setContent(requestBody);
 
 		FilterChain filterChain = new FilterChain() {
@@ -134,7 +135,7 @@ public class RequestLoggingFilterTests {
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
 		final String requestBody = "Hello World";
-		request.setContent(requestBody.getBytes("UTF-8"));
+		request.setContent(requestBody.getBytes(StandardCharsets.UTF_8));
 
 		FilterChain filterChain = new FilterChain() {
 			@Override
@@ -160,7 +161,7 @@ public class RequestLoggingFilterTests {
 		final MockHttpServletRequest request = new MockHttpServletRequest("POST", "/hotels");
 		MockHttpServletResponse response = new MockHttpServletResponse();
 
-		final byte[] requestBody = "Hello World".getBytes("UTF-8");
+		final byte[] requestBody = "Hello World".getBytes(StandardCharsets.UTF_8);
 		request.setContent(requestBody);
 
 		FilterChain filterChain = new FilterChain() {
@@ -172,7 +173,7 @@ public class RequestLoggingFilterTests {
 				assertArrayEquals(requestBody, buf);
 				ContentCachingRequestWrapper wrapper =
 						WebUtils.getNativeRequest(filterRequest, ContentCachingRequestWrapper.class);
-				assertArrayEquals("Hel".getBytes("UTF-8"), wrapper.getContentAsByteArray());
+				assertArrayEquals("Hel".getBytes(StandardCharsets.UTF_8), wrapper.getContentAsByteArray());
 			}
 		};
 

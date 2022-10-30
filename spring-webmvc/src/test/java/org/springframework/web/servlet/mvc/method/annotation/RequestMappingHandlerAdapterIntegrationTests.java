@@ -19,6 +19,7 @@ package org.springframework.web.servlet.mvc.method.annotation;
 import java.awt.Color;
 import java.lang.reflect.Method;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -161,7 +162,7 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 		request.addParameter("paramByConvention", "paramByConventionValue");
 		request.addParameter("age", "25");
 		request.setCookies(new Cookie("cookie", "99"));
-		request.setContent("Hello World".getBytes("UTF-8"));
+		request.setContent("Hello World".getBytes(StandardCharsets.UTF_8));
 		request.setUserPrincipal(new User());
 		request.setContextPath("/contextPath");
 		request.setServletPath("/main");
@@ -227,14 +228,14 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 
 		request.setMethod("POST");
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
-		request.setContent("Hello Server".getBytes("UTF-8"));
+		request.setContent("Hello Server".getBytes(StandardCharsets.UTF_8));
 
 		HandlerMethod handlerMethod = handlerMethod("handleRequestBody", parameterTypes);
 
 		ModelAndView mav = handlerAdapter.handle(request, response, handlerMethod);
 
 		assertNull(mav);
-		assertEquals("Handled requestBody=[Hello Server]", new String(response.getContentAsByteArray(), "UTF-8"));
+		assertEquals("Handled requestBody=[Hello Server]", new String(response.getContentAsByteArray(), StandardCharsets.UTF_8));
 		assertEquals(HttpStatus.ACCEPTED.value(), response.getStatus());
 	}
 
@@ -243,14 +244,14 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 		Class<?>[] parameterTypes = new Class<?>[] {TestBean.class, Errors.class};
 
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
-		request.setContent("Hello Server".getBytes("UTF-8"));
+		request.setContent("Hello Server".getBytes(StandardCharsets.UTF_8));
 
 		HandlerMethod handlerMethod = handlerMethod("handleAndValidateRequestBody", parameterTypes);
 
 		ModelAndView mav = handlerAdapter.handle(request, response, handlerMethod);
 
 		assertNull(mav);
-		assertEquals("Error count [1]", new String(response.getContentAsByteArray(), "UTF-8"));
+		assertEquals("Error count [1]", new String(response.getContentAsByteArray(), StandardCharsets.UTF_8));
 		assertEquals(HttpStatus.ACCEPTED.value(), response.getStatus());
 	}
 
@@ -259,7 +260,7 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 		Class<?>[] parameterTypes = new Class<?>[] {HttpEntity.class};
 
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
-		request.setContent("Hello Server".getBytes("UTF-8"));
+		request.setContent("Hello Server".getBytes(StandardCharsets.UTF_8));
 
 		HandlerMethod handlerMethod = handlerMethod("handleHttpEntity", parameterTypes);
 
@@ -267,7 +268,7 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 
 		assertNull(mav);
 		assertEquals(HttpStatus.ACCEPTED.value(), response.getStatus());
-		assertEquals("Handled requestBody=[Hello Server]", new String(response.getContentAsByteArray(), "UTF-8"));
+		assertEquals("Handled requestBody=[Hello Server]", new String(response.getContentAsByteArray(), StandardCharsets.UTF_8));
 		assertEquals("headerValue", response.getHeader("header"));
 		// set because of @SesstionAttributes
 		assertEquals("no-store", response.getHeader("Cache-Control"));
@@ -278,21 +279,21 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 	public void handleHttpEntityWithCacheControl() throws Exception {
 		Class<?>[] parameterTypes = new Class<?>[] {HttpEntity.class};
 		request.addHeader("Content-Type", "text/plain; charset=utf-8");
-		request.setContent("Hello Server".getBytes("UTF-8"));
+		request.setContent("Hello Server".getBytes(StandardCharsets.UTF_8));
 
 		HandlerMethod handlerMethod = handlerMethod("handleHttpEntityWithCacheControl", parameterTypes);
 		ModelAndView mav = handlerAdapter.handle(request, response, handlerMethod);
 
 		assertNull(mav);
 		assertEquals(HttpStatus.OK.value(), response.getStatus());
-		assertEquals("Handled requestBody=[Hello Server]", new String(response.getContentAsByteArray(), "UTF-8"));
+		assertEquals("Handled requestBody=[Hello Server]", new String(response.getContentAsByteArray(), StandardCharsets.UTF_8));
 		assertThat(response.getHeaderValues("Cache-Control"), Matchers.contains("max-age=3600"));
 	}
 
 	@Test
 	public void handleRequestPart() throws Exception {
 		MockMultipartHttpServletRequest multipartRequest = new MockMultipartHttpServletRequest();
-		multipartRequest.addFile(new MockMultipartFile("requestPart", "", "text/plain", "content".getBytes("UTF-8")));
+		multipartRequest.addFile(new MockMultipartFile("requestPart", "", "text/plain", "content".getBytes(StandardCharsets.UTF_8)));
 
 		HandlerMethod handlerMethod = handlerMethod("handleRequestPart", String.class, Model.class);
 		ModelAndView mav = handlerAdapter.handle(multipartRequest, response, handlerMethod);
@@ -304,7 +305,7 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 	@Test
 	public void handleAndValidateRequestPart() throws Exception {
 		MockMultipartHttpServletRequest multipartRequest = new MockMultipartHttpServletRequest();
-		multipartRequest.addFile(new MockMultipartFile("requestPart", "", "text/plain", "content".getBytes("UTF-8")));
+		multipartRequest.addFile(new MockMultipartFile("requestPart", "", "text/plain", "content".getBytes(StandardCharsets.UTF_8)));
 
 		HandlerMethod handlerMethod = handlerMethod("handleAndValidateRequestPart", String.class, Errors.class, Model.class);
 		ModelAndView mav = handlerAdapter.handle(multipartRequest, response, handlerMethod);
@@ -391,7 +392,7 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 		@ResponseStatus(HttpStatus.ACCEPTED)
 		@ResponseBody
 		public String handleRequestBody(@RequestBody byte[] bytes) throws Exception {
-			String requestBody = new String(bytes, "UTF-8");
+			String requestBody = new String(bytes, StandardCharsets.UTF_8);
 			return "Handled requestBody=[" + requestBody + "]";
 		}
 
@@ -402,14 +403,14 @@ public class RequestMappingHandlerAdapterIntegrationTests {
 		}
 
 		public ResponseEntity<String> handleHttpEntity(HttpEntity<byte[]> httpEntity) throws Exception {
-			String responseBody = "Handled requestBody=[" + new String(httpEntity.getBody(), "UTF-8") + "]";
+			String responseBody = "Handled requestBody=[" + new String(httpEntity.getBody(), StandardCharsets.UTF_8) + "]";
 			return ResponseEntity.accepted()
 					.header("header", "headerValue")
 					.body(responseBody);
 		}
 
 		public ResponseEntity<String> handleHttpEntityWithCacheControl(HttpEntity<byte[]> httpEntity) throws Exception {
-			String responseBody = "Handled requestBody=[" + new String(httpEntity.getBody(), "UTF-8") + "]";
+			String responseBody = "Handled requestBody=[" + new String(httpEntity.getBody(), StandardCharsets.UTF_8) + "]";
 			return ResponseEntity.ok().cacheControl(CacheControl.maxAge(1, TimeUnit.HOURS)).body(responseBody);
 		}
 

@@ -54,7 +54,7 @@ public class XmlWebApplicationContextTests extends AbstractApplicationContextTes
 		root.getEnvironment().addActiveProfile("rootProfile1");
 		MockServletContext sc = new MockServletContext("");
 		root.setServletContext(sc);
-		root.setConfigLocations(new String[] {"/org/springframework/web/context/WEB-INF/applicationContext.xml"});
+		root.setConfigLocations("/org/springframework/web/context/WEB-INF/applicationContext.xml");
 		root.addBeanFactoryPostProcessor(new BeanFactoryPostProcessor() {
 			@Override
 			public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) {
@@ -79,7 +79,7 @@ public class XmlWebApplicationContextTests extends AbstractApplicationContextTes
 		wac.setParent(root);
 		wac.setServletContext(sc);
 		wac.setNamespace("test-servlet");
-		wac.setConfigLocations(new String[] {"/org/springframework/web/context/WEB-INF/test-servlet.xml"});
+		wac.setConfigLocations("/org/springframework/web/context/WEB-INF/test-servlet.xml");
 		wac.refresh();
 		return wac;
 	}
@@ -119,7 +119,7 @@ public class XmlWebApplicationContextTests extends AbstractApplicationContextTes
 		wac.setParent(root);
 		wac.setServletContext(sc);
 		wac.setNamespace("testNamespace");
-		wac.setConfigLocations(new String[] {"/org/springframework/web/context/WEB-INF/test-servlet.xml"});
+		wac.setConfigLocations("/org/springframework/web/context/WEB-INF/test-servlet.xml");
 		wac.refresh();
 		try {
 			wac.getMessage("someMessage", null, Locale.getDefault());

@@ -36,6 +36,7 @@ import javax.xml.transform.stax.StAXResult;
 import javax.xml.transform.stream.StreamResult;
 import java.io.ByteArrayOutputStream;
 import java.io.StringWriter;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -124,7 +125,7 @@ public abstract class AbstractMarshallerTests<M extends Marshaller> {
 		ByteArrayOutputStream os = new ByteArrayOutputStream();
 		StreamResult result = new StreamResult(os);
 		marshaller.marshal(flights, result);
-		assertThat("Marshaller writes invalid StreamResult", new String(os.toByteArray(), "UTF-8"),
+		assertThat("Marshaller writes invalid StreamResult", new String(os.toByteArray(), StandardCharsets.UTF_8),
 				isSimilarTo(EXPECTED_STRING));
 	}
 

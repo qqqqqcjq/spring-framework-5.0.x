@@ -54,7 +54,7 @@ abstract class AbstractContextConfigurationUtilsTests {
 	static final String[] EMPTY_STRING_ARRAY = new String[0];
 
 	static final Set<Class<? extends ApplicationContextInitializer<?>>>
-			EMPTY_INITIALIZER_CLASSES = Collections.<Class<? extends ApplicationContextInitializer<?>>> emptySet();
+			EMPTY_INITIALIZER_CLASSES = Collections.emptySet();
 
 
 	MergedContextConfiguration buildMergedContextConfiguration(Class<?> testClass) {
@@ -134,14 +134,14 @@ abstract class AbstractContextConfigurationUtilsTests {
 	@ActiveProfiles(profiles = "foo")
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
-	public static @interface MetaLocationsFooConfig {
+	public @interface MetaLocationsFooConfig {
 	}
 
 	@ContextConfiguration
 	@ActiveProfiles
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
-	public static @interface MetaLocationsFooConfigWithOverrides {
+	public @interface MetaLocationsFooConfigWithOverrides {
 
 		String[] locations() default "/foo.xml";
 
@@ -152,7 +152,7 @@ abstract class AbstractContextConfigurationUtilsTests {
 	@ActiveProfiles(profiles = "bar")
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
-	public static @interface MetaLocationsBarConfig {
+	public @interface MetaLocationsBarConfig {
 	}
 
 	@MetaLocationsFooConfig

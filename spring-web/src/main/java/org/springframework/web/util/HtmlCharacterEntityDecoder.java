@@ -94,7 +94,7 @@ class HtmlCharacterEntityDecoder {
 			int skipUntilIndex = (this.nextPotentialReferencePosition != -1 ?
 					this.nextPotentialReferencePosition : this.originalMessage.length());
 			if (skipUntilIndex - this.currentPosition > 3) {
-				this.decodedMessage.append(this.originalMessage.substring(this.currentPosition, skipUntilIndex));
+				this.decodedMessage.append(this.originalMessage, this.currentPosition, skipUntilIndex);
 				this.currentPosition = skipUntilIndex;
 			}
 			else {

@@ -244,7 +244,7 @@ public class QualifierAnnotationAutowireBeanFactoryTests {
 	@Target({ElementType.FIELD, ElementType.PARAMETER})
 	@Retention(RetentionPolicy.RUNTIME)
 	@Qualifier
-	private static @interface TestQualifier {
+	private @interface TestQualifier {
 	}
 
 }

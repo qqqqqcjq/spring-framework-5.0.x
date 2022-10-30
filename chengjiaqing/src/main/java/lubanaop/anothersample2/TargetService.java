@@ -7,5 +7,5 @@ package lubanaop.anothersample2;
  
   
 public interface TargetService {
-    public void service();
+    void service();
 }

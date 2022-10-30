@@ -17,6 +17,7 @@
 package org.springframework.util;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import javax.xml.bind.DatatypeConverter;
 
 import org.junit.Test;
@@ -35,13 +36,13 @@ public class Base64UtilsTests {
 				{-0x4f, 0xa, -0x73, -0x4f, 0x64, -0x20, 0x75, 0x41, 0x5, -0x49, -0x57, -0x65, -0x19, 0x2e, 0x3f, -0x1b};
 		assertArrayEquals(bytes, Base64Utils.decode(Base64Utils.encode(bytes)));
 
-		bytes = "Hello World".getBytes("UTF-8");
+		bytes = "Hello World".getBytes(StandardCharsets.UTF_8);
 		assertArrayEquals(bytes, Base64Utils.decode(Base64Utils.encode(bytes)));
 
-		bytes = "Hello World\r\nSecond Line".getBytes("UTF-8");
+		bytes = "Hello World\r\nSecond Line".getBytes(StandardCharsets.UTF_8);
 		assertArrayEquals(bytes, Base64Utils.decode(Base64Utils.encode(bytes)));
 
-		bytes = "Hello World\r\nSecond Line\r\n".getBytes("UTF-8");
+		bytes = "Hello World\r\nSecond Line\r\n".getBytes(StandardCharsets.UTF_8);
 		assertArrayEquals(bytes, Base64Utils.decode(Base64Utils.encode(bytes)));
 
 		bytes = new byte[] { (byte) 0xfb, (byte) 0xf0 };
@@ -60,17 +61,17 @@ public class Base64UtilsTests {
 		assertArrayEquals(bytes, Base64Utils.decodeFromString(Base64Utils.encodeToString(bytes)));
 		assertArrayEquals(bytes, DatatypeConverter.parseBase64Binary(DatatypeConverter.printBase64Binary(bytes)));
 
-		bytes = "Hello World".getBytes("UTF-8");
+		bytes = "Hello World".getBytes(StandardCharsets.UTF_8);
 		assertEquals(Base64Utils.encodeToString(bytes), DatatypeConverter.printBase64Binary(bytes));
 		assertArrayEquals(bytes, Base64Utils.decodeFromString(Base64Utils.encodeToString(bytes)));
 		assertArrayEquals(bytes, DatatypeConverter.parseBase64Binary(DatatypeConverter.printBase64Binary(bytes)));
 
-		bytes = "Hello World\r\nSecond Line".getBytes("UTF-8");
+		bytes = "Hello World\r\nSecond Line".getBytes(StandardCharsets.UTF_8);
 		assertEquals(Base64Utils.encodeToString(bytes), DatatypeConverter.printBase64Binary(bytes));
 		assertArrayEquals(bytes, Base64Utils.decodeFromString(Base64Utils.encodeToString(bytes)));
 		assertArrayEquals(bytes, DatatypeConverter.parseBase64Binary(DatatypeConverter.printBase64Binary(bytes)));
 
-		bytes = "Hello World\r\nSecond Line\r\n".getBytes("UTF-8");
+		bytes = "Hello World\r\nSecond Line\r\n".getBytes(StandardCharsets.UTF_8);
 		assertEquals(Base64Utils.encodeToString(bytes), DatatypeConverter.printBase64Binary(bytes));
 		assertArrayEquals(bytes, Base64Utils.decodeFromString(Base64Utils.encodeToString(bytes)));
 		assertArrayEquals(bytes, DatatypeConverter.parseBase64Binary(DatatypeConverter.printBase64Binary(bytes)));

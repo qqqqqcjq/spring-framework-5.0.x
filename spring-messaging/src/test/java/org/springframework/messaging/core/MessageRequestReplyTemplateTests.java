@@ -47,7 +47,7 @@ public class MessageRequestReplyTemplateTests {
 	public void setup() {
 		this.template = new TestMessagingTemplate();
 		this.postProcessor = new TestMessagePostProcessor();
-		this.headers = Collections.<String, Object>singletonMap("key", "value");
+		this.headers = Collections.singletonMap("key", "value");
 	}
 
 

@@ -88,7 +88,7 @@ public class SimpMessagingTemplateTests {
 
 	@Test
 	public void convertAndSendWithCustomHeader() {
-		Map<String, Object> headers = Collections.<String, Object>singletonMap("key", "value");
+		Map<String, Object> headers = Collections.singletonMap("key", "value");
 		this.messagingTemplate.convertAndSend("/foo", "data", headers);
 
 		List<Message<byte[]>> messages = this.messageChannel.getMessages();

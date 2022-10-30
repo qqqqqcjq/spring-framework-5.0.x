@@ -331,7 +331,7 @@ public class BeanWrapperGenericsTests {
 	@Test
 	public void testGenericTypeNestingMapOfListOfInteger() throws Exception {
 		Map<String, List<String>> map = new HashMap<>();
-		List<String> list = Arrays.asList(new String[] {"1", "2", "3"});
+		List<String> list = Arrays.asList("1", "2", "3");
 		map.put("testKey", list);
 
 		NestedGenericCollectionBean gb = new NestedGenericCollectionBean();
@@ -362,7 +362,7 @@ public class BeanWrapperGenericsTests {
 	@Test
 	public void testGenericTypeNestingMapOfListOfListOfInteger() throws Exception {
 		Map<String, List<List<String>>> map = new HashMap<>();
-		List<String> list = Arrays.asList(new String[] {"1", "2", "3"});
+		List<String> list = Arrays.asList("1", "2", "3");
 		map.put("testKey", Collections.singletonList(list));
 
 		NestedGenericCollectionBean gb = new NestedGenericCollectionBean();

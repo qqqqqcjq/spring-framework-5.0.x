@@ -45,8 +45,10 @@ import org.springframework.util.StringUtils;
 import static org.springframework.web.context.WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE;
 
 /**
- * Performs the actual initialization work for the root application context.
+ * Performs the actual initialization work for the  root application context.
  * Called by {@link ContextLoaderListener}.
+ *
+ *
  *
  * <p>Looks for a {@link #CONTEXT_CLASS_PARAM "contextClass"} parameter at the
  * {@code web.xml} context-param level to specify the context class type, falling
@@ -85,12 +87,21 @@ import static org.springframework.web.context.WebApplicationContext.ROOT_WEB_APP
  * @see ConfigurableWebApplicationContext
  * @see org.springframework.web.context.support.XmlWebApplicationContext
  */
+
+/**
+ * 执行根应用程序上下文的实际初始化工作。被它的子类ContextLoaderListener调用
+ *
+ * 在{@code web.xml} context-param级别寻找一个{@link #CONTEXT_CLASS_PARAM "contextClass"}参数来指定上下文类类型，
+ * 如果没有找到,则使用XmlWebApplicationContext。
+ * 使用默认的ContextLoader实现，任何指定的上下文类都需要实现{@link ConfigurableWebApplicationContext}接口。
+ */
 public class ContextLoader {
 
 	/**
 	 * Config param for the root WebApplicationContext id,
 	 * to be used as serialization id for the underlying BeanFactory: {@value}
 	 */
+	//root WebApplicationContext id的配置参数
 	public static final String CONTEXT_ID_PARAM = "contextId";
 
 	/**
@@ -136,6 +147,7 @@ public class ContextLoader {
 
 	private static final Properties defaultStrategies;
 
+	//读取ContextLoader.properties文件
 	static {
 		// Load default strategy implementations from properties file.
 		// This is currently strictly internal and not meant to be customized
@@ -259,6 +271,7 @@ public class ContextLoader {
 	 * @see #CONTEXT_CLASS_PARAM
 	 * @see #CONFIG_LOCATION_PARAM
 	 */
+	//使用给定的ServletContext创建WebApplicationContext
 	public WebApplicationContext initWebApplicationContext(ServletContext servletContext) {
 		if (servletContext.getAttribute(ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE) != null) {
 			throw new IllegalStateException(
@@ -269,30 +282,36 @@ public class ContextLoader {
 		Log logger = LogFactory.getLog(ContextLoader.class);
 		servletContext.log("Initializing Spring root WebApplicationContext");
 		if (logger.isInfoEnabled()) {
-			logger.info("Root WebApplicationContext: initialization started");
-		}
+            logger.info("Root WebApplicationContext: initialization started");
+        }
 		long startTime = System.currentTimeMillis();
 
 		try {
 			// Store context in local instance variable, to guarantee that
 			// it is available on ServletContext shutdown.
 			if (this.context == null) {
-				this.context = createWebApplicationContext(servletContext);
+                //创建web容器上下文
+                this.context = createWebApplicationContext(servletContext);
 			}
 			if (this.context instanceof ConfigurableWebApplicationContext) {
 				ConfigurableWebApplicationContext cwac = (ConfigurableWebApplicationContext) this.context;
 				if (!cwac.isActive()) {
 					// The context has not yet been refreshed -> provide services such as
 					// setting the parent context, setting the application context id, etc
+                    // 上下文还没有刷新，提供设置父上下文、设置应用程序上下文id等服务
 					if (cwac.getParent() == null) {
 						// The context instance was injected without an explicit parent ->
 						// determine parent for root web application context, if any.
 						ApplicationContext parent = loadParentContext(servletContext);
 						cwac.setParent(parent);
 					}
+
+					//配置和刷新容器上下文，包括解析xml文件，加载bean，调用beanfactorypostprocessor，beanpostprocesssor等等
 					configureAndRefreshWebApplicationContext(cwac, servletContext);
 				}
 			}
+
+            //把当前的webapplication上下文设置到servlet上下文中。这里的key是WebApplicationContext接口的全限定名
 			servletContext.setAttribute(ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE, this.context);
 
 			ClassLoader ccl = Thread.currentThread().getContextClassLoader();
@@ -338,13 +357,16 @@ public class ContextLoader {
 	 * @return the root WebApplicationContext
 	 * @see ConfigurableWebApplicationContext
 	 */
-	protected WebApplicationContext createWebApplicationContext(ServletContext sc) {
+    //创建web容器上下文
+    protected WebApplicationContext createWebApplicationContext(ServletContext sc) {
 		Class<?> contextClass = determineContextClass(sc);
 		if (!ConfigurableWebApplicationContext.class.isAssignableFrom(contextClass)) {
 			throw new ApplicationContextException("Custom context class [" + contextClass.getName() +
 					"] is not of type [" + ConfigurableWebApplicationContext.class.getName() + "]");
 		}
-		return (ConfigurableWebApplicationContext) BeanUtils.instantiateClass(contextClass);
+        //利用jdk反射，创建上下文实例.实例对象中有一个唯一标识id，
+        //这里的id生成的时机发生在类AbstractApplicationContext的成员变量private String id = ObjectUtils.identityToString(this);
+        return (ConfigurableWebApplicationContext) BeanUtils.instantiateClass(contextClass);
 	}
 
 	/**
@@ -355,8 +377,10 @@ public class ContextLoader {
 	 * @see #CONTEXT_CLASS_PARAM
 	 * @see org.springframework.web.context.support.XmlWebApplicationContext
 	 */
-	protected Class<?> determineContextClass(ServletContext servletContext) {
-		String contextClassName = servletContext.getInitParameter(CONTEXT_CLASS_PARAM);
+    //返回WebApplicationContext接口的实现类。默认返回XmlWebApplicationContext，或者返回指定的实现类
+    protected Class<?> determineContextClass(ServletContext servletContext) {
+        //获取自定义WebApplicationContext上下文实现类。指定实现类的指定方式在web.xml里通过参数contextClass指定
+        String contextClassName = servletContext.getInitParameter(CONTEXT_CLASS_PARAM);
 		if (contextClassName != null) {
 			try {
 				return ClassUtils.forName(contextClassName, ClassUtils.getDefaultClassLoader());
@@ -367,7 +391,8 @@ public class ContextLoader {
 			}
 		}
 		else {
-			contextClassName = defaultStrategies.getProperty(WebApplicationContext.class.getName());
+            //没有指定实现类，默认返回XmlWebApplicationContext实现类。默认实现类配置在classpath下的ContextLoader.properties里
+            contextClassName = defaultStrategies.getProperty(WebApplicationContext.class.getName());
 			try {
 				return ClassUtils.forName(contextClassName, ContextLoader.class.getClassLoader());
 			}
@@ -379,20 +404,24 @@ public class ContextLoader {
 	}
 
 	protected void configureAndRefreshWebApplicationContext(ConfigurableWebApplicationContext wac, ServletContext sc) {
-		if (ObjectUtils.identityToString(wac).equals(wac.getId())) {
+        //设置容器的唯一标识id
+        if (ObjectUtils.identityToString(wac).equals(wac.getId())) {
 			// The application context id is still set to its original default value
 			// -> assign a more useful id based on available information
+            //如果web.xml有， 获取web.xml文件参数contextId配置的容器标识id
 			String idParam = sc.getInitParameter(CONTEXT_ID_PARAM);
 			if (idParam != null) {
 				wac.setId(idParam);
 			}
 			else {
 				// Generate default id...
-				wac.setId(ConfigurableWebApplicationContext.APPLICATION_CONTEXT_ID_PREFIX +
+                // 生成默认的的容器id
+                wac.setId(ConfigurableWebApplicationContext.APPLICATION_CONTEXT_ID_PREFIX +
 						ObjectUtils.getDisplayString(sc.getContextPath()));
 			}
 		}
 
+        //设置ServletContext到容器中
 		wac.setServletContext(sc);
 		String configLocationParam = sc.getInitParameter(CONFIG_LOCATION_PARAM);
 		if (configLocationParam != null) {
@@ -402,11 +431,16 @@ public class ContextLoader {
 		// The wac environment's #initPropertySources will be called in any case when the context
 		// is refreshed; do it eagerly here to ensure servlet property sources are in place for
 		// use in any post-processing or initialization that occurs below prior to #refresh
-		ConfigurableEnvironment env = wac.getEnvironment();
+
+		// 当上下文刷新时，可能会随时使用servlet属性源，要确保servlet属性源在#refresh之前发生的任何后处理或初始化中都可以使用
+        // 所以，在这里我们将servletContext和servletConfig中的属性添加到的environment中
+        ConfigurableEnvironment env = wac.getEnvironment();
 		if (env instanceof ConfigurableWebEnvironment) {
 			((ConfigurableWebEnvironment) env).initPropertySources(sc, null);
 		}
 
+        //通过ApplicationContextInitializer初始化器来实现定制化。
+        //我们可以通过web.xml配置初始化类，多个初始化器可通过@order注解来指定初始化顺序，ServletContext会获取到这些初始化器
 		customizeContext(sc, wac);
 		wac.refresh();
 	}

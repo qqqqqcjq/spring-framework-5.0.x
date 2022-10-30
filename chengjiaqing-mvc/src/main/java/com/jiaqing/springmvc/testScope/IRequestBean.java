@@ -7,5 +7,5 @@ package com.jiaqing.springmvc.testScope;
  */
 
 public interface IRequestBean {
-    public void printId();
+    void printId();
 } 

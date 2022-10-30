@@ -28,7 +28,6 @@ dependencies {
     compile project(':spring-context')
     compile project(':spring-webmvc')
 
-
     // tomcat: 将Tomcat运行时库添加到配置tomcat中: (此处用Spring的build.gradle文件定义的版本)
     tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
             "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"  //tomcat-embed-jasper （内置tocat对Jsp支持的依赖，用于编译Jsp），编译时会把jsp文件转换为_jsp.class

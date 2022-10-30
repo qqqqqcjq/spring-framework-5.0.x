@@ -74,11 +74,11 @@ class PropertyDescriptorUtil {
                 //构建方法的后缀
                 sb.append("set" + propertyName);
                 //构建set方法
-                setMethod = clazz.getDeclaredMethod(sb.toString(), new Class[]{f.getType()});
+                setMethod = clazz.getDeclaredMethod(sb.toString(), f.getType());
                 sb.delete(0, sb.length());
                 sb.append("get" + propertyName);
                 //构建get 方法
-                getMethod = clazz.getDeclaredMethod(sb.toString(), new Class[]{});
+                getMethod = clazz.getDeclaredMethod(sb.toString());
                 //构建一个属性描述器 把对应属性 propertyName 的 get 和 set 方法保存到属性描述器中
                 pd = new PropertyDescriptor(propertyName, getMethod, setMethod);
             }
@@ -94,7 +94,7 @@ class PropertyDescriptorUtil {
         PropertyDescriptor pd = getPropertyDescriptor(clazz, propertyName);//获取 clazz 类型中的 propertyName 的属性描述器
         Method setMethod = pd.getWriteMethod();//从属性描述器中获取 set 方法
         try {
-            setMethod.invoke(obj, new Object[]{value});//调用 set 方法将传入的value值保存属性中去
+            setMethod.invoke(obj, value);//调用 set 方法将传入的value值保存属性中去
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -106,7 +106,7 @@ class PropertyDescriptorUtil {
         Method getMethod = pd.getReadMethod();//从属性描述器中获取 get 方法
         Object value = null;
         try {
-            value = getMethod.invoke(clazz, new Object[]{});//调用方法获取方法的返回值
+            value = getMethod.invoke(clazz);//调用方法获取方法的返回值
         } catch (Exception e) {
             e.printStackTrace();
         }

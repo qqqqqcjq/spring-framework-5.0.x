@@ -46,7 +46,8 @@ import org.springframework.core.AliasRegistry;
  * @since 26.11.2003
  */
 // 定义了注册beanDefinition(例如RootBeanDefinition和ChildBeanDefinition实例)的接口标准。
-// 通常由内部的BeanFactory实现。
+// DefaultListableBeanFactory.registerBeanDefinition完成了这些方法的具体实现，其他的实现都是调用DefaultListableBeanFactory
+// SimpleBeanDefinitionRegistry也简单实现了这些方法，不过一般用于测试spring的功能
 public interface BeanDefinitionRegistry extends AliasRegistry {
 
 	/**
@@ -62,6 +63,7 @@ public interface BeanDefinitionRegistry extends AliasRegistry {
 	 * @see RootBeanDefinition
 	 * @see ChildBeanDefinition
 	 */
+
 	void registerBeanDefinition(String beanName, BeanDefinition beanDefinition)
 			throws BeanDefinitionStoreException;
 

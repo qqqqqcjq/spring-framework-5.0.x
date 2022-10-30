@@ -300,7 +300,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	private MutablePropertyValues propertyValues;
 
 	@Nullable
-    //构造bd时，lookup-method 和 replace-method都信息都会构造成MethodOverrides对象，保存在bd的methodOverrides这个属性里面
+    //构造bd时，lookup-method 和 replace-method的信息都会构造成MethodOverrides对象，保存在bd的methodOverrides这个属性里面
 	private MethodOverrides methodOverrides;
 
 	@Nullable

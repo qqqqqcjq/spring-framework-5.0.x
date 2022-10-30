@@ -122,7 +122,7 @@ public class ResourceBundleMessageSourceTests {
 			pvs.add("alwaysUseMessageFormat", Boolean.TRUE);
 		}
 		Class<?> clazz = reloadable ?
-				(Class<?>) ReloadableResourceBundleMessageSource.class : ResourceBundleMessageSource.class;
+                ReloadableResourceBundleMessageSource.class : ResourceBundleMessageSource.class;
 		ac.registerSingleton("messageSource", clazz, pvs);
 		ac.refresh();
 

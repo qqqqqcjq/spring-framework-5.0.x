@@ -51,7 +51,7 @@ public class MockFilterChainTests {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void constructorNullServlet() {
-		new MockFilterChain((Servlet) null);
+		new MockFilterChain(null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

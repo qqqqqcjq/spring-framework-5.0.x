@@ -18,6 +18,7 @@ package org.springframework.http.converter.json;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
@@ -256,17 +257,17 @@ public class Jackson2ObjectMapperBuilderTests {
 
 		Long timestamp = 1322903730000L;
 		DateTime dateTime = new DateTime(timestamp, DateTimeZone.UTC);
-		assertEquals(timestamp.toString(), new String(objectMapper.writeValueAsBytes(dateTime), "UTF-8"));
+		assertEquals(timestamp.toString(), new String(objectMapper.writeValueAsBytes(dateTime), StandardCharsets.UTF_8));
 
 		Path file = Paths.get("foo");
-		assertTrue(new String(objectMapper.writeValueAsBytes(file), "UTF-8").endsWith("foo\""));
+		assertTrue(new String(objectMapper.writeValueAsBytes(file), StandardCharsets.UTF_8).endsWith("foo\""));
 
 		Optional<String> optional = Optional.of("test");
-		assertEquals("\"test\"", new String(objectMapper.writeValueAsBytes(optional), "UTF-8"));
+		assertEquals("\"test\"", new String(objectMapper.writeValueAsBytes(optional), StandardCharsets.UTF_8));
 
 		// Kotlin module
 		IntRange range = new IntRange(1, 3);
-		assertEquals("{\"start\":1,\"end\":3}", new String(objectMapper.writeValueAsBytes(range), "UTF-8"));
+		assertEquals("{\"start\":1,\"end\":3}", new String(objectMapper.writeValueAsBytes(range), StandardCharsets.UTF_8));
 	}
 
 	@Test  // SPR-12634
@@ -277,8 +278,8 @@ public class Jackson2ObjectMapperBuilderTests {
 				.modulesToInstall(new CustomIntegerModule())
 				.build();
 		DateTime dateTime = new DateTime(1322903730000L, DateTimeZone.UTC);
-		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), "UTF-8"));
-		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), "UTF-8"), containsString("customid"));
+		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), StandardCharsets.UTF_8));
+		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), StandardCharsets.UTF_8), containsString("customid"));
 	}
 
 	@Test  // SPR-12634
@@ -290,8 +291,8 @@ public class Jackson2ObjectMapperBuilderTests {
 				.modulesToInstall(CustomIntegerModule.class)
 				.build();
 		DateTime dateTime = new DateTime(1322903730000L, DateTimeZone.UTC);
-		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), "UTF-8"));
-		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), "UTF-8"), containsString("customid"));
+		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), StandardCharsets.UTF_8));
+		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), StandardCharsets.UTF_8), containsString("customid"));
 	}
 
 	@Test  // SPR-12634
@@ -301,8 +302,8 @@ public class Jackson2ObjectMapperBuilderTests {
 		ObjectMapper objectMapper = Jackson2ObjectMapperBuilder.json()
 				.serializerByType(Integer.class, new CustomIntegerSerializer()).build();
 		DateTime dateTime = new DateTime(1322903730000L, DateTimeZone.UTC);
-		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), "UTF-8"));
-		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), "UTF-8"), containsString("customid"));
+		assertEquals("1322903730000", new String(objectMapper.writeValueAsBytes(dateTime), StandardCharsets.UTF_8));
+		assertThat(new String(objectMapper.writeValueAsBytes(new Integer(4)), StandardCharsets.UTF_8), containsString("customid"));
 	}
 
 

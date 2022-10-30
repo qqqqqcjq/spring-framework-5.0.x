@@ -148,13 +148,13 @@ public class TrickyAspectJPointcutExpressionTests {
 	@Retention(RetentionPolicy.RUNTIME)
 	@Documented
 	@Inherited
-	public static @interface Log {
+	public @interface Log {
 	}
 
 
-	public static interface TestService {
+	public interface TestService {
 
-		public String sayHello();
+		String sayHello();
 	}
 
 

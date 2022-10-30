@@ -177,7 +177,7 @@ public class PeriodicTriggerTests {
 	public void equalsVerification() {
 		PeriodicTrigger trigger1 = new PeriodicTrigger(3000);
 		PeriodicTrigger trigger2 = new PeriodicTrigger(3000);
-		assertFalse(trigger1.equals(new String("not a trigger")));
+		assertFalse(trigger1.equals("not a trigger"));
 		assertFalse(trigger1.equals(null));
 		assertEquals(trigger1, trigger1);
 		assertEquals(trigger2, trigger2);

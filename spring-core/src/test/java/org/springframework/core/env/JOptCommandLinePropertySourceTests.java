@@ -40,7 +40,7 @@ public class JOptCommandLinePropertySourceTests {
 		OptionSet options = parser.parse("--foo=bar");
 
 		PropertySource<?> ps = new JOptCommandLinePropertySource(options);
-		assertThat((String)ps.getProperty("foo"), equalTo("bar"));
+		assertThat(ps.getProperty("foo"), equalTo("bar"));
 	}
 
 	@Test
@@ -51,7 +51,7 @@ public class JOptCommandLinePropertySourceTests {
 
 		PropertySource<?> ps = new JOptCommandLinePropertySource(options);
 		assertThat(ps.containsProperty("foo"), is(true));
-		assertThat((String)ps.getProperty("foo"), equalTo(""));
+		assertThat(ps.getProperty("foo"), equalTo(""));
 	}
 
 	@Test
@@ -64,7 +64,7 @@ public class JOptCommandLinePropertySourceTests {
 		PropertySource<?> ps = new JOptCommandLinePropertySource(options);
 		assertThat(ps.containsProperty("o1"), is(true));
 		assertThat(ps.containsProperty("o2"), is(false));
-		assertThat((String)ps.getProperty("o1"), equalTo(""));
+		assertThat(ps.getProperty("o1"), equalTo(""));
 		assertThat(ps.getProperty("o2"), nullValue());
 	}
 
@@ -170,7 +170,7 @@ public class JOptCommandLinePropertySourceTests {
 		assertThat(ps.getProperty("o1"), equalTo("VAL_1"));
 	}
 
-	public static enum OptionEnum {
-		VAL_1;
-	}
+	public enum OptionEnum {
+		VAL_1
+    }
 }

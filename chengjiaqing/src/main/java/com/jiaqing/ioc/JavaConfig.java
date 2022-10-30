@@ -12,5 +12,5 @@ import org.springframework.context.annotation.ImportResource;
  @Configuration
  @ComponentScan("com")
  @ImportResource("classpath:some_service.xml")
-  public class JavaConfig {
+ public class JavaConfig {
 }

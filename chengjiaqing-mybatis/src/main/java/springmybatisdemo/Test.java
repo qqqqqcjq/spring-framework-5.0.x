@@ -33,7 +33,7 @@ public class Test {
 
         Map<String, Integer> map1 = new HashMap<String, Integer>() {};
         Type type = map1.getClass().getGenericSuperclass();
-        ParameterizedType parameterizedType = ParameterizedType.class.cast(type);
+        ParameterizedType parameterizedType = (ParameterizedType) type;
         for (Type typeArgument : parameterizedType.getActualTypeArguments()) {
             System.out.println(typeArgument.getTypeName());
         }

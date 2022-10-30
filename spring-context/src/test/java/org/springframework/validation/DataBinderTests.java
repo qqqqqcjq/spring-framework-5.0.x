@@ -2044,7 +2044,7 @@ public class DataBinderTests {
 		mpv.add("age", "invalid");
 		binder.bind(mpv);
 		assertEquals("errors.typeMismatch", binder.getBindingResult().getFieldError("age").getCode());
-		assertEquals(512, BeanWrapper.class.cast(binder.getInternalBindingResult().getPropertyAccessor()).getAutoGrowCollectionLimit());
+		assertEquals(512, ((BeanWrapper) binder.getInternalBindingResult().getPropertyAccessor()).getAutoGrowCollectionLimit());
 	}
 
 	@Test // SPR-15009

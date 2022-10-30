@@ -125,7 +125,7 @@ public class CustomizableTraceInterceptorTests {
 
 		MethodInvocation methodInvocation = mock(MethodInvocation.class);
 
-		given(methodInvocation.getMethod()).willReturn(String.class.getMethod("toString", new Class[0]));
+		given(methodInvocation.getMethod()).willReturn(String.class.getMethod("toString"));
 		given(methodInvocation.getThis()).willReturn(this);
 		given(methodInvocation.getArguments()).willReturn(new Object[]{"$ One \\$", new Long(2)});
 		given(methodInvocation.proceed()).willReturn("Hello!");

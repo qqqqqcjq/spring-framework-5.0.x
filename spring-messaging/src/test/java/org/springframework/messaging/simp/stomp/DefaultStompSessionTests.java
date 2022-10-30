@@ -110,7 +110,7 @@ public class DefaultStompSessionTests {
 	@Test // SPR-16844
 	public void afterConnectedWithSpecificVersion() {
 		assertFalse(this.session.isConnected());
-		this.connectHeaders.setAcceptVersion(new String[] {"1.1"});
+		this.connectHeaders.setAcceptVersion("1.1");
 
 		this.session.afterConnected(this.connection);
 

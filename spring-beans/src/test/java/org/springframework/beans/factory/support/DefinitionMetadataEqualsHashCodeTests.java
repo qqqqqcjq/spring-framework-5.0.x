@@ -104,7 +104,7 @@ public class DefinitionMetadataEqualsHashCodeTests {
 		definition.setAutowireMode(AbstractBeanDefinition.AUTOWIRE_BY_TYPE);
 		// definition.getConstructorArgumentValues().addGenericArgumentValue("foo");
 		definition.setDependencyCheck(AbstractBeanDefinition.DEPENDENCY_CHECK_OBJECTS);
-		definition.setDependsOn(new String[] { "foo", "bar" });
+		definition.setDependsOn("foo", "bar");
 		definition.setDestroyMethodName("destroy");
 		definition.setEnforceDestroyMethod(false);
 		definition.setEnforceInitMethod(true);

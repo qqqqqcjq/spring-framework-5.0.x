@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <bean id="myValueCalculator" class="maintest.replacemethod.MyValueCalculator">
+        <!-- arbitrary method replacement -->
+        <replaced-method name="computeValue" replacer="replacementComputeValue">
+            <arg-type>String</arg-type>
+        </replaced-method>
+        <!--使用id为replacementComputeValue(需要实现MethodReplacer接口)的bean的reimplement方法替换当前bean的computeValue方法-->
+    </bean>
+
+    <bean id="replacementComputeValue" class="maintest.replacemethod.ReplacementComputeValue"/>
+
+
+
+</beans>

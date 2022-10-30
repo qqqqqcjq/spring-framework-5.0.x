@@ -85,11 +85,8 @@ public class SimpMessageMappingInfo implements MessageCondition<SimpMessageMappi
 			return result;
 		}
 		result = this.destinationConditions.compareTo(other.destinationConditions, message);
-		if (result != 0) {
-			return result;
-		}
-		return 0;
-	}
+        return result;
+    }
 
 
 	@Override

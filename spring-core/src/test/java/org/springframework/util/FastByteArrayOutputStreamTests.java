@@ -19,6 +19,7 @@ package org.springframework.util;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -41,7 +42,7 @@ public class FastByteArrayOutputStreamTests {
 	@Before
 	public void setUp() throws Exception {
 		this.os = new FastByteArrayOutputStream(INITIAL_CAPACITY);
-		this.helloBytes = "Hello World".getBytes("UTF-8");
+		this.helloBytes = "Hello World".getBytes(StandardCharsets.UTF_8);
 	}
 
 

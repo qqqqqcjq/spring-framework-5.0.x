@@ -128,12 +128,12 @@ enum TokenKind {
 	private final boolean hasPayload;  // is there more to this token than simply the kind
 
 
-	private TokenKind(String tokenString) {
+	TokenKind(String tokenString) {
 		this.tokenChars = tokenString.toCharArray();
 		this.hasPayload = (this.tokenChars.length == 0);
 	}
 
-	private TokenKind() {
+	TokenKind() {
 		this("");
 	}
 

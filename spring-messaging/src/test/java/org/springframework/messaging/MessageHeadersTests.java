@@ -60,7 +60,7 @@ public class MessageHeadersTests {
 
 	@Test
 	public void testTimestampProvidedNullValue() throws Exception {
-		Map<String, Object> input = Collections.<String, Object>singletonMap(MessageHeaders.TIMESTAMP, 1L);
+		Map<String, Object> input = Collections.singletonMap(MessageHeaders.TIMESTAMP, 1L);
 		MessageHeaders headers = new MessageHeaders(input, null, null);
 		assertNotNull(headers.getTimestamp());
 	}
@@ -93,7 +93,7 @@ public class MessageHeadersTests {
 
 	@Test
 	public void testIdProvidedNullValue() {
-		Map<String, Object> input = Collections.<String, Object>singletonMap(MessageHeaders.ID, new UUID(0L, 25L));
+		Map<String, Object> input = Collections.singletonMap(MessageHeaders.ID, new UUID(0L, 25L));
 		MessageHeaders headers = new MessageHeaders(input, null, null);
 		assertNotNull(headers.getId());
 	}

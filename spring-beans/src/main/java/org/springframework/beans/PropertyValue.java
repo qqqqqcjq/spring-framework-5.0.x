@@ -23,7 +23,7 @@ import org.springframework.util.Assert;
 import org.springframework.util.ObjectUtils;
 
 /**
- * bean的一个属性的相关信息封装在PropertyValue中，bean的一个属性的相关信息封装成PropertyValue对象，充分利用面向对象编程
+ *
  * Object to hold information and value for an individual bean property.
  * Using an object here, rather than just storing all properties in
  * a map keyed by property name, allows for more flexibility, and the
@@ -41,6 +41,7 @@ import org.springframework.util.ObjectUtils;
  * @see BeanWrapper
  */
 @SuppressWarnings("serial")
+//bean的一个属性的相关信息封装在PropertyValue中，bean的一个属性的相关信息封装成PropertyValue对象，充分利用面向对象编程
 public class PropertyValue extends BeanMetadataAttributeAccessor implements Serializable {
 
     //bean的属性的名字

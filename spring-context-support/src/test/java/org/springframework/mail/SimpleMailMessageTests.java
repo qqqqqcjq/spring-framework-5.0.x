@@ -44,8 +44,8 @@ public class SimpleMailMessageTests {
 		assertEquals("you@mail.org", messageCopy.getTo()[0]);
 
 		message.setReplyTo("reply@mail.org");
-		message.setCc(new String[]{"he@mail.org", "she@mail.org"});
-		message.setBcc(new String[]{"us@mail.org", "them@mail.org"});
+		message.setCc("he@mail.org", "she@mail.org");
+		message.setBcc("us@mail.org", "them@mail.org");
 		Date sentDate = new Date();
 		message.setSentDate(sentDate);
 		message.setSubject("my subject");
@@ -83,9 +83,9 @@ public class SimpleMailMessageTests {
 	public void testDeepCopyOfStringArrayTypedFieldsOnCopyCtor() throws Exception {
 
 		SimpleMailMessage original = new SimpleMailMessage();
-		original.setTo(new String[]{"fiona@mail.org", "apple@mail.org"});
-		original.setCc(new String[]{"he@mail.org", "she@mail.org"});
-		original.setBcc(new String[]{"us@mail.org", "them@mail.org"});
+		original.setTo("fiona@mail.org", "apple@mail.org");
+		original.setCc("he@mail.org", "she@mail.org");
+		original.setBcc("us@mail.org", "them@mail.org");
 
 		SimpleMailMessage copy = new SimpleMailMessage(original);
 

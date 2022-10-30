@@ -1,0 +1,1237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d685a49f-859f-4739-81e7-f6950a2bd164" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/buildSrc/src/main/groovy/org/springframework/build/gradle/TestSourceSetDependenciesPlugin.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/buildSrc/src/main/groovy/org/springframework/build/gradle/TestSourceSetDependenciesPlugin.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/build/resources/main/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/build/resources/main/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/build/resources/main/springmvc-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/build/resources/main/springmvc-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/java/com/jiaqing/springmvc/mvcController.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/java/com/jiaqing/springmvc/mvcController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/java/com/jiaqing/springmvc/testScope/IRequestBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/java/com/jiaqing/springmvc/testScope/IRequestBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/java/com/jiaqing/springmvc/testScope/ISessionBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/java/com/jiaqing/springmvc/testScope/ISessionBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/resources/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/resources/applicationContext.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/resources/springmvc-servlet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/resources/springmvc-servlet.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/webapp/hello.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mvc/src/main/webapp/hello.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mybatis-tx/src/main/java/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mybatis-tx/src/main/java/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mybatis/src/main/java/springmybatisdemo/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mybatis/src/main/java/springmybatisdemo/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mybatis/src/main/java/springmybatisdemo/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mybatis/src/main/java/springmybatisdemo/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing-mybatis/src/main/java/springmybatisdemo/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing-mybatis/src/main/java/springmybatisdemo/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/SimpleIOC/BeanMethodPVS.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/SimpleIOC/BeanMethodPVS.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/com/jiaqing/ioc/JavaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/com/jiaqing/ioc/JavaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/com/jiaqing/ioc/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/com/jiaqing/ioc/Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/comjiaqing/IndexDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/comjiaqing/IndexDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/javaReflection/TestPropertyDescriptorUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/javaReflection/TestPropertyDescriptorUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/Dao.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/Dao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/anothersample1/AopAspect1.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/anothersample1/AopAspect1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/anothersample1/JavaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/anothersample1/JavaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/anothersample1/TargetClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/anothersample1/TargetClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/anothersample2/TargetService.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/lubanaop/anothersample2/TargetService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/maintest/importselector/aop/or/enable/IndexDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/maintest/importselector/aop/or/enable/IndexDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/simulate_mapperscan/CardDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/simulate_mapperscan/CardDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/simulate_mapperscan/CardDao1.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/simulate_mapperscan/CardDao1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/simulate_mapperscan/Select.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/simulate_mapperscan/Select.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/java/testProxyFactoryBean/ServInter.java" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/java/testProxyFactoryBean/ServInter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chengjiaqing/src/main/resources/some_service.xml" beforeDir="false" afterPath="$PROJECT_DIR$/chengjiaqing/src/main/resources/some_service.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/docs.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/docs.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/main/java/org/springframework/aop/aspectj/AspectJAdviceParameterNameDiscoverer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/main/java/org/springframework/aop/aspectj/AspectJAdviceParameterNameDiscoverer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/main/java/org/springframework/aop/framework/autoproxy/AbstractAutoProxyCreator.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/main/java/org/springframework/aop/framework/autoproxy/AbstractAutoProxyCreator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/aspectj/TrickyAspectJPointcutExpressionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/aspectj/TrickyAspectJPointcutExpressionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/aspectj/annotation/AspectProxyFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/aspectj/annotation/AspectProxyFactoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/framework/IntroductionBenchmarkTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/framework/IntroductionBenchmarkTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/framework/NullPrimitiveTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/framework/NullPrimitiveTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/framework/PrototypeTargetTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/framework/PrototypeTargetTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/interceptor/CustomizableTraceInterceptorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/interceptor/CustomizableTraceInterceptorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/interceptor/PerformanceMonitorInterceptorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/interceptor/PerformanceMonitorInterceptorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/support/DelegatingIntroductionInterceptorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aop/src/test/java/org/springframework/aop/support/DelegatingIntroductionInterceptorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aspects/src/main/java/org/springframework/beans/factory/aspectj/AbstractInterfaceDrivenDependencyInjectionAspect.aj" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aspects/src/main/java/org/springframework/beans/factory/aspectj/AbstractInterfaceDrivenDependencyInjectionAspect.aj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-aspects/src/main/java/org/springframework/cache/aspectj/AnyThrow.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-aspects/src/main/java/org/springframework/cache/aspectj/AnyThrow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/spring-beans.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/spring-beans.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/groovy/org/springframework/beans/factory/groovy/GroovyDynamicElementReader.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/groovy/org/springframework/beans/factory/groovy/GroovyDynamicElementReader.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/BeanMetadataElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/BeanMetadataElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/BeanUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/BeanUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/ExtendedBeanInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/ExtendedBeanInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/MutablePropertyValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/MutablePropertyValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/PropertyEditorRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/PropertyEditorRegistrar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/PropertyEditorRegistrySupport.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/PropertyEditorRegistrySupport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/PropertyValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/PropertyValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/PropertyValues.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/PropertyValues.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/TypeConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/TypeConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/annotation/InjectionMetadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/annotation/InjectionMetadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/AbstractAutowireCapableBeanFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/AbstractBeanDefinition.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/AbstractBeanDefinition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/AutowireCandidateResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/AutowireCandidateResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/BeanDefinitionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/BeanDefinitionRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/CglibSubclassingInstantiationStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/CglibSubclassingInstantiationStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/SimpleBeanDefinitionRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/support/SimpleBeanDefinitionRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/AbstractPropertyAccessorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/AbstractPropertyAccessorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/BeanWrapperEnumTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/BeanWrapperEnumTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/BeanWrapperGenericsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/BeanWrapperGenericsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/DefaultListableBeanFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/DefaultListableBeanFactoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/annotation/CustomAutowireConfigurerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/annotation/CustomAutowireConfigurerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/config/PropertiesFactoryBeanTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/config/PropertiesFactoryBeanTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/config/ServiceLocatorFactoryBeanTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/config/ServiceLocatorFactoryBeanTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/support/DefinitionMetadataEqualsHashCodeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/support/DefinitionMetadataEqualsHashCodeTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/support/QualifierAnnotationAutowireBeanFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/factory/support/QualifierAnnotationAutowireBeanFactoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/support/PagedListHolderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/beans/support/PagedListHolderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/tests/sample/beans/INestedTestBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/tests/sample/beans/INestedTestBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/tests/sample/beans/Pet.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-beans/src/test/java/org/springframework/tests/sample/beans/Pet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context-indexer/src/main/java/org/springframework/context/index/CandidateComponentsIndexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context-indexer/src/main/java/org/springframework/context/index/CandidateComponentsIndexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context-indexer/src/test/java/org/springframework/context/index/Metadata.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context-indexer/src/test/java/org/springframework/context/index/Metadata.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context-support/src/main/java/org/springframework/cache/jcache/interceptor/AbstractFallbackJCacheOperationSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context-support/src/main/java/org/springframework/cache/jcache/interceptor/AbstractFallbackJCacheOperationSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context-support/src/main/java/org/springframework/cache/jcache/interceptor/KeyGeneratorAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context-support/src/main/java/org/springframework/cache/jcache/interceptor/KeyGeneratorAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context-support/src/test/java/org/springframework/mail/SimpleMailMessageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context-support/src/test/java/org/springframework/mail/SimpleMailMessageTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context-support/src/test/java/org/springframework/mail/javamail/ConfigurableMimeFileTypeMapTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context-support/src/test/java/org/springframework/mail/javamail/ConfigurableMimeFileTypeMapTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context-support/src/test/java/org/springframework/mail/javamail/JavaMailSenderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context-support/src/test/java/org/springframework/mail/javamail/JavaMailSenderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context-support/src/test/java/org/springframework/validation/beanvalidation2/ValidatorFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context-support/src/test/java/org/springframework/validation/beanvalidation2/ValidatorFactoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/ApplicationContextInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/ApplicationContextInitializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/AnnotationConfigRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/AnnotationConfigRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/ContextAnnotationAutowireCandidateResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/ContextAnnotationAutowireCandidateResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/EnableLoadTimeWeaving.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/EnableLoadTimeWeaving.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/ImportBeanDefinitionRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/ImportBeanDefinitionRegistrar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/ScopedProxyMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/annotation/ScopedProxyMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/event/SimpleApplicationEventMulticaster.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/event/SimpleApplicationEventMulticaster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/support/AbstractApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/support/AbstractApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/support/ReloadableResourceBundleMessageSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/context/support/ReloadableResourceBundleMessageSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/jmx/support/RegistrationPolicy.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/jmx/support/RegistrationPolicy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/remoting/rmi/RmiInvocationHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/remoting/rmi/RmiInvocationHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/scheduling/config/TaskExecutorFactoryBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/scheduling/config/TaskExecutorFactoryBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/scripting/support/StandardScriptFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/main/java/org/springframework/scripting/support/StandardScriptFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/groovy/org/springframework/context/groovy/GroovyApplicationContextDynamicBeanPropertyTests.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/groovy/org/springframework/context/groovy/GroovyApplicationContextDynamicBeanPropertyTests.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/groovy/org/springframework/context/groovy/GroovyBeanDefinitionReaderTests.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/groovy/org/springframework/context/groovy/GroovyBeanDefinitionReaderTests.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/TargetPointcutSelectionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/TargetPointcutSelectionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/ThisAndTargetSelectionOnlyPointcutsAtAspectJTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/ThisAndTargetSelectionOnlyPointcutsAtAspectJTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/ThisAndTargetSelectionOnlyPointcutsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/ThisAndTargetSelectionOnlyPointcutsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/autoproxy/AspectImplementingInterfaceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/autoproxy/AspectImplementingInterfaceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/generic/GenericBridgeMethodMatchingClassProxyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/generic/GenericBridgeMethodMatchingClassProxyTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/generic/GenericBridgeMethodMatchingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/generic/GenericBridgeMethodMatchingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/generic/GenericParameterMatchingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/aspectj/generic/GenericParameterMatchingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/framework/AbstractAopProxyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/framework/AbstractAopProxyTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/framework/CglibProxyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/framework/CglibProxyTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/framework/JdkDynamicProxyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/aop/framework/JdkDynamicProxyTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/AnnotationBeanNameGeneratorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/AnnotationBeanNameGeneratorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/AnnotationConfigApplicationContextTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/AnnotationConfigApplicationContextTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/AutoProxyLazyInitTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/AutoProxyLazyInitTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/BeanMethodMetadataTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/BeanMethodMetadataTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/Spr11202Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/Spr11202Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/configuration/ImportResourceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/configuration/ImportResourceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/spr8761/Spr8761Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/annotation/spr8761/Spr8761Tests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/support/ResourceBundleMessageSourceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/context/support/ResourceBundleMessageSourceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/access/MBeanClientInterceptorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/access/MBeanClientInterceptorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/MBeanExporterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/MBeanExporterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/NotificationListenerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/NotificationListenerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/NotificationPublisherTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/NotificationPublisherTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/assembler/InterfaceBasedMBeanInfoAssemblerCustomTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/assembler/InterfaceBasedMBeanInfoAssemblerCustomTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/assembler/InterfaceBasedMBeanInfoAssemblerMappedTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/assembler/InterfaceBasedMBeanInfoAssemblerMappedTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/assembler/MethodExclusionMBeanInfoAssemblerComboTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/assembler/MethodExclusionMBeanInfoAssemblerComboTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/assembler/MethodExclusionMBeanInfoAssemblerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/export/assembler/MethodExclusionMBeanInfoAssemblerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/support/ConnectorServerFactoryBeanTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jmx/support/ConnectorServerFactoryBeanTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jndi/JndiTemplateTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/jndi/JndiTemplateTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/scheduling/concurrent/ScheduledExecutorFactoryBeanTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/scheduling/concurrent/ScheduledExecutorFactoryBeanTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/scheduling/support/PeriodicTriggerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/scheduling/support/PeriodicTriggerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/scripting/groovy/GroovyClassLoadingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/scripting/groovy/GroovyClassLoadingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/scripting/groovy/TestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/scripting/groovy/TestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/validation/DataBinderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/java/org/springframework/validation/DataBinderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/beans/factory/xml/test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/beans/factory/xml/test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/context/support/test.properties" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/context/support/test.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/config/TestBean.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/config/TestBean.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/Calculator.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/Calculator.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/CallCounter.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/CallCounter.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/DelegatingCalculator.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/DelegatingCalculator.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/Messenger.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/Messenger.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/MessengerInstance.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/MessengerInstance.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/ScriptBean.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/ScriptBean.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/TestFactoryBean.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/TestFactoryBean.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/groovy-with-xsd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/groovy-with-xsd.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/simple.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/spring-context/src/test/resources/org/springframework/scripting/groovy/simple.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/GenericTypeResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/GenericTypeResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/KotlinDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/KotlinDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/ResolvableType.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/ResolvableType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/SerializableTypeWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/SerializableTypeWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/ConversionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/ConversionService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/converter/ConverterRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/converter/ConverterRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/converter/GenericConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/converter/GenericConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/support/ByteBufferConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/support/ByteBufferConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/support/ConversionUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/support/ConversionUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/support/NumberToNumberConverterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/convert/support/NumberToNumberConverterFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/env/SimpleCommandLineArgsParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/env/SimpleCommandLineArgsParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/io/buffer/DefaultDataBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/core/io/buffer/DefaultDataBuffer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/ClassUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/ClassUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/ConcurrentReferenceHashMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/ConcurrentReferenceHashMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/MimeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/MimeType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/MimeTypeUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/MimeTypeUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/ObjectUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/ObjectUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/StringUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/main/java/org/springframework/util/StringUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/BridgeMethodResolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/BridgeMethodResolverTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/CollectionFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/CollectionFactoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/GenericTypeResolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/GenericTypeResolverTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/ResolvableTypeTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/ResolvableTypeTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/annotation/AnnotatedElementUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/annotation/AnnotatedElementUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/annotation/AnnotationAttributesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/annotation/AnnotationAttributesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/TypeDescriptorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/TypeDescriptorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/converter/ConvertingComparatorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/converter/ConvertingComparatorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/converter/DefaultConversionServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/converter/DefaultConversionServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/support/GenericConversionServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/support/GenericConversionServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/support/MapToMapConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/support/MapToMapConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/support/StreamConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/convert/support/StreamConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/env/JOptCommandLinePropertySourceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/env/JOptCommandLinePropertySourceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/env/StandardEnvironmentTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/env/StandardEnvironmentTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/env/SystemEnvironmentPropertySourceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/env/SystemEnvironmentPropertySourceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/io/PathResourceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/io/PathResourceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/type/AnnotationMetadataTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/core/type/AnnotationMetadataTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/AssertTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/AssertTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/Base64UtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/Base64UtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/CollectionUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/CollectionUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/DigestUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/DigestUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/FastByteArrayOutputStreamTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/FastByteArrayOutputStreamTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/ReflectionUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/ReflectionUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/ResizableByteArrayOutputStreamTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/ResizableByteArrayOutputStreamTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/comparator/InstanceComparatorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/comparator/InstanceComparatorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/xml/AbstractStaxXMLReaderTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-core/src/test/java/org/springframework/util/xml/AbstractStaxXMLReaderTestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/common/TemplateAwareExpressionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/common/TemplateAwareExpressionParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/CodeFlow.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/CodeFlow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/ast/MethodReference.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/ast/MethodReference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/standard/InternalSpelExpressionParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/standard/InternalSpelExpressionParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/standard/TokenKind.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/standard/TokenKind.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/support/StandardTypeComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/support/StandardTypeComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/LiteralExpressionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/LiteralExpressionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/MethodInvocationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/MethodInvocationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/OperatorOverloaderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/OperatorOverloaderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/SpelCompilationCoverageTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/SpelCompilationCoverageTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/SpelReproTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-expression/src/test/java/org/springframework/expression/spel/SpelReproTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/main/java/org/springframework/jdbc/object/RdbmsOperation.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/main/java/org/springframework/jdbc/object/RdbmsOperation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/core/AbstractRowMapperTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/core/AbstractRowMapperTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/core/JdbcTemplateQueryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/core/JdbcTemplateQueryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/core/namedparam/NamedParameterUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/core/namedparam/NamedParameterUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/datasource/DelegatingDataSourceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/datasource/DelegatingDataSourceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/object/RdbmsOperationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/object/RdbmsOperationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/object/SqlQueryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/object/SqlQueryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/support/SQLErrorCodeSQLExceptionTranslatorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/support/SQLErrorCodeSQLExceptionTranslatorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/support/SQLExceptionCustomTranslatorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jdbc/src/test/java/org/springframework/jdbc/support/SQLExceptionCustomTranslatorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/main/java/org/springframework/jms/listener/DefaultMessageListenerContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/main/java/org/springframework/jms/listener/DefaultMessageListenerContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/main/java/org/springframework/jms/listener/SimpleMessageListenerContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/main/java/org/springframework/jms/listener/SimpleMessageListenerContainer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/main/java/org/springframework/jms/listener/endpoint/JmsActivationSpecConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/main/java/org/springframework/jms/listener/endpoint/JmsActivationSpecConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/StubTextMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/StubTextMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/annotation/AnnotationDrivenNamespaceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/annotation/AnnotationDrivenNamespaceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/annotation/EnableJmsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/annotation/EnableJmsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/core/JmsMessagingTemplateTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/core/JmsMessagingTemplateTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/listener/SimpleMessageListenerContainerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/listener/SimpleMessageListenerContainerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/listener/adapter/MessagingMessageListenerAdapterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/listener/adapter/MessagingMessageListenerAdapterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/support/converter/MappingJackson2MessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-jms/src/test/java/org/springframework/jms/support/converter/MappingJackson2MessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/converter/AbstractMessageConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/converter/AbstractMessageConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/simp/SimpMessageMappingInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/simp/SimpMessageMappingInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/simp/SimpMessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/simp/SimpMessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/simp/stomp/StompDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/simp/stomp/StompDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/simp/stomp/StompEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/simp/stomp/StompEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/support/AbstractSubscribableChannel.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/main/java/org/springframework/messaging/support/AbstractSubscribableChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/MessageHeadersTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/MessageHeadersTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/converter/DefaultContentTypeResolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/converter/DefaultContentTypeResolverTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/converter/MappingJackson2MessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/converter/MappingJackson2MessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/converter/MessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/converter/MessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/converter/SimpleMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/converter/SimpleMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/core/DestinationResolvingMessagingTemplateTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/core/DestinationResolvingMessagingTemplateTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/core/MessageRequestReplyTemplateTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/core/MessageRequestReplyTemplateTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/core/MessageSendingTemplateTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/core/MessageSendingTemplateTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/SimpMessageHeaderAccessorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/SimpMessageHeaderAccessorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/SimpMessagingTemplateTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/SimpMessagingTemplateTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/annotation/support/SimpAnnotationMethodMessageHandlerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/annotation/support/SimpAnnotationMethodMessageHandlerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/annotation/support/SubscriptionMethodReturnValueHandlerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/annotation/support/SubscriptionMethodReturnValueHandlerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/stomp/DefaultStompSessionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/stomp/DefaultStompSessionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/stomp/StompBrokerRelayMessageHandlerIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/stomp/StompBrokerRelayMessageHandlerIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/stomp/StompHeaderAccessorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-messaging/src/test/java/org/springframework/messaging/simp/stomp/StompHeaderAccessorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/AbstractMarshallerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/AbstractMarshallerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/AbstractUnmarshallerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/AbstractUnmarshallerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/castor/CastorUnmarshallerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/castor/CastorUnmarshallerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/jaxb/Jaxb2UnmarshallerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/jaxb/Jaxb2UnmarshallerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/xstream/XStreamMarshallerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/xstream/XStreamMarshallerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/xstream/XStreamUnmarshallerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-oxm/src/test/java/org/springframework/oxm/xstream/XStreamUnmarshallerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/annotation/DirtiesContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/annotation/DirtiesContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/context/MergedContextConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/context/MergedContextConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/context/testng/AbstractTestNGSpringContextTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/context/testng/AbstractTestNGSpringContextTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/servlet/result/HandlerResultMatchers.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/servlet/result/HandlerResultMatchers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/servlet/setup/PatternMappingFilterProxy.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/servlet/setup/PatternMappingFilterProxy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/servlet/setup/StandaloneMockMvcBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/servlet/setup/StandaloneMockMvcBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/mock/web/MockFilterChainTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/mock/web/MockFilterChainTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/mock/web/MockHttpServletRequestTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/mock/web/MockHttpServletRequestTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/annotation/ProfileValueUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/annotation/ProfileValueUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/BootstrapUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/BootstrapUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/configuration/interfaces/BootstrapWithTestInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/configuration/interfaces/BootstrapWithTestInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/configuration/interfaces/ContextConfigurationTestInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/configuration/interfaces/ContextConfigurationTestInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/configuration/interfaces/WebAppConfigurationTestInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/configuration/interfaces/WebAppConfigurationTestInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/jdbc/MetaAnnotationSqlScriptsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/jdbc/MetaAnnotationSqlScriptsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/ContextCustomizerSpringRunnerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/ContextCustomizerSpringRunnerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/RepeatedSpringRunnerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/RepeatedSpringRunnerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/SpringJUnit4ClassRunnerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/SpringJUnit4ClassRunnerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/TimedSpringRunnerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/TimedSpringRunnerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/annotation/meta/ConfigClassesAndProfileResolverWithCustomDefaultsMetaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/annotation/meta/ConfigClassesAndProfileResolverWithCustomDefaultsMetaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/annotation/meta/ConfigClassesAndProfilesWithCustomDefaultsMetaConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/annotation/meta/ConfigClassesAndProfilesWithCustomDefaultsMetaConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/rules/RepeatedSpringRuleTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/rules/RepeatedSpringRuleTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/spr9051/AnnotatedConfigClassesWithoutAtConfigurationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/junit4/spr9051/AnnotatedConfigClassesWithoutAtConfigurationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/AbstractContextConfigurationUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/AbstractContextConfigurationUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/ActiveProfilesUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/ActiveProfilesUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/AnnotationConfigContextLoaderUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/AnnotationConfigContextLoaderUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/BootstrapTestUtilsMergedConfigTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/BootstrapTestUtilsMergedConfigTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/ContextLoaderUtilsContextHierarchyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/ContextLoaderUtilsContextHierarchyTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/DelegatingSmartContextLoaderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/DelegatingSmartContextLoaderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/DirtiesContextTestExecutionListenerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/DirtiesContextTestExecutionListenerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/TestPropertySourceUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/support/TestPropertySourceUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/transaction/TransactionalTestExecutionListenerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/context/transaction/TransactionalTestExecutionListenerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/util/AopTestUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/util/AopTestUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/util/MetaAnnotationUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/util/MetaAnnotationUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/util/OverriddenMetaAnnotationAttributesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/util/OverriddenMetaAnnotationAttributesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/util/ReflectionTestUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/util/ReflectionTestUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/htmlunit/DelegatingWebConnectionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/htmlunit/DelegatingWebConnectionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/request/MockHttpServletRequestBuilderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/request/MockHttpServletRequestBuilderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/result/ContentResultMatchersTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/result/ContentResultMatchersTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/result/JsonPathResultMatchersTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/result/JsonPathResultMatchersTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/result/PrintingResultHandlerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/result/PrintingResultHandlerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/samples/standalone/resultmatchers/ContentAssertionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/samples/standalone/resultmatchers/ContentAssertionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/setup/ConditionalDelegatingFilterProxyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/setup/ConditionalDelegatingFilterProxyTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/setup/StandaloneMockMvcBuilderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-test/src/test/java/org/springframework/test/web/servlet/setup/StandaloneMockMvcBuilderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-tx/src/main/java/org/springframework/dao/support/DataAccessUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-tx/src/main/java/org/springframework/dao/support/DataAccessUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-tx/src/test/java/org/springframework/transaction/event/TransactionalEventListenerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-tx/src/test/java/org/springframework/transaction/event/TransactionalEventListenerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/CacheControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/CacheControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/ContentDisposition.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/ContentDisposition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/HttpRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/HttpRange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/client/SimpleClientHttpRequestFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/client/SimpleClientHttpRequestFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/converter/FormHttpMessageConverter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/converter/FormHttpMessageConverter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/server/ServletServerHttpRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/server/ServletServerHttpRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/bind/support/WebArgumentResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/bind/support/WebArgumentResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/client/MessageBodyClientHttpResponseWrapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/client/MessageBodyClientHttpResponseWrapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/context/ContextLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/context/ContextLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/context/WebApplicationContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/context/WebApplicationContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/filter/OncePerRequestFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/filter/OncePerRequestFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/jsf/el/SpringBeanFacesELResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/jsf/el/SpringBeanFacesELResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/method/annotation/AbstractWebArgumentResolverAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/method/annotation/AbstractWebArgumentResolverAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/multipart/support/MultipartResolutionDelegate.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/multipart/support/MultipartResolutionDelegate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/util/HtmlCharacterEntityDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/util/HtmlCharacterEntityDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/util/HtmlCharacterEntityReferences.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/util/HtmlCharacterEntityReferences.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/util/UriTemplate.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/util/UriTemplate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/util/pattern/RegexPathElement.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/main/java/org/springframework/web/util/pattern/RegexPathElement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/HttpHeadersTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/HttpHeadersTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/client/AbstractAsyncHttpRequestFactoryTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/client/AbstractAsyncHttpRequestFactoryTestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/client/AbstractHttpRequestFactoryTestCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/client/AbstractHttpRequestFactoryTestCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/client/BufferingClientHttpRequestFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/client/BufferingClientHttpRequestFactoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/client/HttpComponentsClientHttpRequestFactoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/client/HttpComponentsClientHttpRequestFactoryTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/codec/json/Jackson2JsonDecoderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/codec/json/Jackson2JsonDecoderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/ObjectToStringHttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/ObjectToStringHttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/GsonHttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/GsonHttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/Jackson2ObjectMapperBuilderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/Jackson2ObjectMapperBuilderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/Jackson2ObjectMapperFactoryBeanTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/Jackson2ObjectMapperFactoryBeanTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/JsonbHttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/JsonbHttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/MappingJackson2HttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/json/MappingJackson2HttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/Jaxb2CollectionHttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/Jaxb2CollectionHttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/Jaxb2RootElementHttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/Jaxb2RootElementHttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/MappingJackson2XmlHttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/MappingJackson2XmlHttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/MarshallingHttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/MarshallingHttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/SourceHttpMessageConverterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/converter/xml/SourceHttpMessageConverterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/server/ServletServerHttpRequestTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/server/ServletServerHttpRequestTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/server/ServletServerHttpResponseTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/http/server/ServletServerHttpResponseTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/mock/web/test/MockBodyContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/mock/web/test/MockBodyContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/mock/web/test/MockHttpServletResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/mock/web/test/MockHttpServletResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/mock/web/test/MockJspWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/mock/web/test/MockJspWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/remoting/httpinvoker/HttpInvokerFactoryBeanIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/remoting/httpinvoker/HttpInvokerFactoryBeanIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/bind/ServletRequestUtilsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/bind/ServletRequestUtilsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/client/AsyncRestTemplateIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/client/AsyncRestTemplateIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/client/DefaultResponseErrorHandlerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/client/DefaultResponseErrorHandlerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/client/RestTemplateIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/client/RestTemplateIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/client/RestTemplateTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/client/RestTemplateTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/context/request/async/WebAsyncManagerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/context/request/async/WebAsyncManagerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/filter/HttpPutFormContentFilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/filter/HttpPutFormContentFilterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/filter/RequestContextFilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/filter/RequestContextFilterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/filter/RequestLoggingFilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/filter/RequestLoggingFilterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/filter/ShallowEtagHeaderFilterTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/filter/ShallowEtagHeaderFilterTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/method/ControllerAdviceBeanTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/method/ControllerAdviceBeanTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/multipart/commons/CommonsMultipartResolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/multipart/commons/CommonsMultipartResolverTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/multipart/support/RequestPartServletServerHttpRequestTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/multipart/support/RequestPartServletServerHttpRequestTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/util/HtmlCharacterEntityReferencesTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-web/src/test/java/org/springframework/web/util/HtmlCharacterEntityReferencesTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webflux/src/main/java/org/springframework/web/reactive/function/server/PathResourceLookupFunction.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webflux/src/main/java/org/springframework/web/reactive/function/server/PathResourceLookupFunction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webflux/src/main/java/org/springframework/web/reactive/result/method/RequestMappingInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webflux/src/main/java/org/springframework/web/reactive/result/method/RequestMappingInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webflux/src/main/java/org/springframework/web/reactive/result/view/RedirectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webflux/src/main/java/org/springframework/web/reactive/result/view/RedirectView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/function/server/RouterFunctionsTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/function/server/RouterFunctionsTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/resource/AppCacheManifestTransformerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/resource/AppCacheManifestTransformerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/result/SimpleUrlHandlerMappingIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/result/SimpleUrlHandlerMappingIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/result/method/InvocableHandlerMethodTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/result/method/InvocableHandlerMethodTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/result/method/annotation/ModelInitializerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webflux/src/test/java/org/springframework/web/reactive/result/method/annotation/ModelInitializerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/DispatcherServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/DispatcherServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/config/annotation/ViewResolverRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/config/annotation/ViewResolverRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/condition/AbstractNameValueExpression.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/condition/AbstractNameValueExpression.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/condition/ConsumesRequestCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/condition/ConsumesRequestCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/condition/ProducesRequestCondition.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/condition/ProducesRequestCondition.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/method/RequestMappingInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/mvc/method/RequestMappingInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/support/JspAwareRequestContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/support/JspAwareRequestContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/support/RequestContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/support/RequestContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/MessageTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/MessageTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/UrlTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/UrlTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/form/SelectTag.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/form/SelectTag.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/form/SelectedValueComparator.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/form/SelectedValueComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/form/TagWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/tags/form/TagWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/view/RedirectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/main/java/org/springframework/web/servlet/view/RedirectView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/context/ContextLoaderTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/context/ContextLoaderTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/context/XmlWebApplicationContextTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/context/XmlWebApplicationContextTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/BeanNameUrlHandlerMappingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/BeanNameUrlHandlerMappingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/HandlerMethodMappingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/HandlerMethodMappingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/PathMatchingUrlHandlerMappingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/PathMatchingUrlHandlerMappingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/SimpleMappingExceptionResolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/SimpleMappingExceptionResolverTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/SimpleUrlHandlerMappingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/handler/SimpleUrlHandlerMappingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/RequestMappingInfoHandlerMappingTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/RequestMappingInfoHandlerMappingTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/HttpEntityMethodProcessorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/HttpEntityMethodProcessorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapterIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapterIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/RequestPartIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/RequestPartIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyMethodProcessorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/RequestResponseBodyMethodProcessorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/ServletAnnotationControllerHandlerMethodTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/mvc/method/annotation/ServletAnnotationControllerHandlerMethodTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/resource/AppCacheManifestTransformerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/resource/AppCacheManifestTransformerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/tags/MessageTagTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/tags/MessageTagTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/tags/ThemeTagTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/tags/ThemeTagTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/ContentNegotiatingViewResolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/ContentNegotiatingViewResolverTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/DummyMacroRequestContext.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/DummyMacroRequestContext.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/RedirectViewTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/RedirectViewTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/ResourceBundleViewResolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/ResourceBundleViewResolverTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/ViewResolverTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/java/org/springframework/web/servlet/view/ViewResolverTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/resources/org/springframework/web/servlet/resource/testalternatepath/js/bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/resources/org/springframework/web/servlet/resource/testalternatepath/js/bar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-webmvc/src/test/resources/org/springframework/web/servlet/resource/testalternatepath/js/foo.js" beforeDir="false" afterPath="$PROJECT_DIR$/spring-webmvc/src/test/resources/org/springframework/web/servlet/resource/testalternatepath/js/foo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/main/java/org/springframework/web/socket/WebSocketExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/main/java/org/springframework/web/socket/WebSocketExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/main/java/org/springframework/web/socket/messaging/SubProtocolWebSocketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/main/java/org/springframework/web/socket/messaging/SubProtocolWebSocketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/main/java/org/springframework/web/socket/server/standard/TomcatRequestUpgradeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/main/java/org/springframework/web/socket/server/standard/TomcatRequestUpgradeStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/main/java/org/springframework/web/socket/server/standard/WebSphereRequestUpgradeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/main/java/org/springframework/web/socket/server/standard/WebSphereRequestUpgradeStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/handler/ConcurrentWebSocketSessionDecoratorTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/handler/ConcurrentWebSocketSessionDecoratorTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/server/DefaultHandshakeHandlerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/server/DefaultHandshakeHandlerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/sockjs/client/RestTemplateXhrTransportTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/sockjs/client/RestTemplateXhrTransportTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/sockjs/transport/handler/HttpReceivingTransportHandlerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/sockjs/transport/handler/HttpReceivingTransportHandlerTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/sockjs/transport/session/SockJsSessionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/sockjs/transport/session/SockJsSessionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/sockjs/transport/session/WebSocketServerSockJsSessionTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/spring-websocket/src/test/java/org/springframework/web/socket/sockjs/transport/session/WebSocketServerSockJsSessionTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/docs/asciidoc/docinfo-footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/docs/asciidoc/docinfo-footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/springframework/context/annotation/jsr330/ClassPathBeanDefinitionScannerJsr330ScopeIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/springframework/context/annotation/jsr330/ClassPathBeanDefinitionScannerJsr330ScopeIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/springframework/context/annotation/scope/ClassPathBeanDefinitionScannerScopeIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/springframework/context/annotation/scope/ClassPathBeanDefinitionScannerScopeIntegrationTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/springframework/core/env/EnvironmentSystemIntegrationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/springframework/core/env/EnvironmentSystemIntegrationTests.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/classes/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing/.gradle/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing-mvc/.gradle/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing-mybatis/.gradle/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing-mybatis/build/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing-mybatis-tx/.gradle/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing-mybatis-tx/build/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing-springmvcboot/.gradle/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing-springmvcboot/build/" />
+    <ignored path="$PROJECT_DIR$/spring-aop/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-aspects/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-beans/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-context/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-context-indexer/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-context-indexer/build/" />
+    <ignored path="$PROJECT_DIR$/spring-context-support/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-core/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-expression/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-bom/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-bom/build/" />
+    <ignored path="$PROJECT_DIR$/spring-framework-bom/out/" />
+    <ignored path="$PROJECT_DIR$/spring-instrument/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-jcl/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-jdbc/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-jms/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-jms/build/" />
+    <ignored path="$PROJECT_DIR$/spring-messaging/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-messaging/build/" />
+    <ignored path="$PROJECT_DIR$/spring-orm/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-oxm/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-test/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-test/build/" />
+    <ignored path="$PROJECT_DIR$/spring-tx/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-web/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-webflux/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-webflux/build/" />
+    <ignored path="$PROJECT_DIR$/spring-webmvc/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-websocket/.gradle/" />
+    <ignored path="$PROJECT_DIR$/spring-websocket/build/" />
+    <ignored path="$PROJECT_DIR$/chengjiaqing-springmvcboot/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/spring-jdbc">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/spring-beans">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$/chengjiaqing">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="spring" type="f1a62948:ProjectNode" />
+                <item name="chengjiaqing" type="2d1252cf:ModuleNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="110">
+              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chengjiaqing-mybatis-tx/src/main/java/transactionProxyFactoryBeanUse/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="308">
+              <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/reactive/server/DefaultWebTestClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/HttpMethod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-aspects/src/main/java/org/springframework/scheduling/aspectj/AspectJAsyncConfiguration.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="229">
+              <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chengjiaqing/src/main/java/aliasforTest/AnnotationUtilsTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="141">
+              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/chengjiaqing/src/main/java/com/jiaqing/ioc/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="377">
+              <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/reactive/server/WebTestClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1757">
+              <caret line="41" column="60" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/standard/SpelCompiler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2750">
+              <caret line="162" column="22" selection-start-line="162" selection-start-column="16" selection-end-line="162" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/DefaultBeanDefinitionDocumentReader.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2310">
+              <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>log</find>
+      <find>logger</find>
+      <find>maven</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/spring-beans/spring-beans.gradle" />
+        <option value="$PROJECT_DIR$/chengjiaqing/src/main/java/aliasforTest/AnnotationUtilsTest.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\maven\repository" />
+        <option name="mavenHome" value="D:/maven/apache-maven-3.5.0" />
+        <option name="userSettingsFile" value="D:\maven\apache-maven-3.5.0\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="220" />
+    <option name="y" value="340" />
+    <option name="width" value="1380" />
+    <option name="height" value="739" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="inspectionProfiles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name=".settings" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name=".settings" type="462c0819:PsiDirectoryNode" />
+              <item name="gradle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="chengjiaqing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="chengjiaqing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="chengjiaqing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="chengjiaqing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="chengjiaqing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="aliasforTest" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="chengjiaqing" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="ioc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="spring-jcl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="spring-jcl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="spring-jcl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="spring-jcl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="spring-jcl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="logging" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="spring-framework-5.0.x" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="spring-jcl" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="spring" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.Annotations" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../spring-boot-2.1.x" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Facets" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Test (2)">
+    <configuration name="Test (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="transactionProxyFactoryBeanUse.Test" />
+      <module name="spring.chengjiaqing-mybatis-tx.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="transactionProxyFactoryBeanUse.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.jiaqing.ioc.Test" />
+      <module name="spring.chengjiaqing.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jiaqing.ioc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="springmybatisdemo.Test" />
+      <module name="spring.chengjiaqing-mybatis.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="springmybatisdemo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="spring-framework-5.0.x:spring-beans [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/spring-beans" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Test (2)" />
+        <item itemvalue="Application.Test (1)" />
+        <item itemvalue="Gradle.spring-framework-5.0.x:spring-beans [build]" />
+        <item itemvalue="Application.Test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d685a49f-859f-4739-81e7-f6950a2bd164" name="Default Changelist" comment="" />
+      <created>1659492104804</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1659492104804</updated>
+      <workItem from="1659492110062" duration="8521000" />
+      <workItem from="1660621831245" duration="10122000" />
+      <workItem from="1667049264586" duration="2406000" />
+      <workItem from="1667051746876" duration="1600000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="22649000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="2766" height="1136" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30452523" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Web" order="5" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32948583" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.30010495" />
+      <window_info anchor="bottom" id="Spring" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" />
+      <window_info anchor="bottom" id="Database Changes" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" />
+      <window_info anchor="bottom" id="Messages" order="15" weight="0.32948583" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="3" />
+      <window_info anchor="right" id="Palette" order="4" />
+      <window_info anchor="right" id="JSF" order="5" />
+      <window_info anchor="right" id="Gradle" order="6" visible="true" weight="0.29896143" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Bean Validation" order="9" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/spring-jcl/src/main/java/org/apache/commons/logging/LogFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="567" lean-forward="true" selection-start-line="567" selection-end-line="567" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-jcl/readme.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-aop/src/main/java/org/aopalliance/intercept/ConstructorInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="41" column="22" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#1999#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chengjiaqing-springmvcboot/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chengjiaqing-mybatis-tx/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chengjiaqing-mybatis/build.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-jcl/spring-jcl.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="14" selection-start-line="2" selection-start-column="14" selection-end-line="2" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-aop/src/main/java/org/aopalliance/aop/AspectException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="28" column="22" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-jcl/src/main/java/org/apache/commons/logging/Log.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="423">
+          <caret line="160" column="24" selection-start-line="160" selection-start-column="24" selection-end-line="160" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-aop/src/main/java/org/springframework/aop/target/AbstractPoolingTargetSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="54" column="22" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-aop/src/main/java/org/springframework/aop/target/dynamic/AbstractRefreshableTargetSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chengjiaqing-mvc/src/main/java/com/jiaqing/springmvc/TestFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chengjiaqing-mybatis/src/main/java/springmybatisdemo/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="15" column="15" selection-start-line="15" selection-start-column="15" selection-end-line="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-expression/spring-expression.gradle">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-aop/src/main/java/org/springframework/aop/target/CommonsPool2TargetSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="203" column="10" selection-start-line="203" selection-start-column="10" selection-end-line="203" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.editorconfig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.settings/gradle/com.springsource.sts.gradle.core.import.prefs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/gradle.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-oxm/spring-oxm.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="99" column="36" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3476">
+          <caret line="158" column="18" selection-start-line="158" selection-start-column="18" selection-end-line="158" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.mailmap">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-aop/src/main/java/org/springframework/aop/target/AbstractBeanFactoryBasedTargetSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="56" column="21" selection-start-line="56" selection-start-column="21" selection-end-line="56" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-aop/spring-aop.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-beans/spring-beans.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="43" selection-start-line="6" selection-start-column="43" selection-end-line="6" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-expression/src/main/java/org/springframework/expression/spel/standard/SpelCompiler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2750">
+          <caret line="162" column="22" selection-start-line="162" selection-start-column="16" selection-end-line="162" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-beans/src/main/java/org/springframework/beans/factory/xml/DefaultBeanDefinitionDocumentReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2310">
+          <caret line="142" column="17" selection-start-line="142" selection-start-column="17" selection-end-line="142" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chengjiaqing-mybatis-tx/src/main/java/transactionProxyFactoryBeanUse/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/reactive/server/WebTestClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1757">
+          <caret line="41" column="60" selection-start-line="41" selection-start-column="60" selection-end-line="41" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-test/src/main/java/org/springframework/test/web/reactive/server/DefaultWebTestClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="36" column="36" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-web/src/main/java/org/springframework/http/HttpMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="61" column="49" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spring-aspects/src/main/java/org/springframework/scheduling/aspectj/AspectJAsyncConfiguration.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="45" column="45" selection-start-line="45" selection-start-column="45" selection-end-line="45" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chengjiaqing/src/main/java/aliasforTest/AnnotationUtilsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/chengjiaqing/src/main/java/com/jiaqing/ioc/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="21" column="18" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>AspectJ (spring.spring-aop.main)|AspectJ</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>AspectJ|main|spring-aspects|spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: antlr:antlr:2.7.7</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

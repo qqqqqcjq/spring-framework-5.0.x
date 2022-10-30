@@ -305,7 +305,7 @@ public class DelegatingIntroductionInterceptorTests {
 	}
 
 
-	private static interface SubTimeStamped extends TimeStamped {
+	private interface SubTimeStamped extends TimeStamped {
 	}
 
 }

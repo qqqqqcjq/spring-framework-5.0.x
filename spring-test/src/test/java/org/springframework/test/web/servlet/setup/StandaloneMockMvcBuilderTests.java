@@ -99,7 +99,7 @@ public class StandaloneMockMvcBuilderTests {
 	@Test(expected = IllegalArgumentException.class)
 	public void addFiltersFiltersContainsNull() {
 		StandaloneMockMvcBuilder builder = MockMvcBuilders.standaloneSetup(new PersonController());
-		builder.addFilters(new ContinueFilter(), (Filter) null);
+		builder.addFilters(new ContinueFilter(), null);
 	}
 
 	@Test(expected = IllegalArgumentException.class)

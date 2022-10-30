@@ -202,11 +202,8 @@ public class SimpleApplicationEventMulticaster extends AbstractApplicationEventM
 		}
 		// On Java 9, the message used to contain the module name: "java.base/java.lang.String cannot be cast..."
 		int moduleSeparatorIndex = classCastMessage.indexOf('/');
-		if (moduleSeparatorIndex != -1 && classCastMessage.startsWith(eventClass.getName(), moduleSeparatorIndex + 1)) {
-			return true;
-		}
+        return moduleSeparatorIndex != -1 && classCastMessage.startsWith(eventClass.getName(), moduleSeparatorIndex + 1);
 		// Assuming an unrelated class cast failure...
-		return false;
-	}
+    }
 
 }

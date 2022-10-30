@@ -40,7 +40,7 @@ import org.springframework.lang.Nullable;
 
 //定义类型转换方法的接口,通常(但不一定)与{@link PropertyEditorRegistry}接口一起实现。
 //因为TypeConverter实现通常基于PropertyEditor
-//PropertyEditor接口只针对一个类型，TypeConverter可以处理多种类型，TypeConverter的实现里面封装了多个PropertyEditor
+//PropertyEditor接口只针对一个类型，TypeConverter可以处理多种类型，TypeConverter的实现里面封装了多个PropertyEditor和Converversionservice
 public interface TypeConverter {
 
     /**
@@ -58,6 +58,8 @@ public interface TypeConverter {
      * @see org.springframework.core.convert.converter.Converter
      */
     @Nullable
+    //将值转换为所需的类型(如果需要，从String类型)。String到任何类型的转换通常使用PropertyEditor类中的{@code setAsText}方法，或者Converversionservice
+    //这个方法里面兼容了PropertyEditor和Converversionservice
     <T> T convertIfNecessary(@Nullable Object value, @Nullable Class<T> requiredType) throws TypeMismatchException;
 
     /**
@@ -77,6 +79,8 @@ public interface TypeConverter {
      * @see org.springframework.core.convert.converter.Converter
      */
     @Nullable
+    //将值转换为所需的类型(如果需要，从String类型)。String到任何类型的转换通常使用PropertyEditor类中的{@code setAsText}方法，或者Converversionservice
+    //这个方法里面兼容了PropertyEditor和Converversionservice
     <T> T convertIfNecessary(@Nullable Object value, @Nullable Class<T> requiredType,
                              @Nullable MethodParameter methodParam) throws TypeMismatchException;
 
@@ -97,6 +101,8 @@ public interface TypeConverter {
      * @see org.springframework.core.convert.converter.Converter
      */
     @Nullable
+    //将值转换为所需的类型(如果需要，从String类型)。String到任何类型的转换通常使用PropertyEditor类中的{@code setAsText}方法，或者Converversionservice
+    //这个方法里面兼容了PropertyEditor和Converversionservice
     <T> T convertIfNecessary(@Nullable Object value, @Nullable Class<T> requiredType, @Nullable Field field)
             throws TypeMismatchException;
 

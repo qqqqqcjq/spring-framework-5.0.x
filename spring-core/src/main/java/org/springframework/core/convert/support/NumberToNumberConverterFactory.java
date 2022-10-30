@@ -36,7 +36,7 @@ import org.springframework.util.NumberUtils;
  * @see java.lang.Long
  * @see java.math.BigInteger
  * @see java.lang.Float
- * @see java.lang.Double
+ * @see java.lang.DoubleGenericConverter
  * @see java.math.BigDecimal
  * @see NumberUtils
  */

@@ -260,13 +260,13 @@ public class ActiveProfilesUtilsTests extends AbstractContextConfigurationUtilsT
 	@ActiveProfiles(profiles = { "dog", "cat" }, inheritProfiles = false)
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
-	private static @interface MetaAnimalsConfig {
+	private @interface MetaAnimalsConfig {
 	}
 
 	@ActiveProfiles(resolver = TestClassVerifyingActiveProfilesResolver.class)
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
-	private static @interface MetaResolverConfig {
+	private @interface MetaResolverConfig {
 	}
 
 	@MetaAnimalsConfig

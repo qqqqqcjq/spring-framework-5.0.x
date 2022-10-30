@@ -17,8 +17,8 @@ import java.lang.reflect.Modifier;
  */
 
 
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class AopAspect1 {
     /**
      * 切点是连接点的集合，配置时注意是否不小心覆盖到了父类的方法

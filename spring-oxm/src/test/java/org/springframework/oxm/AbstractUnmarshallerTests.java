@@ -18,6 +18,7 @@ package org.springframework.oxm;
 
 import java.io.ByteArrayInputStream;
 import java.io.StringReader;
+import java.nio.charset.StandardCharsets;
 import javax.xml.namespace.QName;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -92,7 +93,7 @@ public abstract class AbstractUnmarshallerTests<U extends Unmarshaller> {
 
 	@Test
 	public void unmarshalStreamSourceInputStream() throws Exception {
-		StreamSource source = new StreamSource(new ByteArrayInputStream(INPUT_STRING.getBytes("UTF-8")));
+		StreamSource source = new StreamSource(new ByteArrayInputStream(INPUT_STRING.getBytes(StandardCharsets.UTF_8)));
 		Object flights = unmarshaller.unmarshal(source);
 		testFlights(flights);
 	}

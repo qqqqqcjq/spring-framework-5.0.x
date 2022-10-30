@@ -47,6 +47,7 @@ import org.springframework.web.method.support.ModelAndViewContainer;
  * @author Rossen Stoyanchev
  * @since 3.1
  */
+//适配器模式
 public abstract class AbstractWebArgumentResolverAdapter implements HandlerMethodArgumentResolver {
 
 	private final Log logger = LogFactory.getLog(getClass());

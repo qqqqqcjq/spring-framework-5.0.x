@@ -348,7 +348,7 @@ public class FormHttpMessageConverter implements HttpMessageConverter<MultiValue
 		if (!isFilenameCharsetSet()) {
 			parameters.put("charset", this.charset.name());
 		}
-		parameters.put("boundary", new String(boundary, "US-ASCII"));
+		parameters.put("boundary", new String(boundary, StandardCharsets.US_ASCII));
 
 		MediaType contentType = new MediaType(MediaType.MULTIPART_FORM_DATA, parameters);
 		HttpHeaders headers = outputMessage.getHeaders();

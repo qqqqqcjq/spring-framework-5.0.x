@@ -650,7 +650,7 @@ public class JmsMessagingTemplateTests {
 						new StubTextMessage((String) invocation.getArguments()[0]));
 		javax.jms.Message message = creator.createMessage(mock);
 		verify(mock).createTextMessage(BDDMockito.any());
-		return TextMessage.class.cast(message);
+		return (TextMessage) message;
 	}
 
 }

@@ -205,10 +205,9 @@ public class PagedListHolderTests {
 
 			if (!age.equals(mockFilter.age)) return false;
 			if (!extendedInfo.equals(mockFilter.extendedInfo)) return false;
-			if (!name.equals(mockFilter.name)) return false;
+            return name.equals(mockFilter.name);
 
-			return true;
-		}
+        }
 
 		@Override
 		public int hashCode() {

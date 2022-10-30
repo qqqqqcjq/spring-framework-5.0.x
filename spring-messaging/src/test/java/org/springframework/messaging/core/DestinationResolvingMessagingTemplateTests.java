@@ -57,7 +57,7 @@ public class DestinationResolvingMessagingTemplateTests {
 		this.template = new TestDestinationResolvingMessagingTemplate();
 		this.template.setDestinationResolver(resolver);
 
-		this.headers = Collections.<String, Object>singletonMap("key", "value");
+		this.headers = Collections.singletonMap("key", "value");
 
 		this.postProcessor = new TestMessagePostProcessor();
 	}

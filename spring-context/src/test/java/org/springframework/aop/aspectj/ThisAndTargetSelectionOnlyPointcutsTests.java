@@ -109,7 +109,7 @@ public class ThisAndTargetSelectionOnlyPointcutsTests {
 
 
 interface TestInterface {
-	public void doIt();
+	void doIt();
 }
 
 

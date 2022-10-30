@@ -12,7 +12,8 @@
 
     <display-name>Spring MVC Application</display-name>
 
-    <!-- configure the springIOC 这个ioc容器只是为了整合其他框架，如果没有的话，可以不用配置这个ioc,因为spring mvc本身就有一个ioc容器-->
+    <!-- tomcat会使用Frame这个监听器会创建 这个ioc容器只是为了整合其他框架比如structs，
+    如果没有的话，可以不用配置这个ioc,因为使用spring mvc框架的话DispatchServlet会创建子容器-->
 <!--    <listener>-->
 <!--        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
 <!--    </listener>-->

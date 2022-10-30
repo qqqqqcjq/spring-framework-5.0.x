@@ -206,7 +206,7 @@ public class BootstrapTestUtilsMergedConfigTests extends AbstractContextConfigur
 	@ContextConfiguration
 	@Retention(RetentionPolicy.RUNTIME)
 	@Target(ElementType.TYPE)
-	public static @interface SpringAppConfig {
+	public @interface SpringAppConfig {
 
 		Class<?>[] classes() default {};
 	}

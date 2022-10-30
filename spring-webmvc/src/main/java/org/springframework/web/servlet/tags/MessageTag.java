@@ -394,7 +394,7 @@ public class MessageTag extends HtmlEscapingAwareTag implements ArgumentAware {
 	 * @throws IOException if writing failed
 	 */
 	protected void writeMessage(String msg) throws IOException {
-		pageContext.getOut().write(String.valueOf(msg));
+		pageContext.getOut().write(msg);
 	}
 
 	/**

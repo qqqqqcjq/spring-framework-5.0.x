@@ -108,7 +108,7 @@ public class DelegatingDataSourceTests {
 		assertThat(dataSource.isWrapperFor(ExampleWrapper.class), is(true));
 	}
 
-	public static interface ExampleWrapper {
+	public interface ExampleWrapper {
 	}
 
 	private static class DelegatingDataSourceWithWrapper extends DelegatingDataSource

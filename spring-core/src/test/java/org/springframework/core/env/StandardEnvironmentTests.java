@@ -384,12 +384,12 @@ public class StandardEnvironmentTests {
 			Map<?, ?> systemProperties = environment.getSystemProperties();
 			assertThat(systemProperties, notNullValue());
 			assertSame(systemProperties, System.getProperties());
-			assertThat(systemProperties.get(ALLOWED_PROPERTY_NAME), equalTo((Object)ALLOWED_PROPERTY_VALUE));
-			assertThat(systemProperties.get(DISALLOWED_PROPERTY_NAME), equalTo((Object)DISALLOWED_PROPERTY_VALUE));
+			assertThat(systemProperties.get(ALLOWED_PROPERTY_NAME), equalTo(ALLOWED_PROPERTY_VALUE));
+			assertThat(systemProperties.get(DISALLOWED_PROPERTY_NAME), equalTo(DISALLOWED_PROPERTY_VALUE));
 
 			// non-string keys and values work fine... until the security manager is introduced below
 			assertThat(systemProperties.get(STRING_PROPERTY_NAME), equalTo(NON_STRING_PROPERTY_VALUE));
-			assertThat(systemProperties.get(NON_STRING_PROPERTY_NAME), equalTo((Object)STRING_PROPERTY_VALUE));
+			assertThat(systemProperties.get(NON_STRING_PROPERTY_NAME), equalTo(STRING_PROPERTY_VALUE));
 		}
 
 		SecurityManager oldSecurityManager = System.getSecurityManager();
@@ -418,7 +418,7 @@ public class StandardEnvironmentTests {
 			Map<?, ?> systemProperties = environment.getSystemProperties();
 			assertThat(systemProperties, notNullValue());
 			assertThat(systemProperties, instanceOf(ReadOnlySystemAttributesMap.class));
-			assertThat((String)systemProperties.get(ALLOWED_PROPERTY_NAME), equalTo(ALLOWED_PROPERTY_VALUE));
+			assertThat(systemProperties.get(ALLOWED_PROPERTY_NAME), equalTo(ALLOWED_PROPERTY_VALUE));
 			assertThat(systemProperties.get(DISALLOWED_PROPERTY_NAME), equalTo(null));
 
 			// nothing we can do here in terms of warning the user that there was
@@ -480,7 +480,7 @@ public class StandardEnvironmentTests {
 			Map<String, Object> systemEnvironment = environment.getSystemEnvironment();
 			assertThat(systemEnvironment, notNullValue());
 			assertThat(systemEnvironment, instanceOf(ReadOnlySystemAttributesMap.class));
-			assertThat(systemEnvironment.get(ALLOWED_PROPERTY_NAME), equalTo((Object)ALLOWED_PROPERTY_VALUE));
+			assertThat(systemEnvironment.get(ALLOWED_PROPERTY_NAME), equalTo(ALLOWED_PROPERTY_VALUE));
 			assertThat(systemEnvironment.get(DISALLOWED_PROPERTY_NAME), nullValue());
 		}
 

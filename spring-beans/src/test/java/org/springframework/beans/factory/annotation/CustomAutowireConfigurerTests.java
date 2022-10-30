@@ -78,11 +78,8 @@ public class CustomAutowireConfigurerTests {
 			if (!bdHolder.getBeanName().matches("[a-z-]+")) {
 				return false;
 			}
-			if (bdHolder.getBeanDefinition().getAttribute("priority").equals("1")) {
-				return true;
-			}
-			return false;
-		}
+            return bdHolder.getBeanDefinition().getAttribute("priority").equals("1");
+        }
 
 		@Override
 		public Object getSuggestedValue(DependencyDescriptor descriptor) {

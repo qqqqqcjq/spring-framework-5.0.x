@@ -7,5 +7,5 @@ package comjiaqing;
  */
 
 public interface IndexDao {
-	public void test();
+	void test();
 }
